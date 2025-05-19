@@ -19,6 +19,9 @@
       }
     ],
     "paths": {
+      "@/components/*": ["./src/lib/components/*"],
+      "@/Public/components/*": ["./src/app/(public)/components/*"],
+      "@/lib/icons/*": ["./src/lib/icons/*"],
       "@/*": ["./src/*"]
     }
   },

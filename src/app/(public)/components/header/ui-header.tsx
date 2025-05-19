@@ -1,0 +1,45 @@
+"use client";
+
+import React from "react";
+import styles from "./ui-header.module.css";
+import { UiLink } from "@/components/index";
+import { SearchIcon } from "@/lib/icons/search.icon";
+
+
+export function UiHeader() {
+  return (
+    <header className={styles.header}>
+      <h1 className={styles.title}>San Luis de Gaceno</h1>
+      <div className={styles.container}>
+        <nav className={styles.nav}>
+          <UiLink
+            namePath="Home"
+            href="/"
+            className={styles.link_header}
+            classActive={styles.active}
+          />
+          <UiLink
+            namePath="¿Donde ir?"
+            href="/where"
+            className={styles.link_header}
+            classActive={styles.active}
+          />
+          <UiLink
+            namePath="¿Que hacer?"
+            href="/what"
+            className={styles.link_header}
+            classActive={styles.active}
+          />
+        </nav>
+        <div className={styles.searchContainer}>
+            <input
+              type="text"
+              placeholder="Explora los cinco corazones"
+              className={styles.input}
+            />
+            <button className={styles.button}><SearchIcon/></button>
+          </div>
+      </div>
+    </header>
+  );
+}
