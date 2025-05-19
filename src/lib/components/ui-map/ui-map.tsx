@@ -38,14 +38,15 @@ const geojson:any = {
 export function UiMap() {
   return (
     <Map
-      mapboxAccessToken="pk.eyJ1IjoiamV5c29ua21sbyIsImEiOiJjbTA2eDlocWIweWw1MmpvamNjenpidmg2In0.FoATPZ7RL76g1Cw6R8zzCA"
+      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       initialViewState={{
         longitude: -73.16851,
         latitude: 4.82052,
         zoom: 15,
       }}
-      style={{ width: "100%", height: "100%" }}
+      style={{ width: "90%", height: "100%" }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
+      attributionControl={false} 
     >
     <Source id="points" type="geojson" data={geojson} >
     <Layer {...layerStyle} />
