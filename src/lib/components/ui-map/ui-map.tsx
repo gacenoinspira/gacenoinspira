@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Map, { Marker, Popup, NavigationControl, FullscreenControl } from 'react-map-gl/mapbox';
+import { useState, useRef, useCallback } from "react";
+import Map, { Marker, Popup, NavigationControl, FullscreenControl, MapRef } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 type Location = {
@@ -65,8 +65,22 @@ const sectorColors = {
 };
 
 export function UiMap() {
+  const mapRef = useRef<MapRef>(null);
   const [popupInfo, setPopupInfo] = useState<Location | null>(null);
   const [selectedSector, setSelectedSector] = useState<number | null>(null);
+  const [mapStyle, setMapStyle] = useState<string>('mapbox://styles/mapbox/streets-v11');
+  
+  // Función para manejar el cambio de estilo del mapa
+  const handleStyleChange = useCallback((style: string) => {
+    setMapStyle(style);
+    // Asegurarse de que el terreno se actualice después de cambiar el estilo
+    setTimeout(() => {
+      if (mapRef.current) {
+        const map = mapRef.current.getMap();
+        map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
+      }
+    }, 100);
+  }, []);
 
   const filteredLocations = selectedSector 
     ? locations.filter(loc => loc.sector === selectedSector)
@@ -103,19 +117,82 @@ export function UiMap() {
           </button>
         ))}
       </div>
-      <div style={{ width: '100%', height: '500px', position: 'relative' }}>
+      <div style={{ width: '100%', height: '600px', position: 'relative' }}>
       <Map
+        ref={mapRef}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
         initialViewState={{
           longitude: -73.16851,
           latitude: 4.82052,
           zoom: 12,
+          pitch: 45,
+          bearing: 0
         }}
+        projection="globe"
         style={{ width: '100%', height: '100%' }}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
+        mapStyle={mapStyle}
+        terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+        onLoad={() => {
+          if (mapRef.current) {
+            const map = mapRef.current.getMap();
+            // Añadir la fuente de elevación
+            if (!map.getSource('mapbox-dem')) {
+              map.addSource('mapbox-dem', {
+                type: 'raster-dem',
+                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                tileSize: 512,
+                maxzoom: 14
+              });
+              map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
+            }
+          }
+        }}
       >
-        <NavigationControl position="top-right" />
+        <NavigationControl 
+          position="top-right" 
+          showCompass={true}
+          showZoom={true}
+        />
         <FullscreenControl position="top-right" />
+        
+        {/* Controles de estilo de mapa */}
+        <div style={{ 
+          position: 'absolute', 
+          top: '10px', 
+          left: '10px', 
+          zIndex: 1,
+          display: 'flex',
+          gap: '5px'
+        }}>
+          <button 
+            onClick={() => handleStyleChange('mapbox://styles/mapbox/satellite-v9')}
+            style={{
+              padding: '5px 10px',
+              backgroundColor: mapStyle.includes('satellite') ? '#3b82f6' : '#fff',
+              color: mapStyle.includes('satellite') ? '#fff' : '#333',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}
+          >
+            Satélite
+          </button>
+          <button 
+            onClick={() => handleStyleChange('mapbox://styles/mapbox/streets-v11')}
+            style={{
+              padding: '5px 10px',
+              backgroundColor: mapStyle.includes('streets') ? '#3b82f6' : '#fff',
+              color: mapStyle.includes('streets') ? '#fff' : '#333',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}
+          >
+            Mapa
+          </button>
+        </div>
 
         {filteredLocations.map((location) => (
           <Marker
