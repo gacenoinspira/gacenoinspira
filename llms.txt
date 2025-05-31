@@ -1,0 +1,129 @@
+## Next.js
+
+### Routing
+- [Routing: App Router](https://nextjs.org/docs/app/building-your-application/routing)
+- [Pages and Layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts)
+- [Linking and Navigating](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating)
+- [Dynamic Routes](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)
+- [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes)
+- [Parallel and Intercepted Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-and-intercepted-routes)
+
+### Rendering
+- [Rendering Fundamentals](https://nextjs.org/docs/app/building-your-application/rendering)
+- [Static Rendering](https://nextjs.org/docs/app/building-your-application/rendering/static)
+- [Dynamic Rendering](https://nextjs.org/docs/app/building-your-application/rendering/dynamic)
+- [Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components)
+
+### Data Fetching
+- [Fetching Data](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching)
+- [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions)
+- [Client Side Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching/client-fetching)
+
+### Metadata & SEO
+- [Metadata API](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
+- [Custom Metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)
+- [Open Graph and SEO](https://nextjs.org/docs/app/building-your-application/optimizing/metadata#opengraph-image)
+
+### Assets & Styling
+- [Optimizing Fonts](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+- [Image Component](https://nextjs.org/docs/app/building-your-application/optimizing/images)
+- [Styling with Tailwind CSS](https://nextjs.org/docs/app/building-your-application/styling/tailwind-css)
+
+### API Routes & Middleware
+- [API Routes (Pages Router)](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)
+- [Middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware)
+
+---
+
+## shadcn/ui
+
+### Introduction
+- [Overview](https://ui.shadcn.com/docs)
+- [Getting Started](https://ui.shadcn.com/docs/installation)
+
+### Styling & Theming
+- [Theming](https://ui.shadcn.com/docs/theming)
+- [Dark Mode](https://ui.shadcn.com/docs/dark-mode)
+- [Typography](https://ui.shadcn.com/docs/components/typography)
+
+### Components
+- [Accordion](https://ui.shadcn.com/docs/components/accordion)
+- [Alert Dialog](https://ui.shadcn.com/docs/components/alert-dialog)
+- [Button](https://ui.shadcn.com/docs/components/button)
+- [Card](https://ui.shadcn.com/docs/components/card)
+- [Dialog](https://ui.shadcn.com/docs/components/dialog)
+- [Dropdown Menu](https://ui.shadcn.com/docs/components/dropdown-menu)
+- [Form](https://ui.shadcn.com/docs/components/form)
+- [Input](https://ui.shadcn.com/docs/components/input)
+- [Tabs](https://ui.shadcn.com/docs/components/tabs)
+- [Toast](https://ui.shadcn.com/docs/components/toast)
+
+### Utilities
+- [Class Utilities](https://ui.shadcn.com/docs/components/utils)
+- [Icons (lucide-react)](https://ui.shadcn.com/docs/components/icons)
+
+---
+
+## Supabase
+
+### Introduction
+- [What is Supabase?](https://supabase.com/docs)
+- [Getting Started](https://supabase.com/docs/guides/with-nextjs)
+
+### Database
+- [Tables and Data](https://supabase.com/docs/guides/database)
+- [SQL Editor](https://supabase.com/docs/guides/database/sql-editor)
+- [Relationships & Foreign Keys](https://supabase.com/docs/guides/database/foreign-key-relationships)
+
+### Auth
+- [Auth Overview](https://supabase.com/docs/guides/auth)
+- [Email/Password Login](https://supabase.com/docs/guides/auth/auth-email)
+- [OAuth Providers](https://supabase.com/docs/guides/auth/social-login)
+- [User Management](https://supabase.com/docs/guides/auth/managing-users)
+
+### Realtime
+- [Realtime Overview](https://supabase.com/docs/guides/realtime)
+- [Listening to Changes](https://supabase.com/docs/guides/realtime/listen-to-postgres-changes)
+
+### Storage
+- [File Storage](https://supabase.com/docs/guides/storage)
+- [Access Control](https://supabase.com/docs/guides/storage/access-control)
+
+### API & Client Libraries
+- [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript/introduction)
+- [Client from Next.js](https://supabase.com/docs/guides/with-nextjs)
+- [Edge Functions](https://supabase.com/docs/guides/functions)
+
+### Self-Hosting
+- [Running Locally with Docker](https://supabase.com/docs/guides/self-hosting/docker)
+- [Local Development Guide](https://supabase.com/docs/guides/self-hosting/overview)
+
+---
+
+## TypeScript Best Practices
+
+### General
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [Everyday TypeScript](https://www.totaltypescript.com/tutorials/beginners-typescript)
+- [Effective TypeScript Tips](https://github.com/danvk/effective-typescript)
+- [TypeScript Cheatsheets (React)](https://react-typescript-cheatsheet.netlify.app/)
+
+### Patterns & Techniques
+- [Avoid `any`, prefer `unknown`](https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown)
+- [Use type narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
+- [Prefer type aliases (`type`) over interfaces for unions](https://www.typescriptlang.org/docs/handbook/2/objects.html)
+- [Safe typing for APIs and async data](https://kentcdodds.com/blog/using-typescript-with-async-functions)
+- [Discriminated Unions](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates)
+
+### In React/Next.js
+- [Typing Props and State](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/function_components/)
+- [React Hook Form with TypeScript](https://react-hook-form.com/get-started#TypeScript)
+- [Zod + TypeScript for runtime + static validation](https://zod.dev/)
+- [Extending Tailwind config types](https://tailwindcss.com/docs/using-with-preprocessors#using-type-definitions)
+
+## Mapbox
+- [Uso de Mapbox GL JS en una Aplicación React](https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/)
+- [react-map-gl: Integración de Mapbox GL JS en React](https://visgl.github.io/react-map-gl/)
+- [Tutorial de Web Mapping con Mapbox y React.js](https://medium.com/@gisjohnecs/part-1-web-mapping-with-mapbox-gl-react-js-7d11b50d86ec)
+- [Guía Rápida de Geocodificación en React con Mapbox](https://docs.mapbox.com/mapbox-search-js/guides/geocoding/react/)
+- [Tutorial de Integración de Mapbox GL JS con React](https://blog.logrocket.com/using-mapbox-gl-js-react/)

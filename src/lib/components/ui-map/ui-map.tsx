@@ -136,13 +136,22 @@ const FlyToInterpolator = {
     });
   }
 };
+//Estilos del mapa
+const mapStyles = {
+  street: 'mapbox://styles/mapbox/streets-v11',
+  outdoors: 'mapbox://styles/mapbox/outdoors-v11',
+  light: 'mapbox://styles/mapbox/light-v11',
+  dark: 'mapbox://styles/mapbox/dark-v11',
+  satellite: 'mapbox://styles/mapbox/satellite-v11',
+  satelliteStreets: 'mapbox://styles/mapbox/satellite-streets-v11'
+};
 
 export function UiMap() {
   const mapRef = useRef<MapRef>(null);
   const [popupInfo, setPopupInfo] = useState<Location | null>(null);
   const [selectedSector, setSelectedSector] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [mapStyle, setMapStyle] = useState<string>('mapbox://styles/mapbox/streets-v11');
+  const [mapStyle, setMapStyle] = useState<string>(mapStyles.outdoors);
   const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   interface ViewStateType {
@@ -202,7 +211,7 @@ export function UiMap() {
         longitude: location.coordinates[0],
         latitude: location.coordinates[1],
         zoom: 15,
-        pitch: 60,
+        pitch: 0,
         bearing: 0,
         transitionDuration: 2000,
         transitionInterpolator: FlyToInterpolator
@@ -235,7 +244,7 @@ export function UiMap() {
       longitude: -73.16851,
       latitude: 4.82052,
       zoom: 12,
-      pitch: 45,
+      pitch: 0,
       bearing: 0,
       transitionDuration: 1000,
       transitionInterpolator: FlyToInterpolator
@@ -481,25 +490,24 @@ export function UiMap() {
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
         {...viewState}
         onMove={evt => updateViewState(evt.viewState)}
-        projection="globe"
         style={{ width: '100%', height: '100%' }}
         mapStyle={mapStyle}
-        terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
-        onLoad={() => {
-          if (mapRef.current) {
-            const map = mapRef.current.getMap();
-            // Añadir la fuente de elevación
-            if (!map.getSource('mapbox-dem')) {
-              map.addSource('mapbox-dem', {
-                type: 'raster-dem',
-                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                tileSize: 512,
-                maxzoom: 14
-              });
-              map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
-            }
-          }
-        }}
+        // terrain={{ source: 'mapbox://mapbox.mapbox-terrain-v2', exaggeration: 1 }}
+        // onLoad={() => {
+        //   if (mapRef.current) {
+        //     const map = mapRef.current.getMap();
+        //     // Añadir la fuente de elevación
+        //     if (!map.getSource('mapbox-dem')) {
+        //       map.addSource('mapbox-dem', {
+        //         type: 'raster-dem',
+        //         url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        //         tileSize: 512,
+        //         maxzoom: 14
+        //       });
+        //       map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
+        //     }
+        //   }
+        // }}
       >
         <NavigationControl 
           position="top-right" 
