@@ -9,7 +9,7 @@ import { SearchIcon } from "@/lib/icons/search.icon";
 export function UiHeader() {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>San Luis de Gaceno</h1>
+      <img src="/img/logo.svg" alt="Logo" />
       <div className={styles.container}>
         <nav className={styles.nav}>
           <UiLink
