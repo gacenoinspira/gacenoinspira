@@ -9,7 +9,7 @@ import { MenuBurger } from "@/components/menu-burger/menu-burger";
 export function UiHeader() {
   return (
     <header className={styles.header}>
-      <img src="/img/logo.svg" alt="Logo" />
+      <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
       <MenuBurger />
       <nav className={styles.nav}>
         <UiLink

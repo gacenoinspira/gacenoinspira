@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
-import Image from "next/image";
 import { UiMap } from "@/components/index";
 
 export const metadata: Metadata = {
@@ -13,9 +12,9 @@ export default function Home() {
     <div>
       <section className={styles.section_img}>
         <div className={styles.container_info}>
-          <h1 className={styles.title}>Donde la aventura, comienza</h1>
+          <h1 className={styles.title}>Donde la aventura,</h1>
           <p className={styles.subtitle}>
-            la cultura y la naturaleza se encuentran
+            la cultura y la naturaleza se encuentran.
           </p>
           <p className={styles.info}>
             Explora los cinco corazones de San Luis de Gaceno y conecta con su
@@ -24,7 +23,8 @@ export default function Home() {
           <button className={styles.button}>Explorar Ahora</button>
         </div>
       </section>
-      <section className={styles.section_info}>
+
+      {/* <section className={styles.section_info}>
         <div className={styles.container_info}>
           <h2 className={styles.title}>
             LO QUE <span className={styles.orange}>VIENE ...</span>
@@ -35,11 +35,11 @@ export default function Home() {
             Mesa y Santa Teresa. Haz clic en el mapa y empieza tu viaje.
           </p>
         </div>
-      </section>
+      </section> */}
       <section className={styles.section_map}>
         <UiMap />
       </section>
-      <section className={styles.section_cultura}>
+      {/* <section className={styles.section_cultura}>
         <h2 className={styles.title}>
           {" "}
           <span className={styles.orange}>Sumérgete</span> en nuestra cultura
@@ -47,10 +47,9 @@ export default function Home() {
         <p className={styles.info}>
           con eventos únicos, fiestas tradicionales y experiencias auténticas.
         </p>
-      </section>
-      <section className={styles.section_join}>
+      </section> */}
+      {/* <section className={styles.section_join}>
         <div className={styles.imageContainer}>
-          {/* Reemplaza con tu imagen real */}
           <Image
             src="/img/san_luis.jpeg"
             alt="San Luis de Gaceno"
@@ -70,7 +69,7 @@ export default function Home() {
           </p>
           <button className={styles.ctaButton}>Únete aquí</button>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

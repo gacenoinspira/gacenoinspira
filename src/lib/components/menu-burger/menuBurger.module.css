@@ -70,8 +70,10 @@
   }
 
   /* Efecto hover para mejor feedback */
-  &:hover span {
-    background: var(--color-primary, #f15a24);
+  @media (hover: hover) {
+    &:hover span {
+      background: var(--color-primary, #f15a24);
+    }
   }
 }
 
@@ -134,13 +136,15 @@
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  &:hover {
-    background: rgba(241, 90, 36, 0.05);
-    color: var(--color-primary, #f15a24);
-    transform: translateX(4px);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(241, 90, 36, 0.05);
+      color: var(--color-primary, #f15a24);
+      transform: translateX(4px);
 
-    &::before {
-      transform: scaleY(1);
+      &::before {
+        transform: scaleY(1);
+      }
     }
   }
 
@@ -175,7 +179,7 @@
 }
 
 /* Media query para dispositivos móviles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .burger {
     width: 35px;
     height: 25px;
@@ -192,4 +196,4 @@
     left: 20px;
     width: auto;
   }
-}
+} */
