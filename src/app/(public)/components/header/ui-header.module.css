@@ -1,83 +1,82 @@
 .header {
-    position: fixed;
-    top: 20px;
-    left: 0;
-    right: 0;
-    z-index: 100;
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .nav {
     display: flex;
-    justify-content: space-between;
+    border-radius: 20px;
+    gap: 30px;
+
+    .link_header {
+      padding: 3px 40px;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-secundario);
+    }
+
+    .active {
+      background-color: white;
+      color: var(--color-secundario);
+    }
+  }
+
+  .container {
+    display: flex;
+  }
+
+  /* search */
+
+  .searchContainer {
+    display: flex;
     align-items: center;
-    padding: 0 20px;
+    border-radius: 9999px; /* pill shape */
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin-left: 40px;
+  }
 
-    .title {
-        font-size: 24px;
-        font-weight: bold;
-        color: white;
-    }
+  .input {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    color: #555;
+    flex: 1;
+    min-width: 250px;
+  }
 
-    .nav {
-        display: flex;
-        background-color: var(--color-principal);
-        border-radius: 20px;
+  .button {
+    background-color: #f15a24; /* Naranja cálido */
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 20px;
+    transition: background-color 0.2s ease;
+    border-radius: 20px;
+  }
 
-        .link_header {
-            padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .active {
-            background-color: white;
-            color: var(--color-secundario);
-        }
-
-       
-    }
-
-    .container {
-        display: flex;
-    }
-
-     /* search */
-
-     .searchContainer {
-        display: flex;
-        align-items: center;
-        border-radius: 9999px; /* pill shape */
-        overflow: hidden;
-        background-color: white;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        width: fit-content;
-        margin-left: 40px;
-      }
-      
-      .input {
-        border: none;
-        outline: none;
-        padding: 10px 16px;
-        font-size: 0.9rem;
-        color: #555;
-        flex: 1;
-        min-width: 250px;
-      }
-      
-      .button {
-        background-color: #F15A24; /* Naranja cálido */
-        border: none;
-        color: white;
-        padding: 10px 14px;
-        cursor: pointer;
-        font-size: 1rem;
-        border-radius: 20px;
-        transition: background-color 0.2s ease;
-        border-radius: 20px;
-      }
-      
-      .button:hover {
-        background-color: #d94f20;
-      }
+  .button:hover {
+    background-color: #d94f20;
+  }
 }

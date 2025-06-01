@@ -1,0 +1,78 @@
+/* From Uiverse.io by Cevorob - Modernizado */
+.burger {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  z-index: 1000;
+
+  & input {
+    display: none;
+  }
+
+  & span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--color-text, #000);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform-origin: left center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:nth-of-type(1) {
+      top: 0;
+      transform-origin: left center;
+    }
+
+    &:nth-of-type(2) {
+      top: 50%;
+      transform: translateY(-50%);
+      transform-origin: left center;
+    }
+
+    &:nth-of-type(3) {
+      top: 100%;
+      transform: translateY(-100%);
+      transform-origin: left center;
+    }
+  }
+
+  & input:checked ~ span {
+    &:nth-of-type(1) {
+      transform: rotate(40deg) translate(5px, 3px);
+      width: 30px;
+    }
+
+    &:nth-of-type(2) {
+      width: 0%;
+      opacity: 0;
+    }
+
+    &:nth-of-type(3) {
+      transform: rotate(-40deg) translate(5px, -3px);
+      width: 30px;
+    }
+  }
+
+  /* Efecto hover para mejor feedback */
+  &:hover span {
+    background: var(--color-primary, #f15a24);
+  }
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .burger {
+    width: 35px;
+    height: 25px;
+
+    & span {
+      height: 3px;
+    }
+  }
+}
