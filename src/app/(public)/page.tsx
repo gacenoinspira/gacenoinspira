@@ -24,21 +24,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section className={styles.section_info}>
+      <section className={styles.section_info}>
+        <img src="/img/check.svg" alt="check" className={styles.check} />
+        <img src="/img/hash.svg" alt="hash" className={styles.hash} />
         <div className={styles.container_info}>
-          <h2 className={styles.title}>
-            LO QUE <span className={styles.orange}>VIENE ...</span>
-          </h2>
-          <p className={styles.info}>
-            Conoce San Luis de Gaceno como un local. Descubre lo mejor de cada
-            uno de nuestros centros poblados: Guamal, Horizontes, San Carlos, La
-            Mesa y Santa Teresa. Haz clic en el mapa y empieza tu viaje.
+          <p className={styles.title}>
+            Conoce San Luis de Gaceno como un local.
+          </p>
+          <p className={styles.title_2}>
+            Descubre lo mejor de cada uno de nuestros centros poblados:
+          </p>
+          <p className={styles.title_3}>
+            Guamal, Horizontes, San Carlos, La Mesa y Santa Teresa. Haz clic en
+            el mapa y empieza tu viaje
           </p>
         </div>
-      </section> */}
-      <section className={styles.section_map}>
-        <UiMap />
       </section>
+      {/* <section className={styles.section_map}>
+        <UiMap />
+      </section> */}
       {/* <section className={styles.section_cultura}>
         <h2 className={styles.title}>
           {" "}

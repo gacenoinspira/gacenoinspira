@@ -18,8 +18,9 @@
     height: 80px;
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(255, 255, 255, 0.5) 100%
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.5) 50%,
+      var(--background-white) 90%
     );
   }
 
@@ -101,8 +102,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-principal);
   height: 300px;
+  width: 100%;
+  position: relative;
+
+  .check {
+    position: absolute;
+    bottom: 30px;
+    left: 100px;
+    z-index: -1;
+
+    @media (width < 720px) {
+      display: none;
+    }
+  }
+
+  .hash {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    z-index: -1;
+
+    @media (width < 720px) {
+      display: none;
+    }
+  }
 
   .container_info {
     display: flex;
@@ -110,24 +134,75 @@
     align-items: center;
     justify-content: center;
     margin-left: 20px;
-    width: 600px;
+    padding: 20px;
 
     .title {
-      color: white;
-      font-size: 52px;
-      font-weight: bold;
-      text-align: center;
+      color: var(--text);
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 65px;
 
-      .orange {
-        color: var(--color-secundario);
+      @media (width <= 1262px) {
+        font-size: 50px;
+        line-height: 44px;
+      }
+
+      @media (width <= 997px) {
+        font-size: 36px;
+        line-height: 44px;
+      }
+
+      @media (width <= 730px) {
+        font-size: 26px;
+        line-height: 26px;
+      }
+      @media (width <= 558px) {
+        text-align: center;
       }
     }
 
-    .info {
-      color: white;
+    .title_2 {
+      color: var(--text);
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 43px;
+
+      @media (width <= 1262px) {
+        font-size: 26px;
+        line-height: 44px;
+      }
+
+      @media (width <= 997px) {
+        font-size: 20px;
+        line-height: 44px;
+      }
+
+      @media (width <= 558px) {
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+      }
+    }
+
+    .title_3 {
+      color: var(--text);
       font-size: 20px;
-      text-align: center;
-      margin-top: 40px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 34px;
+
+      @media (width <= 997px) {
+        font-size: 12px;
+        line-height: 44px;
+      }
+
+      @media (width <= 558px) {
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+      }
     }
   }
 }
