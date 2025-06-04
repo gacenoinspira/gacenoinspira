@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/gsap": "^3.0.0",
     "@types/mapbox-gl": "^3.4.1",
     "@types/react-slick": "^0.23.13",
     "gsap": "^3.13.0",

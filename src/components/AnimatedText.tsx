@@ -3,58 +3,74 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-// Decorative SVG icons
-const decorations = [
-  '🌿', '✨', '🌺', '🌎', '🎯', '💫', '🌙', '🌟', '🍃', '🌼',
-  '🌻', '🌹', '🌞', '🌊', '🏞️', '🌄', '🌅', '🌠', '🌌', '🎨'
-];
-
 interface AnimatedTextProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  withDecorations?: boolean;
 }
 
-export function AnimatedText({ children, className = '', delay = 0, withDecorations = true }: AnimatedTextProps) {
+export function AnimatedText({ children, className = '', delay = 0 }: AnimatedTextProps) {
   const textRef = useRef<HTMLParagraphElement>(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
     if (!textRef.current || hasAnimated.current) return;
     
-    // Store a reference to the current ref value
     const currentTextRef = textRef.current;
-    const currentDecoElements: HTMLElement[] = [];
-    
-    // Split text into words and wrap each word in a span
     const text = currentTextRef.textContent || '';
     const words = text.split(' ');
     
-    // Clear the text content
+    // Limpiar el contenido actual
     currentTextRef.textContent = '';
     
-    // Create a container for the words
+    // Crear un contenedor para las palabras
     const container = document.createElement('div');
     container.className = 'text-container';
     
-    // Create a container for decorative elements
-    const decoContainer = document.createElement('div');
-    decoContainer.className = 'deco-container';
-    decoContainer.style.position = 'absolute';
-    decoContainer.style.top = '0';
-    decoContainer.style.left = '0';
-    decoContainer.style.width = '100%';
-    decoContainer.style.height = '100%';
-    decoContainer.style.pointerEvents = 'none';
-    decoContainer.style.overflow = 'visible';
-    decoContainer.style.zIndex = '0';
+    // Función para el efecto de hover
+    const handleMouseMove = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('char')) {
+        // Mover ligeramente el carácter en la dirección del movimiento del mouse
+        const rect = target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Aumentar el multiplicador para un movimiento más notorio (de 5 a 12)
+        const moveX = ((x - centerX) / centerX) * 12;
+        const moveY = ((y - centerY) / centerY) * 12;
+        
+        // Añadir rotación para mayor efecto
+        const rotation = moveX * 2;
+        
+        gsap.to(target, {
+          x: moveX,
+          y: moveY,
+          rotation: rotation,
+          duration: 0.3, // Animación más rápida
+          ease: 'power2.out'
+        });
+      }
+    };
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('char')) {
+        // Volver a la posición original con efecto más pronunciado
+        gsap.to(target, {
+          x: 0,
+          y: 0,
+          rotation: 0,
+          duration: 0.8, // Animación un poco más lenta al regresar
+          ease: 'elastic.out(1, 0.3)' // Más rebote
+        });
+      }
+    };
     
-    // Append the container to the text ref
-    textRef.current.appendChild(container);
-    textRef.current.appendChild(decoContainer);
-    
-    // Create spans for each word with individual letters
+    // Crear spans para cada palabra con letras individuales
     words.forEach((word, wordIndex) => {
       const wordSpan = document.createElement('span');
       wordSpan.className = 'word';
@@ -62,40 +78,20 @@ export function AnimatedText({ children, className = '', delay = 0, withDecorati
       wordSpan.style.whiteSpace = 'nowrap';
       wordSpan.style.overflow = 'visible';
       wordSpan.style.verticalAlign = 'top';
-      wordSpan.style.position = 'relative';
       
-      // Add a subtle gradient overlay for main title
-      if (className.includes('mainTitle')) {
-        const gradientOverlay = document.createElement('span');
-        gradientOverlay.style.position = 'absolute';
-        gradientOverlay.style.top = '0';
-        gradientOverlay.style.left = '0';
-        gradientOverlay.style.width = '100%';
-        gradientOverlay.style.height = '100%';
-        gradientOverlay.style.background = 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 100%)';
-        gradientOverlay.style.opacity = '0';
-        wordSpan.appendChild(gradientOverlay);
-      }
-      
-      // Wrap each character in a span for individual animation
+      // Envolver cada carácter en un span para animación individual
       word.split('').forEach((char) => {
         const charSpan = document.createElement('span');
         charSpan.className = 'char';
         charSpan.style.display = 'inline-block';
-        charSpan.style.transform = 'translateY(40px) rotateX(-90deg) scale(0.8)';
+        charSpan.style.transform = 'translateY(20px)';
         charSpan.style.opacity = '0';
-        charSpan.style.transformOrigin = 'bottom center';
-        charSpan.style.willChange = 'transform, opacity, text-shadow, background';
-        charSpan.style.position = 'relative';
-        charSpan.style.zIndex = '1';
-        
-        // Set text color to inherit from parent
-        charSpan.style.color = 'inherit';
+        charSpan.style.willChange = 'transform, opacity';
         charSpan.textContent = char === ' ' ? '\u00A0' : char;
         wordSpan.appendChild(charSpan);
       });
       
-      // Add space between words (except after the last word)
+      // Agregar espacio entre palabras (excepto después de la última palabra)
       if (wordIndex < words.length - 1) {
         wordSpan.appendChild(document.createTextNode(' '));
       }
@@ -103,17 +99,16 @@ export function AnimatedText({ children, className = '', delay = 0, withDecorati
       container.appendChild(wordSpan);
     });
     
-    textRef.current.appendChild(container);
+    currentTextRef.appendChild(container);
     
-    // Get all character elements for animation
-    const chars = container.querySelectorAll('.char');
+    // Obtener todos los elementos de caracteres para la animación
     const wordsEl = container.querySelectorAll('.word');
     
-    // Create a timeline for the animation
+    // Crear una línea de tiempo para la animación
     const tl = gsap.timeline({
       defaults: { 
         ease: 'power3.out',
-        duration: 1,
+        duration: 0.6,
       },
       delay: delay,
       onComplete: () => {
@@ -121,162 +116,50 @@ export function AnimatedText({ children, className = '', delay = 0, withDecorati
       }
     });
     
-    // Animate each word with a staggered effect
+    // Animar cada palabra con un efecto escalonado
     wordsEl.forEach((word, wordIndex) => {
       const wordDelay = wordIndex * 0.1;
       const wordChars = word.querySelectorAll('.char');
-      const gradientOverlay = word.querySelector('span:first-child');
       
-      // Animate each character in the word
+      // Animar cada carácter en la palabra
       wordChars.forEach((char, charIndex) => {
         const charDelay = wordDelay + (charIndex * 0.03);
         
-        // Character animation
-        tl.to(char, {
+        // Animación del carácter
+        tl.to(char as HTMLElement, {
           y: 0,
-          rotationX: 0,
-          scale: 1,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.5,
           ease: 'back.out(1.7)'
         }, charDelay);
-        
-        // Add decorative elements for some characters
-        if (withDecorations && Math.random() > 0.7) {
-          const deco = document.createElement('span');
-          deco.textContent = decorations[Math.floor(Math.random() * decorations.length)];
-          deco.style.position = 'absolute';
-          deco.style.fontSize = '0.5em';
-          deco.style.opacity = '0';
-          deco.style.pointerEvents = 'none';
-          deco.style.zIndex = '10';
-          
-          // Position around the character
-          const offsetX = (Math.random() - 0.5) * 60;
-          const offsetY = (Math.random() - 0.5) * 40 - 30;
-          
-          deco.style.left = `${50 + offsetX}%`;
-          deco.style.top = `${50 + offsetY}%`;
-          
-          decoContainer.appendChild(deco);
-          currentDecoElements.push(deco);
-          
-          // Animate decorative element
-          tl.to(deco, {
-            opacity: 0.8,
-            scale: 1.5,
-            duration: 0.5,
-            y: -20,
-            ease: 'back.out(1.7)'
-          }, charDelay + 0.2);
-          
-          tl.to(deco, {
-            opacity: 0,
-            scale: 0.5,
-            y: -40,
-            duration: 0.5,
-            ease: 'power2.in',
-            onComplete: () => {
-              if (deco.parentNode) {
-                deco.parentNode.removeChild(deco);
-              }
-            }
-          }, `+=0.5`);
-        }
-        
-        // Add a subtle bounce effect for main title
-        if (className.includes('mainTitle')) {
-          tl.to(char, {
-            y: -15,
-            duration: 0.2,
-            yoyo: true,
-            repeat: 1,
-            ease: 'sine.inOut',
-            // Bounce effect complete
-          }, `+=0.1`);
-        }
       });
-      
-      // Animate gradient overlay for main title
-      if (gradientOverlay && className.includes('mainTitle')) {
-        tl.to(gradientOverlay, {
-          opacity: 0.6,
-          x: '100%',
-          duration: 0.8,
-          ease: 'power2.inOut'
-        }, wordDelay);
-      }
     });
     
-    // Add a subtle scale animation to the entire container for main title
-    if (className.includes('mainTitle')) {
-      tl.to(container, {
-        scale: 1.02,
-        duration: 0.5,
-        yoyo: true,
-        repeat: 1,
-        ease: 'sine.inOut'
-      }, '>0.2');
-    }
+    // Agregar event listeners para el efecto de hover
+    const chars = container.querySelectorAll('.char');
+    chars.forEach(char => {
+      char.addEventListener('mousemove', handleMouseMove as EventListener);
+      char.addEventListener('mouseleave', handleMouseLeave as EventListener);
+    });
     
-    // Add hover effect using GSAP's built-in hover
-    if (typeof window !== 'undefined') {
-      const handleMouseEnter = (e: Event) => {
-        const target = e.target as HTMLElement;
-        gsap.to(target, {
-          y: -5,
-          textShadow: '0 5px 15px rgba(255, 255, 255, 0.5)',
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      };
-
-      const handleMouseLeave = (e: Event) => {
-        const target = e.target as HTMLElement;
-        gsap.to(target, {
-          y: 0,
-          textShadow: 'none',
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      };
-
-      chars.forEach(char => {
-        char.addEventListener('mouseenter', handleMouseEnter as EventListener);
-        char.addEventListener('mouseleave', handleMouseLeave as EventListener);
-      });
-      
-      return () => {
-        chars.forEach(char => {
-          char.removeEventListener('mouseenter', handleMouseEnter as EventListener);
-          char.removeEventListener('mouseleave', handleMouseLeave as EventListener);
-        });
-        tl.kill();
-      };
-    }
-    
-    // Cleanup function
+    // Función de limpieza
     return () => {
+      // Limpiar cualquier animación de GSAP
       tl.kill();
-      // Clean up any remaining decorative elements
-      const decoContainer = currentTextRef.querySelector('.deco-container');
-      if (decoContainer) {
-        while (decoContainer.firstChild) {
-          decoContainer.removeChild(decoContainer.firstChild);
-        }
-      }
-      // Clear the deco elements array
-      currentDecoElements.length = 0;
+      
+      // Remover event listeners
+      chars.forEach(char => {
+        char.removeEventListener('mousemove', handleMouseMove as EventListener);
+        char.removeEventListener('mouseleave', handleMouseLeave as EventListener);
+      });
     };
-  }, [delay, className, withDecorations]);
+  }, [delay, className]);
 
   return (
     <div className={`animated-text-wrapper ${className}`}>
-      <div style={{ position: 'relative', display: 'inline-block' }}>
-        <p ref={textRef} className="animated-text" style={{ position: 'relative', zIndex: 1 }}>
-          {children}
-        </p>
-      </div>
+      <p ref={textRef} className="animated-text">
+        {children}
+      </p>
     </div>
   );
 }
