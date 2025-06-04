@@ -135,7 +135,8 @@ const locations: Location[] = [
     id: 12,
     name: "Festival de la Cosecha",
     coordinates: [-73.166, 4.818] as [number, number],
-    description: "Celebración anual de la cosecha local con música en vivo, comida típica y muestras culturales.",
+    description:
+      "Celebración anual de la cosecha local con música en vivo, comida típica y muestras culturales.",
     sector: 1,
     category: "eventos",
     img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -144,7 +145,8 @@ const locations: Location[] = [
     id: 13,
     name: "Feria Artesanal",
     coordinates: [-73.164, 4.817] as [number, number],
-    description: "Exposición y venta de artesanías locales. Último fin de semana de cada mes.",
+    description:
+      "Exposición y venta de artesanías locales. Último fin de semana de cada mes.",
     sector: 1,
     category: "eventos",
     img: "https://images.unsplash.com/photo-1575224526797-5730d15d3678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -153,7 +155,8 @@ const locations: Location[] = [
     id: 14,
     name: "Noche de Poesía",
     coordinates: [-73.168, 4.822] as [number, number],
-    description: "Lecturas poéticas al aire libre en la Casa de la Cultura. Todos los jueves a las 7 PM.",
+    description:
+      "Lecturas poéticas al aire libre en la Casa de la Cultura. Todos los jueves a las 7 PM.",
     sector: 1,
     category: "eventos",
     img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -162,7 +165,8 @@ const locations: Location[] = [
     id: 15,
     name: "Carrera de la Montaña",
     coordinates: [-73.17, 4.83] as [number, number],
-    description: "Carrera de aventura por los senderos naturales del municipio. Incluye categorías para todas las edades.",
+    description:
+      "Carrera de aventura por los senderos naturales del municipio. Incluye categorías para todas las edades.",
     sector: 2,
     category: "eventos",
     img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -171,7 +175,8 @@ const locations: Location[] = [
     id: 16,
     name: "Festival Gastronómico",
     coordinates: [-73.165, 4.82] as [number, number],
-    description: "Muestra de la gastronomía local con participación de los mejores restaurantes de la región.",
+    description:
+      "Muestra de la gastronomía local con participación de los mejores restaurantes de la región.",
     sector: 1,
     category: "eventos",
     img: "https://images.unsplash.com/photo-1504674900247-087703934569?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -238,9 +243,15 @@ export function UiMap() {
     zoom: 14,
     pitch: 0,
     bearing: 0,
-    transitionDuration: 200,
+    transitionDuration: 1000,
     transitionInterpolator: FlyToInterpolator,
   });
+
+  // Add state for pulsing markers and hover effects
+  const [pulsingMarkers, setPulsingMarkers] = useState<Record<number, boolean>>(
+    {}
+  );
+  const [hoveredMarker, setHoveredMarker] = useState<number | null>(null);
 
   // Helper function to update view state while preserving transition properties
   const updateViewState = useCallback((newState: Partial<ViewStateType>) => {
@@ -273,223 +284,263 @@ export function UiMap() {
     return matchesSector && matchesCategory && matchesSearch;
   });
 
+  // Simplified flyToLocation since we moved the logic to handleMarkerClick
   const flyToLocation = (location: Location) => {
+    setPopupInfo(location);
     if (mapRef.current) {
-      // Get map instance to ensure it's available, but we don't need to store it
-      mapRef.current.getMap();
-      updateViewState({
-        longitude: location.coordinates[0],
-        latitude: location.coordinates[1],
+      const map = mapRef.current.getMap();
+      map.flyTo({
+        center: [location.coordinates[0], location.coordinates[1]],
         zoom: 15,
-        pitch: 0,
-        bearing: 0,
-        transitionDuration: 2000,
-        transitionInterpolator: FlyToInterpolator,
+        speed: 1.2,
+        curve: 1,
+        duration: 1500,
+        essential: true,
       });
-      setPopupInfo(location);
+
+      // Add a slight tilt for better perspective
+      setTimeout(() => {
+        map.easeTo({
+          pitch: 30,
+          duration: 1000,
+        });
+      }, 500);
     }
   };
 
   const handleMarkerClick = (e: any, location: Location) => {
-    e.originalEvent.stopPropagation();
-    setPopupInfo(location);
-    flyToLocation(location);
+    e?.originalEvent?.stopPropagation?.();
+
+    // If clicking the same marker, just toggle the popup
+    if (popupInfo?.id === location.id) {
+      setPopupInfo(null);
+    } else {
+      // Set popup info first
+      setPopupInfo(location);
+      // Then fly to location
+      if (mapRef.current) {
+        const map = mapRef.current.getMap();
+        map.flyTo({
+          center: [location.coordinates[0], location.coordinates[1]],
+          zoom: 15,
+          speed: 1.2,
+          curve: 1,
+          duration: 1500,
+          essential: true,
+        });
+
+        // Add a slight tilt for better perspective
+        setTimeout(() => {
+          map.easeTo({
+            pitch: 30,
+            duration: 1000,
+          });
+        }, 500);
+      }
+    }
+
+    // Add pulse effect on click
+    setPulsingMarkers((prev) => ({
+      ...prev,
+      [location.id]: true,
+    }));
+
+    // Remove pulse effect after animation
+    setTimeout(() => {
+      setPulsingMarkers((prev) => ({
+        ...prev,
+        [location.id]: false,
+      }));
+    }, 1000);
   };
 
-  // const handleLocationClick = (location: Location) => {
-  //   flyToLocation(location);
-  // };
+  // Seismic marker component with earthquake animation on click
+  const SeismicMarker = ({
+    color,
+    size = 20,
+    pulse = false,
+    onClick,
+  }: {
+    color: string;
+    size?: number;
+    pulse?: boolean;
+    onClick: (e: React.MouseEvent) => void;
+  }) => {
+    const markerRef = useRef<HTMLDivElement>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
 
-  // const handleSearch = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   if (searchQuery && filteredLocations.length > 0) {
-  //     flyToLocation(filteredLocations[0]);
-  //   }
-  // };
+    // Seismic/earthquake effect
+    const triggerSeismicEffect = useCallback(() => {
+      if (!markerRef.current || isAnimating) return;
 
-  // const handleResetMap = () => {
-  //   setSearchQuery("");
-  //   setSelectedSector(null);
-  //   setSelectedCategory(null);
-  //   updateViewState({
-  //     longitude: -73.16851,
-  //     latitude: 4.82052,
-  //     zoom: 12,
-  //     pitch: 0,
-  //     bearing: 0,
-  //     transitionDuration: 1000,
-  //     transitionInterpolator: FlyToInterpolator,
-  //   });
-  // };
+      setIsAnimating(true);
+      const marker = markerRef.current;
+
+      // Create random seismic movement
+      const timeline = gsap.timeline({
+        onComplete: () => setIsAnimating(false),
+      });
+
+      // Add more pronounced and dynamic random shakes
+      const shakeIntensity = 20;  // Increased from 15
+      const rotationIntensity = 30;  // Increased from 25
+      
+      for (let i = 0; i < 8; i++) {  // Increased to 8 shakes for more impact
+        // Vary the intensity for a more dynamic effect
+        const currentIntensity = shakeIntensity * (1 - (i * 0.1));
+        const currentRotation = rotationIntensity * (1 - (i * 0.1));
+        
+        timeline.to(
+          marker,
+          {
+            x: (Math.random() - 0.5) * currentIntensity,
+            y: (Math.random() - 0.5) * currentIntensity,
+            rotation: (Math.random() - 0.5) * currentRotation,
+            scale: 1 + (0.15 * (1 - (i * 0.1))),  // Gradually reduce scale effect
+            duration: 0.08 + (i * 0.01),  // Vary duration slightly
+            ease: "power1.inOut",
+          },
+          `+=${i * 0.03}`  // Reduced delay between shakes for faster sequence
+        );
+      }
+
+      // Return to original position with more pronounced elastic effect
+      timeline.to(marker, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        duration: 0.8,  // Increased duration for more noticeable return
+        ease: "elastic.out(1, 0.3)",  // More bouncy effect
+      });
+    }, [isAnimating]);
+
+    // Handle click with seismic effect
+    const handleClick = useCallback(
+      (e: React.MouseEvent) => {
+        e.stopPropagation();
+        triggerSeismicEffect();
+        onClick(e);
+      },
+      [onClick, triggerSeismicEffect]
+    );
+
+    return (
+      <div
+        ref={markerRef}
+        onClick={handleClick}
+        style={{
+          position: "relative",
+          width: size,
+          height: size,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transformOrigin: "center bottom",
+          cursor: "pointer",
+          zIndex: pulse ? 10 : 1,
+        }}
+      >
+        {/* Pulsing effect ring */}
+        {pulse && (
+          <div
+            style={{
+              position: "absolute",
+              width: size * 2.5,  // Increased size
+              height: size * 2.5,  // Increased size
+              backgroundColor: `${color}60`,  // More opaque
+              borderRadius: "50%",
+              animation: "pulse 0.8s ease-out",  // Faster animation
+              transform: "scale(0.4)",  // Start smaller for more dramatic effect
+              opacity: 0.8,  // Start more visible
+              zIndex: 0,
+              boxShadow: `0 0 20px ${color}80`,  // Add glow effect
+              // Set the CSS variable for the pulse color
+              '--pulse-color': color,
+            } as React.CSSProperties}
+          />
+        )}
+
+        {/* Main marker */}
+        <div
+          className={`seismic-marker ${pulse ? "pulse" : ""}`}
+          style={{
+            width: size * 0.8,
+            height: size * 0.8,
+            backgroundColor: color,
+            borderRadius: "50%",
+            border: "2px solid white",
+            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.81)",
+            position: "relative",
+            zIndex: 2,
+            transform: pulse ? "scale(1.1)" : "scale(1)",
+          }}
+        >
+          {/* Inner circle for depth */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "60%",
+              height: "60%",
+              backgroundColor: "rgba(255,255,255,0.3)",
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%)",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-      {/* <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "20px",
-          zIndex: 10,
-          width: "300px",
-          backgroundColor: "white",
-          padding: "10px",
-          borderRadius: "8px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-        }}
-      > */}
-      {/* <form onSubmit={handleSearch} style={{ display: 'flex', gap: '8px' }}>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Buscar lugares..."
-            style={{
-              flex: 1,
-              padding: '8px',
-              border: '1px solid #ddd',
-              borderRadius: '4px',
-              fontSize: '14px'
-            }}
-          />
-          <button 
-            type="button"
-            onClick={handleResetMap}
-            style={{
-              padding: '8px 12px',
-              backgroundColor: '#ef4444',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontWeight: '600'
-            }}
-          >
-            Reset
-          </button>
-        </form> */}
-      {/* {searchQuery && (
-          <div style={{ marginTop: '10px', maxHeight: '200px', overflowY: 'auto' }}>
-            {filteredLocations.length > 0 ? (
-              filteredLocations.map(location => (
-                <div 
-                  key={`search-${location.id}`}
-                  onClick={() => handleLocationClick(location)}
-                  onMouseEnter={() => {setHoveredLocation(location)}}
-                  onMouseLeave={() => setHoveredLocation(null)}
-                  style={{
-                    padding: '8px',
-                    margin: '4px 0',
-                    backgroundColor: hoveredLocation?.id === location.id ? '#f3f4f6' : 'transparent',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    borderLeft: `3px solid ${sectorColors[location.sector as keyof typeof sectorColors]}`,
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  <div style={{ fontWeight: '600', fontSize: '14px' }}>{location.name}</div>
-                  <div style={{ fontSize: '12px', color: '#666' }}>{location.category}</div>
-                </div>
-              ))
-            ) : (
-              <div style={{ padding: '8px', color: '#666', fontSize: '14px' }}>
-                No se encontraron resultados
-              </div>
-            )}
-          </div>
-        )} */}
-      {/* </div> */}
-      {/* <div style={{ 
-        marginBottom: '20px',
-        paddingTop: searchQuery ? '80px' : '0',
-        transition: 'padding-top 0.3s ease'
-      }}> */}
-      {/* <div style={{ 
-          display: 'flex', 
-          gap: '10px', 
-          marginBottom: '10px',
-          justifyContent: 'center',
-          flexWrap: 'wrap'
-        }}>
-          <button
-            onClick={() => {
-              setSelectedSector(null);
-              setSelectedCategory(null);
-            }}
-            style={{
-              padding: '8px 16px',
-              backgroundColor: !selectedSector && !selectedCategory ? '#3b82f6' : '#f3f4f6',
-              color: !selectedSector && !selectedCategory ? 'white' : '#1f2937',
-              border: 'none',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              fontWeight: '600',
-              transition: 'all 0.2s',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-            }}
-          >
-            Mostrar Todo
-          </button>
-          
-          {[1, 2, 3, 4].map((sector) => (
-            <button
-              key={`sector-${sector}`}
-              onClick={() => {
-                setSelectedSector(selectedSector === sector ? null : sector);
-                setSelectedCategory(null);
-              }}
-              style={{
-                padding: '8px 16px',
-                backgroundColor: selectedSector === sector 
-                  ? sectorColors[sector as keyof typeof sectorColors] 
-                  : `${sectorColors[sector as keyof typeof sectorColors]}33`,
-                color: selectedSector === sector ? 'white' : '#1f2937',
-                border: `1px solid ${sectorColors[sector as keyof typeof sectorColors]}`,
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontWeight: '600',
-                transition: 'all 0.2s',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-              }}
-            >
-              Sector {sector}
-            </button>
-          ))}
-        </div> */}
+      <style jsx global>{`
+        @keyframes pulse {
+          0% {
+            transform: scale(0.4);
+            opacity: 0.8;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--pulse-color, #4f46e5);
+          }
+          50% {
+            opacity: 0.5;
+            box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px var(--pulse-color, #4f46e5);
+          }
+          100% {
+            transform: scale(2.5);
+            opacity: 0;
+            box-shadow: 0 0 30px #fff, 0 0 60px #fff, 0 0 90px var(--pulse-color, #4f46e5);
+          }
+        }
 
-      {/* <div style={{ 
-          display: 'flex', 
-          gap: '8px', 
-          marginTop: '10px',
-          justifyContent: 'center',
-          flexWrap: 'wrap'
-        }}>
-          {allCategories.map((category) => (
-            <button
-              key={`cat-${category}`}
-              onClick={() => {
-                setSelectedCategory(selectedCategory === category ? null : category);
-                setSelectedSector(null);
-              }}
-              style={{
-                padding: '6px 12px',
-                backgroundColor: selectedCategory === category 
-                  ? (categoryColors[category as keyof typeof categoryColors] || '#6b7280')
-                  : `${categoryColors[category as keyof typeof categoryColors] || '#6b7280'}33`,
-                color: selectedCategory === category ? 'white' : '#1f2937',
-                border: `1px solid ${categoryColors[category as keyof typeof categoryColors] || '#6b7280'}`,
-                borderRadius: '20px',
-                cursor: 'pointer',
-                fontWeight: '500',
-                fontSize: '14px',
-                transition: 'all 0.2s',
-                boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
-              }}
-            >
-              {category}
-            </button>
-          ))}
-        </div> */}
-      {/* </div> */}
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .bounce {
+          animation: bounce 1.5s infinite;
+        }
+
+        .seismic-marker {
+          transition: all 0.2s ease;
+        }
+
+        .seismic-marker:hover {
+          transform: scale(1.1);
+        }
+
+        .seismic-marker.pulse:hover {
+          transform: scale(1.2);
+        }
+      `}</style>
       <div
         style={{
           width: "100%",
@@ -612,55 +663,6 @@ export function UiMap() {
           />
           <FullscreenControl position="top-right" />
 
-          {/* Controles de estilo de mapa */}
-          {/* <div
-            style={{
-              position: "absolute",
-              top: "10px",
-              left: "10px",
-              zIndex: 1,
-              display: "flex",
-              gap: "5px",
-            }}
-          >
-            <button
-              onClick={() =>
-                handleStyleChange("mapbox://styles/mapbox/satellite-v9")
-              }
-              style={{
-                padding: "5px 10px",
-                backgroundColor: mapStyle.includes("satellite")
-                  ? "#3b82f6"
-                  : "#fff",
-                color: mapStyle.includes("satellite") ? "#fff" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-              }}
-            >
-              Satélite
-            </button>
-            <button
-              onClick={() =>
-                handleStyleChange("mapbox://styles/mapbox/streets-v11")
-              }
-              style={{
-                padding: "5px 10px",
-                backgroundColor: mapStyle.includes("streets")
-                  ? "#3b82f6"
-                  : "#fff",
-                color: mapStyle.includes("streets") ? "#fff" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-              }}
-            >
-              Mapa
-            </button>
-          </div> */}
-
           {filteredLocations.map((location) => (
             <Marker
               key={location.id}
@@ -669,45 +671,71 @@ export function UiMap() {
               onClick={(e) => handleMarkerClick(e, location)}
             >
               <div
-                onMouseEnter={() => setHoveredLocation(location)}
-                onMouseLeave={() => setHoveredLocation(null)}
+                onMouseEnter={() => {
+                  setHoveredLocation(location);
+                  setHoveredMarker(location.id);
+                }}
+                onMouseLeave={() => {
+                  setHoveredLocation(null);
+                  setHoveredMarker(null);
+                }}
                 style={{
-                  width: "24px",
-                  height: "24px",
-                  backgroundColor: selectedCategory
-                    ? categoryColors[
-                        location.category as keyof typeof categoryColors
-                      ] || "#6b7280"
-                    : sectorColors[
-                        location.sector as keyof typeof sectorColors
-                      ],
-                  borderRadius: "50%",
-                  border:
-                    hoveredLocation?.id === location.id
-                      ? "3px solid #ff0"
-                      : "2px solid white",
-                  transform:
-                    hoveredLocation?.id === location.id ? "scale(1.2)" : "none",
-                  transition: "all 0.2s ease",
                   cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white",
-                  fontWeight: "bold",
-                  fontSize: "12px",
+                  transform:
+                    hoveredMarker === location.id ? "translateY(-5px)" : "none",
+                  transition: "transform 0.3s ease, filter 0.3s ease",
+                  filter:
+                    hoveredMarker === location.id
+                      ? "drop-shadow(0 4px 8px rgba(0,0,0,0.3))"
+                      : "none",
+                  zIndex: hoveredMarker === location.id ? 10 : 1,
                 }}
               >
-                {location.id}
+                <SeismicMarker
+                  color={
+                    selectedCategory
+                      ? categoryColors[
+                          location.category as keyof typeof categoryColors
+                        ] || "#6b7280"
+                      : sectorColors[
+                          location.sector as keyof typeof sectorColors
+                        ]
+                  }
+                  pulse={pulsingMarkers[location.id] || false}
+                  onClick={(e: any) => handleMarkerClick(e, location)}
+                />
+                {hoveredMarker === location.id && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "100%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      backgroundColor: "white",
+                      color: "#333",
+                      padding: "4px 8px",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      whiteSpace: "nowrap",
+                      boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                      marginBottom: "8px",
+                      zIndex: 20,
+                    }}
+                  >
+                    {location.name}
+                  </div>
+                )}
               </div>
             </Marker>
           ))}
 
           {popupInfo && (
             <Popup
+              key={`popup-${popupInfo.id}`}
               anchor="bottom"
-              longitude={Number(popupInfo.coordinates[0])}
-              latitude={Number(popupInfo.coordinates[1])}
+              longitude={popupInfo.coordinates[0]}
+              latitude={popupInfo.coordinates[1]}
               onClose={() => setPopupInfo(null)}
               closeButton={true}
               closeOnClick={false}
@@ -718,7 +746,10 @@ export function UiMap() {
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: "0 5px 20px rgba(0,0,0,0.2)",
+                maxWidth: "300px",
+                zIndex: 1000,
               }}
+              offset={[0, -10]}
             >
               <div style={{ maxWidth: "300px", padding: "0", margin: "0" }}>
                 <div
@@ -845,67 +876,3 @@ export function UiMap() {
     </div>
   );
 }
-
-// export function UiMap() {
-//   const [popupInfo, setPopupInfo] = useState<Location | null>(null);
-
-//   return (
-//     <div style={{ width: '100%', height: '500px', position: 'relative' }}>
-//       <Map
-//         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
-//         initialViewState={{
-//           longitude: -73.16851,
-//           latitude: 4.82052,
-//           zoom: 12,
-//         }}
-//         style={{ width: '100%', height: '100%' }}
-//         mapStyle="mapbox://styles/mapbox/streets-v11"
-//       >
-//         <NavigationControl position="top-right" />
-//         <FullscreenControl position="top-right" />
-
-//         {locations.map((location) => (
-//           <Marker
-//             key={location.id}
-//             longitude={location.coordinates[0]}
-//             latitude={location.coordinates[1]}
-//             onClick={() => {
-//               setPopupInfo(location);
-//             }}
-//           >
-//             <div style={{
-//               width: '24px',
-//               height: '24px',
-//               backgroundColor: '#3b82f6',
-//               borderRadius: '50%',
-//               border: '2px solid white',
-//               cursor: 'pointer',
-//               display: 'flex',
-//               alignItems: 'center',
-//               justifyContent: 'center',
-//               color: 'white',
-//               fontWeight: 'bold',
-//               fontSize: '12px'
-//             }}>
-//               {location.id}
-//             </div>
-//           </Marker>
-//         ))}
-
-//         {popupInfo && (
-//           <Popup
-//             anchor="top"
-//             longitude={Number(popupInfo.coordinates[0])}
-//             latitude={Number(popupInfo.coordinates[1])}
-//             onClose={() => setPopupInfo(null)}
-//             closeButton={true}
-//             closeOnClick={false}
-//           >
-//             <div style={{ padding: '10px' }}>
-//               <h3 style={{ margin: 0, fontWeight: 'bold' }}>{popupInfo.name}</h3>
-//               <p style={{ margin: '5px 0 0 0' }}>{popupInfo.description}</p>
-//             </div>
-//           </Popup>
-//         )}
-//       </Map>
-//     </div>
