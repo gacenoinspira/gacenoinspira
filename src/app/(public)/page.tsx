@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
 import { UiMap } from "@/components/index";
+import { Carrusel } from "@/lib/carrusel/carrusel";
+import { sampleCards } from "@/lib/carrusel/data";
 
 export const metadata: Metadata = {
   title: "Inicio - San Luis de Gaceno",
@@ -25,8 +27,8 @@ export default function Home() {
       </section>
 
       <section className={styles.section_info}>
-        <img src="/img/check.svg" alt="check" className={styles.check} />
-        <img src="/img/hash.svg" alt="hash" className={styles.hash} />
+        {/* <img src="/img/check.svg" alt="check" className={styles.check}/>
+        <img src="/img/hash.svg" alt="hash" className={styles.hash} /> */}
         <div className={styles.container_info}>
           <p className={styles.title}>
             Conoce San Luis de Gaceno como un local.
@@ -40,18 +42,27 @@ export default function Home() {
           </p>
         </div>
       </section>
-      {/* <section className={styles.section_map}>
+      <section className={styles.section_map}>
         <UiMap />
-      </section> */}
+      </section>
       {/* <section className={styles.section_cultura}>
         <h2 className={styles.title}>
-          {" "}
           <span className={styles.orange}>Sumérgete</span> en nuestra cultura
         </h2>
         <p className={styles.info}>
           con eventos únicos, fiestas tradicionales y experiencias auténticas.
         </p>
       </section> */}
+      <section className={styles.section_carrusel}>
+        <h2 className={styles.section_title}>Explora San Luis de Gaceno</h2>
+        <p className={styles.section_subtitle}>
+          Descubre todo lo que tenemos para ofrecerte
+        </p>
+        <div className={styles.carrusel_container}>
+          <Carrusel cards={sampleCards} />
+        </div>
+      </section>
+
       {/* <section className={styles.section_join}>
         <div className={styles.imageContainer}>
           <Image

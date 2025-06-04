@@ -2,11 +2,17 @@
 
 import React from "react";
 import styles from "./card.module.css";
+import Image from "next/image";
 
 export function Card() {
   return (
     <div className={styles.tourist_card}>
-      <img src="/img/san_luis.jpeg" alt="Guamal" className={styles.tourist_image} />
+      <Image
+        src="/img/san_luis.jpeg"
+        alt="Guamal"
+        fill
+        className={styles.tourist_image}
+      />
       <div className={styles.tourist_content}>
         <h3 className={styles.tourist_title}>CENTRO POBLADO GUAMAL</h3>
         <h4 className={styles.tourist_subtitle}>Naturaleza sin filtros.</h4>

@@ -209,9 +209,25 @@
 
 .section_map {
   width: 100%;
-  height: 800px;
+  height: 650px;
   display: flex;
   justify-content: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.5) 50%,
+      var(--background-white) 100%
+    );
+  }
 }
 
 .section_cultura {
@@ -242,6 +258,33 @@
   }
 }
 
+/* Estilos para la sección del carrusel */
+.section_carrusel {
+  /* padding: 60px 20px; */
+  background-color: var(--background-white);
+  text-align: center;
+}
+
+.section_title {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.section_subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.carrusel_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Estilos para la sección de unirse */
 .section_join {
   display: flex;
   flex-direction: row;
