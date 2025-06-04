@@ -32,7 +32,7 @@ const locations: Location[] = [
     description:
       "El corazón del municipio, donde se encuentra la plaza principal y la iglesia.",
     sector: 1,
-    category: "Lugares Históricos",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -42,7 +42,7 @@ const locations: Location[] = [
     description:
       "Vistas panorámicas increíbles de la región y el valle del río Gacena.",
     sector: 1,
-    category: "Miradores",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -52,7 +52,7 @@ const locations: Location[] = [
     description:
       "Hermosa cascada natural rodeada de vegetación nativa. Ideal para caminatas ecológicas.",
     sector: 2,
-    category: "Naturaleza",
+    category: "actividad",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -62,7 +62,7 @@ const locations: Location[] = [
     description:
       "Antiguo puente de piedra sobre el río Gacena, patrimonio histórico del municipio.",
     sector: 2,
-    category: "Lugares Históricos",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -72,7 +72,7 @@ const locations: Location[] = [
     description:
       "Área verde para el esparcimiento familiar en el centro de la ciudad.",
     sector: 3,
-    category: "Parques",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -81,7 +81,7 @@ const locations: Location[] = [
     coordinates: [-73.16, 4.815] as [number, number],
     description: "Vistas panorámicas hacia el sur del municipio.",
     sector: 4,
-    category: "Miradores",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -91,7 +91,7 @@ const locations: Location[] = [
     description:
       "Plaza principal del municipio, rodeada de edificios históricos y monumentos.",
     sector: 1,
-    category: "Plazas",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -101,7 +101,7 @@ const locations: Location[] = [
     description:
       "Institución que promueve la cultura y el arte en el municipio.",
     sector: 1,
-    category: "Cultura",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -110,7 +110,7 @@ const locations: Location[] = [
     coordinates: [-73.175, 4.828] as [number, number],
     description: "Reserva natural con variedad de flora y fauna silvestre.",
     sector: 2,
-    category: "Naturaleza",
+    category: "actividad",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -119,7 +119,7 @@ const locations: Location[] = [
     coordinates: [-73.163, 4.821] as [number, number],
     description: "Iglesia católica del siglo XIX, con arquitectura colonial.",
     sector: 2,
-    category: "Religión",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
   {
@@ -128,8 +128,53 @@ const locations: Location[] = [
     coordinates: [-73.162, 4.819] as [number, number],
     description: "Museo que expone la historia y patrimonio del municipio.",
     sector: 3,
-    category: "Museos",
+    category: "lugares",
     img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 12,
+    name: "Festival de la Cosecha",
+    coordinates: [-73.166, 4.818] as [number, number],
+    description: "Celebración anual de la cosecha local con música en vivo, comida típica y muestras culturales.",
+    sector: 1,
+    category: "eventos",
+    img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 13,
+    name: "Feria Artesanal",
+    coordinates: [-73.164, 4.817] as [number, number],
+    description: "Exposición y venta de artesanías locales. Último fin de semana de cada mes.",
+    sector: 1,
+    category: "eventos",
+    img: "https://images.unsplash.com/photo-1575224526797-5730d15d3678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 14,
+    name: "Noche de Poesía",
+    coordinates: [-73.168, 4.822] as [number, number],
+    description: "Lecturas poéticas al aire libre en la Casa de la Cultura. Todos los jueves a las 7 PM.",
+    sector: 1,
+    category: "eventos",
+    img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 15,
+    name: "Carrera de la Montaña",
+    coordinates: [-73.17, 4.83] as [number, number],
+    description: "Carrera de aventura por los senderos naturales del municipio. Incluye categorías para todas las edades.",
+    sector: 2,
+    category: "eventos",
+    img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 16,
+    name: "Festival Gastronómico",
+    coordinates: [-73.165, 4.82] as [number, number],
+    description: "Muestra de la gastronomía local con participación de los mejores restaurantes de la región.",
+    sector: 1,
+    category: "eventos",
+    img: "https://images.unsplash.com/photo-1504674900247-087703934569?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   },
 ];
 
@@ -141,14 +186,9 @@ const sectorColors = {
 };
 
 const categoryColors = {
-  "Lugares Históricos": "#8b5cf6",
-  Miradores: "#10b981",
-  Naturaleza: "#10b981",
-  Parques: "#3b82f6",
-  Cultura: "#ec4899",
-  Religión: "#f43f5e",
-  Museos: "#8b5cf6",
-  Plazas: "#f59e0b",
+  eventos: "#8b5cf6",
+  lugares: "#10b981",
+  actividad: "#10b981",
 };
 
 const allCategories = Array.from(new Set(locations.map((loc) => loc.category)));
@@ -460,6 +500,40 @@ export function UiMap() {
           boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
         }}
       >
+        <div className={styles.map_container_btn}>
+          {allCategories.map((category) => (
+            <button
+              key={`cat-${category}`}
+              onClick={() => {
+                setSelectedCategory(
+                  selectedCategory === category ? null : category
+                );
+                setSelectedSector(null);
+              }}
+              className={`${styles.categoryButton} ${
+                selectedCategory === category ? styles.active : ""
+              }`}
+              style={{
+                backgroundColor:
+                  selectedCategory === category
+                    ? categoryColors[category as keyof typeof categoryColors] ||
+                      "#6b7280"
+                    : `${
+                        categoryColors[
+                          category as keyof typeof categoryColors
+                        ] || "#6b7280"
+                      }33`,
+                color: selectedCategory === category ? "white" : "#1f2937",
+                border: `1px solid ${
+                  categoryColors[category as keyof typeof categoryColors] ||
+                  "#6b7280"
+                }`,
+              }}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
         <div
           style={{
             position: "absolute",
