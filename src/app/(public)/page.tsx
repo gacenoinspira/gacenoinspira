@@ -1,23 +1,20 @@
-import { Metadata } from "next";
 import styles from "./page.module.css";
-import { UiMap } from "@/components/index";
+import { UiMap } from "@/lib/components/ui-map/ui-map";
 import { Carrusel } from "@/lib/carrusel/carrusel";
 import { sampleCards } from "@/lib/carrusel/data";
-
-export const metadata: Metadata = {
-  title: "Inicio - San Luis de Gaceno",
-  description: "Pagina de inicio de San Luis de Gaceno",
-};
+import { AnimatedText } from "@/components/AnimatedText";
 
 export default function Home() {
   return (
     <div>
       <section className={styles.section_img}>
         <div className={styles.container_info}>
-          <h1 className={styles.title}>Donde la aventura,</h1>
-          <p className={styles.subtitle}>
+          <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
+            Donde la aventura,
+          </AnimatedText>
+          <AnimatedText delay={0.5}>
             la cultura y la naturaleza se encuentran.
-          </p>
+          </AnimatedText>
           <p className={styles.info}>
             Explora los cinco corazones de San Luis de Gaceno y conecta con su
             gente, sus historias y sus paisajes.

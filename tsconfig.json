@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/components/*": ["./src/lib/components/*"],
+      "@/lib/components/*": ["./src/lib/components/*"],
+      "@/components/*": ["./src/components/*"],
       "@/Public/components/*": ["./src/app/(public)/components/*"],
       "@/lib/icons/*": ["./src/lib/icons/*"],
       "@/*": ["./src/*"]

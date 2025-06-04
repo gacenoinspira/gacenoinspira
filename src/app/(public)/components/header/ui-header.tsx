@@ -2,9 +2,11 @@
 
 import React from "react";
 import styles from "./ui-header.module.css";
-import { UiLink } from "@/components/index";
+
 import { SearchIcon } from "@/lib/icons/search.icon";
-import { MenuBurger } from "@/components/menu-burger/menu-burger";
+
+import { MenuBurger } from "@/lib/components/menu-burger/menu-burger";
+import { UiLink } from "@/lib/components/index";
 
 export function UiHeader() {
   return (

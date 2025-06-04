@@ -1,6 +1,7 @@
 import React from "react";
-import { UiHeader } from "./components";
+
 import { Footer } from "./components/footer/ui-footer";
+import { UiHeader } from "./components";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
