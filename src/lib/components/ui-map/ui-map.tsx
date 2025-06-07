@@ -33,7 +33,7 @@ const locations: Location[] = [
       "El corazón del municipio, donde se encuentra la plaza principal y la iglesia.",
     sector: 1,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const locations: Location[] = [
       "Vistas panorámicas increíbles de la región y el valle del río Gacena.",
     sector: 1,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const locations: Location[] = [
       "Hermosa cascada natural rodeada de vegetación nativa. Ideal para caminatas ecológicas.",
     sector: 2,
     category: "actividad",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const locations: Location[] = [
       "Antiguo puente de piedra sobre el río Gacena, patrimonio histórico del municipio.",
     sector: 2,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ const locations: Location[] = [
       "Área verde para el esparcimiento familiar en el centro de la ciudad.",
     sector: 3,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 6,
@@ -82,7 +82,7 @@ const locations: Location[] = [
     description: "Vistas panorámicas hacia el sur del municipio.",
     sector: 4,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 7,
@@ -92,7 +92,7 @@ const locations: Location[] = [
       "Plaza principal del municipio, rodeada de edificios históricos y monumentos.",
     sector: 1,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 8,
@@ -102,7 +102,7 @@ const locations: Location[] = [
       "Institución que promueve la cultura y el arte en el municipio.",
     sector: 1,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 9,
@@ -111,7 +111,7 @@ const locations: Location[] = [
     description: "Reserva natural con variedad de flora y fauna silvestre.",
     sector: 2,
     category: "actividad",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 10,
@@ -120,7 +120,7 @@ const locations: Location[] = [
     description: "Iglesia católica del siglo XIX, con arquitectura colonial.",
     sector: 2,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 11,
@@ -129,7 +129,7 @@ const locations: Location[] = [
     description: "Museo que expone la historia y patrimonio del municipio.",
     sector: 3,
     category: "lugares",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 12,
@@ -139,7 +139,7 @@ const locations: Location[] = [
       "Celebración anual de la cosecha local con música en vivo, comida típica y muestras culturales.",
     sector: 1,
     category: "eventos",
-    img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 13,
@@ -149,7 +149,7 @@ const locations: Location[] = [
       "Exposición y venta de artesanías locales. Último fin de semana de cada mes.",
     sector: 1,
     category: "eventos",
-    img: "https://images.unsplash.com/photo-1575224526797-5730d15d3678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 14,
@@ -159,7 +159,7 @@ const locations: Location[] = [
       "Lecturas poéticas al aire libre en la Casa de la Cultura. Todos los jueves a las 7 PM.",
     sector: 1,
     category: "eventos",
-    img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 15,
@@ -169,7 +169,7 @@ const locations: Location[] = [
       "Carrera de aventura por los senderos naturales del municipio. Incluye categorías para todas las edades.",
     sector: 2,
     category: "eventos",
-    img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
   {
     id: 16,
@@ -179,7 +179,7 @@ const locations: Location[] = [
       "Muestra de la gastronomía local con participación de los mejores restaurantes de la región.",
     sector: 1,
     category: "eventos",
-    img: "https://images.unsplash.com/photo-1504674900247-087703934569?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    img: "/img/turismo.jpg",
   },
 ];
 
@@ -591,7 +591,7 @@ export function UiMap() {
             </button>
           ))}
         </div>
-        <div
+        {/* <div
           style={{
             position: "absolute",
             bottom: "20px",
@@ -652,7 +652,7 @@ export function UiMap() {
           >
             −
           </button>
-        </div>
+        </div> */}
         <Map
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
           initialViewState={{
@@ -743,7 +743,7 @@ export function UiMap() {
               longitude={popupInfo.coordinates[0]}
               latitude={popupInfo.coordinates[1]}
               onClose={() => setPopupInfo(null)}
-              closeButton={true}
+              closeButton={false}
               closeOnClick={false}
               closeOnMove={false}
               style={{
@@ -755,7 +755,7 @@ export function UiMap() {
                 maxWidth: "300px",
                 zIndex: 1000,
               }}
-              offset={[0, -10]}
+              // offset={[0, -10]}
             >
               <div style={{ maxWidth: "300px", padding: "0", margin: "0" }}>
                 <div
@@ -766,10 +766,9 @@ export function UiMap() {
                     overflow: "hidden",
                   }}
                 >
-                  <Image
+                  <img
                     src={popupInfo.img}
                     alt={popupInfo.name}
-                    fill
                     style={{
                       width: "100%",
                       height: "100%",
@@ -852,27 +851,43 @@ export function UiMap() {
                   >
                     {popupInfo.description}
                   </p>
-                  <button
-                    onClick={() =>
-                      (window.location.href = `/lugar/${popupInfo.id}`)
-                    }
-                    className={styles.btn_link}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
                   >
-                    <span>Ver más detalles</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                    <button
+                      onClick={() =>
+                        (window.location.href = `/lugar/${popupInfo.id}`)
+                      }
+                      className={styles.btn_link}
                     >
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
+                      <span>Ver más detalles</span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                    <button
+                      className={styles.btn_close_popup}
+                      onClick={() => setPopupInfo(null)}
+                    >
+                      Cerrar
+                    </button>
+                  </div>
                 </div>
               </div>
             </Popup>
