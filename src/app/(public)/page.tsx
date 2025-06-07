@@ -12,13 +12,9 @@ export default function Home() {
           <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
             Donde la aventura,
           </AnimatedText>
-          <AnimatedText delay={0.5}>
+          <AnimatedText delay={0.5} className={styles.subtitle}>
             la cultura y la naturaleza se encuentran.
           </AnimatedText>
-          <p className={styles.info}>
-            Explora los cinco corazones de San Luis de Gaceno y conecta con su
-            gente, sus historias y sus paisajes.
-          </p>
           <button className={styles.button}>Explorar Ahora</button>
         </div>
       </section>
@@ -37,6 +33,10 @@ export default function Home() {
             Guamal, Horizontes, San Carlos, La Mesa y Santa Teresa. Haz clic en
             el mapa y empieza tu viaje
           </p>
+        </div>
+        <div className={styles.gifs}>
+          <img src="/img/travel.gif" alt="travel" className={styles.travel} />
+          <img src="/img/route.gif" alt="route" className={styles.route} />
         </div>
       </section>
       <section className={styles.section_map}>

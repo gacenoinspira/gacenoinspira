@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./ui-header.module.css";
 import { UiLink } from "@/lib/components/index";
-import { SearchIcon } from "@/lib/icons/search.icon";
 import { MenuBurger } from "@/lib/components/menu-burger/menu-burger";
 
 // Register ScrollTrigger plugin
@@ -22,34 +21,30 @@ export function UiHeader() {
       <MenuBurger />
       <nav className={styles.nav}>
         <UiLink
-          namePath="Home"
+          namePath="INICIO"
           href="/"
           className={`${styles.link_header} hover:text-primary-500 transition-colors duration-300`}
           classActive={styles.active}
         />
         <UiLink
-          namePath="¿Donde ir?"
+          namePath="PLANIFICA"
           href="/where"
           className={`${styles.link_header} hover:text-primary-500 transition-colors duration-300`}
           classActive={styles.active}
         />
         <UiLink
-          namePath="¿Que hacer?"
+          namePath="BLOG"
           href="/what"
           className={`${styles.link_header} hover:text-primary-500 transition-colors duration-300`}
           classActive={styles.active}
         />
       </nav>
-      <div className={`${styles.searchContainer} group`}>
-        <input
-          type="text"
-          placeholder="Explora los cinco corazones"
-          className={`${styles.input} focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300`}
-        />
-        <button
-          className={`${styles.button} group-hover:bg-primary-600 transition-colors duration-300`}
-        >
-          <SearchIcon />
+      <div className={`${styles.searchContainer}`}>
+        <button className={`${styles.btn}`}>
+          <img src="/img/user.svg" alt="user" />
+        </button>
+        <button className={`${styles.btn}`}>
+          <img src="/img/search.svg" alt="search" />
         </button>
       </div>
     </header>

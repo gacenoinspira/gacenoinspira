@@ -240,7 +240,7 @@ export function UiMap() {
   const [viewState, setViewState] = useState<ViewStateType>({
     longitude: -73.16851,
     latitude: 4.82052,
-    zoom: 14,
+    zoom: 16,
     pitch: 0,
     bearing: 0,
     transitionDuration: 1000,
@@ -322,7 +322,7 @@ export function UiMap() {
         const map = mapRef.current.getMap();
         map.flyTo({
           center: [location.coordinates[0], location.coordinates[1]],
-          zoom: 15,
+          zoom: 16,
           speed: 1.2,
           curve: 1,
           duration: 1500,
@@ -382,25 +382,26 @@ export function UiMap() {
       });
 
       // Add more pronounced and dynamic random shakes
-      const shakeIntensity = 20;  // Increased from 15
-      const rotationIntensity = 30;  // Increased from 25
-      
-      for (let i = 0; i < 8; i++) {  // Increased to 8 shakes for more impact
+      const shakeIntensity = 20; // Increased from 15
+      const rotationIntensity = 30; // Increased from 25
+
+      for (let i = 0; i < 8; i++) {
+        // Increased to 8 shakes for more impact
         // Vary the intensity for a more dynamic effect
-        const currentIntensity = shakeIntensity * (1 - (i * 0.1));
-        const currentRotation = rotationIntensity * (1 - (i * 0.1));
-        
+        const currentIntensity = shakeIntensity * (1 - i * 0.1);
+        const currentRotation = rotationIntensity * (1 - i * 0.1);
+
         timeline.to(
           marker,
           {
             x: (Math.random() - 0.5) * currentIntensity,
             y: (Math.random() - 0.5) * currentIntensity,
             rotation: (Math.random() - 0.5) * currentRotation,
-            scale: 1 + (0.15 * (1 - (i * 0.1))),  // Gradually reduce scale effect
-            duration: 0.08 + (i * 0.01),  // Vary duration slightly
+            scale: 1 + 0.15 * (1 - i * 0.1), // Gradually reduce scale effect
+            duration: 0.08 + i * 0.01, // Vary duration slightly
             ease: "power1.inOut",
           },
-          `+=${i * 0.03}`  // Reduced delay between shakes for faster sequence
+          `+=${i * 0.03}` // Reduced delay between shakes for faster sequence
         );
       }
 
@@ -410,8 +411,8 @@ export function UiMap() {
         y: 0,
         rotation: 0,
         scale: 1,
-        duration: 0.8,  // Increased duration for more noticeable return
-        ease: "elastic.out(1, 0.3)",  // More bouncy effect
+        duration: 0.8, // Increased duration for more noticeable return
+        ease: "elastic.out(1, 0.3)", // More bouncy effect
       });
     }, [isAnimating]);
 
@@ -444,20 +445,22 @@ export function UiMap() {
         {/* Pulsing effect ring */}
         {pulse && (
           <div
-            style={{
-              position: "absolute",
-              width: size * 2.5,  // Increased size
-              height: size * 2.5,  // Increased size
-              backgroundColor: `${color}60`,  // More opaque
-              borderRadius: "50%",
-              animation: "pulse 0.8s ease-out",  // Faster animation
-              transform: "scale(0.4)",  // Start smaller for more dramatic effect
-              opacity: 0.8,  // Start more visible
-              zIndex: 0,
-              boxShadow: `0 0 20px ${color}80`,  // Add glow effect
-              // Set the CSS variable for the pulse color
-              '--pulse-color': color,
-            } as React.CSSProperties}
+            style={
+              {
+                position: "absolute",
+                width: size * 2.5, // Increased size
+                height: size * 2.5, // Increased size
+                backgroundColor: `${color}60`, // More opaque
+                borderRadius: "50%",
+                animation: "pulse 0.8s ease-out", // Faster animation
+                transform: "scale(0.4)", // Start smaller for more dramatic effect
+                opacity: 0.8, // Start more visible
+                zIndex: 0,
+                boxShadow: `0 0 20px ${color}80`, // Add glow effect
+                // Set the CSS variable for the pulse color
+                "--pulse-color": color,
+              } as React.CSSProperties
+            }
           />
         )}
 
@@ -496,22 +499,25 @@ export function UiMap() {
   };
 
   return (
-    <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+    <div style={{ width: "100%", height: "800px", position: "relative" }}>
       <style jsx global>{`
         @keyframes pulse {
           0% {
             transform: scale(0.4);
             opacity: 0.8;
-            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--pulse-color, #4f46e5);
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff,
+              0 0 30px var(--pulse-color, #4f46e5);
           }
           50% {
             opacity: 0.5;
-            box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px var(--pulse-color, #4f46e5);
+            box-shadow: 0 0 20px #fff, 0 0 40px #fff,
+              0 0 60px var(--pulse-color, #4f46e5);
           }
           100% {
             transform: scale(2.5);
             opacity: 0;
-            box-shadow: 0 0 30px #fff, 0 0 60px #fff, 0 0 90px var(--pulse-color, #4f46e5);
+            box-shadow: 0 0 30px #fff, 0 0 60px #fff,
+              0 0 90px var(--pulse-color, #4f46e5);
           }
         }
 
@@ -544,7 +550,7 @@ export function UiMap() {
       <div
         style={{
           width: "100%",
-          height: "600px",
+          height: "800px",
           position: "relative",
           borderRadius: "8px",
           overflow: "hidden",
