@@ -1,0 +1,13 @@
+.link_loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 0;
+
+  .svg {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -12,10 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function UiHeader() {
   return (
-    <header
-      className={`${styles.header} fixed w-full z-50 transition-all duration-300`}
-    >
-      <div className="relative">
+    <header className={`${styles.header}`}>
+      <div>
         <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
       </div>
       <MenuBurger />
@@ -23,19 +21,19 @@ export function UiHeader() {
         <UiLink
           namePath="INICIO"
           href="/"
-          className={`${styles.link_header} hover:text-primary-500 transition-colors duration-300`}
+          className={`${styles.link_header}`}
           classActive={styles.active}
         />
         <UiLink
           namePath="PLANIFICA"
           href="/where"
-          className={`${styles.link_header} hover:text-primary-500 transition-colors duration-300`}
+          className={`${styles.link_header}`}
           classActive={styles.active}
         />
         <UiLink
           namePath="BLOG"
           href="/what"
-          className={`${styles.link_header} hover:text-primary-500 transition-colors duration-300`}
+          className={`${styles.link_header}`}
           classActive={styles.active}
         />
       </nav>

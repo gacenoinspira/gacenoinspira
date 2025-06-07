@@ -1,10 +1,15 @@
-'use client'
- 
-import { useLinkStatus } from 'next/link'
- 
+"use client";
+
+import { useLinkStatus } from "next/link";
+import styles from "./link-loading.module.css";
+
 export default function LoadingIndicator() {
-  const { pending } = useLinkStatus()
+  const { pending } = useLinkStatus();
   return pending ? (
-    <span>loading page...</span>
-  ) : null
+    <>
+      <div role="status" className={styles.link_loading}>
+        <img src="/img/Loading.svg" alt="Loading" className={styles.svg} />
+      </div>
+    </>
+  ) : null;
 }

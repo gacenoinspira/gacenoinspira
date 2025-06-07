@@ -21,7 +21,7 @@ export function UiLink({
   const isActive = pathname === href;
 
   return (
-    <div className="relative inline-block">
+    <div>
       <Link
         href={href}
         className={`${isActive ? classActive : ""} ${className}`}
