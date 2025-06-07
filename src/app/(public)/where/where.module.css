@@ -1,12 +1,11 @@
 .where {
   display: grid;
   width: 100%;
-  min-height: 100vh;
-  padding: 10px;
   margin-top: 50px;
+  margin-bottom: 50px;
   grid:
     "image" 1fr
-    "card" 1fr
+    "card" auto
     / 1fr;
 
   .image {
@@ -33,10 +32,7 @@
 
   .card {
     grid-area: card;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
-    gap: 40px;
-    padding-left: 20px;
+    margin-top: 20px;
   }
 }
 

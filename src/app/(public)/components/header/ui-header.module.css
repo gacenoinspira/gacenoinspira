@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  top: 20px;
+  top: 0px;
   left: 0;
   right: 0;
   z-index: 100;
@@ -8,8 +8,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  height: 142px;
+  background-color: var(--background-white);
+  width: 100%;
 
   .logo {
+    width: 329px;
+    height: 141px;
     @media (width < 700px) {
       width: 150px;
       height: 150px;

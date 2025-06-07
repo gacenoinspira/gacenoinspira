@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./where.module.css";
-import { UiCard, UiTabs } from "./components";
+import { UiTabs } from "./components";
+import { ContainerCards } from "./components/conatiner-card/container-cards";
 
 export default function Page() {
   return (
@@ -9,7 +10,8 @@ export default function Page() {
         <UiTabs />
       </div>
       <div className={styles.card}>
-        <UiCard
+        <ContainerCards />
+        {/* <UiCard
           title="Card"
           description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
           price="20000"
@@ -38,7 +40,7 @@ export default function Page() {
           description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
           price="20000"
           imageUrl="/img/san_luis.jpeg"
-        />
+        /> */}
       </div>
     </div>
   );
