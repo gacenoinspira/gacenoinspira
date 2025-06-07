@@ -1,14 +1,15 @@
 :root {
   --color-principal: #006f3d; /* Verde claro */
-  --color-secundario: #ff6a13; /* Naranja cálido */
+  --color-secundario: #ea3b3b; /* Naranja cálido */
   --color-acento: #f1f1f1; /* Gris claro */
-  --color-texto: #3d3d3d; /* Gris oscuro */
+  --color-texto: #003049; /* Gris oscuro */
   --color-fondo: #f5f5f5; /* Fondo suave */
   --color-yellow: #f8d34a; /* Amarillo */
   --color-yellow-soft: #ecdc94; /* Amarillo suave */
   --text-white: #fff;
   --background-white: #fff;
   --text: #51515;
+  --title: #003049;
 }
 
 * {

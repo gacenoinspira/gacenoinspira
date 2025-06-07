@@ -44,6 +44,20 @@ export function UiTabs() {
         >
           tab 5
         </button>
+
+        <div className={styles.centros_text}>
+          <p className={styles.principal}>5 centros poblados</p>
+          <p className={styles.secundario}>
+            cinco maneras únicas de vivir el alma de Boyacá.
+          </p>
+        </div>
+
+        <div className={styles.selection_text}>
+          <p className={styles.principal}>Selecciona</p>
+          <p className={styles.secundario}>
+            El un centro poblado y conoce más de su oferta turistica
+          </p>
+        </div>
       </div>
     </div>
   );
