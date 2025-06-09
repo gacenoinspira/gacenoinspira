@@ -5,8 +5,8 @@ import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 
 export function UiTabs() {
-  const [tab, setTab] = useState<string>("1");
-  const updateTab = useTabsStore((set) => set.setTab);
+  const { tab: numberTab, setTab: updateTab } = useTabsStore((set) => set);
+  const [tab, setTab] = useState<string>(numberTab);
   return (
     <div className={styles.tab_container}>
       <div className={styles.tab_container_img}>
