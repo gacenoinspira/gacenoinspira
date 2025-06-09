@@ -1,14 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./ui-header.module.css";
 import { UiLink } from "@/lib/components/index";
 import { MenuBurger } from "@/lib/components/menu-burger/menu-burger";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 export function UiHeader() {
   return (

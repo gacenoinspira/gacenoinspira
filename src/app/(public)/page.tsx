@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styles from "./page.module.css";
 import { UiMap } from "@/lib/components/ui-map/ui-map";
 import { Carrusel } from "@/lib/carrusel/carrusel";

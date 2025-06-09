@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useState } from "react";
@@ -23,10 +24,10 @@ export function UiCard({
 }: UiCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleExpand = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsExpanded((prev) => !prev);
-  };
+  // const toggleExpand = (e: React.MouseEvent) => {
+  //   e.stopPropagation();
+  //   setIsExpanded((prev) => !prev);
+  // };
 
   return (
     <div className={`${styles.card} ${isExpanded ? styles.expanded : ""}`}>
