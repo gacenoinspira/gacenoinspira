@@ -28,7 +28,7 @@ export function UiHeader() {
         />
         <UiLink
           namePath="BLOG"
-          href="/what"
+          href="/blog"
           className={`${styles.link_header}`}
           classActive={styles.active}
         />
