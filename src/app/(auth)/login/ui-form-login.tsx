@@ -49,14 +49,12 @@ export function UiFormLogin() {
         Iniciar Sesión
       </button>
 
-      <p className={styles.signupLink}>
-        ¿No tienes una cuenta?{" "}
-        <UiLink
-          namePath="Registrate"
-          className={styles.signupLinkAction}
-          href={"/register"}
-        />
-      </p>
+      <p className={styles.signupLink}>¿No tienes una cuenta? </p>
+      <UiLink
+        namePath="Registrate"
+        className={styles.signupLinkAction}
+        href={"/register"}
+      />
     </form>
   );
 }

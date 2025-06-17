@@ -57,9 +57,8 @@ export function UiFormRegister() {
         Registrarse
       </button>
 
-      <p className={styles.loginLink}>
-        ¿Ya tienes una cuenta? <UiLink namePath="Inicia Sesión" href="/login" />
-      </p>
+      <p className={styles.loginLink}>¿Ya tienes una cuenta?</p>
+      <UiLink namePath="Inicia Sesión" href="/login" />
     </form>
   );
 }

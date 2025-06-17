@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./ui-admin.module.css";
+import { UiFormOperator } from "./section";
 
 // Icons (you can replace these with your actual icon components)
 const DashboardIcon = () => (
@@ -59,6 +61,24 @@ const UsersIcon = () => (
   </svg>
 );
 
+const LogoutIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+    <polyline points="16 17 21 12 16 7"></polyline>
+    <line x1="21" y1="12" x2="9" y2="12"></line>
+  </svg>
+);
+
 const TabButton = ({
   active,
   onClick,
@@ -83,58 +103,90 @@ const TabButton = ({
 );
 
 export const UiAdmin = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = () => {
+    setIsLoggingOut(true);
+    // Simulate logout process
+    setTimeout(() => {
+      // Redirect to login page after logout
+      router.push("/auth/login");
+    }, 500);
+  };
 
   return (
-    <div className={styles.tabsContainer}>
-      <div className={styles.tabsHeader}>
-        <TabButton
-          active={activeTab === "dashboard"}
-          onClick={() => setActiveTab("dashboard")}
-          icon={DashboardIcon}
+    <div className={styles.adminContainer}>
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <div className={styles.headerLeft}>
+            <h1 className={styles.title}>Panel de Administración</h1>
+            <p className={styles.subtitle}>Gestiona tu contenido turístico</p>
+          </div>
+        </div>
+        <button
+          onClick={handleLogout}
+          className={styles.logoutButton}
+          disabled={isLoggingOut}
+          aria-label="Cerrar sesión"
         >
-          Comercios
-        </TabButton>
+          <LogoutIcon />
+          <span>{isLoggingOut ? "Saliendo..." : "Cerrar sesión"}</span>
+        </button>
+      </header>
 
-        <TabButton
-          active={activeTab === "comercios"}
-          onClick={() => setActiveTab("comercios")}
-          icon={StoreIcon}
-        >
-          Guias turistico
-        </TabButton>
+      <div className={styles.mainContent}>
+        <div className={styles.tabsContainer}>
+          <div className={styles.tabsHeader}>
+            <TabButton
+              active={activeTab === "dashboard"}
+              onClick={() => setActiveTab("dashboard")}
+              icon={DashboardIcon}
+            >
+              Comercios
+            </TabButton>
 
-        <TabButton
-          active={activeTab === "usuarios"}
-          onClick={() => setActiveTab("usuarios")}
-          icon={UsersIcon}
-        >
-          Blogs
-        </TabButton>
-      </div>
+            <TabButton
+              active={activeTab === "comercios"}
+              onClick={() => setActiveTab("comercios")}
+              icon={StoreIcon}
+            >
+              Guias turistico
+            </TabButton>
 
-      <div className={styles.tabContent}>
-        <div className={styles.contentWrapper}>
-          {activeTab === "dashboard" && (
-            <div className={styles.tabPanel}>
-              <h2>Panel de Control</h2>
-              <p>Bienvenido al panel de administración</p>
+            <TabButton
+              active={activeTab === "usuarios"}
+              onClick={() => setActiveTab("usuarios")}
+              icon={UsersIcon}
+            >
+              Blogs
+            </TabButton>
+          </div>
+
+          <div className={styles.tabContent}>
+            <div className={styles.contentWrapper}>
+              {activeTab === "dashboard" && (
+                <div className={styles.tabPanel}>
+                  <UiFormOperator />
+                </div>
+              )}
+
+              {activeTab === "comercios" && (
+                <div className={styles.tabPanel}>
+                  <h2>Gestión de Comercios</h2>
+                  <p>Administra los comercios registrados</p>
+                </div>
+              )}
+
+              {activeTab === "usuarios" && (
+                <div className={styles.tabPanel}>
+                  <h2>Gestión de Usuarios</h2>
+                  <p>Administra los usuarios del sistema</p>
+                </div>
+              )}
             </div>
-          )}
-
-          {activeTab === "comercios" && (
-            <div className={styles.tabPanel}>
-              <h2>Gestión de Comercios</h2>
-              <p>Administra los comercios registrados</p>
-            </div>
-          )}
-
-          {activeTab === "usuarios" && (
-            <div className={styles.tabPanel}>
-              <h2>Gestión de Usuarios</h2>
-              <p>Administra los usuarios del sistema</p>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.50.0",
     "@types/gsap": "^3.0.0",
     "@types/mapbox-gl": "^3.4.1",
     "@types/react-slick": "^0.23.13",
@@ -30,6 +32,7 @@
     "@types/react-dom": "^19.1.6",
     "eslint": "^9.28.0",
     "eslint-config-next": "15.3.2",
+    "supabase": "^2.26.9",
     "typescript": "^5.8.3"
   }
 }

@@ -1,11 +1,14 @@
 .tabsContainer {
   max-width: 100%;
   margin: 2rem auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+  border: 1px solid #e9ecef;
+  transform: translateY(-2rem);
   position: relative;
   z-index: 1;
 }
@@ -26,13 +29,17 @@
 }
 
 .tabsHeader::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.4)
+  );
   z-index: -1;
   border-radius: 12px;
 }
@@ -122,7 +129,6 @@
 
 .contentWrapper {
   position: relative;
-  width: 100%;
 }
 
 .tabPanel {
@@ -150,11 +156,11 @@
 }
 
 @keyframes fadeIn {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(10px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -168,7 +174,7 @@
     margin: 1rem;
     width: calc(100% - 2rem);
   }
-  
+
   .tabsHeader {
     margin: 0 0 1.5rem;
     border-radius: 12px;
@@ -177,35 +183,35 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-  
+
   .tabsHeader::-webkit-scrollbar {
     display: none;
   }
-  
+
   .tabButton {
     padding: 0.75rem 0.5rem;
     font-size: 0.8rem;
     min-width: 120px;
     min-height: 60px;
   }
-  
+
   .tabButton .icon {
     width: 20px;
     height: 20px;
   }
-  
+
   .tabButton .label {
     font-size: 0.75rem;
   }
-  
+
   .tabContent {
     padding: 0 0 0.5rem;
   }
-  
+
   .tabPanel {
     padding: 1.5rem;
   }
-  
+
   .tabPanel h2 {
     font-size: 1.3rem;
   }
@@ -213,14 +219,15 @@
 
 /* Add a subtle glow effect on active tab */
 .tabButton.active::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   right: -4px;
   bottom: -4px;
-  background: linear-gradient(135deg, 
-    rgba(0, 111, 61, 0.1), 
+  background: linear-gradient(
+    135deg,
+    rgba(0, 111, 61, 0.1),
     rgba(0, 111, 61, 0.05)
   );
   z-index: -1;
@@ -229,7 +236,77 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
+
+/* Logout Button Styles */
+.logoutContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.logoutButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-nunito);
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+}
+
+.logoutButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logoutButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.logoutButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.logoutButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive adjustments */
+/* Main Content */
+.mainContent {
+  padding: 0 2rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Responsive Adjustments */

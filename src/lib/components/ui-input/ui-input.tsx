@@ -1,9 +1,15 @@
-import React from "react";
+import React, { ComponentPropsWithRef } from "react";
 
-export function UiInput() {
+interface InputProps extends ComponentPropsWithRef<"input"> {
+  placeholder: string;
+  name: string;
+  id: string;
+}
+
+export function UiInput({ ...props }: InputProps) {
   return (
-    <label >
-      <input />
+    <label>
+      <input {...props} />
     </label>
   );
 }
