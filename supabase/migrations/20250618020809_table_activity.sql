@@ -1,0 +1,130 @@
+create table "public"."activity" (
+    "id" uuid not null default gen_random_uuid(),
+    "created_at" timestamp with time zone not null default now(),
+    "id_operator" uuid not null,
+    "name" text not null,
+    "description" text not null,
+    "items" jsonb,
+    "img" jsonb,
+    "min_age" bigint,
+    "max_age" bigint,
+    "duration" bigint,
+    "recomendation" text,
+    "price" bigint,
+    "range_time_off" jsonb,
+    "type_activity" uuid
+);
+
+
+alter table "public"."activity" enable row level security;
+
+create table "public"."type_activity" (
+    "id" uuid not null default gen_random_uuid(),
+    "created_at" timestamp with time zone not null default now(),
+    "name" bigint not null
+);
+
+
+alter table "public"."type_activity" enable row level security;
+
+CREATE UNIQUE INDEX activity_pkey ON public.activity USING btree (id);
+
+CREATE UNIQUE INDEX type_activity_pkey ON public.type_activity USING btree (id);
+
+alter table "public"."activity" add constraint "activity_pkey" PRIMARY KEY using index "activity_pkey";
+
+alter table "public"."type_activity" add constraint "type_activity_pkey" PRIMARY KEY using index "type_activity_pkey";
+
+alter table "public"."activity" add constraint "activity_id_operator_fkey" FOREIGN KEY (id_operator) REFERENCES operator(id) ON DELETE CASCADE not valid;
+
+alter table "public"."activity" validate constraint "activity_id_operator_fkey";
+
+alter table "public"."activity" add constraint "activity_type_activity_fkey" FOREIGN KEY (type_activity) REFERENCES type_activity(id) ON DELETE CASCADE not valid;
+
+alter table "public"."activity" validate constraint "activity_type_activity_fkey";
+
+grant delete on table "public"."activity" to "anon";
+
+grant insert on table "public"."activity" to "anon";
+
+grant references on table "public"."activity" to "anon";
+
+grant select on table "public"."activity" to "anon";
+
+grant trigger on table "public"."activity" to "anon";
+
+grant truncate on table "public"."activity" to "anon";
+
+grant update on table "public"."activity" to "anon";
+
+grant delete on table "public"."activity" to "authenticated";
+
+grant insert on table "public"."activity" to "authenticated";
+
+grant references on table "public"."activity" to "authenticated";
+
+grant select on table "public"."activity" to "authenticated";
+
+grant trigger on table "public"."activity" to "authenticated";
+
+grant truncate on table "public"."activity" to "authenticated";
+
+grant update on table "public"."activity" to "authenticated";
+
+grant delete on table "public"."activity" to "service_role";
+
+grant insert on table "public"."activity" to "service_role";
+
+grant references on table "public"."activity" to "service_role";
+
+grant select on table "public"."activity" to "service_role";
+
+grant trigger on table "public"."activity" to "service_role";
+
+grant truncate on table "public"."activity" to "service_role";
+
+grant update on table "public"."activity" to "service_role";
+
+grant delete on table "public"."type_activity" to "anon";
+
+grant insert on table "public"."type_activity" to "anon";
+
+grant references on table "public"."type_activity" to "anon";
+
+grant select on table "public"."type_activity" to "anon";
+
+grant trigger on table "public"."type_activity" to "anon";
+
+grant truncate on table "public"."type_activity" to "anon";
+
+grant update on table "public"."type_activity" to "anon";
+
+grant delete on table "public"."type_activity" to "authenticated";
+
+grant insert on table "public"."type_activity" to "authenticated";
+
+grant references on table "public"."type_activity" to "authenticated";
+
+grant select on table "public"."type_activity" to "authenticated";
+
+grant trigger on table "public"."type_activity" to "authenticated";
+
+grant truncate on table "public"."type_activity" to "authenticated";
+
+grant update on table "public"."type_activity" to "authenticated";
+
+grant delete on table "public"."type_activity" to "service_role";
+
+grant insert on table "public"."type_activity" to "service_role";
+
+grant references on table "public"."type_activity" to "service_role";
+
+grant select on table "public"."type_activity" to "service_role";
+
+grant trigger on table "public"."type_activity" to "service_role";
+
+grant truncate on table "public"."type_activity" to "service_role";
+
+grant update on table "public"."type_activity" to "service_role";
+
+

@@ -1,12 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ui-form-login.module.css";
 import { UiLink } from "@/lib/components/index";
+import { useRouter } from "next/navigation";
+import { loginAction } from "../server/login.action";
 
 export function UiFormLogin() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await loginAction({ email, password });
+    if (!response.status) {
+      alert(response.error);
+      return;
+    }
+    router.push("/");
+  };
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <h2 className={styles.title}>Iniciar Sesión</h2>
 
       <div className={styles.formGroup}>
@@ -20,6 +35,8 @@ export function UiFormLogin() {
           className={styles.input}
           placeholder="tu@email.com"
           required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
@@ -34,6 +51,8 @@ export function UiFormLogin() {
           className={styles.input}
           placeholder="••••••••"
           required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
 
