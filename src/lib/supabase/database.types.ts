@@ -100,6 +100,24 @@ export type Database = {
           },
         ]
       }
+      category: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
       details_operator: {
         Row: {
           created_at: string
@@ -140,6 +158,7 @@ export type Database = {
       }
       operator: {
         Row: {
+          category_id: string
           created_at: string
           description: string
           id: string
@@ -147,8 +166,10 @@ export type Database = {
           lng: number
           name: string
           phone: number
+          zone_id: number
         }
         Insert: {
+          category_id: string
           created_at?: string
           description: string
           id?: string
@@ -156,8 +177,10 @@ export type Database = {
           lng: number
           name: string
           phone: number
+          zone_id: number
         }
         Update: {
+          category_id?: string
           created_at?: string
           description?: string
           id?: string
@@ -165,8 +188,24 @@ export type Database = {
           lng?: number
           name?: string
           phone?: number
+          zone_id?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "operator_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "category"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "operator_zone_id_fkey"
+            columns: ["zone_id"]
+            isOneToOne: false
+            referencedRelation: "zone"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       type_activity: {
         Row: {
@@ -183,6 +222,24 @@ export type Database = {
           created_at?: string
           id?: string
           name?: number
+        }
+        Relationships: []
+      }
+      zone: {
+        Row: {
+          created_at: string
+          id: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string
         }
         Relationships: []
       }
