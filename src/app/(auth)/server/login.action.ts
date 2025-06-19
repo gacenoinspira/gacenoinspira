@@ -4,7 +4,6 @@ import { UserTable } from "@/lib/repository";
 import { SupabaseServer } from "@/lib/supabase/connection/supabase-server";
 import { UserType } from "@/lib/type";
 import { ResponseType } from "@/lib/type/response.type";
-import { User } from "@supabase/supabase-js";
 
 export const loginAction = async ({
   email,
@@ -34,7 +33,7 @@ export const loginAction = async ({
       error: user.error,
     };
   }
-  
+
   return {
     status: true,
     data: {
@@ -52,7 +51,7 @@ export const registerAction = async ({
 }: {
   email: string;
   password: string;
-}): Promise<ResponseType<User | null>> => {
+}): Promise<ResponseType<UserType | null>> => {
   const supabase = await SupabaseServer();
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -79,7 +78,11 @@ export const registerAction = async ({
 
   return {
     status: true,
-    data: data.user,
+    data: {
+      email: data.user?.email ?? "",
+      user_id: data.user?.id ?? "",
+      rol: user.data?.rol ?? 0,
+    },
     error: "",
   };
 };

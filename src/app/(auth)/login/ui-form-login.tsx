@@ -5,11 +5,13 @@ import styles from "./ui-form-login.module.css";
 import { UiLink } from "@/lib/components/index";
 import { useRouter } from "next/navigation";
 import { loginAction } from "../server/login.action";
+import { UserStore } from "@/lib/store/user.store";
 
 export function UiFormLogin() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = UserStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +20,8 @@ export function UiFormLogin() {
       alert(response.error);
       return;
     }
-    router.push("/");
+    setUser(response.data);
+    router.push(response.data?.rol === 1 ? "/admin" : "/");
   };
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

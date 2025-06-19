@@ -40,8 +40,6 @@ const zoneName: Record<
 export function ContainerCards() {
   const tab = useTabsStore((state) => state.tab);
 
-  console.log(tab);
-
   return (
     <div className={styles.container}>
       <div className={styles.zona}>

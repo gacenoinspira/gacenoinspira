@@ -1,13 +1,25 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ui-header.module.css";
 import { UiLink } from "@/lib/components/index";
 import { MenuBurger } from "@/lib/components/menu-burger/menu-burger";
+import { UserStore } from "@/lib/store/user.store";
+import { logoutAction } from "@/lib/action";
+import { UserType } from "@/lib/type";
 
-export function UiHeader() {
+interface HeaderProp {
+  userDb: UserType | null;
+}
+
+export function UiHeader({ userDb }: HeaderProp) {
   const [showModal, setShowModal] = useState(false);
+  const user = UserStore((set) => set.user);
+  const setUser = UserStore((set) => set.setUser);
+
+  useEffect(() => {
+    setUser(userDb);
+  }, []);
   return (
     <header className={`${styles.header}`}>
       <div>
@@ -35,24 +47,51 @@ export function UiHeader() {
         />
       </nav>
       <div className={`${styles.searchContainer}`}>
-        <button
+        <div
           className={`${styles.btn} ${styles.menu}`}
           onClick={() => setShowModal(!showModal)}
         >
           <img src="/img/user.svg" alt="user" />
-          <div className={`${styles.menuModal} ${showModal ? styles.active : ""}`}>
-            <UiLink
-              namePath="Login"
-              href="/login"
-              className={`${styles.link}`}
-            />
-            <UiLink
-              namePath="Registrarse"
-              href="/register"
-              className={`${styles.link}`}
-            />
+          <div
+            className={`${styles.menuModal} ${showModal ? styles.active : ""}`}
+          >
+            {user?.user_id ? (
+              <>
+                <UiLink
+                  namePath="Perfil"
+                  href="/profile"
+                  className={`${styles.link}`}
+                />
+                <UiLink
+                  namePath="Admin"
+                  href="/admin"
+                  className={`${styles.link}`}
+                />
+                <button
+                  onClick={() => {
+                    setUser(null);
+                    logoutAction();
+                  }}
+                >
+                  Cerrar Sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <UiLink
+                  namePath="Login"
+                  href="/login"
+                  className={`${styles.link}`}
+                />
+                <UiLink
+                  namePath="Registrarse"
+                  href="/register"
+                  className={`${styles.link}`}
+                />
+              </>
+            )}
           </div>
-        </button>
+        </div>
         {/* <button className={`${styles.btn}`}>
           <img src="/img/search.svg" alt="search" />
         </button> */}

@@ -86,21 +86,25 @@
           top: 100%;
           right: 0;
           background-color: var(--background-white);
-          border-radius: 20px;
-          padding: 20px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          border-radius: 6px;
+          padding: 10px;
+          box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.08);
           z-index: 100;
           display: none;
+          width: 200px;
+          display: none;
+          flex-direction: column;
+          gap: 10px;
 
           &.active {
-            display: block;
+            display: flex;
           }
 
           .link {
             text-decoration: none;
             color: var(--color-texto);
             font-weight: 700;
-            font-size: 32px;
+            font-size: 22px;
             border-radius: 20px;
 
             &:hover {

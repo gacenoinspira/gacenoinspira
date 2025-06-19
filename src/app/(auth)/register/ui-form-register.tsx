@@ -6,11 +6,13 @@ import { UiLink } from "@/lib/components/index";
 import { useState } from "react";
 import { registerAction } from "../server/login.action";
 import { useRouter } from "next/navigation";
+import { UserStore } from "@/lib/store/user.store";
 
 export function UiFormRegister() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const setUser = UserStore((set) => set.setUser);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -24,8 +26,8 @@ export function UiFormRegister() {
       alert(response.error);
       return;
     }
-
-    router.push("/login");
+    setUser(response.data);
+    router.push("/");
   };
 
   return (
