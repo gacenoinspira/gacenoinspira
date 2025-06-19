@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ui-header.module.css";
 import { UiLink } from "@/lib/components/index";
 import { MenuBurger } from "@/lib/components/menu-burger/menu-burger";
 
 export function UiHeader() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <header className={`${styles.header}`}>
       <div>
@@ -34,12 +35,27 @@ export function UiHeader() {
         />
       </nav>
       <div className={`${styles.searchContainer}`}>
-        <button className={`${styles.btn}`}>
+        <button
+          className={`${styles.btn} ${styles.menu}`}
+          onClick={() => setShowModal(!showModal)}
+        >
           <img src="/img/user.svg" alt="user" />
+          <div className={`${styles.menuModal} ${showModal ? styles.active : ""}`}>
+            <UiLink
+              namePath="Login"
+              href="/login"
+              className={`${styles.link}`}
+            />
+            <UiLink
+              namePath="Registrarse"
+              href="/register"
+              className={`${styles.link}`}
+            />
+          </div>
         </button>
-        <button className={`${styles.btn}`}>
+        {/* <button className={`${styles.btn}`}>
           <img src="/img/search.svg" alt="search" />
-        </button>
+        </button> */}
       </div>
     </header>
   );

@@ -17,10 +17,10 @@ export type Database = {
     Functions: {
       graphql: {
         Args: {
-          variables?: Json
           operationName?: string
-          query?: string
           extensions?: Json
+          variables?: Json
+          query?: string
         }
         Returns: Json
       }
@@ -207,6 +207,24 @@ export type Database = {
           },
         ]
       }
+      roles: {
+        Row: {
+          created_at: string
+          id: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string
+        }
+        Relationships: []
+      }
       type_activity: {
         Row: {
           created_at: string
@@ -224,6 +242,35 @@ export type Database = {
           name?: number
         }
         Relationships: []
+      }
+      user: {
+        Row: {
+          created_at: string
+          id: string
+          rol: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          rol: number
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          rol?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_rol_fkey"
+            columns: ["rol"]
+            isOneToOne: false
+            referencedRelation: "roles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       zone: {
         Row: {

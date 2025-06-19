@@ -77,6 +77,40 @@
       border: none;
       outline: none;
       cursor: pointer;
+
+      &.menu {
+        position: relative;
+
+        .menuModal {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: var(--background-white);
+          border-radius: 20px;
+          padding: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          z-index: 100;
+          display: none;
+
+          &.active {
+            display: block;
+          }
+
+          .link {
+            text-decoration: none;
+            color: var(--color-texto);
+            font-weight: 700;
+            font-size: 32px;
+            border-radius: 20px;
+
+            &:hover {
+              transform: scale(1.1) translateX(10px);
+              color: var(--color-secundario);
+              transition: all 0.5s ease-in-out;
+            }
+          }
+        }
+      }
     }
     @media (width < 1223px) {
       display: none;
