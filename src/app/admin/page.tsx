@@ -1,10 +1,13 @@
 import React from "react";
 import { UiAdmin } from "./ui-admin";
+import { getZones } from "@/lib/action/zone.action";
 
-export default function Page() {
+export default async function Page() {
+  const zones = await getZones();
+  console.log(zones);
   return (
     <div>
-      <UiAdmin />
+      <UiAdmin zones={zones.data ?? []} />
     </div>
   );
 }

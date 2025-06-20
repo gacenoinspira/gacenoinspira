@@ -8,6 +8,7 @@ import Map, {
 } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { UiForm, UiInput } from "@/lib/components/index";
+import { ZoneTableRow } from "@/lib/type";
 
 // Replace with your Mapbox token
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -17,8 +18,13 @@ type Location = {
   lng: number;
 };
 
-export function UiFormOperator() {
+type Props = {
+  zones: ZoneTableRow[];
+};
+
+export function UiFormOperator({ zones }: Props) {
   const [location, setLocation] = useState<Location | null>(null);
+  const [zone, setZone] = useState<string>("");
 
   const handleMapClick = (e: MapMouseEvent) => {
     const { lng, lat } = e.lngLat;
@@ -42,6 +48,19 @@ export function UiFormOperator() {
           type="text"
         />
         <UiInput placeholder="Telefono" name="phone" id="phone" type="tel" />
+        <select
+          name="zone"
+          id=""
+          onChange={(e) => setZone(e.target.value)}
+          value={zone}
+        >
+          <option value="">Selecciona una zona</option>
+          {zones.map((zone) => (
+            <option key={zone.id} value={zone.id}>
+              {zone.name}
+            </option>
+          ))}
+        </select>
       </UiForm>
       <h2>Elige tu ubicación</h2>
       <Map
