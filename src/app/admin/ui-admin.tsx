@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ui-admin.module.css";
 import { UiFormOperator } from "./section";
-import { ZoneTableRow } from "@/lib/type";
+import { CategoryTableRow, ZoneTableRow } from "@/lib/type";
 
 // Icons (you can replace these with your actual icon components)
 const DashboardIcon = () => (
@@ -105,9 +105,10 @@ const TabButton = ({
 
 interface Props {
   zones: ZoneTableRow[];
+  categories: CategoryTableRow[];
 }
 
-export const UiAdmin = ({ zones }: Props) => {
+export const UiAdmin = ({ zones, categories }: Props) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -173,7 +174,7 @@ export const UiAdmin = ({ zones }: Props) => {
             <div className={styles.contentWrapper}>
               {activeTab === "dashboard" && (
                 <div className={styles.tabPanel}>
-                  <UiFormOperator zones={zones} />
+                  <UiFormOperator zones={zones} categories={categories} />
                 </div>
               )}
 
