@@ -3,9 +3,7 @@
 import { OperatorTableRow } from "@/lib/type";
 import React from "react";
 import styles from "./info.module.css";
-import { PhoneIcon } from "@/lib/icons/phone-icon";
-import { WhatsApp } from "@/lib/icons/whatsApp";
-import { HeartIcon } from "@/lib/icons/heart-icon";
+import { UserIcon, PhoneIcon, WhatsApp, HeartIcon } from "@/lib/icons";
 
 interface Props {
   operator: OperatorTableRow | null;
@@ -16,7 +14,7 @@ export function Info({ operator }: Props) {
       <div className={styles.container__info__img}>
         <div className={styles.content_heard}>
           <img
-            src={operator?.logo ||  "/img/turismo.jpg"}
+            src={operator?.logo || "/img/turismo.jpg"}
             alt={operator?.name}
           />
           <button className={styles.heart__icon}>
@@ -25,7 +23,14 @@ export function Info({ operator }: Props) {
         </div>
       </div>
       <div className={styles.container__info__info}>
-        <h2 className={styles.title}>{operator?.name}</h2>
+        <h2 className={styles.title}>{operator?.name_company}</h2>
+        <div className={styles.phone}>
+          <UserIcon width={60} height={60} />
+          <div>
+            <p>Nombre del Contacto</p>
+            <p>{operator?.name}</p>
+          </div>
+        </div>
         <div className={styles.phone}>
           <PhoneIcon width={60} height={60} />
           <div>
