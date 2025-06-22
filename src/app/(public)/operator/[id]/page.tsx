@@ -1,4 +1,4 @@
-import { getOperatorById } from "@/lib/action";
+import { getDetailsOperator, getOperatorById } from "@/lib/action";
 import React from "react";
 import { Info } from "../section";
 
@@ -8,9 +8,10 @@ interface Props {
 export default async function Page({ params }: Props) {
   const { id } = await params;
   const operator = await getOperatorById(id);
+  const detailsOperator = await getDetailsOperator(id);
   return (
     <div>
-      <Info operator={operator.data} />
+      <Info operator={operator.data} details={detailsOperator.data} />
     </div>
   );
 }

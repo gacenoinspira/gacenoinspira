@@ -1,14 +1,15 @@
 "use client";
 
-import { OperatorTableRow } from "@/lib/type";
+import { DetailsOperatorTable, OperatorTableRow } from "@/lib/type";
 import React from "react";
 import styles from "./info.module.css";
 import { UserIcon, PhoneIcon, WhatsApp, HeartIcon } from "@/lib/icons";
 
 interface Props {
   operator: OperatorTableRow | null;
+  details: DetailsOperatorTable | null;
 }
-export function Info({ operator }: Props) {
+export function Info({ operator, details }: Props) {
   return (
     <div className={styles.container__info}>
       <div className={styles.container__info__img}>
@@ -18,7 +19,7 @@ export function Info({ operator }: Props) {
             alt={operator?.name}
           />
           <button className={styles.heart__icon}>
-            <HeartIcon width={60} height={60} />
+            <HeartIcon width={60} height={60} isLike={!!details?.is_favorite} />
           </button>
         </div>
       </div>
