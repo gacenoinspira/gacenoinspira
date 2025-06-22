@@ -17,8 +17,8 @@ export type Database = {
     Functions: {
       graphql: {
         Args: {
-          query?: string
           operationName?: string
+          query?: string
           variables?: Json
           extensions?: Json
         }
@@ -161,10 +161,13 @@ export type Database = {
           category_id: string
           created_at: string
           description: string
+          direction: string | null
           id: string
           lat: number
           lng: number
+          logo: string | null
           name: string
+          name_company: string | null
           phone: number
           zone_id: number
         }
@@ -172,10 +175,13 @@ export type Database = {
           category_id: string
           created_at?: string
           description: string
+          direction?: string | null
           id?: string
           lat: number
           lng: number
+          logo?: string | null
           name: string
+          name_company?: string | null
           phone: number
           zone_id: number
         }
@@ -183,10 +189,13 @@ export type Database = {
           category_id?: string
           created_at?: string
           description?: string
+          direction?: string | null
           id?: string
           lat?: number
           lng?: number
+          logo?: string | null
           name?: string
+          name_company?: string | null
           phone?: number
           zone_id?: number
         }

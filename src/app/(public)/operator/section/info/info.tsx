@@ -15,7 +15,10 @@ export function Info({ operator }: Props) {
     <div className={styles.container__info}>
       <div className={styles.container__info__img}>
         <div className={styles.content_heard}>
-          <img src={"/img/turismo.jpg"} alt={operator?.name} />
+          <img
+            src={operator?.logo ||  "/img/turismo.jpg"}
+            alt={operator?.name}
+          />
           <button className={styles.heart__icon}>
             <HeartIcon width={60} height={60} />
           </button>
