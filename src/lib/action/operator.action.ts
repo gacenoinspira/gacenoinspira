@@ -21,3 +21,21 @@ export const getOperators = async (): Promise<
     error: "",
   };
 };
+
+export const getOperatorById = async (
+  id: string
+): Promise<ResponseType<OperatorTableRow | null>> => {
+  const operator = await OperatorTable.getOperatorById(id);
+  if (!operator.id) {
+    return {
+      status: false,
+      data: null,
+      error: "Error al obtener el operador",
+    };
+  }
+  return {
+    status: true,
+    data: operator,
+    error: "",
+  };
+};

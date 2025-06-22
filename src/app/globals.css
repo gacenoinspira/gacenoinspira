@@ -10,7 +10,7 @@
   --background-white: #fff;
   --text: #51515;
   --title: #003049;
-  --gray: #EEEEEE;
+  --gray: #eeeeee;
 }
 
 * {
@@ -34,6 +34,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-anton);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-texto);
 }
 
 /* Main title animation styles */

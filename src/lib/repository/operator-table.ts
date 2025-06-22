@@ -27,4 +27,17 @@ export class OperatorTable {
     }
     return data as OperatorTableRow[];
   };
+
+  static getOperatorById = async (id: string): Promise<OperatorTableRow> => {
+    const supabase = await SupabaseServer();
+    const { data, error } = await supabase
+      .from("operator")
+      .select("*,category:category_id(name),zone:zone_id(name)")
+      .eq("id", id)
+      .single();
+    if (error) {
+      throw error;
+    }
+    return data as OperatorTableRow;
+  };
 }

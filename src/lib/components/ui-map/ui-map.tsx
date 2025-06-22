@@ -721,7 +721,7 @@ export function UiMap({ operators }: PropsMap) {
                   >
                     <button
                       onClick={() => {
-                        router.push(`/lugar/${popupInfo.id}`);
+                        router.push(`/operator/${popupInfo.id}`);
                       }}
                       className={styles.btn_link}
                     >
