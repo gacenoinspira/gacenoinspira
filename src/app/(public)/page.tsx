@@ -5,8 +5,10 @@ import { Carrusel } from "@/lib/carrusel/carrusel";
 import { sampleCards } from "@/lib/carrusel/data";
 import { AnimatedText } from "@/components/AnimatedText";
 import { CardZone } from "./components";
+import { getOperators } from "@/lib/action";
 
-export default function Home() {
+export default async function Home() {
+  const operators = await getOperators();
   return (
     <div>
       {/* <a
@@ -56,7 +58,7 @@ export default function Home() {
         </div>
       </section>
       <section className={styles.section_map}>
-        <UiMap />
+        <UiMap operators={operators.data || []} />
       </section>
       <section className={styles.section_cultura}>
         <p className={styles.title}>Explora cada rincón</p>

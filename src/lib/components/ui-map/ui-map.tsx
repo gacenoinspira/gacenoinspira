@@ -13,10 +13,11 @@ import Map, {
 } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./map.module.css";
-import Image from "next/image";
+import { OperatorTableRow } from "@/lib/type";
+import { useRouter } from "next/navigation";
 
 type Location = {
-  id: number;
+  id: string;
   name: string;
   coordinates: [number, number];
   description: string;
@@ -24,165 +25,6 @@ type Location = {
   category: string;
   img: string;
 };
-
-const locations: Location[] = [
-  {
-    id: 1,
-    name: "Centro de San Luis de Gaceno",
-    coordinates: [-73.16851, 4.82052] as [number, number],
-    description:
-      "El corazón del municipio, donde se encuentra la plaza principal y la iglesia.",
-    sector: 1,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 2,
-    name: "Mirador Natural",
-    coordinates: [-73.15851, 4.82552] as [number, number],
-    description:
-      "Vistas panorámicas increíbles de la región y el valle del río Gacena.",
-    sector: 1,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 3,
-    name: "Cascada La Chorrera",
-    coordinates: [-73.17234, 4.83567] as [number, number],
-    description:
-      "Hermosa cascada natural rodeada de vegetación nativa. Ideal para caminatas ecológicas.",
-    sector: 2,
-    category: "actividad",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 4,
-    name: "Puente Colonial",
-    coordinates: [-73.16289, 4.81876] as [number, number],
-    description:
-      "Antiguo puente de piedra sobre el río Gacena, patrimonio histórico del municipio.",
-    sector: 2,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 5,
-    name: "Parque Central",
-    coordinates: [-73.17, 4.815] as [number, number],
-    description:
-      "Área verde para el esparcimiento familiar en el centro de la ciudad.",
-    sector: 3,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 6,
-    name: "Mirador del Sur",
-    coordinates: [-73.16, 4.815] as [number, number],
-    description: "Vistas panorámicas hacia el sur del municipio.",
-    sector: 4,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 7,
-    name: "Plaza Bolivar",
-    coordinates: [-73.165, 4.82] as [number, number],
-    description:
-      "Plaza principal del municipio, rodeada de edificios históricos y monumentos.",
-    sector: 1,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 8,
-    name: "Casa de la Cultura",
-    coordinates: [-73.168, 4.822] as [number, number],
-    description:
-      "Institución que promueve la cultura y el arte en el municipio.",
-    sector: 1,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 9,
-    name: "Parque de la Vida Silvestre",
-    coordinates: [-73.175, 4.828] as [number, number],
-    description: "Reserva natural con variedad de flora y fauna silvestre.",
-    sector: 2,
-    category: "actividad",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 10,
-    name: "Iglesia de Nuestra Se ora de los Dolores",
-    coordinates: [-73.163, 4.821] as [number, number],
-    description: "Iglesia católica del siglo XIX, con arquitectura colonial.",
-    sector: 2,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 11,
-    name: "Museo de la Ciudad",
-    coordinates: [-73.162, 4.819] as [number, number],
-    description: "Museo que expone la historia y patrimonio del municipio.",
-    sector: 3,
-    category: "lugares",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 12,
-    name: "Festival de la Cosecha",
-    coordinates: [-73.166, 4.818] as [number, number],
-    description:
-      "Celebración anual de la cosecha local con música en vivo, comida típica y muestras culturales.",
-    sector: 1,
-    category: "eventos",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 13,
-    name: "Feria Artesanal",
-    coordinates: [-73.164, 4.817] as [number, number],
-    description:
-      "Exposición y venta de artesanías locales. Último fin de semana de cada mes.",
-    sector: 1,
-    category: "eventos",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 14,
-    name: "Noche de Poesía",
-    coordinates: [-73.168, 4.822] as [number, number],
-    description:
-      "Lecturas poéticas al aire libre en la Casa de la Cultura. Todos los jueves a las 7 PM.",
-    sector: 1,
-    category: "eventos",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 15,
-    name: "Carrera de la Montaña",
-    coordinates: [-73.17, 4.83] as [number, number],
-    description:
-      "Carrera de aventura por los senderos naturales del municipio. Incluye categorías para todas las edades.",
-    sector: 2,
-    category: "eventos",
-    img: "/img/turismo.jpg",
-  },
-  {
-    id: 16,
-    name: "Festival Gastronómico",
-    coordinates: [-73.165, 4.82] as [number, number],
-    description:
-      "Muestra de la gastronomía local con participación de los mejores restaurantes de la región.",
-    sector: 1,
-    category: "eventos",
-    img: "/img/turismo.jpg",
-  },
-];
 
 const sectorColors = {
   1: "#3b82f6", // azul
@@ -196,8 +38,6 @@ const categoryColors = {
   lugares: "#10b981",
   actividad: "#10b981",
 };
-
-const allCategories = Array.from(new Set(locations.map((loc) => loc.category)));
 
 const FlyToInterpolator = {
   flyTo: (map: any, options: any) => {
@@ -220,7 +60,11 @@ const mapStyles = {
   satelliteStreets: "mapbox://styles/mapbox/satellite-streets-v11",
 };
 
-export function UiMap() {
+interface PropsMap {
+  operators: OperatorTableRow[];
+}
+
+export function UiMap({ operators }: PropsMap) {
   const mapRef = useRef<MapRef>(null);
   const [popupInfo, setPopupInfo] = useState<Location | null>(null);
   const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
@@ -228,6 +72,7 @@ export function UiMap() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mapStyle, setMapStyle] = useState<string>(mapStyles.street);
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
   interface ViewStateType {
     longitude: number;
     latitude: number;
@@ -248,11 +93,24 @@ export function UiMap() {
     transitionInterpolator: FlyToInterpolator,
   });
 
+  const operatorsList = operators.map((operator) => ({
+    id: operator.id,
+    name: operator.name,
+    coordinates: [operator.lng, operator.lat] as [number, number],
+    description: operator.description,
+    sector: operator.zone_id,
+    category: operator.category?.name || "",
+    img: "/img/turismo.jpg",
+  }));
+  const allCategories = Array.from(
+    new Set(operatorsList.map((loc) => loc.category))
+  );
+
   // Add state for pulsing markers and hover effects
-  const [pulsingMarkers, setPulsingMarkers] = useState<Record<number, boolean>>(
+  const [pulsingMarkers, setPulsingMarkers] = useState<Record<string, boolean>>(
     {}
   );
-  const [hoveredMarker, setHoveredMarker] = useState<number | null>(null);
+  const [hoveredMarker, setHoveredMarker] = useState<string | null>(null);
 
   // Helper function to update view state while preserving transition properties
   const updateViewState = useCallback((newState: Partial<ViewStateType>) => {
@@ -274,7 +132,7 @@ export function UiMap() {
     }, 100);
   }, []);
 
-  const filteredLocations = locations.filter((location) => {
+  const filteredLocations = operatorsList.filter((location) => {
     const matchesSector = !selectedSector || location.sector === selectedSector;
     const matchesCategory =
       !selectedCategory || location.category === selectedCategory;
@@ -711,7 +569,7 @@ export function UiMap() {
                   pulse={pulsingMarkers[location.id] || false}
                   onClick={(e: any) => handleMarkerClick(e, location)}
                 />
-                {hoveredMarker === location.id && (
+                {hoveredMarker && (
                   <div
                     style={{
                       position: "absolute",
@@ -862,9 +720,9 @@ export function UiMap() {
                     }}
                   >
                     <button
-                      onClick={() =>
-                        (window.location.href = `/lugar/${popupInfo.id}`)
-                      }
+                      onClick={() => {
+                        router.push(`/lugar/${popupInfo.id}`);
+                      }}
                       className={styles.btn_link}
                     >
                       <span>Ver más detalles</span>
