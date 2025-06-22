@@ -1,6 +1,6 @@
 import { getDetailsOperator, getOperatorById } from "@/lib/action";
 import React from "react";
-import { Info } from "../section";
+import { Description, Info } from "../section";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -12,6 +12,9 @@ export default async function Page({ params }: Props) {
   return (
     <div>
       <Info operator={operator.data} details={detailsOperator.data} />
+      <Description
+        description={operator.data?.description || "No hay descripción"}
+      />
     </div>
   );
 }

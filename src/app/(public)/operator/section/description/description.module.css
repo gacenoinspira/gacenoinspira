@@ -1,0 +1,15 @@
+.container__description {
+  background-color: #50c3c8;
+  min-height: 312px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  .info {
+    font-size: 32px;
+    text-align: center;
+    width: 80%;
+  }
+}
