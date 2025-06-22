@@ -5,6 +5,7 @@ import React from "react";
 import styles from "./info.module.css";
 import { PhoneIcon } from "@/lib/icons/phone-icon";
 import { WhatsApp } from "@/lib/icons/whatsApp";
+import { HeartIcon } from "@/lib/icons/heart-icon";
 
 interface Props {
   operator: OperatorTableRow | null;
@@ -13,7 +14,12 @@ export function Info({ operator }: Props) {
   return (
     <div className={styles.container__info}>
       <div className={styles.container__info__img}>
-        <img src={"/img/turismo.jpg"} alt={operator?.name} />
+        <div className={styles.content_heard}>
+          <img src={"/img/turismo.jpg"} alt={operator?.name} />
+          <button className={styles.heart__icon}>
+            <HeartIcon width={60} height={60} />
+          </button>
+        </div>
       </div>
       <div className={styles.container__info__info}>
         <h2 className={styles.title}>{operator?.name}</h2>
