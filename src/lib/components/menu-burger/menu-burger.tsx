@@ -2,19 +2,25 @@
 
 import React, { useEffect, useRef } from "react";
 import styles from "./menuBurger.module.css";
-import Link from "next/link";
+import { UiLink } from "../ui-link/ui-link";
+import { logoutAction } from "@/lib/action";
+import { UserType } from "@/lib/type";
+import { UserStore } from "@/lib/store/user.store";
+
+interface Props {
+  user: UserType | null;
+}
 
 const menuItems = [
   { name: "Inicio", href: "/" },
-  { name: "¿Dónde ir?", href: "/where" },
-  { name: "¿Qué hacer?", href: "/what" },
-  { name: "Galería", href: "/gallery" },
-  { name: "Contacto", href: "/contact" },
+  { name: "Planifica", href: "/where" },
+  { name: "Blog", href: "/blog" },
 ];
 
-export function MenuBurger() {
+export function MenuBurger({ user }: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const setUser = UserStore((set) => set.setUser);
 
   // Cerrar menú al hacer clic fuera
   useEffect(() => {
@@ -50,15 +56,48 @@ export function MenuBurger() {
         <div className={styles.dropdownMenu}>
           <nav className={styles.nav}>
             {menuItems.map((item) => (
-              <Link
+              <UiLink
                 key={item.href}
+                namePath={item.name}
                 href={item.href}
                 className={styles.menuItem}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
+              />
             ))}
+            {user?.user_id ? (
+              <>
+                <UiLink
+                  namePath="Perfil"
+                  href="/profile"
+                  className={`${styles.menuItem}`}
+                />
+                <UiLink
+                  namePath="Admin"
+                  href="/admin"
+                  className={`${styles.menuItem}`}
+                />
+                <button
+                  onClick={() => {
+                    setUser(null);
+                    logoutAction();
+                  }}
+                >
+                  Cerrar Sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <UiLink
+                  namePath="Login"
+                  href="/login"
+                  className={`${styles.menuItem}`}
+                />
+                <UiLink
+                  namePath="Registrarse"
+                  href="/register"
+                  className={`${styles.menuItem}`}
+                />
+              </>
+            )}
           </nav>
         </div>
       )}

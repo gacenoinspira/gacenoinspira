@@ -25,7 +25,7 @@ export function UiHeader({ userDb }: HeaderProp) {
       <div>
         <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
       </div>
-      <MenuBurger />
+      <MenuBurger user={user} />
       <nav className={styles.nav}>
         <UiLink
           namePath="INICIO"
