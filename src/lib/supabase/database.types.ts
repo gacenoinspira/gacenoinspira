@@ -103,17 +103,17 @@ export type Database = {
       category: {
         Row: {
           created_at: string
-          id: string
+          id: number
           name: string
         }
         Insert: {
           created_at?: string
-          id?: string
+          id?: number
           name: string
         }
         Update: {
           created_at?: string
-          id?: string
+          id?: number
           name?: string
         }
         Relationships: []
@@ -158,11 +158,12 @@ export type Database = {
       }
       operator: {
         Row: {
-          category_id: string
+          category_id: number
           created_at: string
           description: string
           direction: string | null
           id: string
+          img: string[] | null
           lat: number
           lng: number
           logo: string | null
@@ -172,11 +173,12 @@ export type Database = {
           zone_id: number
         }
         Insert: {
-          category_id: string
+          category_id: number
           created_at?: string
           description: string
           direction?: string | null
           id?: string
+          img?: string[] | null
           lat: number
           lng: number
           logo?: string | null
@@ -186,11 +188,12 @@ export type Database = {
           zone_id: number
         }
         Update: {
-          category_id?: string
+          category_id?: number
           created_at?: string
           description?: string
           direction?: string | null
           id?: string
+          img?: string[] | null
           lat?: number
           lng?: number
           logo?: string | null
