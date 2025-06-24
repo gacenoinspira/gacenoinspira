@@ -27,7 +27,7 @@ type Props = {
 export function UiFormOperator({ zones, categories }: Props) {
   const [location, setLocation] = useState<Location | null>(null);
   const [zone, setZone] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<number>(0);
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -55,7 +55,7 @@ export function UiFormOperator({ zones, categories }: Props) {
     console.log(resp);
     if (resp.status) {
       setZone("");
-      setCategory("");
+      setCategory(0);
       setLocation(null);
       setName("");
       setDescription("");
@@ -107,7 +107,7 @@ export function UiFormOperator({ zones, categories }: Props) {
         <select
           name="category"
           id=""
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(Number(e.target.value))}
           value={category}
         >
           <option value="">Selecciona una categoria</option>
