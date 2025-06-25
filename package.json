@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type": "tsc --noEmit"
+    "type": "tsc --noEmit",
+    "genType": "pnpm supabase gen types typescript --local > ./src/lib/supabase/database.types.ts",
+    "supabase:updateDB": "pnpm supabase db diff --use-migra -f"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

@@ -1,3 +1,4 @@
+export * from "./comments-icon";
 export * from "./heart-icon";
 export * from "./img-icon";
 export * from "./phone-icon";

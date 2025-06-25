@@ -4,12 +4,14 @@ import { DetailsOperatorTable, OperatorTableRow } from "@/lib/type";
 import React from "react";
 import styles from "./info.module.css";
 import { UserIcon, PhoneIcon, WhatsApp, HeartIcon } from "@/lib/icons";
+import { UserStore } from "@/lib/store/user.store";
 
 interface Props {
   operator: OperatorTableRow | null;
-  details: DetailsOperatorTable | null;
+  details: DetailsOperatorTable[] | null;
 }
 export function Info({ operator, details }: Props) {
+  const user = UserStore((item) => item.user);
   return (
     <div className={styles.container__info}>
       <div className={styles.container__info__img}>
@@ -19,7 +21,14 @@ export function Info({ operator, details }: Props) {
             alt={operator?.name}
           />
           <button className={styles.heart__icon}>
-            <HeartIcon width={60} height={60} isLike={!!details?.is_favorite} />
+            <HeartIcon
+              width={60}
+              height={60}
+              isLike={
+                !!details?.find((detail) => detail.user_id === user?.user_id)
+                  ?.is_favorite
+              }
+            />
           </button>
         </div>
       </div>

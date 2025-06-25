@@ -5,11 +5,11 @@ import { DetailsOperatorTable, ResponseType } from "../type";
 
 export async function getDetailsOperator(
   id: string
-): Promise<ResponseType<DetailsOperatorTable | null>> {
+): Promise<ResponseType<DetailsOperatorTable[] | null>> {
   const detailsOperator = await DetailsOperatorRepository.getDetailsOperator(
     id
   );
-  if (!detailsOperator?.id) {
+  if (!detailsOperator?.length) {
     return {
       status: false,
       data: null,

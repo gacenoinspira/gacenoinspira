@@ -17,8 +17,8 @@ export type Database = {
     Functions: {
       graphql: {
         Args: {
-          operationName?: string
           query?: string
+          operationName?: string
           variables?: Json
           extensions?: Json
         }
@@ -154,6 +154,13 @@ export type Database = {
             referencedRelation: "operator"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "details_operator_user_id_fkey1"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user"
+            referencedColumns: ["id"]
+          },
         ]
       }
       operator: {
@@ -259,18 +266,21 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          name: string
           rol: number
           user_id: string
         }
         Insert: {
           created_at?: string
           id?: string
+          name: string
           rol: number
           user_id?: string
         }
         Update: {
           created_at?: string
           id?: string
+          name?: string
           rol?: number
           user_id?: string
         }
