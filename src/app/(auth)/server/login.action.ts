@@ -48,9 +48,11 @@ export const loginAction = async ({
 export const registerAction = async ({
   email,
   password,
+  name,
 }: {
   email: string;
   password: string;
+  name: string;
 }): Promise<ResponseType<UserType | null>> => {
   const supabase = await SupabaseServer();
   const { data, error } = await supabase.auth.signUp({
@@ -67,7 +69,7 @@ export const registerAction = async ({
   const user = await UserTable.registerUser({
     rol: data.user?.email?.includes("jeysonkm") ? 1 : 2,
     user_id: data.user?.id,
-    name: "",
+    name: name,
   });
   if (!user.status) {
     return {
