@@ -1,6 +1,7 @@
 import { getDetailsOperator, getOperatorById } from "@/lib/action";
 import React from "react";
 import { Comments, Description, Galeria, Info } from "../section";
+import { AddComments } from "../section/add-comments/add-comments";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -17,6 +18,7 @@ export default async function Page({ params }: Props) {
       />
       <Galeria data={operator.data} />
       <Comments comments={detailsOperator.data || []} />
+      <AddComments />
     </div>
   );
 }
