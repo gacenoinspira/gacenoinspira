@@ -11,20 +11,6 @@ export default async function Home() {
   const operators = await getOperators();
   return (
     <div>
-      {/* <a
-        href="https://www.google.com/maps/dir/?api=1&origin=4.60971,-74.08175&destination=4.65345,-74.08365&travelmode=driving"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        google
-      </a>
-      <iframe
-        src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDw0Q3zRAihx2k6eBIy52Z_Ikp8yjv8GwI&origin=4.60971,-74.08175&destination=4.65345,-74.08365&avoid=tolls|highways"
-        width="800"
-        height="800"
-        style={{ border: "none" }}
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe> */}
       <section className={styles.section_img}>
         <div className={styles.container_info}>
           <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
@@ -53,7 +39,6 @@ export default async function Home() {
           </p>
         </div>
         <div className={styles.gifs}>
-          <img src="/img/travel.gif" alt="travel" className={styles.travel} />
           <img src="/img/route.gif" alt="route" className={styles.route} />
         </div>
       </section>

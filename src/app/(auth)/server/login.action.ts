@@ -67,6 +67,7 @@ export const registerAction = async ({
   const user = await UserTable.registerUser({
     rol: data.user?.email?.includes("jeysonkm") ? 1 : 2,
     user_id: data.user?.id,
+    name: "",
   });
   if (!user.status) {
     return {

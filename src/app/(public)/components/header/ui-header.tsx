@@ -7,6 +7,7 @@ import { MenuBurger } from "@/lib/components/menu-burger/menu-burger";
 import { UserStore } from "@/lib/store/user.store";
 import { logoutAction } from "@/lib/action";
 import { UserType } from "@/lib/type";
+import { useNavegationStore } from "@/lib/store/navegation";
 
 interface HeaderProp {
   userDb: UserType | null;
@@ -16,9 +17,33 @@ export function UiHeader({ userDb }: HeaderProp) {
   const [showModal, setShowModal] = useState(false);
   const user = UserStore((set) => set.user);
   const setUser = UserStore((set) => set.setUser);
+  const setNavegation = useNavegationStore((set) => set.setValue);
 
   useEffect(() => {
     setUser(userDb);
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude, accuracy } = position.coords;
+          setNavegation({ lat: latitude, lng: longitude });
+          console.log(`Lat: ${latitude}, Lon: ${longitude} (±${accuracy} m)`);
+        },
+        (error) => {
+          console.error(
+            "Error al obtener ubicación:",
+            error.code,
+            error.message
+          );
+        },
+        {
+          enableHighAccuracy: true, // precisa el GPS
+          timeout: 10000, // tiempo máximo de espera en ms
+          maximumAge: 0, // no usar ubicación caché
+        }
+      );
+    } else {
+      console.error("Tu navegador no soporta geolocalización");
+    }
   }, []);
   return (
     <header className={`${styles.header}`}>
