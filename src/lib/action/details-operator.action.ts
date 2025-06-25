@@ -1,7 +1,11 @@
 "use server";
 
 import { DetailsOperatorRepository } from "../repository/details-operator";
-import { DetailsOperatorTable, ResponseType } from "../type";
+import {
+  DetailsOperatorTable,
+  DetailsOperatorTableInsert,
+  ResponseType,
+} from "../type";
 
 export async function getDetailsOperator(
   id: string
@@ -22,3 +26,21 @@ export async function getDetailsOperator(
     error: "",
   };
 }
+
+export const addComment = async (
+  body: DetailsOperatorTableInsert
+): Promise<ResponseType<DetailsOperatorTable | null>> => {
+  const detailsOperator = await DetailsOperatorRepository.addComment(body);
+  if (!detailsOperator?.id) {
+    return {
+      status: false,
+      data: null,
+      error: "Error al obtener el detalle del operador",
+    };
+  }
+  return {
+    status: true,
+    data: detailsOperator,
+    error: "",
+  };
+};

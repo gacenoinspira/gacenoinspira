@@ -18,7 +18,7 @@ export default async function Page({ params }: Props) {
       />
       <Galeria data={operator.data} />
       <Comments comments={detailsOperator.data || []} />
-      <AddComments />
+      <AddComments id={id} />
     </div>
   );
 }

@@ -4,18 +4,29 @@ import React, { useState } from "react";
 import styles from "./add-comments.module.css";
 import { StarIcon } from "@/lib/icons/star-icon";
 import { UserStore } from "@/lib/store/user.store";
+import { addComment } from "@/lib/action";
 
-export function AddComments() {
+export function AddComments({ id }: { id: string }) {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const user = UserStore((item) => item.user);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!comment.trim()) return;
     console.log("Comment submitted:", comment);
-    // Here you would typically call an API to save the comment
+    const resp = await addComment({
+      notes: comment.trim(),
+      start: rating,
+      user_id: user?.user_id,
+      id_operator: id,
+    });
+    if (!resp.status) {
+      alert(resp.error);
+      return;
+    }
     setComment("");
+    setRating(0);
   };
   return (
     <div className={styles.container}>
@@ -71,7 +82,7 @@ export function AddComments() {
         <button
           type="submit"
           className={styles.submitButton}
-          disabled={!user?.user_id}
+          disabled={!user?.user_id && (rating === 0 || comment.trim() === "")}
         >
           {user?.user_id ? "Enviar comentario" : "Inicia sesión para comentar"}
         </button>

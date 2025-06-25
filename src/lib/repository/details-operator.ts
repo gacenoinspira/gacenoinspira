@@ -1,5 +1,5 @@
 import { SupabaseServer } from "../supabase/connection/supabase-server";
-import { DetailsOperatorTable } from "../type";
+import { DetailsOperatorTable, DetailsOperatorTableInsert } from "../type";
 
 export class DetailsOperatorRepository {
   static async getDetailsOperator(
@@ -14,5 +14,20 @@ export class DetailsOperatorRepository {
       return null;
     }
     return data as DetailsOperatorTable[];
+  }
+
+  static async addComment(
+    body: DetailsOperatorTableInsert
+  ): Promise<DetailsOperatorTable | null> {
+    const supabase = await SupabaseServer();
+    const { data, error } = await supabase
+      .from("details_operator")
+      .insert(body)
+      .select("*")
+      .single();
+    if (error) {
+      return null;
+    }
+    return data as DetailsOperatorTable;
   }
 }
