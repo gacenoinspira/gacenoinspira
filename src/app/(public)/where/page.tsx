@@ -11,36 +11,6 @@ export default function Page() {
       </div>
       <div className={styles.card}>
         <ContainerCards />
-        {/* <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        /> */}
       </div>
     </div>
   );

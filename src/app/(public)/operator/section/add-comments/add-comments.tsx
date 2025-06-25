@@ -10,17 +10,19 @@ export function AddComments({ id }: { id: string }) {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const user = UserStore((item) => item.user);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!comment.trim()) return;
-    console.log("Comment submitted:", comment);
+    setLoading(true);
     const resp = await addComment({
       notes: comment.trim(),
       start: rating,
       user_id: user?.user_id,
       id_operator: id,
     });
+    setLoading(false);
     if (!resp.status) {
       alert(resp.error);
       return;
@@ -84,7 +86,11 @@ export function AddComments({ id }: { id: string }) {
           className={styles.submitButton}
           disabled={!user?.user_id && (rating === 0 || comment.trim() === "")}
         >
-          {user?.user_id ? "Enviar comentario" : "Inicia sesión para comentar"}
+          {user?.user_id
+            ? loading
+              ? "Enviando..."
+              : "Enviar comentario"
+            : "Inicia sesión para comentar"}
         </button>
       </form>
     </div>

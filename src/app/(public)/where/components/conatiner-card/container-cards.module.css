@@ -5,7 +5,17 @@
   padding: 20px;
 
   height: 600px;
-  max-height: 600px;
+
+
+  @media (width < 720px) {
+    grid:
+      "zona" 1fr
+      "card" 1fr
+      "img" 1fr
+      / 1fr;
+    min-height: 600px;
+    height: auto;
+  }
 
   .zona {
     grid-area: zona;
