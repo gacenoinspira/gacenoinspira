@@ -84,7 +84,7 @@ export function UiHeader({ userDb }: HeaderProp) {
               <>
                 <UiLink
                   namePath="Perfil"
-                  href="/profile"
+                  href="/perfil"
                   className={`${styles.link}`}
                 />
                 <UiLink

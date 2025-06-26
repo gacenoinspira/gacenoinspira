@@ -1,0 +1,146 @@
+.profileContainer {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.welcomeText {
+  color: #1e3a8a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.descriptionText {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  max-width: 80%;
+}
+
+.userInfo {
+  margin-top: 1.5rem;
+}
+
+.userName {
+  color: #1e3a8a;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.userRole {
+  color: #1e3a8a;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.avatarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+}
+
+.avatarInitials {
+  color: #9ca3af;
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  display: block;
+  color: #ef4444;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  color: #f97316;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .profileHeader {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .statsContainer {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .avatarInitials {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profileContainer {
+    padding: 3rem;
+  }
+
+  .welcomeText {
+    font-size: 2.5rem;
+  }
+
+  .avatar {
+    width: 250px;
+    height: 250px;
+  }
+
+  .avatarInitials {
+    font-size: 5rem;
+  }
+}
