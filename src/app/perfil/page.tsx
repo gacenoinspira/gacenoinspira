@@ -1,10 +1,11 @@
 import React from "react";
-import { InfoUser } from "./section";
+import { Favorite, InfoUser } from "./section";
 
 export default function Perfil() {
   return (
     <div>
       <InfoUser />
+      <Favorite />
     </div>
   );
 }
