@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./ui-card.module.css";
+import { useRouter } from "next/navigation";
 
 interface UiCardProps {
   title: string;
@@ -23,6 +24,7 @@ export function UiCard({
   location = "Ubicación",
 }: UiCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const router = useRouter();
 
   // const toggleExpand = (e: React.MouseEvent) => {
   //   e.stopPropagation();
@@ -54,7 +56,10 @@ export function UiCard({
           )}
           <p className={styles.description}>{description}</p>
         </div>
-        <button className={styles.viewButton}>
+        <button
+          className={styles.viewButton}
+          onClick={() => router.push(`/poblado/${title}`)}
+        >
           {isExpanded ? "Ver menos" : "Ver más"}
         </button>
       </div>
