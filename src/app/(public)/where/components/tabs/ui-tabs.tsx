@@ -1,83 +1,69 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 
+const tabs = [
+  { id: "5", label: "Centro Poblado San Carlos del Guavio" },
+  { id: "4", label: "Centro Poblado La Mesa" },
+  { id: "3", label: "Centro Poblado Horizontes" },
+  { id: "2", label: "Centro Poblado Santa Teresa" },
+  { id: "1", label: "Centro Poblado Guamal" },
+];
+
 export function UiTabs() {
   const { tab: numberTab, setTab: updateTab } = useTabsStore((set) => set);
-  const [tab, setTab] = useState<string>(numberTab);
+  const [activeTab, setActiveTab] = useState<string>(numberTab);
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    updateTab(tabId);
+  };
+
   return (
-    <div className={styles.tab_container}>
-      <div className={styles.tab_container_img}>
-        <img src={`/tab/tab${tab}.png`} alt="tab" className={styles.img} />
-
-        <button
-          className={`${styles.tab} ${styles.tab__uno}`}
-          onClick={() => {
-            setTab("5");
-            updateTab("5");
-          }}
-        >
-          Tab 1
-        </button>
-        <button
-          className={`${styles.tab} ${styles.tab__dos}`}
-          onClick={() => {
-            setTab("4");
-            updateTab("4");
-          }}
-        >
-          Tab 2
-        </button>
-        <button
-          className={`${styles.tab} ${styles.tab__tres}`}
-          onClick={() => {
-            setTab("3");
-            updateTab("3");
-          }}
-        >
-          Tab 3
-        </button>
-        <button
-          className={`${styles.tab} ${styles.tab__cuatro}`}
-          onClick={() => {
-            setTab("2");
-            updateTab("2");
-          }}
-        >
-          Tab 4
-        </button>
-        <button
-          className={`${styles.tab} ${styles.tab__cuatro_uno}`}
-          onClick={() => {
-            setTab("2");
-            updateTab("2");
-          }}
-        ></button>
-        <button
-          className={`${styles.tab} ${styles.tab__cinco}`}
-          onClick={() => {
-            setTab("1");
-            updateTab("1");
-          }}
-        >
-          tab 5
-        </button>
-
-        <div className={styles.centros_text}>
-          <p className={styles.principal}>5 centros poblados</p>
-          <p className={styles.secundario}>
-            cinco maneras únicas de vivir el alma de Boyacá.
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.headerContent}>
+          <h2 className={styles.title}>5 centros poblados</h2>
+          <p className={styles.subtitle}>
+            Cinco maneras únicas de vivir el alma de Boyacá
           </p>
         </div>
+      </div>
 
-        <div className={styles.selection_text}>
-          <p className={styles.principal}>Selecciona</p>
-          <p className={styles.secundario}>
-            El un centro poblado y conoce más de su oferta turistica
-          </p>
+      <div className={styles.tabsContainer}>
+        <div className={styles.tabs}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`${styles.tab} ${
+                activeTab === tab.id ? styles.tabActive : ""
+              }`}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className={styles.tabContent}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={`/tab/tab${activeTab}.png`}
+              alt={`Tab ${activeTab} content`}
+              width={1200}
+              height={800}
+              className={styles.image}
+              priority
+            />
+          </div>
+
+          <div className={styles.selectionText}>
+            <h3>Selecciona</h3>
+            <p>Un centro poblado y conoce más de su oferta turística</p>
+          </div>
         </div>
       </div>
     </div>

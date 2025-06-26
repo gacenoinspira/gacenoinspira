@@ -15,7 +15,7 @@ const zoneName: Record<
     info: "Rodeado de montañas y caminos rurales, Guamal es ideal para los amantes del senderismo, el avistamiento de aves y los deportes de agua. Aquí el turismo de aventura cobra vida entre pozos, ríos y rutas escondidas",
   },
   "2": {
-    titulo: "Centro Poblado Santa Tereza",
+    titulo: "Centro Poblado Santa Teresa",
     descriptio: "Encuentro con la paz interior.",
     info: "Santa Teresa es ideal para desconectar y reconectar. Su entorno natural, su gente cálida y su tranquilidad lo hacen perfecto para caminatas suaves, retiros o actividades culturales.",
   },
@@ -30,7 +30,7 @@ const zoneName: Record<
     info: "La Mesa ofrece experiencias rurales auténticas, desde recorridos por cafetales hasta talleres de cocina local. Aquí la tierra se siente y se saborea.",
   },
   "5": {
-    titulo: "Centro Poblado San Carlos",
+    titulo: "Centro Poblado San Carlos del Guavio",
     descriptio: "Corazón cultural y festivo del municipio.",
     info: "Centro administrativo y social, aquí confluyen la historia, la música, la danza y las tradiciones más vivas. Es el punto de encuentro para grandes festividades y mercados",
   },

@@ -1,124 +1,164 @@
-.tab_container {
+.container {
   width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+
+.headerContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: var(--color-texto);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+.tabsContainer {
+  margin-bottom: 2rem;
+}
+
+.tabs {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: center;
-  padding: 40px;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+}
 
-  .tab_container_img {
-    width: 914px;
-    height: 700px;
-    position: relative;
+.tab {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #4a5568;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
 
-    .img {
-      width: 100%;
-      height: 100%;
-    }
+.tab:hover {
+  background-color: #f7fafc;
+  border-color: #cbd5e0;
+}
 
-    .tab {
-      position: absolute;
-      cursor: pointer;
+.tabActive {
+  background-color: #2b6cb0;
+  color: white;
+  border-color: #2b6cb0;
+}
 
-      &.tab__uno {
-        top: 70px;
-        left: 200px;
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        border: none;
-        background-color: transparent;
-      }
+.tabActive:hover {
+  background-color: #2c5282;
+  border-color: #2c5282;
+}
 
-      &.tab__dos {
-        top: 140px;
-        left: 430px;
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        border: none;
-        background-color: transparent;
-      }
+.tabContent {
+  padding: 0;
+  text-align: center;
+}
 
-      &.tab__tres {
-        top: 280px;
-        left: 230px;
-        border-radius: 50%;
-        width: 170px;
-        height: 170px;
-        border: none;
-        background-color: transparent;
-      }
+.imageContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-      &.tab__cuatro {
-        top: 350px;
-        left: 430px;
-        border-radius: 50%;
-        width: 190px;
-        height: 190px;
-        border: none;
-        background-color: transparent;
-      }
-      &.tab__cuatro_uno {
-        top: 320px;
-        left: 590px;
-        border-radius: 50%;
-        width: 130px;
-        height: 130px;
-        border: none;
-        background-color: transparent;
-      }
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+}
 
-      &.tab__cinco {
-        top: 480px;
-        left: 250px;
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        border: none;
-        background-color: transparent;
-      }
-    }
+.selectionText {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #4a5568;
+}
 
-    .centros_text {
-      position: absolute;
-      top: 10px;
-      left: -380px;
-      color: var(--color-texto);
-      width: 481px;
-      height: 216px;
+.selectionText h3 {
+  font-size: 1.3rem;
+  color: var(--color-texto);
+  margin-bottom: 0.5rem;
+}
 
-      .principal {
-        font-size: 64px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 1;
-      }
+.selectionText p {
+  color: #718096;
+  margin: 0;
+  font-size: 1rem;
+}
 
-      .secundario {
-        font-size: 36px;
-        text-align: center;
-      }
-    }
+/* Responsive styles */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .selectionText h3 {
+    font-size: 1.3rem;
+  }
+  
+  .selectionText p {
+    font-size: 1rem;
+  }
+}
 
-    .selection_text {
-      position: absolute;
-      bottom: 10px;
-      right: -280px;
-      color: var(--color-texto);
-      width: 481px;
-      height: 216px;
-
-      .principal {
-        font-size: 64px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 1;
-      }
-
-      .secundario {
-        font-size: 36px;
-        text-align: center;
-      }
-    }
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .header {
+    padding: 0.75rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .tabs {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .tabContent {
+    padding: 1rem;
   }
 }
