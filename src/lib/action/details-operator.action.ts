@@ -1,9 +1,11 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { DetailsOperatorRepository } from "../repository/details-operator";
 import {
   DetailsOperatorTable,
   DetailsOperatorTableInsert,
+  DetailsOperatorTableUpdate,
   ResponseType,
 } from "../type";
 
@@ -38,6 +40,31 @@ export const addComment = async (
       error: "Error al obtener el detalle del operador",
     };
   }
+  revalidatePath(`/operator/${body.id_operator}`);
+  return {
+    status: true,
+    data: detailsOperator,
+    error: "",
+  };
+};
+
+export const updateDetails = async (
+  body: DetailsOperatorTableUpdate,
+  id: string,
+  accountId: string
+): Promise<ResponseType<DetailsOperatorTable | null>> => {
+  const detailsOperator = await DetailsOperatorRepository.updateDetails(
+    body,
+    id
+  );
+  if (!detailsOperator?.id) {
+    return {
+      status: false,
+      data: null,
+      error: "Error al obtener el detalle del operador",
+    };
+  }
+  revalidatePath(`/operator/${accountId}`);
   return {
     status: true,
     data: detailsOperator,

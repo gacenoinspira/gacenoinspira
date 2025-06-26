@@ -70,6 +70,7 @@ export const registerAction = async ({
     rol: data.user?.email?.includes("jeysonkm") ? 1 : 2,
     user_id: data.user?.id,
     name: name,
+    id: data.user?.id,
   });
   if (!user.status) {
     return {

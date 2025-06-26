@@ -1,5 +1,9 @@
 import { SupabaseServer } from "../supabase/connection/supabase-server";
-import { DetailsOperatorTable, DetailsOperatorTableInsert } from "../type";
+import {
+  DetailsOperatorTable,
+  DetailsOperatorTableInsert,
+  DetailsOperatorTableUpdate,
+} from "../type";
 
 export class DetailsOperatorRepository {
   static async getDetailsOperator(
@@ -23,6 +27,23 @@ export class DetailsOperatorRepository {
     const { data, error } = await supabase
       .from("details_operator")
       .insert(body)
+      .select("*")
+      .single();
+    if (error) {
+      return null;
+    }
+    return data as DetailsOperatorTable;
+  }
+
+  static async updateDetails(
+    body: DetailsOperatorTableUpdate,
+    id: string
+  ): Promise<DetailsOperatorTable | null> {
+    const supabase = await SupabaseServer();
+    const { data, error } = await supabase
+      .from("details_operator")
+      .update(body)
+      .eq("id", id)
       .select("*")
       .single();
     if (error) {
