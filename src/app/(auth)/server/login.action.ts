@@ -67,7 +67,11 @@ export const registerAction = async ({
     };
   }
   const user = await UserTable.registerUser({
-    rol: data.user?.email?.includes("jeysonkm") ? 1 : 2,
+    rol: data.user?.email?.includes(
+      process.env.ADMIN_EMAIL ?? "gacenoinspira@gmail.com"
+    )
+      ? 1
+      : 2,
     user_id: data.user?.id,
     name: name,
     id: data.user?.id,
