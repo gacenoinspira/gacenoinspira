@@ -1,13 +1,23 @@
 import { HeaderPage } from "./section/header-page/headerPage";
 import { UiContent } from "./section/content/ui-content";
+import { getOperatorById } from "@/lib/action";
 
-export default function PobladoPage() {
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+export default async function PobladoPage({ params }: Props) {
+  const { id } = await params;
+  const operator = await getOperatorById(id);
   return (
     <main className="min-h-screen bg-white">
-      <HeaderPage />
+      <HeaderPage
+        title={operator.data?.name || ""}
+        logo={operator.data?.logo || ""}
+      />
       <UiContent
-        title="Título personalizado"
-        description="Descripción personalizada"
+        title={operator.data?.name || ""}
+        description={operator.data?.description || ""}
       />
     </main>
   );

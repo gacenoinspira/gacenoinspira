@@ -29,9 +29,9 @@ export default async function Page({ params }: Props) {
       />
       <Galeria data={operator.data} />
       <Comments comments={detailsOperator?.data || []} />
-      {detailsOperator?.data?.find(
+      {!detailsOperator?.data?.find(
         (item) => item.user_id === user.data?.user_id
-      )?.notes === "" && <AddComments id={id} />}
+      )?.notes && <AddComments id={id} />}
       <Navigate operator={operator.data} />
     </div>
   );

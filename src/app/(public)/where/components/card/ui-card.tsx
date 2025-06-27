@@ -13,6 +13,7 @@ interface UiCardProps {
   imageUrl: string;
   imageAlt?: string;
   location?: string;
+  id: string;
 }
 
 export function UiCard({
@@ -22,6 +23,7 @@ export function UiCard({
   imageUrl,
   imageAlt = "",
   location = "Ubicación",
+  id,
 }: UiCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const router = useRouter();
@@ -58,7 +60,7 @@ export function UiCard({
         </div>
         <button
           className={styles.viewButton}
-          onClick={() => router.push(`/poblado/${title}`)}
+          onClick={() => router.push(`/poblado/${id}`)}
         >
           {isExpanded ? "Ver menos" : "Ver más"}
         </button>

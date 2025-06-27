@@ -7,6 +7,7 @@ export type OperatorTable = Tables["operator"]["Row"];
 export type OperatorTableInsert = Tables["operator"]["Insert"];
 
 export interface OperatorTableRow extends OperatorTable {
+  type_activity: number;
   category?: { name: string };
   zone?: { name: string };
 }

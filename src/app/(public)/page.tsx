@@ -4,7 +4,6 @@ import { UiMap } from "@/lib/components/ui-map/ui-map";
 import { Carrusel } from "@/lib/carrusel/carrusel";
 import { sampleCards } from "@/lib/carrusel/data";
 import { AnimatedText } from "@/components/AnimatedText";
-import { CardZone } from "./components";
 import { getOperators } from "@/lib/action";
 
 export default async function Home() {
@@ -43,9 +42,9 @@ export default async function Home() {
         </div>
       </section>
       <section className={styles.section_map}>
-        <UiMap operators={operators.data || []} />
+        <UiMap operators={operators.data?.filter((operator) => operator.type_activity === 1) || []} />
       </section>
-      <section className={styles.section_cultura}>
+      {/* <section className={styles.section_cultura}>
         <p className={styles.title}>Explora cada rincón</p>
         <p className={styles.info}>
           Cinco centros poblados, cinco maneras únicas de vivir el alma de
@@ -68,7 +67,7 @@ export default async function Home() {
             <CardZone zone="5" />
           </div>
         </div>
-      </section>
+      </section> */}
       <section className={styles.section_carrusel}>
         <h2 className={styles.section_title}>Explora San Luis de Gaceno</h2>
         <p className={styles.section_subtitle}>

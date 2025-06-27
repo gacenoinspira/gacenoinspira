@@ -5,6 +5,7 @@ import React from "react";
 import { useTabsStore } from "@/lib/store/tabs";
 import styles from "./container-cards.module.css";
 import { UiCard } from "../card/ui-card";
+import { OperatorTableRow } from "@/lib/type";
 
 const zoneName: Record<
   string,
@@ -37,7 +38,11 @@ const zoneName: Record<
   },
 };
 
-export function ContainerCards() {
+interface ContainerCardsProps {
+  operators: OperatorTableRow[];
+}
+
+export function ContainerCards({ operators }: ContainerCardsProps) {
   const tab = useTabsStore((state) => state.tab);
 
   return (
@@ -48,30 +53,18 @@ export function ContainerCards() {
         <p className={styles.titulo3}>{zoneName[tab].info}</p>
       </div>
       <div className={styles.card}>
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
-        <UiCard
-          title="Card"
-          description="Card Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          price="20000"
-          imageUrl="/img/san_luis.jpeg"
-        />
+        {operators
+          .filter((operator) => operator.zone_id === Number(tab))
+          .map((operator) => (
+            <UiCard
+              key={operator.id}
+              title={operator.name}
+              description={operator.description}
+              price={"0"}
+              imageUrl={operator.logo || "/img/san_luis.jpeg"}
+              id={operator.id}
+            />
+          ))}
       </div>
       <div className={styles.img}>
         <img src={`/tab/tab${tab}.png`} alt={zoneName[tab].titulo} />

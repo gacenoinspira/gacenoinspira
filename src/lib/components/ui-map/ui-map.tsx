@@ -34,8 +34,8 @@ const sectorColors = {
 };
 
 const categoryColors = {
-  eventos: "#8b5cf6",
-  lugares: "#10b981",
+  Gastronomía: "#8b5cf6",
+  hoteles: "#10b981",
   actividad: "#10b981",
 };
 
@@ -100,7 +100,7 @@ export function UiMap({ operators }: PropsMap) {
     description: operator.description,
     sector: operator.zone_id,
     category: operator.category?.name || "",
-    img: "/img/turismo.jpg",
+    img: operator.logo || "/img/turismo.jpg",
   }));
   const allCategories = Array.from(
     new Set(operatorsList.map((loc) => loc.category))

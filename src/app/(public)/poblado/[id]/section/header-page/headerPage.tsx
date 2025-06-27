@@ -4,25 +4,31 @@ import React from "react";
 import styles from "./header-page.module.css";
 
 // Extend the CSSProperties interface to include custom properties
-declare module 'react' {
+declare module "react" {
   interface CSSProperties {
-    '--backgroundImage'?: string;
+    "--backgroundImage"?: string;
   }
 }
 
-export function HeaderPage() {
+interface HeaderPageProps {
+  title: string;
+  logo: string;
+}
+
+export function HeaderPage({ title, logo }: HeaderPageProps) {
   return (
     <header
       className={styles.header}
-      style={{
-        '--backgroundImage': `url(${"/img/san_luis.jpeg"})`,
-      } as React.CSSProperties}
+      style={
+        {
+          "--backgroundImage": `url(${logo || "/img/san_luis.jpeg"})`,
+        } as React.CSSProperties
+      }
     >
       <div className={styles.overlay}></div>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          <span>Iglesia Centro Poblado</span>
-          <span>Guamal</span>
+          <span>{title}</span>
         </h1>
       </div>
     </header>
