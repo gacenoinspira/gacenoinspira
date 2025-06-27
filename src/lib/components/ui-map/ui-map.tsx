@@ -95,7 +95,7 @@ export function UiMap({ operators }: PropsMap) {
 
   const operatorsList = operators.map((operator) => ({
     id: operator.id,
-    name: operator.name,
+    name: operator.name_company ?? "",
     coordinates: [operator.lng, operator.lat] as [number, number],
     description: operator.description,
     sector: operator.zone_id,
@@ -138,7 +138,7 @@ export function UiMap({ operators }: PropsMap) {
       !selectedCategory || location.category === selectedCategory;
     const matchesSearch =
       !searchQuery ||
-      location.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      location.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       location.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesSector && matchesCategory && matchesSearch;
   });
