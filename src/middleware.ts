@@ -11,11 +11,14 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === "/admin" && !user?.id && userRol.data?.rol !== 1) {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
+    return NextResponse.redirect(new URL("/auth/register", request.nextUrl)); // "/"
   }
 
-  if ((pathname === "/login" || pathname === "/register") && user?.id) {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
+  // if ((pathname === "/login" || pathname === "/register") && user?.id) {
+  //   return NextResponse.redirect(new URL("/", request.nextUrl));
+  // }
+  if (pathname === "/login") {
+    return NextResponse.redirect(new URL("/auth/register", request.nextUrl)); // "/"
   }
   return NextResponse.next();
 }
