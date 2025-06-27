@@ -11,7 +11,7 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  redirect("/auth/register");
+  redirect("/register");
   const user = await getInfoUser();
   return (
     <main className={styles.main}>
