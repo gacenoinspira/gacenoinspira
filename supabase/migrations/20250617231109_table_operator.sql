@@ -5,7 +5,8 @@ create table "public"."operator" (
     "description" text not null,
     "phone" bigint not null,
     "lat" double precision not null,
-    "lng" double precision not null
+    "lng" double precision not null,
+    "type_activity" bigint not null
 );
 
 
