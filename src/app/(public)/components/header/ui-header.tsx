@@ -87,11 +87,13 @@ export function UiHeader({ userDb }: HeaderProp) {
                   href="/perfil"
                   className={`${styles.link}`}
                 />
-                <UiLink
-                  namePath="Admin"
-                  href="/admin"
-                  className={`${styles.link}`}
-                />
+                {user.rol === 1 && (
+                  <UiLink
+                    namePath="Admin"
+                    href="/admin"
+                    className={`${styles.link}`}
+                  />
+                )}
                 <button
                   onClick={() => {
                     setUser(null);

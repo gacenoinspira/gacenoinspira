@@ -1,11 +1,17 @@
 import React from "react";
-import { Favorite, InfoUser } from "./section";
+import { InfoUser } from "./section";
+import { getInfoUser } from "@/lib/action";
 
-export default function Perfil() {
+export default async function Perfil() {
+  const user = await getInfoUser();
   return (
     <div>
-      <InfoUser />
-      <Favorite />
+      <InfoUser
+        name={user.data?.name || ""}
+        role={user.data?.rol === 1 ? "Admin" : "User"}
+        initials={user.data?.name?.[0] || ""}
+      />
+      {/* <Favorite /> */}
     </div>
   );
 }

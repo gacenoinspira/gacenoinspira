@@ -29,6 +29,7 @@ export const getInfoUser = async (): Promise<ResponseType<UserType | null>> => {
   return {
     data: {
       email: user.data.user.email ?? "",
+      name: userTable.data?.name ?? "",
       rol: userTable.data?.rol ?? 0,
       user_id: user.data.user.id,
     },

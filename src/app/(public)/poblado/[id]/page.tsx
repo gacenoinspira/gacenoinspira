@@ -18,6 +18,7 @@ export default async function PobladoPage({ params }: Props) {
       <UiContent
         title={operator.data?.name || ""}
         description={operator.data?.description || ""}
+        logo={operator.data?.logo || ""}
       />
     </main>
   );

@@ -40,6 +40,7 @@ export const loginAction = async ({
       email: data.user?.email ?? "",
       user_id: data.user?.id ?? "",
       rol: user.data?.rol ?? 0,
+      name: user.data?.name ?? "",
     },
     error: "",
   };
@@ -90,6 +91,7 @@ export const registerAction = async ({
       email: data.user?.email ?? "",
       user_id: data.user?.id ?? "",
       rol: user.data?.rol ?? 0,
+      name: user.data?.name ?? "",
     },
     error: "",
   };

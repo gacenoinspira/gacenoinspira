@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import styles from "./page.module.css";
 import { UiMap } from "@/lib/components/ui-map/ui-map";
-import { Carrusel } from "@/lib/carrusel/carrusel";
-import { sampleCards } from "@/lib/carrusel/data";
 import { AnimatedText } from "@/components/AnimatedText";
 import { getOperators } from "@/lib/action";
 
@@ -18,7 +16,7 @@ export default async function Home() {
           <AnimatedText delay={0.5} className={styles.subtitle}>
             la cultura y la naturaleza se encuentran.
           </AnimatedText>
-          <button className={styles.button}>Explorar Ahora</button>
+          {/* <button className={styles.button}>Explorar Ahora</button> */}
         </div>
       </section>
 
@@ -73,9 +71,9 @@ export default async function Home() {
         <p className={styles.section_subtitle}>
           Descubre todo lo que tenemos para ofrecerte
         </p>
-        <div className={styles.carrusel_container}>
+        {/* <div className={styles.carrusel_container}>
           <Carrusel cards={sampleCards} />
-        </div>
+        </div> */}
       </section>
 
       {/* <section className={styles.section_join}>
