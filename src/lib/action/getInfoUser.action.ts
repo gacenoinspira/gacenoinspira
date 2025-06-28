@@ -21,7 +21,7 @@ export const getInfoUser = async (): Promise<ResponseType<UserType | null>> => {
   if (!userTable.status) {
     return {
       data: null,
-      error: "rror obtener informacion del user DB",
+      error: "Error obtener informacion del user DB",
       status: false,
     };
   }

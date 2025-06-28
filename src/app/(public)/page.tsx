@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 import { UiMap } from "@/lib/components/ui-map/ui-map";
 import { AnimatedText } from "@/components/AnimatedText";
 import { getOperators } from "@/lib/action";
+import { CardZone } from "./components";
+import { Carrusel } from "@/lib/carrusel/carrusel";
 
 export default async function Home() {
   const operators = await getOperators();
@@ -40,9 +42,15 @@ export default async function Home() {
         </div>
       </section>
       <section className={styles.section_map}>
-        <UiMap operators={operators.data?.filter((operator) => operator.type_activity === 1) || []} />
+        <UiMap
+          operators={
+            operators.data?.filter(
+              (operator) => operator.type_activity === 1
+            ) || []
+          }
+        />
       </section>
-      {/* <section className={styles.section_cultura}>
+      <section className={styles.section_cultura}>
         <p className={styles.title}>Explora cada rincón</p>
         <p className={styles.info}>
           Cinco centros poblados, cinco maneras únicas de vivir el alma de
@@ -65,15 +73,26 @@ export default async function Home() {
             <CardZone zone="5" />
           </div>
         </div>
-      </section> */}
+      </section>
       <section className={styles.section_carrusel}>
         <h2 className={styles.section_title}>Explora San Luis de Gaceno</h2>
         <p className={styles.section_subtitle}>
           Descubre todo lo que tenemos para ofrecerte
         </p>
-        {/* <div className={styles.carrusel_container}>
-          <Carrusel cards={sampleCards} />
-        </div> */}
+        <div className={styles.carrusel_container}>
+          <Carrusel
+            cards={
+              operators.data
+                ?.filter((operator) => operator.type_activity === 1)
+                .map((operator) => ({
+                  id: operator.id || "",
+                  image: operator.logo || "/img/san_luis.jpeg",
+                  title: operator.name_company || "",
+                  description: operator.description || "",
+                })) ?? []
+            }
+          />
+        </div>
       </section>
 
       {/* <section className={styles.section_join}>

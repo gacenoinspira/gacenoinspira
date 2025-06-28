@@ -2,8 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import { FaHeart, FaArrowRight } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import styles from "./favorite.module.css";
+import { useRouter } from "next/navigation";
 
 interface FavoriteItem {
   id: string;
@@ -18,11 +19,6 @@ interface FavoriteSectionProps {
   subtitle?: string;
   description?: string;
   favorites?: FavoriteItem[];
-  currentPage?: number;
-  totalPages?: number;
-  onToggleFavorite?: (id: string) => void;
-  onPageChange?: (page: number) => void;
-  onExploreMore?: () => void;
 }
 
 export function Favorite({
@@ -46,12 +42,11 @@ export function Favorite({
     },
     // Add more default items as needed
   ],
-  currentPage = 1,
-  totalPages = 2,
-  onToggleFavorite = () => {},
-  onPageChange = () => {},
-  onExploreMore = () => {},
 }: FavoriteSectionProps) {
+  const onToggleFavorite = (id: string) => {
+    console.log(id);
+  };
+  const router = useRouter();
   return (
     <section className={styles.favoriteSection}>
       <div className={styles.container}>
@@ -90,48 +85,16 @@ export function Favorite({
                 <h3 className={styles.cardTitle}>{item.title}</h3>
                 <p className={styles.cardLocation}>{item.location}</p>
               </div>
+              <button
+                className={styles.exploreButton}
+                onClick={() => {
+                  router.push(`/operator/${item.id}`);
+                }}
+              >
+                VER MAS ...
+              </button>
             </div>
           ))}
-        </div>
-
-        <div className={styles.footer}>
-          <button className={styles.exploreButton} onClick={onExploreMore}>
-            SEGUIR EXPLORANDO <FaArrowRight className={styles.arrowIcon} />
-          </button>
-
-          {totalPages > 1 && (
-            <div className={styles.pagination}>
-              <span className={styles.pageIndicator}>
-                {currentPage} / {totalPages}
-              </span>
-              <div className={styles.paginationArrows}>
-                <button
-                  className={`${styles.arrowButton} ${
-                    currentPage === 1 ? styles.disabled : ""
-                  }`}
-                  onClick={() =>
-                    currentPage > 1 && onPageChange(currentPage - 1)
-                  }
-                  disabled={currentPage === 1}
-                  aria-label="Página anterior"
-                >
-                  &lt;
-                </button>
-                <button
-                  className={`${styles.arrowButton} ${
-                    currentPage === totalPages ? styles.disabled : ""
-                  }`}
-                  onClick={() =>
-                    currentPage < totalPages && onPageChange(currentPage + 1)
-                  }
-                  disabled={currentPage === totalPages}
-                  aria-label="Siguiente página"
-                >
-                  &gt;
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>
