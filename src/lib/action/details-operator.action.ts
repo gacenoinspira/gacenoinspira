@@ -33,7 +33,7 @@ export const addComment = async (
   body: DetailsOperatorTableInsert
 ): Promise<ResponseType<DetailsOperatorTable | null>> => {
   const detailsOperator = await DetailsOperatorRepository.addComment(body);
-  
+
   if (!detailsOperator?.id) {
     return {
       status: false,
@@ -68,6 +68,7 @@ export const updateDetails = async (
     };
   }
   revalidatePath(`/operator/${accountId}`);
+  revalidatePath(`/perfil`);
   return {
     status: true,
     data: detailsOperator,

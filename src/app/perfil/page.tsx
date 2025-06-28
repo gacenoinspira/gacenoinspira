@@ -25,6 +25,7 @@ export default async function Perfil() {
               location: item.operator?.name_company || "",
               image: item.operator?.logo || "/img/san_luis.jpeg",
               isFavorite: item.is_favorite || false,
+              accountId: item.id_operator,
             })) || []
         }
       />

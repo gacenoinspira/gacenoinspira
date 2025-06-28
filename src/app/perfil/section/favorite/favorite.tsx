@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import styles from "./favorite.module.css";
 import { useRouter } from "next/navigation";
+import { updateDetails } from "@/lib/action";
+import { UserStore } from "@/lib/store/user.store";
+import { ModalMessage } from "@/lib/components/modal-message/modal-message";
 
 interface FavoriteItem {
   id: string;
@@ -12,6 +15,7 @@ interface FavoriteItem {
   location: string;
   image: string;
   isFavorite: boolean;
+  accountId: string;
 }
 
 interface FavoriteSectionProps {
@@ -25,27 +29,52 @@ export function Favorite({
   title = "Mis Favoritos",
   subtitle = "Tus lugares y experiencias favoritas en San Luis de Gaceno",
   description = "Aquí encontrarás todos los destinos, actividades y servicios que has guardado como favoritos. Puedes eliminarlos o añadirlos cuando quieras.",
-  favorites = [
-    {
-      id: "1",
-      title: "PUENTE LA ARBELIA",
-      location: "San Luis de Gaceno",
-      image: "/images/puente-la-arbelia.jpg",
-      isFavorite: true,
-    },
-    {
-      id: "2",
-      title: "MIRADOR DE LA MESA",
-      location: "San Luis de Gaceno",
-      image: "/images/mirador-de-la-mesa.jpg",
-      isFavorite: true,
-    },
-    // Add more default items as needed
-  ],
+  favorites = [],
 }: FavoriteSectionProps) {
-  const onToggleFavorite = (id: string) => {
-    console.log(id);
+  const user = UserStore((item) => item.user);
+  const [messageModal, setMessageModal] = useState({
+    title: "",
+    message: "",
+    buttonText: "",
+  });
+  const [isOpen, setIsOpen] = useState(false);
+
+
+  const onToggleFavorite = async ({
+    id,
+    isFavorite,
+    accountId,
+  }: {
+    id: string;
+    isFavorite: boolean;
+    accountId: string;
+  }) => {
+    const resp = await updateDetails(
+      {
+        is_favorite: isFavorite,
+      },
+      id,
+      accountId,
+      user?.user_id ?? ""
+    );
+    if (!resp.status) {
+      console.log("error 2", resp.error);
+      setMessageModal({
+        title: "Error",
+        message: "No se pudo actualizar el detalle del operador",
+        buttonText: "Aceptar",
+      });
+      setIsOpen(true);
+      return;
+    }
+    setIsOpen(true);
+    setMessageModal({
+      title: "Detalle actualizado",
+      message: "Detalle actualizado correctamente",
+      buttonText: "Aceptar",
+    });
   };
+
   const router = useRouter();
   return (
     <section className={styles.favoriteSection}>
@@ -71,7 +100,13 @@ export function Favorite({
                   className={`${styles.favoriteButton} ${
                     item.isFavorite ? styles.favorited : ""
                   }`}
-                  onClick={() => onToggleFavorite(item.id)}
+                  onClick={() =>
+                    onToggleFavorite({
+                      id: item.accountId,
+                      isFavorite: !item.isFavorite,
+                      accountId: item.accountId,
+                    })
+                  }
                   aria-label={
                     item.isFavorite
                       ? "Eliminar de favoritos"
@@ -97,6 +132,20 @@ export function Favorite({
           ))}
         </div>
       </div>
+      <ModalMessage
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          setMessageModal({
+            title: "",
+            message: "",
+            buttonText: "",
+          });
+        }}
+        title={messageModal.title}
+        message={messageModal.message}
+        buttonText={messageModal.buttonText}
+      />
     </section>
   );
 }
