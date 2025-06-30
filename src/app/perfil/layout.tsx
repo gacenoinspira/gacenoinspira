@@ -10,7 +10,7 @@ interface Props {
 export default async function Layout({ children }: Props) {
   const user = await getInfoUser();
   if (!user.data?.user_id) {
-    redirect("/register");
+    redirect("/login");
   }
   return (
     <div className={styles.main}>
