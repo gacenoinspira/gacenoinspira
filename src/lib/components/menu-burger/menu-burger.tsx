@@ -67,14 +67,16 @@ export function MenuBurger({ user }: Props) {
               <>
                 <UiLink
                   namePath="Perfil"
-                  href="/profile"
+                  href="/perfil"
                   className={`${styles.menuItem}`}
                 />
-                <UiLink
-                  namePath="Admin"
-                  href="/admin"
-                  className={`${styles.menuItem}`}
-                />
+                {user?.rol === 1 && (
+                  <UiLink
+                    namePath="Admin"
+                    href="/admin"
+                    className={`${styles.menuItem}`}
+                  />
+                )}
                 <button
                   onClick={() => {
                     setUser(null);

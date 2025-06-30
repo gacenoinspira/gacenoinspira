@@ -1,8 +1,8 @@
 .main {
-  padding-top: 144px;
+  padding-top: 95px;
 }
 .section_img {
-  background-image: url("/img/main.png");
+  background-image: url("/img/san_luis.jpeg");
   background-size: cover;
   background-position: center;
   height: 900px;
@@ -11,6 +11,12 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  background-repeat: no-repeat;
+
+  @media (width < 620px) {
+    background-size: cover;
+    height: 400px;
+  }
 
   &::after {
     content: "";

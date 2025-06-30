@@ -1,0 +1,15 @@
+.map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .link {
+    background-color: var(--color-secundario);
+    color: var(--text-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+}

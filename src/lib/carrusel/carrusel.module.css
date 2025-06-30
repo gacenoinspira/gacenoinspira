@@ -10,7 +10,7 @@
   position: relative;
   overflow: hidden;
   padding: 20px 0;
-  margin: 0 -10px;
+  margin: 0 -48px;
 }
 
 .slider {
@@ -25,7 +25,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 0 10px !important; /* Reducido el margen entre tarjetas */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  height: 100%;
+  min-height: 600px;
   display: flex !important;
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -34,7 +34,8 @@
   opacity: 0.95;
   will-change: transform;
   min-width: 300px; /* Ajustado ancho mínimo */
-  max-width: 340px; /* Ajustado ancho máximo */
+  max-width: 300px;
+  max-height: 600px; /* Ajustado ancho máximo */
 }
 
 .slick-center .card {
@@ -50,7 +51,7 @@
 }
 
 /* Efecto de brillo al hacer hover */
-.card::after {
+/* .card::after {
   content: "";
   position: absolute;
   top: 0;
@@ -69,7 +70,7 @@
 
 .card:hover::after {
   opacity: 1;
-}
+} */
 
 .cardImageContainer {
   position: relative;
@@ -101,7 +102,6 @@
 
 .cardContent {
   padding: 20px;
-  flex: 1;
   display: flex;
   flex-direction: column;
   background: white;
@@ -114,6 +114,17 @@
   transform: translateY(-5px);
 }
 
+.cardButton {
+  width: 80%;
+  padding: 10px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
 .cardTitle {
   font-size: 1.3rem;
   font-weight: 700;
@@ -143,10 +154,11 @@
   font-size: 0.95rem;
   line-height: 1.5;
   color: #555;
-  flex-grow: 1;
   transition: all 0.3s ease;
   transform: translateY(10px);
-  opacity: 0.9;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 221px;
 }
 
 .card:hover .cardDescription {
@@ -173,6 +185,10 @@
   color: #555;
   opacity: 0.9;
   will-change: transform;
+
+  @media (width < 668px) {
+    display: none;
+  }
 }
 
 .navButton:hover {
@@ -222,23 +238,23 @@
   opacity: 0.8;
 }
 
-.carouselContainer::before {
+/* .carouselContainer::before {
   left: 0;
   background: linear-gradient(
     90deg,
     var(--background-white) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-}
+} */
 
-.carouselContainer::after {
+/* .carouselContainer::after {
   right: 0;
   background: linear-gradient(
     270deg,
     var(--background-white) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-}
+} */
 
 /* Efecto de sombra en los bordes */
 .carouselContainer {
@@ -256,23 +272,23 @@
   pointer-events: none;
 }
 
-.carouselContainer::before {
+/* .carouselContainer::before {
   left: 0;
   background: linear-gradient(
     90deg,
     var(--background-white) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-}
+} */
 
-.carouselContainer::after {
+/* .carouselContainer::after {
   right: 0;
   background: linear-gradient(
     270deg,
     var(--background-white) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-}
+} */
 
 /* Estilos para el punto activo */
 .slick-dots {

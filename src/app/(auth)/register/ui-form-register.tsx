@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./ui-form-register.module.css";
 import { UiLink } from "@/lib/components/index";
 import { registerAction } from "../server/login.action";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { UserStore } from "@/lib/store/user.store";
 import { ModalMessage } from "@/lib/components/modal-message/modal-message";
 
@@ -27,7 +27,7 @@ export function UiFormRegister() {
   });
 
   const setUser = UserStore((set) => set.setUser);
-  const router = useRouter();
+  //const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -45,21 +45,21 @@ export function UiFormRegister() {
   const checkPasswordStrength = (password: string) => {
     const suggestions = [];
 
-    if (password.length < 12) {
-      suggestions.push("Al menos 12 caracteres");
+    if (password.length < 6) {
+      suggestions.push("Al menos 6 caracteres");
     }
-    if (!/[a-z]/.test(password)) {
-      suggestions.push("Letras minúsculas");
-    }
-    if (!/[A-Z]/.test(password)) {
-      suggestions.push("Letras mayúsculas");
-    }
-    if (!/\d/.test(password)) {
-      suggestions.push("Dígitos");
-    }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      suggestions.push("Signos de puntuación");
-    }
+    // if (!/[a-z]/.test(password)) {
+    //   suggestions.push("Letras minúsculas");
+    // }
+    // if (!/[A-Z]/.test(password)) {
+    //   suggestions.push("Letras mayúsculas");
+    // }
+    // if (!/\d/.test(password)) {
+    //   suggestions.push("Dígitos");
+    // }
+    // if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    //   suggestions.push("Signos de puntuación");
+    // }
 
     setPasswordSuggestions(suggestions);
 
@@ -105,8 +105,9 @@ export function UiFormRegister() {
       setIsOpen(true);
       return;
     }
-
-    if (passwordStrength !== "Fuerte") {
+    console.log(passwordStrength, passwordSuggestions);
+    // passwordStrength !== "Fuerte" || 
+    if (passwordSuggestions.length > 0) {
       setMessage({
         title: "Error",
         message: "La contraseña no cumple con los requisitos de seguridad",
@@ -145,7 +146,7 @@ export function UiFormRegister() {
     if (!response.status) {
       setMessage({
         title: "Error",
-        message: "No se pudo crear el usuario",
+        message: response.error,
         buttonText: "Aceptar",
       });
       setIsOpen(true);
@@ -153,7 +154,13 @@ export function UiFormRegister() {
     }
 
     setUser(response.data);
-    router.push("/");
+    // router.push("/");
+    setIsOpen(true);
+    setMessage({
+      title: "Exito",
+      message: "Usuario creado exitosamente",
+      buttonText: "Aceptar",
+    });
   };
 
   return (
@@ -210,7 +217,6 @@ export function UiFormRegister() {
               name="password"
               className={styles.input}
               placeholder="••••••••"
-              minLength={8}
               value={formData.password}
               onChange={handleChange}
             />
@@ -226,7 +232,6 @@ export function UiFormRegister() {
               name="confirmPassword"
               className={styles.input}
               placeholder="••••••••"
-              minLength={8}
               value={formData.confirmPassword}
               onChange={handleChange}
             />
@@ -234,7 +239,7 @@ export function UiFormRegister() {
 
           {formData.password && (
             <div className={`${styles.passwordStrength} ${styles.fullWidth}`}>
-              <div className={styles.strengthHeader}>
+              {/* <div className={styles.strengthHeader}>
                 <span>Fortaleza de la contraseña:</span>
                 <span
                   className={`${styles.strengthValue} ${
@@ -247,7 +252,7 @@ export function UiFormRegister() {
                 >
                   {passwordStrength}
                 </span>
-              </div>
+              </div> */}
               <ul className={styles.suggestionsList}>
                 {passwordSuggestions.map((suggestion, index) => (
                   <li key={index} className={styles.suggestionItem}>
