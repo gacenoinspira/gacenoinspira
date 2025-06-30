@@ -93,28 +93,28 @@ export function Info({ operator, details, id, accountId }: Props) {
             alt={operator?.name}
           />
           <button className={styles.heart__icon} onClick={handleHeartClick}>
-            <HeartIcon width={60} height={60} isLike={isFavorite} />
+            <HeartIcon width={30} height={30} isLike={isFavorite} />
           </button>
         </div>
       </div>
       <div className={styles.container__info__info}>
         <h2 className={styles.title}>{operator?.name_company}</h2>
         <div className={styles.phone}>
-          <UserIcon width={60} height={60} />
+          <UserIcon width={30} height={30} />
           <div>
             <p>Nombre del Contacto</p>
             <p>{operator?.name}</p>
           </div>
         </div>
         <div className={styles.phone}>
-          <PhoneIcon width={60} height={60} />
+          <PhoneIcon width={30} height={30} />
           <div>
             <p>Telefono</p>
             <a href={`tel:${operator?.phone}`}>{operator?.phone}</a>
           </div>
         </div>
         <div className={styles.phone}>
-          <WhatsApp width={60} height={60} />
+          <WhatsApp width={30} height={30} />
           <div>
             <p>Whatsapp</p>
             <a href={`https://wa.me/${operator?.phone}`}>{operator?.phone}</a>

@@ -1,3 +1,4 @@
+export * from "./btn-map/btn-map";
 export * from "./card-zone/card-zone";
 export * from "./card/card";
 export * from "./footer/ui-footer";

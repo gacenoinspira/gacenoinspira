@@ -27,9 +27,14 @@ export function UiContent({
           <Image
             src={logo}
             alt={title}
-            fill
             style={{ objectFit: "cover" }}
             className={styles.image}
+            onError={(e) => {
+              e.currentTarget.src = "/img/san_luis.jpeg";
+            }}
+            width={100}
+            height={100}
+            priority={true}
           />
         </div>
         {/* <div className={styles.thumbnailContainer}>
@@ -49,7 +54,11 @@ export function UiContent({
 
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.description}>{description}</p>
+        {description.split(".").map((item, index) => (
+          <p key={index} className={styles.description}>
+            {item}
+          </p>
+        ))}
 
         {/* <div className={styles.infoContainer}>
           <div className={styles.infoItem}>

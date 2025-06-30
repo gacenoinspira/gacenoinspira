@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import { UiMap } from "@/lib/components/ui-map/ui-map";
 import { AnimatedText } from "@/components/AnimatedText";
 import { getOperators } from "@/lib/action";
-import { CardZone } from "./components";
+import { BtnMap, CardZone } from "./components";
 import { Carrusel } from "@/lib/carrusel/carrusel";
 
 export default async function Home() {
@@ -41,6 +41,7 @@ export default async function Home() {
           <img src="/img/route.gif" alt="route" className={styles.route} />
         </div>
       </section>
+      <BtnMap />
       <section className={styles.section_map}>
         <UiMap
           operators={
