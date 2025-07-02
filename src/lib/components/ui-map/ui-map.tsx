@@ -700,16 +700,6 @@ export function UiMap({ operators }: PropsMap) {
                 </div>
 
                 <div style={{ padding: "15px" }}>
-                  <p
-                    style={{
-                      margin: "0 0 15px 0",
-                      color: "#4b5563",
-                      fontSize: "14px",
-                      lineHeight: "1.5",
-                    }}
-                  >
-                    {popupInfo.description}
-                  </p>
                   <div
                     style={{
                       display: "flex",
