@@ -18,7 +18,7 @@
   padding: 0;
   box-sizing: border-box;
   text-wrap-style: pretty;
-  font-family: var(--font-nunito);
+  font-family: var(--font-quicksand);
 }
 
 body {
@@ -33,7 +33,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-nunito);
+  font-family: var(--font-montserrat);
 }
 
 a {
