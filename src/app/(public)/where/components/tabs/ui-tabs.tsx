@@ -23,35 +23,26 @@ export function UiTabs() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerContent}>
-          <h2 className={styles.title}>5 centros poblados</h2>
-          <p className={styles.subtitle}>
-            Cinco maneras únicas de vivir el alma de Boyacá
-          </p>
-        </div>
+      <div className={styles.selectionText}>
+        <h3>Selecciona</h3>
+        <p>Un centro poblado y conoce más de su oferta turística</p>
       </div>
 
       <div className={styles.tabsContainer}>
         <div className={styles.tabs}>
-          {tabs
-            .filter((tab) => tab.id !== activeTab)
-            .map((tab) => (
-              <button
-                key={tab.id}
-                className={`${styles.tab} ${
-                  activeTab === tab.id ? styles.tabActive : ""
-                }`}
-                onClick={() => handleTabClick(tab.id)}
-              >
-                {tab.label}
-              </button>
-            ))}
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`${styles.tab} ${
+                activeTab === tab.id ? styles.tabActive : ""
+              }`}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
         <div className={styles.tabContent}>
-          <h2 className={`${styles.title} ${styles.name}`}>
-            Centro Poblado {tabs.find((tab) => tab.id === activeTab)?.label}
-          </h2>
           <div className={styles.imageContainer}>
             <img
               src={`/tab/tab-map-${activeTab}.png`}
@@ -59,10 +50,13 @@ export function UiTabs() {
               className={styles.image}
             />
           </div>
-
-          <div className={styles.selectionText}>
-            <h3>Selecciona</h3>
-            <p>Un centro poblado y conoce más de su oferta turística</p>
+        </div>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <h2 className={styles.title}>5 centros poblados</h2>
+            <p className={styles.subtitle}>
+              Cinco maneras únicas de vivir el alma de Boyacá
+            </p>
           </div>
         </div>
       </div>

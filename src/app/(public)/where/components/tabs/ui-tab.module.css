@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-size: 2.2rem;
+  font-size: clamp(2.2rem, 5vw, 5rem);
   color: var(--color-texto);
   margin-bottom: 0.5rem;
   font-weight: 700;
@@ -32,7 +32,7 @@
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 28px, 32px);
   color: #666;
   margin: 0;
 }
@@ -53,7 +53,7 @@
 
 .tab {
   padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: none;
   background: transparent;
   border-radius: 20px;
   cursor: pointer;
@@ -108,10 +108,11 @@
   text-align: center;
   margin-top: 1.5rem;
   color: #4a5568;
+  margin-bottom: 20px;
 }
 
 .selectionText h3 {
-  font-size: 1.3rem;
+  font-size: clamp(2.2rem, 5vw, 5rem);
   color: var(--color-texto);
   margin-bottom: 0.5rem;
 }
@@ -119,7 +120,7 @@
 .selectionText p {
   color: #718096;
   margin: 0;
-  font-size: 1rem;
+  font-size: clamp(2.2rem, 4vw, 3rem);
 }
 
 /* Responsive styles */
