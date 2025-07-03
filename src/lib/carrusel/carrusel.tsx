@@ -102,16 +102,13 @@ export function Carrusel({ cards }: CarruselProps) {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{card.title}</h3>
-                <p className={styles.cardDescription}>{card.description}</p>
               </div>
-              <div className={styles.cardFooter}>
-                <button
-                  className={styles.cardButton}
-                  onClick={() => router.push(`/operator/${card.id}`)}
-                >
-                  Ver más
-                </button>
-              </div>
+              <button
+                className={styles.cardButton}
+                onClick={() => router.push(`/operator/${card.id}`)}
+              >
+                Ver más
+              </button>
             </div>
           ))}
         </Slider>
