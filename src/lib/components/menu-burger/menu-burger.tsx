@@ -13,6 +13,7 @@ interface Props {
 
 const menuItems = [
   { name: "Inicio", href: "/" },
+  { name: "Descubre", href: "/discovery" },
   { name: "Planifica", href: "/where" },
   { name: "Blog", href: "/blog" },
 ];

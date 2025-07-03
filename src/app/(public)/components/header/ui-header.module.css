@@ -102,7 +102,7 @@
   .nav {
     display: flex;
     border-radius: 20px;
-    gap: 30px;
+    gap: 10px;
     @media (width < 1223px) {
       display: none;
     }
@@ -112,7 +112,7 @@
       color: var(--color-texto);
       text-decoration: none;
       font-weight: 700;
-      font-size: 32px;
+      font-size: 28px;
       border-radius: 20px;
       display: flex;
       align-items: center;
