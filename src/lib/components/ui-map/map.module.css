@@ -16,7 +16,7 @@
 }
 
 .btn_link:hover {
-  background-color: #2563eb;
+  background-color: #50c3c8;
   transform: translateY(-1px);
 }
 
@@ -135,5 +135,9 @@
   color: white;
   width: 100%;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
 }

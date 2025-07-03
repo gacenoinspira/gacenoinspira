@@ -11,5 +11,14 @@
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
+    width: clamp(200px, 300px, 300px);
+    font-size: clamp(15px, 28px, 28px);
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
   }
 }

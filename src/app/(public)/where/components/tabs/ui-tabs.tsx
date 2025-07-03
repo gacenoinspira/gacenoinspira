@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 
@@ -35,28 +34,29 @@ export function UiTabs() {
 
       <div className={styles.tabsContainer}>
         <div className={styles.tabs}>
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              className={`${styles.tab} ${
-                activeTab === tab.id ? styles.tabActive : ""
-              }`}
-              onClick={() => handleTabClick(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
+          {tabs
+            .filter((tab) => tab.id !== activeTab)
+            .map((tab) => (
+              <button
+                key={tab.id}
+                className={`${styles.tab} ${
+                  activeTab === tab.id ? styles.tabActive : ""
+                }`}
+                onClick={() => handleTabClick(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
         </div>
-
         <div className={styles.tabContent}>
+          <h2 className={`${styles.title} ${styles.name}`}>
+            Centro Poblado {tabs.find((tab) => tab.id === activeTab)?.label}
+          </h2>
           <div className={styles.imageContainer}>
-            <Image
-              src={`/tab/tab${activeTab}.png`}
+            <img
+              src={`/tab/tab-map-${activeTab}.png`}
               alt={`Tab ${activeTab} content`}
-              width={1200}
-              height={800}
               className={styles.image}
-              priority
             />
           </div>
 
