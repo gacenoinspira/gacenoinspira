@@ -19,7 +19,7 @@ export function Comments({ comments }: Props) {
     <>
       {itemsCards.length ? (
         <div className={styles.container__comments}>
-          <h1>Comments</h1>
+          <h1>Comentarios</h1>
 
           <div className={styles.carouselContainer}>
             {itemsCards.map((item, index) => {
