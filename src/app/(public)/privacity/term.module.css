@@ -1,0 +1,67 @@
+.termCondition {
+  padding: 20px;
+}
+.text_term {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #1a365d;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a365d;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 2rem);
+  margin-bottom: 30px;
+  color: #1a365d;
+}
+
+.date {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #4a5568;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: clamp(1rem, 2vw, 3rem);
+  color: #1a365d;
+}
+
+.sectionContent {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.sectionContent p {
+  margin-bottom: 10px;
+}
+
+.sectionContent ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.sectionContent li {
+  margin-bottom: 8px;
+  list-style-type: disc;
+}

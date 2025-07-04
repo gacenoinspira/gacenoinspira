@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 
@@ -24,13 +23,9 @@ export function UiTabs() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerContent}>
-          <h2 className={styles.title}>5 centros poblados</h2>
-          <p className={styles.subtitle}>
-            Cinco maneras únicas de vivir el alma de Boyacá
-          </p>
-        </div>
+      <div className={styles.selectionText}>
+        <h3>Selecciona</h3>
+        <p>Un centro poblado y conoce más de su oferta turística</p>
       </div>
 
       <div className={styles.tabsContainer}>
@@ -47,22 +42,21 @@ export function UiTabs() {
             </button>
           ))}
         </div>
-
         <div className={styles.tabContent}>
           <div className={styles.imageContainer}>
-            <Image
-              src={`/tab/tab${activeTab}.png`}
+            <img
+              src={`/tab/tab-map-${activeTab}.png`}
               alt={`Tab ${activeTab} content`}
-              width={1200}
-              height={800}
               className={styles.image}
-              priority
             />
           </div>
-
-          <div className={styles.selectionText}>
-            <h3>Selecciona</h3>
-            <p>Un centro poblado y conoce más de su oferta turística</p>
+        </div>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <h2 className={styles.title}>5 centros poblados</h2>
+            <p className={styles.subtitle}>
+              Cinco maneras únicas de vivir el alma de Boyacá
+            </p>
           </div>
         </div>
       </div>

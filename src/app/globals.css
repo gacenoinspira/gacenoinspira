@@ -4,7 +4,7 @@
   --color-acento: #f1f1f1; /* Gris claro */
   --color-texto: #003049; /* Gris oscuro */
   --color-fondo: #f5f5f5; /* Fondo suave */
-  --color-yellow: #f8d34a; /* Amarillo */
+  --color-yellow: #f4c542; /* Amarillo */
   --color-yellow-soft: #ecdc94; /* Amarillo suave */
   --text-white: #fff;
   --background-white: #fff;
@@ -18,7 +18,7 @@
   padding: 0;
   box-sizing: border-box;
   text-wrap-style: pretty;
-  font-family: var(--font-nunito);
+  font-family: var(--font-quicksand);
 }
 
 body {
@@ -33,7 +33,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-nunito);
+  font-family: var(--font-montserrat);
 }
 
 a {

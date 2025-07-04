@@ -59,6 +59,12 @@ export function UiHeader({ userDb }: HeaderProp) {
           classActive={styles.active}
         />
         <UiLink
+          namePath="DESCUBRE"
+          href="/discovery"
+          className={`${styles.link_header}`}
+          classActive={styles.active}
+        />
+        <UiLink
           namePath="PLANIFICA"
           href="/where"
           className={`${styles.link_header}`}

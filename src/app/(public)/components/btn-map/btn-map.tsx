@@ -8,7 +8,7 @@ export function BtnMap() {
   return (
     <div className={styles.map}>
       <Link href="/map" className={styles.link}>
-        A cuanto estoy de San Luis de Gaceno?
+        ¿Qué tan cerca estás de San Luis de Gaceno?
       </Link>
     </div>
   );

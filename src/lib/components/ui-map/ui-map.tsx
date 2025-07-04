@@ -15,6 +15,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./map.module.css";
 import { OperatorTableRow } from "@/lib/type";
 import { useRouter } from "next/navigation";
+import { OpenIcon } from "../../icons";
 
 type Location = {
   id: string;
@@ -72,6 +73,8 @@ export function UiMap({ operators }: PropsMap) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mapStyle, setMapStyle] = useState<string>(mapStyles.street);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showCategories, setShowCategories] = useState(false);
+  const [nameCategory, setNameCategory] = useState("");
   const router = useRouter();
   interface ViewStateType {
     longitude: number;
@@ -359,6 +362,37 @@ export function UiMap({ operators }: PropsMap) {
 
   return (
     <div style={{ width: "100%", height: "800px", position: "relative" }}>
+      <button
+        className={`${styles.categoryButton} ${styles.active} ${styles.fixWidth}`}
+        onClick={() => setShowCategories(!showCategories)}
+      >
+        {nameCategory || "Seleccionar Categoria"}
+        <OpenIcon open={showCategories} />
+      </button>
+      {showCategories && (
+        <div className={styles.map_container_btn}>
+          {allCategories.map((category) => (
+            <button
+              key={`cat-${category}`}
+              onClick={() => {
+                setSelectedCategory(
+                  selectedCategory === category ? null : category
+                );
+                setSelectedSector(null);
+                setNameCategory(category);
+                if (selectedCategory === category) {
+                  setNameCategory("");
+                }
+              }}
+              className={`${styles.categoryButton} ${
+                selectedCategory === category ? styles.active : ""
+              }`}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
+      )}
       <style jsx global>{`
         @keyframes pulse {
           0% {
@@ -406,112 +440,7 @@ export function UiMap({ operators }: PropsMap) {
           transform: scale(1.2);
         }
       `}</style>
-      <div
-        style={{
-          width: "100%",
-          height: "800px",
-          position: "relative",
-          borderRadius: "8px",
-          overflow: "hidden",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-        }}
-      >
-        <div className={styles.map_container_btn}>
-          {allCategories.map((category) => (
-            <button
-              key={`cat-${category}`}
-              onClick={() => {
-                setSelectedCategory(
-                  selectedCategory === category ? null : category
-                );
-                setSelectedSector(null);
-              }}
-              className={`${styles.categoryButton} ${
-                selectedCategory === category ? styles.active : ""
-              }`}
-              style={{
-                backgroundColor:
-                  selectedCategory === category
-                    ? categoryColors[category as keyof typeof categoryColors] ||
-                      "#6b7280"
-                    : `${
-                        categoryColors[
-                          category as keyof typeof categoryColors
-                        ] || "#6b7280"
-                      }33`,
-                color: selectedCategory === category ? "white" : "#1f2937",
-                border: `1px solid ${
-                  categoryColors[category as keyof typeof categoryColors] ||
-                  "#6b7280"
-                }`,
-              }}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
-        </div>
-        {/* <div
-          style={{
-            position: "absolute",
-            bottom: "20px",
-            right: "20px",
-            zIndex: 10,
-            backgroundColor: "white",
-            padding: "8px",
-            borderRadius: "4px",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "8px",
-          }}
-        >
-          <button
-            onClick={() => {
-              if (mapRef.current) {
-                const map = mapRef.current.getMap();
-                map.zoomIn();
-              }
-            }}
-            style={{
-              width: "32px",
-              height: "32px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "white",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "18px",
-              fontWeight: "bold",
-            }}
-          >
-            +
-          </button>
-          <button
-            onClick={() => {
-              if (mapRef.current) {
-                const map = mapRef.current.getMap();
-                map.zoomOut();
-              }
-            }}
-            style={{
-              width: "32px",
-              height: "32px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "white",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "18px",
-              fontWeight: "bold",
-            }}
-          >
-            −
-          </button>
-        </div> */}
+      <div className={styles.sizeMap}>
         <Map
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
           initialViewState={{
@@ -700,16 +629,6 @@ export function UiMap({ operators }: PropsMap) {
                 </div>
 
                 <div style={{ padding: "15px" }}>
-                  <p
-                    style={{
-                      margin: "0 0 15px 0",
-                      color: "#4b5563",
-                      fontSize: "14px",
-                      lineHeight: "1.5",
-                    }}
-                  >
-                    {popupInfo.description}
-                  </p>
                   <div
                     style={{
                       display: "flex",
