@@ -33,6 +33,7 @@ export function UiFormOperator({ zones, categories }: Props) {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [name_company, setNameCompany] = useState<string>("");
 
   const handleMapClick = (e: MapMouseEvent) => {
     const { lng, lat } = e.lngLat;
@@ -44,7 +45,16 @@ export function UiFormOperator({ zones, categories }: Props) {
     e.preventDefault();
 
     console.log("Formulario enviado:", { location, zone, category });
-    console.log("Formulario enviado:", { name, description, phone });
+    console.log("Formulario enviado:", {
+      name: name as string,
+      description: description as string,
+      phone: Number(phone),
+      zone_id: Number(zone),
+      category_id: category,
+      lat: location?.lat as number,
+      lng: location?.lng as number,
+      name_company: name_company,
+    });
     const resp = await createOperator({
       name: name as string,
       description: description as string,
@@ -53,6 +63,8 @@ export function UiFormOperator({ zones, categories }: Props) {
       category_id: category,
       lat: location?.lat as number,
       lng: location?.lng as number,
+      name_company: name_company,
+      type_activity: 1,
     });
     console.log(resp);
     if (resp.status) {
@@ -62,6 +74,7 @@ export function UiFormOperator({ zones, categories }: Props) {
       setName("");
       setDescription("");
       setPhone("");
+      setNameCompany("");
       e.currentTarget.reset();
     }
   };
@@ -84,7 +97,20 @@ export function UiFormOperator({ zones, categories }: Props) {
               required
             />
           </div>
-          
+          <div className={styles.inputGroup}>
+            <label htmlFor="name_company">Nombre de la empresa</label>
+            <input
+              className={styles.inputField}
+              placeholder="Ej: Aventuras Guavio"
+              name="name_company"
+              id="name_company"
+              type="text"
+              value={name_company}
+              onChange={(e) => setNameCompany(e.target.value)}
+              required
+            />
+          </div>
+
           <div className={styles.inputGroup}>
             <label htmlFor="phone">Teléfono</label>
             <input
@@ -98,7 +124,7 @@ export function UiFormOperator({ zones, categories }: Props) {
               required
             />
           </div>
-          
+
           <div className={styles.inputGroup}>
             <label htmlFor="zone">Zona</label>
             <select
@@ -117,7 +143,7 @@ export function UiFormOperator({ zones, categories }: Props) {
               ))}
             </select>
           </div>
-          
+
           <div className={styles.inputGroup}>
             <label htmlFor="category">Categoría</label>
             <select
@@ -136,7 +162,7 @@ export function UiFormOperator({ zones, categories }: Props) {
               ))}
             </select>
           </div>
-          
+
           <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
             <label htmlFor="description">Descripción</label>
             <textarea
@@ -156,8 +182,15 @@ export function UiFormOperator({ zones, categories }: Props) {
           <h2 className={styles.mapTitle}>
             <FaMapMarkerAlt /> Ubicación en el mapa
           </h2>
-          <p style={{ color: '#6b7280', marginBottom: '1rem', fontSize: '0.95rem' }}>
-            Haz clic en el mapa para marcar la ubicación o arrastra el marcador para ajustarla
+          <p
+            style={{
+              color: "#6b7280",
+              marginBottom: "1rem",
+              fontSize: "0.95rem",
+            }}
+          >
+            Haz clic en el mapa para marcar la ubicación o arrastra el marcador
+            para ajustarla
           </p>
           <div className={styles.mapContainer}>
             <Map
@@ -192,14 +225,21 @@ export function UiFormOperator({ zones, categories }: Props) {
             </Map>
           </div>
           {location && (
-            <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#4b5563' }}>
-              Ubicación seleccionada: Lat: {location.lat.toFixed(6)}, Lng: {location.lng.toFixed(6)}
+            <p
+              style={{
+                marginTop: "0.5rem",
+                fontSize: "0.9rem",
+                color: "#4b5563",
+              }}
+            >
+              Ubicación seleccionada: Lat: {location.lat.toFixed(6)}, Lng:{" "}
+              {location.lng.toFixed(6)}
             </p>
           )}
         </div>
 
         <button type="submit" className={styles.submitButton}>
-          <FaSave style={{ marginRight: '8px' }} />
+          <FaSave style={{ marginRight: "8px" }} />
           Guardar Operador
         </button>
       </UiForm>
