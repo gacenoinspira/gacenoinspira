@@ -76,9 +76,9 @@ export default async function Home() {
         </div>
       </section>
       <section className={styles.section_carrusel}>
-        <h2 className={styles.section_title}>Explora San Luis de Gaceno</h2>
+        <h2 className={styles.section_title}>Sumérgete en nuestra cultura</h2>
         <p className={styles.section_subtitle}>
-          Descubre todo lo que tenemos para ofrecerte
+          conoce todos los planes que puedes hacer
         </p>
         <div className={styles.carrusel_container}>
           <Carrusel

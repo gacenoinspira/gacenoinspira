@@ -13,7 +13,7 @@ export const Footer = () => {
           {/* Newsletter Column */}
           <div className={styles.column}>
             <div className={styles.header}>
-              <h1 className={styles.title}>GACENO INSPIRA</h1>
+              <h1 className={styles.title}>SAN LUIS DE GACENO INSPIRA</h1>
               <p className={styles.tagline}>
                 Donde la aventura, la cultura y la naturaleza se encuentran.
               </p>
@@ -37,21 +37,15 @@ export const Footer = () => {
             <address className={styles.address}>
               <p className={styles.infoItem}>
                 <span className={styles.label}>Dirección:</span>
-                Calle Principal #123, San Luis de Gaceno, Bogacol
+                Dirección: Carrera 4 N° 6-09
               </p>
               <p className={styles.infoItem}>
                 <span className={styles.label}>Correo:</span>
                 <a
-                  href="mailto:turismo@gacenoinspira.gov.co"
+                  href="mailto:gacenoinspira@gmail.com"
                   className={styles.link}
                 >
-                  turismo@gacenoinspira.gov.co
-                </a>
-              </p>
-              <p className={styles.infoItem}>
-                <span className={styles.label}>Teléfono:</span>
-                <a href="tel:+573214567890" className={styles.link}>
-                  (+57) 321 456 7890
+                  gacenoinspira@gmail.com
                 </a>
               </p>
             </address>
@@ -63,7 +57,7 @@ export const Footer = () => {
             <ul className={styles.socialList}>
               <li className={styles.socialItem}>
                 <a
-                  href="https://facebook.com/gacenoinspira"
+                  href="https://www.facebook.com/profile.php?id=61577770353035"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
@@ -73,22 +67,12 @@ export const Footer = () => {
               </li>
               <li className={styles.socialItem}>
                 <a
-                  href="https://instagram.com/gacenoinspira"
+                  href="https://www.instagram.com/gacenoinspira/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
                 >
                   Instagram
-                </a>
-              </li>
-              <li className={styles.socialItem}>
-                <a
-                  href="https://youtube.com/gacenoinspira"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  YouTube
                 </a>
               </li>
             </ul>
