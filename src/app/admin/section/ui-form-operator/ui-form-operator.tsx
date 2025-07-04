@@ -8,7 +8,7 @@ import Map, {
 } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { ModalMessage, UiForm } from "@/lib/components/index";
-import { CategoryTableRow } from "@/lib/type";
+import { CategoryTableRow, OperatorTableRow } from "@/lib/type";
 import { createOperator } from "../../lib";
 import styles from "./ui-form-operator.module.css";
 import { FaMapMarkerAlt, FaSave } from "react-icons/fa";
@@ -25,9 +25,10 @@ type Location = {
 
 type Props = {
   categories: CategoryTableRow[];
+  operators: OperatorTableRow[];
 };
 
-export function UiFormOperator({ categories }: Props) {
+export function UiFormOperator({ categories, operators }: Props) {
   const [location, setLocation] = useState<Location | null>(null);
   const [category, setCategory] = useState<number>(0);
   const [name, setName] = useState<string>("");
@@ -56,6 +57,19 @@ export function UiFormOperator({ categories }: Props) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    const isExist = operators.some(
+      (operator) => operator.name_company === name_company
+    );
+    if (isExist) {
+      setMessage({
+        title: "Error",
+        message: "El nombre de la empresa ya existe",
+        buttonText: "Entendido",
+      });
+      setModalMessage(true);
+      setLoading(false);
+      return;
+    }
     const { webpBlob, fileName } = logo
       ? await convertToWebP(logo as File)
       : { webpBlob: null, fileName: "" };
