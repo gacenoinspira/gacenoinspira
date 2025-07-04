@@ -10,14 +10,18 @@ interface UploadData {
 
 // Parámetros de configuración del cliente
 
-export async function uploadToSupabase(
-  webpBlob: Blob,
-  path: string,
-  mimeType: string = "image/webp"
-): Promise<UploadData> {
+export async function uploadToSupabase({
+  webpBlob,
+  path,
+  mimeType = "image/webp",
+}: {
+  webpBlob: Blob;
+  path: string;
+  mimeType?: string;
+}): Promise<UploadData> {
   const supabase = await SupabaseServer();
   const { data, error } = await supabase.storage
-    .from("tu-bucket")
+    .from("fotos")
     .upload(path, webpBlob, {
       contentType: mimeType,
       cacheControl: "3600",
@@ -33,7 +37,7 @@ export async function uploadToSupabase(
   }
   const {
     data: { publicUrl },
-  } = supabase.storage.from("tu-bucket").getPublicUrl(data.path);
+  } = supabase.storage.from("fotos").getPublicUrl(data.path);
 
   return { path: data.path, publicUrl };
 }
