@@ -7,7 +7,7 @@ import Map, {
   MapMouseEvent,
 } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { UiForm } from "@/lib/components/index";
+import { ModalMessage, UiForm } from "@/lib/components/index";
 import { CategoryTableRow } from "@/lib/type";
 import { createOperator } from "../../lib";
 import styles from "./ui-form-operator.module.css";
@@ -40,6 +40,12 @@ export function UiFormOperator({ categories }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const fileInputRefPhotos = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
+  const [modalMessage, setModalMessage] = useState(false);
+  const [message, setMessage] = useState({
+    title: "",
+    message: "",
+    buttonText: "Aceptar",
+  });
 
   const handleMapClick = (e: MapMouseEvent) => {
     const { lng, lat } = e.lngLat;
@@ -79,6 +85,13 @@ export function UiFormOperator({ categories }: Props) {
       }
     } catch (error) {
       console.log("Error al subir las fotos []", error);
+      setMessage({
+        title: "Error",
+        message: "Error al subir las fotos",
+        buttonText: "Entendido",
+      });
+      setModalMessage(true);
+      return;
     }
 
     const body = {
@@ -115,8 +128,21 @@ export function UiFormOperator({ categories }: Props) {
           fileInputRefPhotos.current.value = "";
         }
       }
+
+      setMessage({
+        title: "Operador creado",
+        message: "Operador creado exitosamente",
+        buttonText: "Entendido",
+      });
+      setModalMessage(true);
     } catch (error) {
       console.log("Error al crear el operador", error);
+      setMessage({
+        title: "Error",
+        message: "Error al crear el operador",
+        buttonText: "Entendido",
+      });
+      setModalMessage(true);
     }
     setLoading(false);
   };
@@ -390,6 +416,13 @@ export function UiFormOperator({ categories }: Props) {
           </button>
         </UiForm>
       </div>
+      <ModalMessage
+        isOpen={modalMessage}
+        onClose={() => setModalMessage(false)}
+        title={message.title}
+        message={message.message}
+        buttonText={message.buttonText}
+      />
     </>
   );
 }
