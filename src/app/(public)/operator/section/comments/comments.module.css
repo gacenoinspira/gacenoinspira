@@ -27,10 +27,9 @@
 }
 
 .carouselContainer {
-  position: relative;
-  overflow: hidden;
   padding: 20px 0;
-  margin: 0 -10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .slider {
@@ -79,71 +78,7 @@
   right: 0;
 }
 
-/* Efecto de desvanecimiento en los bordes mejorado */
-.carouselContainer::before,
-.carouselContainer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100px;
-  z-index: 2;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  opacity: 0.8;
-}
 
-.carouselContainer::before {
-  left: 0;
-  background: linear-gradient(
-    90deg,
-    var(--background-white) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.carouselContainer::after {
-  right: 0;
-  background: linear-gradient(
-    270deg,
-    var(--background-white) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-/* Efecto de sombra en los bordes */
-.carouselContainer {
-  position: relative;
-}
-
-.carouselContainer::before,
-.carouselContainer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.carouselContainer::before {
-  left: 0;
-  background: linear-gradient(
-    90deg,
-    var(--background-white) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.carouselContainer::after {
-  right: 0;
-  background: linear-gradient(
-    270deg,
-    var(--background-white) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
 
 /* Estilos para el punto activo */
 .slick-dots {
@@ -200,7 +135,7 @@
   min-height: 220px;
   will-change: transform;
   min-width: 280px;
-  max-width: 320px;
+  width: 100%;
 }
 
 .cardHeader {
@@ -327,26 +262,26 @@
     padding: 18px;
     min-height: 200px;
   }
-  
+
   .avatar {
     width: 42px;
     height: 42px;
     font-size: 14px;
   }
-  
+
   .userName {
     font-size: 0.9375rem;
   }
-  
+
   .commentText {
     font-size: 0.875rem;
     -webkit-line-clamp: 3;
   }
-  
+
   .cardFooter {
     padding-top: 10px;
   }
-  
+
   .actionButton {
     padding: 4px;
   }
@@ -357,7 +292,7 @@
     min-width: 220px;
     padding: 16px;
   }
-  
+
   .avatar {
     width: 38px;
     height: 38px;
