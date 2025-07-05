@@ -13,7 +13,6 @@
 }
 
 .mainImage {
- 
   width: 100%;
   height: 400px;
   border-radius: 12px;
@@ -48,6 +47,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .content {
@@ -62,13 +64,18 @@
   color: #1a365d;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  margin-top: 20px;
+}
+
+.mt {
+  margin-top: 60px;
 }
 
 .description {
   color: #4a5568;
   line-height: 1.7;
   margin-bottom: 2rem;
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 1.5vw, 1.6rem);
 }
 
 .infoContainer {
@@ -137,17 +144,28 @@
   transform: translateX(4px);
 }
 
+.paragraph {
+  font-size: clamp(1rem, 1.5vw, 1.6rem);
+}
+
+.ul {
+  list-style: disc;
+
+  .li {
+    font-size: clamp(1rem, 1.5vw, 1.6rem);
+  }
+}
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
     max-width: 800px;
   }
-  
+
   .mainImage {
     height: 350px;
   }
-  
+
   .thumbnail {
     height: 80px;
   }
@@ -157,11 +175,11 @@
   .container {
     padding: 0 1.5rem;
   }
-  
+
   .title {
     font-size: 1.75rem;
   }
-  
+
   .description {
     font-size: 1rem;
   }
@@ -172,24 +190,24 @@
     padding: 0 1rem;
     margin: 1rem 0;
   }
-  
+
   .mainImage {
     height: 250px;
   }
-  
+
   .thumbnail {
     height: 70px;
   }
-  
+
   .title {
     font-size: 1.5rem;
     margin-bottom: 1.25rem;
   }
-  
+
   .infoItem {
     font-size: 0.9rem;
   }
-  
+
   .viewMoreButton {
     width: 100%;
     justify-content: center;

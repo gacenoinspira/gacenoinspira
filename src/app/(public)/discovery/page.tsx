@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./discvery.module.css";
 import Image from "next/image";
 import { UiCard } from "./components";
+import { getOperators } from "@/lib/action";
 
-export default function PageDiscovery() {
+export default async function PageDiscovery() {
+  const operators = await getOperators();
   return (
     <div className={styles.container}>
       <Image
@@ -44,12 +46,16 @@ export default function PageDiscovery() {
         <img src="/img/diamante.webp" alt="diamante" className={styles.image} />
 
         <div className={styles.container_card}>
-          <UiCard />
-          <UiCard />
-          <UiCard />
-          <UiCard />
-          <UiCard />
-          <UiCard />
+          {operators.data
+            ?.filter((operator) => operator.type_activity === 4)
+            .map((operator) => (
+              <UiCard
+                key={operator.id}
+                id={operator.id}
+                img={operator.logo || ""}
+                title={operator.name || undefined}
+              />
+            ))}
         </div>
       </div>
     </div>

@@ -160,7 +160,7 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
               onClick={() => setActiveTab("comercios")}
               icon={StoreIcon}
             >
-              Actividades fuera de los poblados
+              Actividades y Poblados
             </TabButton>
 
             <TabButton

@@ -12,6 +12,7 @@ export interface OperatorTableRow extends OperatorTable {
   zone?: { name: string };
   activity?: string[];
   rules?: string[];
+  indications?: string;
 }
 
 export interface OperatorTableInsert extends OperatorTableInsertBase {
