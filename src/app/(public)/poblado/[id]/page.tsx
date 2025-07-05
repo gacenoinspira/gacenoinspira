@@ -19,6 +19,10 @@ export default async function PobladoPage({ params }: Props) {
         title={operator.data?.name || ""}
         description={operator.data?.description || ""}
         logo={operator.data?.logo || ""}
+        activity={operator.data?.activity || []}
+        rules={operator.data?.rules || []}
+        images={operator.data?.img || []}
+        indications={operator.data?.indications || ""}
       />
     </main>
   );

@@ -50,6 +50,9 @@ importers:
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
+      webpfy:
+        specifier: ^1.0.9
+        version: 1.0.9
       zustand:
         specifier: ^5.0.5
         version: 5.0.5(@types/react@19.1.6)(react@19.1.0)
@@ -1975,6 +1978,9 @@ packages:
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+
+  webpfy@1.0.9:
+    resolution: {integrity: sha512-5k6+y+v/hK4+svBenkqSXS3jruw6Kl+/3PQ6LdENJ7ZCH8xa4TAyjYxemmxjh96Kzoo4LuUKwfuZSyS/tky8NA==}
 
   whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
@@ -4201,6 +4207,8 @@ snapshots:
   web-streams-polyfill@3.3.3: {}
 
   webidl-conversions@3.0.1: {}
+
+  webpfy@1.0.9: {}
 
   whatwg-url@5.0.0:
     dependencies:

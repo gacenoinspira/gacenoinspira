@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ui-admin.module.css";
 import { UiFormOperator } from "./section";
-import { CategoryTableRow, ZoneTableRow } from "@/lib/type";
+import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
+import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
 
 // Icons (you can replace these with your actual icon components)
 const DashboardIcon = () => (
@@ -106,9 +107,10 @@ const TabButton = ({
 interface Props {
   zones: ZoneTableRow[];
   categories: CategoryTableRow[];
+  operators: OperatorTableRow[];
 }
 
-export const UiAdmin = ({ zones, categories }: Props) => {
+export const UiAdmin = ({ zones, categories, operators }: Props) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -158,7 +160,7 @@ export const UiAdmin = ({ zones, categories }: Props) => {
               onClick={() => setActiveTab("comercios")}
               icon={StoreIcon}
             >
-              Guias turistico
+              Actividades y Poblados
             </TabButton>
 
             <TabButton
@@ -174,17 +176,20 @@ export const UiAdmin = ({ zones, categories }: Props) => {
             <div className={styles.contentWrapper}>
               {activeTab === "dashboard" && (
                 <div className={styles.tabPanel}>
-                  <UiFormOperator zones={zones} categories={categories} />
+                  <UiFormOperator
+                    categories={categories}
+                    operators={operators.filter(
+                      (operator) => operator.type_activity === 1
+                    )}
+                  />
                 </div>
               )}
 
               {activeTab === "comercios" && (
                 <div className={styles.tabPanel}>
-                  <h2>Gestión de Comercios</h2>
-                  <p>Administra los comercios registrados</p>
+                  <UiFormActivity zones={zones} />
                 </div>
               )}
-
               {activeTab === "usuarios" && (
                 <div className={styles.tabPanel}>
                   <h2>Gestión de Usuarios</h2>

@@ -1,0 +1,96 @@
+.activity {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .contentTab {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+
+    .buttonTab {
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+      &.active {
+        background-color: var(--color-yellow);
+      }
+    }
+  }
+
+  .contentInput {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    .label {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 500;
+    }
+
+    .input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .btn_add {
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      max-width: 100px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+
+    .ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        width: fit-content;
+        list-style: circle;
+
+        &:hover {
+          .delete {
+            opacity: 1;
+          }
+        }
+
+        .delete {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .btn_submit {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+}

@@ -84,11 +84,11 @@ export default async function Home() {
           <Carrusel
             cards={
               operators.data
-                ?.filter((operator) => operator.type_activity === 1)
+                ?.filter((operator) => operator.type_activity === 4)
                 .map((operator) => ({
                   id: operator.id || "",
                   image: operator.logo || "/img/san_luis.jpeg",
-                  title: operator.name_company || "",
+                  title: operator.name || "",
                   description: operator.description || "",
                 })) ?? []
             }
