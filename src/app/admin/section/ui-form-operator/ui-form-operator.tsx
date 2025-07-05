@@ -334,11 +334,13 @@ export function UiFormOperator({ categories, operators }: Props) {
                 value={category}
               >
                 <option value="">Selecciona una categoría</option>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
+                {categories
+                  .filter((category) => category.id !== 5)
+                  .map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
               </select>
             </div>
 

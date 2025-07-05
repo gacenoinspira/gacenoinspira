@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import styles from "./ui-admin.module.css";
 import { UiFormOperator } from "./section";
 import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
+import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
 
 // Icons (you can replace these with your actual icon components)
 const DashboardIcon = () => (
@@ -159,7 +160,7 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
               onClick={() => setActiveTab("comercios")}
               icon={StoreIcon}
             >
-              Guias turistico
+              Actividades fuera de los poblados
             </TabButton>
 
             <TabButton
@@ -186,11 +187,9 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
 
               {activeTab === "comercios" && (
                 <div className={styles.tabPanel}>
-                  <h2>Gestión de Comercios</h2>
-                  <p>Administra los comercios registrados</p>
+                  <UiFormActivity zones={zones} />
                 </div>
               )}
-
               {activeTab === "usuarios" && (
                 <div className={styles.tabPanel}>
                   <h2>Gestión de Usuarios</h2>

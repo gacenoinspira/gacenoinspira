@@ -146,7 +146,7 @@
   letter-spacing: -0.5px;
 }
 
-.tabPanel p {
+.tabPanel .p {
   color: #64748b;
   line-height: 1.6;
   margin: 0;
