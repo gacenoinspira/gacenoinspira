@@ -19,22 +19,41 @@
 }
 
 .card {
-  background: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 0 10px !important; /* Reducido el margen entre tarjetas */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   min-height: 400px;
   display: flex !important;
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  position: relative;
   transform: scale(0.98);
   opacity: 0.95;
-  will-change: transform;
   min-width: 300px; /* Ajustado ancho mínimo */
-  max-width: 300px; /* Ajustado ancho máximo */
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  .p {
+    color: white;
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .imageCard {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
 }
 
 .slick-center .card {

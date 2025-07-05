@@ -51,6 +51,18 @@ export default async function Home() {
           }
         />
       </section>
+      <section className={styles.sectionImg}>
+        <img
+          src="/img/mapa.png"
+          alt="San Luis de Gaceno"
+          className={styles.icons}
+        />
+        <img
+          src="/img/bolso.png"
+          alt="San Luis de Gaceno"
+          className={styles.icons}
+        />
+      </section>
       <section className={styles.section_cultura}>
         <p className={styles.title}>Explora cada rincón</p>
         <p className={styles.info}>
@@ -74,6 +86,18 @@ export default async function Home() {
             <CardZone zone="5" />
           </div>
         </div>
+      </section>
+      <section className={styles.sectionImg}>
+        <img
+          src="/img/hoja.png"
+          alt="San Luis de Gaceno"
+          className={styles.icons}
+        />
+        <img
+          src="/img/pollo.png"
+          alt="San Luis de Gaceno"
+          className={styles.icons}
+        />
       </section>
       <section className={styles.section_carrusel}>
         <h2 className={styles.section_title}>Sumérgete en nuestra cultura</h2>

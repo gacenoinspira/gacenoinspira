@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -79,36 +78,17 @@ export function Carrusel({ cards }: CarruselProps) {
 
       <div className={styles.carouselContainer}>
         <Slider {...settings} ref={sliderRef} className={styles.slider}>
-          {cards.map((card, index) => (
+          {cards.map((card) => (
             <div
               key={card.id}
               className={styles.card}
-              style={{ "--index": index } as React.CSSProperties}
+              onClick={() => router.push(`/poblado/${card.id}`)}
             >
-              <div className={styles.cardImageContainer}>
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className={styles.cardImage}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src =
-                      "https://via.placeholder.com/300x200?text=Imagen+no+disponible";
-                  }}
-                />
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{card.title}</h3>
-              </div>
-              <button
-                className={styles.cardButton}
-                onClick={() => router.push(`/operator/${card.id}`)}
-              >
-                Ver más
-              </button>
+              <img
+                src={card.image}
+                alt={card.title}
+                className={styles.imageCard}
+              />
             </div>
           ))}
         </Slider>

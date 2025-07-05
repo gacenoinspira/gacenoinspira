@@ -387,14 +387,14 @@
 }
 
 .section_title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 5rem);
   color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .section_subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.7rem);
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
 }
@@ -459,5 +459,24 @@
 
   .ctaButton:hover {
     transform: translateY(-2px);
+  }
+}
+
+.sectionImg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  @media (width < 520px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .icons {
+    width: 100px;
+    height: auto;
   }
 }
