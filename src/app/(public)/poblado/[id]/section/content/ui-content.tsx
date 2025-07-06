@@ -47,12 +47,6 @@ export function UiContent({
             {item}
           </p>
         ))}
-        {!!images[0] && (
-          <div
-            style={{ backgroundImage: `url(${images[0]})` }}
-            className={styles.imgAnimation}
-          />
-        )}
         {!!activity.length && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>Actividades</h2>
@@ -85,12 +79,6 @@ export function UiContent({
               ))}
             </ul>
           </>
-        )}
-        {!!images[1] && (
-          <div
-            style={{ backgroundImage: `url(${images[1]})` }}
-            className={styles.imgAnimation}
-          />
         )}
         {!!images.length && (
           <div>
