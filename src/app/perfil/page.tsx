@@ -14,6 +14,8 @@ export default async function Perfil() {
         name={user.data?.name || ""}
         role={user.data?.rol === 1 ? "Admin" : "User"}
         initials={user.data?.name?.[0] || ""}
+        avatar={user.data?.avatar || ""}
+        id={user.data?.user_id || ""}
       />
       <Favorite
         favorites={
