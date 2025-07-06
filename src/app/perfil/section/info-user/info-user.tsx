@@ -4,7 +4,7 @@ import styles from "./info-user.module.css";
 import { convertToWebP } from "@/lib/utils/ceonvertWebp";
 import { uploadToSupabase } from "@/lib/action/load-img";
 import { updateInfoUser } from "@/lib/action";
-import { ModalMessage } from "@/lib/components/index";
+import { ModalMessage, Spinner } from "@/lib/components/index";
 
 interface UserStats {
   label: string;
@@ -33,7 +33,10 @@ export function InfoUser({
     message: "",
     buttonText: "",
   });
+  const [loading, setLoading] = useState(false);
+
   const uploadPhoto = async (file: File) => {
+    setLoading(true);
     const { fileName, webpBlob } = await convertToWebP(file);
     const resp = await uploadToSupabase({
       path: `logo/${new Date().getTime()}${fileName}`,
@@ -54,6 +57,7 @@ export function InfoUser({
         buttonText: "Aceptar",
       });
       setOpenModal(true);
+      setLoading(false);
       return;
     }
     setMessage({
@@ -62,6 +66,7 @@ export function InfoUser({
       buttonText: "Aceptar",
     });
     setOpenModal(true);
+    setLoading(false);
   };
   return (
     <div className={styles.profileContainer}>
@@ -83,8 +88,21 @@ export function InfoUser({
         </div>
 
         <div className={styles.avatarContainer}>
-          <div className={styles.avatar}>
-            <span className={styles.avatarInitials}>{initials}</span>
+          <div
+            className={styles.avatar}
+            style={
+              avatar
+                ? {
+                    backgroundImage: `url(${avatar})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }
+                : {}
+            }
+          >
+            {!avatar && (
+              <span className={styles.avatarInitials}>{initials}</span>
+            )}
             <input
               type="file"
               id="profile-photo"
@@ -126,6 +144,7 @@ export function InfoUser({
         title={message.title}
         buttonText={message.buttonText}
       />
+      {loading && <Spinner />}
     </div>
   );
 }
