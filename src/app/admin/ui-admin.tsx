@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ui-admin.module.css";
-import { UiFormOperator } from "./section";
+import { UiFormBlog, UiFormOperator } from "./section";
 import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
 import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
 
@@ -192,8 +192,7 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
               )}
               {activeTab === "usuarios" && (
                 <div className={styles.tabPanel}>
-                  <h2>Gestión de Usuarios</h2>
-                  <p>Administra los usuarios del sistema</p>
+                  <UiFormBlog />
                 </div>
               )}
             </div>

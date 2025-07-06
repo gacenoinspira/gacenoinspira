@@ -13,6 +13,7 @@ export interface OperatorTableRow extends OperatorTable {
   activity?: string[];
   rules?: string[];
   indications?: string;
+  blog?: string[];
 }
 
 export interface OperatorTableInsert extends OperatorTableInsertBase {
@@ -22,4 +23,5 @@ export interface OperatorTableInsert extends OperatorTableInsertBase {
   activity?: string[];
   rules?: string[];
   indications?: string;
+  blog?: string[];
 }

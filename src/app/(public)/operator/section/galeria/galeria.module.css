@@ -51,9 +51,9 @@
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 10px;
 
-    img {
+    .imgPhoto {
       width: 100%;
-      height: auto;
+      height: 400px;
       object-fit: cover;
       border-radius: 10px;
 

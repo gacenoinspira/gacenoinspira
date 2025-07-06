@@ -26,6 +26,7 @@ export function UiContent({
   activity = [],
   rules = [],
   indications = "",
+  images = [],
 }: UiContentProps) {
   console.log(img);
   return (
@@ -46,8 +47,7 @@ export function UiContent({
             {item}
           </p>
         ))}
-
-        {activity.length && (
+        {!!activity.length && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>Actividades</h2>
             <ul className={styles.ul}>
@@ -59,6 +59,7 @@ export function UiContent({
             </ul>
           </>
         )}
+
         {indications && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>
@@ -67,7 +68,7 @@ export function UiContent({
             <p className={styles.paragraph}>{indications}</p>
           </>
         )}
-        {rules.length && (
+        {!!rules.length && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>Recomendaciones</h2>
             <ul className={styles.ul}>
@@ -79,21 +80,21 @@ export function UiContent({
             </ul>
           </>
         )}
-
-        {/* <div className={styles.infoContainer}>
-          <div className={styles.infoItem}>
-            <FaMapMarkerAlt className={styles.infoIcon} />
-            <span>Carrera 5 #10-20, Centro, Guamal</span>
+        {!!images.length && (
+          <div>
+            <h2 className={`${styles.title} ${styles.mt}`}>Galeria</h2>
+            <div className={styles.gallery}>
+              {images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={title}
+                  className={styles.photo_Gallery}
+                />
+              ))}
+            </div>
           </div>
-          <div className={styles.infoItem}>
-            <FaPhone className={styles.infoIcon} />
-            <span>+57 123 456 7890</span>
-          </div>
-          <div className={styles.infoItem}>
-            <FaGlobe className={styles.infoIcon} />
-            <a href="#" className={styles.link}>www.iglesiaguamal.com</a>
-          </div>
-        </div> */}
+        )}
       </div>
     </div>
   );

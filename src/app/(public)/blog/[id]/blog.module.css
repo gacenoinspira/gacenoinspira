@@ -1,0 +1,62 @@
+.blog {
+  background-image: url("/img/turismo.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 40px;
+  padding: 4%;
+
+  .title {
+    font-size: clamp(2rem, 8vw, 6rem);
+    font-weight: bold;
+    font-style: normal;
+    color: var(--text-white);
+  }
+
+  .text {
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-style: normal;
+    color: var(--text-white);
+    line-height: 1.2;
+  }
+}
+
+.content {
+  .title {
+    font-size: clamp(2rem, 8vw, 6rem);
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-style: normal;
+    text-align: center;
+  }
+
+  .question_response {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+
+    .question {
+      font-size: clamp(1rem, 2vw, 2rem);
+      font-style: normal;
+
+      font-weight: 800;
+      margin-top: 30px;
+    }
+
+    .response {
+      font-size: clamp(1rem, 2vw, 2rem);
+      font-style: normal;
+    }
+  }
+}
