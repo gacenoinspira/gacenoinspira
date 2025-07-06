@@ -10,9 +10,8 @@
     color: var(--text-white);
     padding: 10px 20px;
     border-radius: 5px;
-    text-decoration: none;
     width: clamp(200px, 300px, 300px);
-    font-size: clamp(15px, 28px, 28px);
+    font-size: clamp(15px, 23px, 28px);
     font-weight: 800;
     cursor: pointer;
     display: flex;
@@ -20,5 +19,10 @@
     justify-content: center;
     gap: 8px;
     text-align: center;
+
+    @media (width < 620px) {
+      font-size: 22px;
+      width: 100%;
+    }
   }
 }

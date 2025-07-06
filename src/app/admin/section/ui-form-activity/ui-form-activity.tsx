@@ -123,9 +123,7 @@ export function UiFormActivity({ zones }: Props) {
     const uploadLogo = image
       ? await uploadToSupabase({
           webpBlob: webpBlob as Blob,
-          path: `logo/${title
-            .split(" ")
-            .join("_")}/${fileName}-${new Date().getTime()}`,
+          path: `logo/${new Date().getTime()}${fileName}`,
           mimeType: "image/webp",
         })
       : { publicUrl: "" };
@@ -135,9 +133,7 @@ export function UiFormActivity({ zones }: Props) {
         const { webpBlob, fileName } = await convertToWebP(blob);
         const uploadPhoto = await uploadToSupabase({
           webpBlob: webpBlob,
-          path: `logo/${title
-            .split(" ")
-            .join("_")}/${fileName}-${new Date().getTime()}`,
+          path: `logo/${new Date().getTime()}${fileName}`,
           mimeType: "image/webp",
         });
         photosUrls.push(uploadPhoto.publicUrl);
@@ -150,6 +146,7 @@ export function UiFormActivity({ zones }: Props) {
         buttonText: "Entendido",
       });
       setModalMessage(true);
+      setLoading(false);
       return;
     }
 
@@ -168,6 +165,7 @@ export function UiFormActivity({ zones }: Props) {
       category_id: 5,
       zone_id: zone_id,
     };
+    console.log(JSON.stringify(Body).length / 1024, "KB");
 
     try {
       const resp = await createOperator(Body);
@@ -199,6 +197,7 @@ export function UiFormActivity({ zones }: Props) {
         buttonText: "Entendido",
       });
       setModalMessage(true);
+      setLoading(false);
     }
     setLoading(false);
   };

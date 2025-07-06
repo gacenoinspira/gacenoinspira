@@ -6,10 +6,12 @@ import styles from "./btn-map.module.css";
 
 export function BtnMap() {
   return (
-    <div className={styles.map}>
-      <Link href="/map" className={styles.link}>
-        ¿Qué tan cerca estás de San Luis de Gaceno?
-      </Link>
-    </div>
+    <Link href="/map">
+      <div className={styles.map}>
+        <p className={styles.link}>
+          ¿Qué tan cerca estás de San Luis de Gaceno?
+        </p>
+      </div>
+    </Link>
   );
 }

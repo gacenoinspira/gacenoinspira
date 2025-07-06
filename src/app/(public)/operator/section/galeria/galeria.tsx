@@ -16,7 +16,14 @@ export function Galeria({ data }: Props) {
       </div>
       <div className={styles.img}>
         {data?.img ? (
-          data.img.map((img) => <img key={img} src={img} alt="turismo" />)
+          data.img.map((img) => (
+            <img
+              key={img}
+              src={img}
+              alt="turismo"
+              className={styles.imgPhoto}
+            />
+          ))
         ) : (
           <div className={styles.no__img}>
             <ImgIcon width={160} height={160} />
