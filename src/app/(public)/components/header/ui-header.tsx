@@ -105,6 +105,7 @@ export function UiHeader({ userDb }: HeaderProp) {
                     setUser(null);
                     logoutAction();
                   }}
+                  className={`${styles.logOut}`}
                 >
                   Cerrar Sesión
                 </button>
