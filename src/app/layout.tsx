@@ -18,7 +18,7 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
   title: "San Luis de Gaceno",
-  description: "Describre los diferentes actividades toristicas que tiene san luis de gaceno boyaca colombia",
+  description: "Describre los diferentes actividades turisticas que tiene san luis de gaceno boyaca colombia",
 };
 
 export default function RootLayout({
