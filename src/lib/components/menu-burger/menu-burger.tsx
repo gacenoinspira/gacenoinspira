@@ -55,7 +55,7 @@ export function MenuBurger({ user }: Props) {
 
       {isOpen && (
         <div className={styles.dropdownMenu}>
-          <nav className={styles.nav}>
+          <nav className={styles.nav} onClick={() => setIsOpen(false)}>
             {menuItems.map((item) => (
               <UiLink
                 key={item.href}
@@ -83,6 +83,7 @@ export function MenuBurger({ user }: Props) {
                     setUser(null);
                     logoutAction();
                   }}
+                  className={`${styles.logOut}`}
                 >
                   Cerrar Sesión
                 </button>
