@@ -1,60 +1,217 @@
-.blog {
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 0;
+  background-color: #f8f9fa;
+  margin-bottom: 40px;
   background-image: url("/img/turismo.jpg");
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 40px;
-  padding: 4%;
+}
 
-  .title {
-    font-size: 84px;
-    font-weight: bold;
-    font-style: normal;
-    color: var(--text-white);
-  }
+.title {
+  font-size: 2.5rem;
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
 
-  .text {
-    font-size: 38px;
-    font-style: normal;
-    color: var(--text-white);
-    line-height: 1.2;
-  }
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-white);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .content {
+  padding: 20px 0 60px;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.blogCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+}
+
+.blogCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e0;
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2d3748;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.blogCard:hover .cardTitle {
+  color: #3182ce;
+}
+
+.cardExcerpt {
+  color: #4a5568;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.7;
+  flex-grow: 1;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #edf2f7;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.readMore {
+  color: #3182ce;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.readMore::after {
+  content: "→";
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+
+.blogCard:hover .readMore {
+  color: #2c5282;
+}
+
+.blogCard:hover .readMore::after {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .blogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .blogCard {
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .blogGrid {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .blogCard {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
   .title {
-    font-size: 84px;
-    font-weight: bold;
-    font-style: normal;
-    text-align: center;
+    font-size: 1.75rem;
   }
 
   .subtitle {
-    font-size: 38px;
-    font-style: normal;
-    text-align: center;
+    font-size: 1.1rem;
+    padding: 0 16px;
   }
 
-  .question_response {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-
-    .question {
-      font-size: 28px;
-      font-style: normal;
-
-      font-weight: 800;
-      margin-top: 30px;
-    }
-
-    .response {
-      font-size: 28px;
-      font-style: normal;
-    }
+  .hero {
+    padding: 40px 0;
   }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .cardExcerpt {
+    font-size: 0.95rem;
+  }
+
+  .date,
+  .readMore {
+    font-size: 0.85rem;
+  }
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blogCard {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered animation for cards */
+.blogCard:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.blogCard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.blogCard:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.blogCard:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.blogCard:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.blogCard:nth-child(6) {
+  animation-delay: 0.6s;
 }

@@ -3,4 +3,5 @@ export interface UserType {
   rol: number;
   email: string;
   name: string;
+  avatar?: string;
 }

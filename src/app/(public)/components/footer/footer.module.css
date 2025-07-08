@@ -11,6 +11,10 @@
 
 .container {
   margin-top: 180px;
+
+  @media (width < 600px) {
+    margin-top: 250px;
+  }
 }
 
 /* Header Section */
@@ -137,7 +141,7 @@
 }
 
 .socialLink {
-  color: #3498db;
+  color: var(--text-white);
   text-decoration: none;
   display: flex;
   align-items: center;

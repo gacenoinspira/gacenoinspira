@@ -177,7 +177,20 @@
     transform: translateY(0) scale(1);
   }
 }
-
+.logOut {
+  background-color: var(--color-secundario);
+  color: var(--text-white);
+  padding: 3px 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  padding: 6px 40px;
+}
 /* Media query para dispositivos móviles */
 /* @media (max-width: 768px) {
   .burger {

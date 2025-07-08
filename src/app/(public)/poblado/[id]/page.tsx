@@ -9,6 +9,7 @@ interface Props {
 export default async function PobladoPage({ params }: Props) {
   const { id } = await params;
   const operator = await getOperatorById(id);
+  console.log(operator);
   return (
     <main className="min-h-screen bg-white">
       <HeaderPage
@@ -18,7 +19,11 @@ export default async function PobladoPage({ params }: Props) {
       <UiContent
         title={operator.data?.name || ""}
         description={operator.data?.description || ""}
-        logo={operator.data?.logo || ""}
+        logo={operator.data?.logo || "/img/san_luis.jpeg"}
+        activity={operator.data?.activity || []}
+        rules={operator.data?.rules || []}
+        images={operator.data?.img || []}
+        indications={operator.data?.indications || ""}
       />
     </main>
   );

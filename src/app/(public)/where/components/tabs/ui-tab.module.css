@@ -1,8 +1,10 @@
 .container {
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
@@ -17,20 +19,27 @@
 }
 
 .title {
-  font-size: 2.2rem;
+  font-size: clamp(2.2rem, 5vw, 5rem);
   color: var(--color-texto);
   margin-bottom: 0.5rem;
   font-weight: 700;
+
+  &.name {
+    font-size: clamp(2.2rem, 5vw, 5rem);
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 28px, 32px);
   color: #666;
   margin: 0;
 }
 
 .tabsContainer {
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .tabs {
@@ -44,7 +53,7 @@
 
 .tab {
   padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: none;
   background: transparent;
   border-radius: 20px;
   cursor: pointer;
@@ -74,11 +83,12 @@
 .tabContent {
   padding: 0;
   text-align: center;
+  width: 100%;
 }
 
 .imageContainer {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto 1.5rem;
   border-radius: 4px;
   overflow: hidden;
@@ -87,21 +97,22 @@
 .image {
   width: 100%;
   height: auto;
-  max-height: 450px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
   border-radius: 4px;
+  object-fit: cover;
 }
 
 .selectionText {
   text-align: center;
   margin-top: 1.5rem;
   color: #4a5568;
+  margin-bottom: 20px;
 }
 
 .selectionText h3 {
-  font-size: 1.3rem;
+  font-size: clamp(2.2rem, 5vw, 5rem);
   color: var(--color-texto);
   margin-bottom: 0.5rem;
 }
@@ -109,7 +120,7 @@
 .selectionText p {
   color: #718096;
   margin: 0;
-  font-size: 1rem;
+  font-size: clamp(2.2rem, 4vw, 3rem);
 }
 
 /* Responsive styles */
@@ -117,20 +128,20 @@
   .title {
     font-size: 2rem;
   }
-  
+
   .subtitle {
     font-size: 1.1rem;
   }
-  
+
   .tab {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
-  
+
   .selectionText h3 {
     font-size: 1.3rem;
   }
-  
+
   .selectionText p {
     font-size: 1rem;
   }
@@ -140,24 +151,24 @@
   .container {
     padding: 1rem 0.5rem;
   }
-  
+
   .header {
     padding: 0.75rem;
   }
-  
+
   .title {
     font-size: 1.75rem;
   }
-  
+
   .tabs {
     padding: 0.5rem 0.25rem;
   }
-  
+
   .tab {
     padding: 0.5rem 0.75rem;
     font-size: 0.85rem;
   }
-  
+
   .tabContent {
     padding: 1rem;
   }

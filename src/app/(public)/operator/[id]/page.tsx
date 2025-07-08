@@ -17,11 +17,7 @@ export default async function Page({ params }: Props) {
       <Info
         operator={operator.data}
         details={detailsOperator.data}
-        id={
-          detailsOperator.data?.find(
-            (item) => item.user_id === user.data?.user_id
-          )?.id
-        }
+        id={id}
         accountId={id}
       />
       <Description

@@ -67,6 +67,11 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #e5e7eb;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .avatarInitials {
@@ -74,6 +79,74 @@
   font-size: 3rem;
   font-weight: 600;
   text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.avatar:hover .avatarInitials {
+  opacity: 0.7;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #1e3a8a;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.avatar:hover .uploadButton {
+  opacity: 1;
+  transform: translateY(-55px);
+}
+
+.uploadButton:hover {
+  background-color: #1e40af;
+  transform: scale(1.1) translateY(0);
+}
+
+/* Estilos para móviles */
+@media (max-width: 767px) {
+  .uploadButton {
+    opacity: 1; /* Mostrar siempre en móviles */
+    transform: none;
+    width: 36px;
+    height: 36px;
+    bottom: 50px;
+    right: 5px;
+  }
+  
+  .avatar:hover .uploadButton {
+    transform: none; /* Anular transformación hover en móviles */
+  }
+  
+  .uploadButton svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Mejorar accesibilidad táctil */
+  .uploadButton:active {
+    transform: scale(0.95);
+    background-color: #1e40af;
+  }
 }
 
 .statsContainer {

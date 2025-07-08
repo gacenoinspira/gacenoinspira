@@ -106,7 +106,7 @@ export function UiFormRegister() {
       return;
     }
     console.log(passwordStrength, passwordSuggestions);
-    // passwordStrength !== "Fuerte" || 
+    // passwordStrength !== "Fuerte" ||
     if (passwordSuggestions.length > 0) {
       setMessage({
         title: "Error",
@@ -274,7 +274,7 @@ export function UiFormRegister() {
             />
             <span>
               He leído y acepto los{" "}
-              <a href="/terminos" className={styles.link}>
+              <a href="/term-condition" className={styles.link} target="_blank">
                 Términos y condiciones de uso del portal
               </a>
             </span>
@@ -289,7 +289,7 @@ export function UiFormRegister() {
             />
             <span>
               He leído y acepto la{" "}
-              <a href="/privacidad" className={styles.link}>
+              <a href="/privacity" className={styles.link} target="_blank">
                 política de tratamiento de datos personales
               </a>
             </span>

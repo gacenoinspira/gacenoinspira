@@ -1,8 +1,8 @@
 .main {
-  padding-top: 144px;
+  padding-top: 95px;
 }
 .section_img {
-  background-image: url("/img/main.png");
+  background-image: url("/img/san_luis.jpeg");
   background-size: cover;
   background-position: center;
   height: 900px;
@@ -11,6 +11,12 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  background-repeat: no-repeat;
+
+  @media (width < 620px) {
+    background-size: cover;
+    height: 400px;
+  }
 
   &::after {
     content: "";
@@ -160,7 +166,7 @@
 
   .route {
     width: 300px;
-    height: 300px;
+    height: auto;
 
     @media (width > 720px) {
       width: 100%;
@@ -283,6 +289,10 @@
   justify-content: center;
   position: relative;
 
+  @media (width < 720px) {
+    height: 600px;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -377,14 +387,14 @@
 }
 
 .section_title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 5rem);
   color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .section_subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.7rem);
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
 }
@@ -449,5 +459,24 @@
 
   .ctaButton:hover {
     transform: translateY(-2px);
+  }
+}
+
+.sectionImg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  @media (width < 520px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .icons {
+    width: 100px;
+    height: auto;
   }
 }

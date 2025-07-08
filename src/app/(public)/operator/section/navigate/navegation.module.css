@@ -14,7 +14,7 @@
     background-color: #50c3c8;
     padding: 20px;
     flex-wrap: wrap;
-    height: 200px;
+    min-height: 200px;
 
     .info {
       max-width: 800px;

@@ -33,6 +33,7 @@ export const addComment = async (
   body: DetailsOperatorTableInsert
 ): Promise<ResponseType<DetailsOperatorTable | null>> => {
   const detailsOperator = await DetailsOperatorRepository.addComment(body);
+
   if (!detailsOperator?.id) {
     return {
       status: false,
@@ -51,11 +52,13 @@ export const addComment = async (
 export const updateDetails = async (
   body: DetailsOperatorTableUpdate,
   id: string,
-  accountId: string
+  accountId: string,
+  user_id: string
 ): Promise<ResponseType<DetailsOperatorTable | null>> => {
   const detailsOperator = await DetailsOperatorRepository.updateDetails(
     body,
-    id
+    id,
+    user_id
   );
   if (!detailsOperator?.id) {
     return {
@@ -65,6 +68,26 @@ export const updateDetails = async (
     };
   }
   revalidatePath(`/operator/${accountId}`);
+  revalidatePath(`/perfil`);
+  return {
+    status: true,
+    data: detailsOperator,
+    error: "",
+  };
+};
+
+export const getDetailsOperatorByUser = async (
+  id: string
+): Promise<ResponseType<DetailsOperatorTable[] | null>> => {
+  const detailsOperator =
+    await DetailsOperatorRepository.getDetailsOperatorByUser(id);
+  if (!detailsOperator?.length) {
+    return {
+      status: false,
+      data: null,
+      error: "Error al obtener el detalle del operador",
+    };
+  }
   return {
     status: true,
     data: detailsOperator,

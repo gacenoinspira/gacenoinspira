@@ -1,5 +1,4 @@
 .tabsContainer {
-  max-width: 100%;
   margin: 2rem auto;
   background: white;
   border-radius: 12px;
@@ -9,12 +8,10 @@
   margin: 0 auto;
   border: 1px solid #e9ecef;
   transform: translateY(-2rem);
-  position: relative;
   z-index: 1;
 }
 
 .tabsHeader {
-  position: relative;
   display: flex;
   background: rgba(241, 245, 249, 0.6);
   padding: 6px;
@@ -23,7 +20,6 @@
   backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 0, 0, 0.03);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-  position: relative;
   z-index: 1;
   overflow: hidden;
 }
@@ -121,10 +117,10 @@
 }
 
 .tabContent {
-  position: relative;
   padding: 0 0.5rem 1rem;
   animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 200px;
+  width: 100%;
 }
 
 .contentWrapper {
@@ -138,6 +134,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
 }
 
 .tabPanel h2 {
@@ -149,7 +146,7 @@
   letter-spacing: -0.5px;
 }
 
-.tabPanel p {
+.tabPanel .p {
   color: #64748b;
   line-height: 1.6;
   margin: 0;

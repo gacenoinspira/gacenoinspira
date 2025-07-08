@@ -1,0 +1,28 @@
+.map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .link {
+    background-color: var(--color-secundario);
+    color: var(--text-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: clamp(200px, 300px, 300px);
+    font-size: clamp(15px, 23px, 28px);
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+
+    @media (width < 620px) {
+      font-size: 22px;
+      width: 100%;
+    }
+  }
+}

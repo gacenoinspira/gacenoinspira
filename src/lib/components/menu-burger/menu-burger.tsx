@@ -13,6 +13,7 @@ interface Props {
 
 const menuItems = [
   { name: "Inicio", href: "/" },
+  { name: "Descubre", href: "/discovery" },
   { name: "Planifica", href: "/where" },
   { name: "Blog", href: "/blog" },
 ];
@@ -54,7 +55,7 @@ export function MenuBurger({ user }: Props) {
 
       {isOpen && (
         <div className={styles.dropdownMenu}>
-          <nav className={styles.nav}>
+          <nav className={styles.nav} onClick={() => setIsOpen(false)}>
             {menuItems.map((item) => (
               <UiLink
                 key={item.href}
@@ -67,19 +68,22 @@ export function MenuBurger({ user }: Props) {
               <>
                 <UiLink
                   namePath="Perfil"
-                  href="/profile"
+                  href="/perfil"
                   className={`${styles.menuItem}`}
                 />
-                <UiLink
-                  namePath="Admin"
-                  href="/admin"
-                  className={`${styles.menuItem}`}
-                />
+                {user?.rol === 1 && (
+                  <UiLink
+                    namePath="Admin"
+                    href="/admin"
+                    className={`${styles.menuItem}`}
+                  />
+                )}
                 <button
                   onClick={() => {
                     setUser(null);
                     logoutAction();
                   }}
+                  className={`${styles.logOut}`}
                 >
                   Cerrar Sesión
                 </button>

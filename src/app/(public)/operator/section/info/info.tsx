@@ -1,7 +1,7 @@
 "use client";
 
 import { DetailsOperatorTable, OperatorTableRow } from "@/lib/type";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./info.module.css";
 import { UserIcon, PhoneIcon, WhatsApp, HeartIcon } from "@/lib/icons";
 import { UserStore } from "@/lib/store/user.store";
@@ -11,26 +11,36 @@ import { ModalMessage } from "@/lib/components/modal-message/modal-message";
 interface Props {
   operator: OperatorTableRow | null;
   details: DetailsOperatorTable[] | null;
-  id?: string;
+  id: string;
   accountId: string;
 }
 export function Info({ operator, details, id, accountId }: Props) {
   const user = UserStore((item) => item.user);
   const [isOpen, setIsOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [messageModal, setMessageModal] = useState({
     title: "",
     message: "",
     buttonText: "",
   });
+  const infoDetails = details?.find(
+    (item) => item.user_id === user?.user_id && item.id_operator === id
+  );
+
+  useEffect(() => {
+    setIsFavorite(infoDetails?.is_favorite || false);
+  }, [infoDetails]);
+
   const handleHeartClick = async () => {
-    if (!user?.user_id) {
+    if (!infoDetails?.id) {
       const respo = await addComment({
-        is_favorite: true,
+        is_favorite: !isFavorite,
         notes: "",
         start: 0,
         user_id: user?.user_id,
         id_operator: id!,
       });
+      console.log("error", respo.error);
       if (!respo.status) {
         setMessageModal({
           title: "Error",
@@ -50,14 +60,14 @@ export function Info({ operator, details, id, accountId }: Props) {
     }
     const resp = await updateDetails(
       {
-        is_favorite: !details?.find(
-          (detail) => detail.user_id === user?.user_id
-        )?.is_favorite,
+        is_favorite: !isFavorite,
       },
-      id!,
-      accountId
+      id,
+      accountId,
+      user?.user_id ?? ""
     );
     if (!resp.status) {
+      console.log("error 2", resp.error);
       setMessageModal({
         title: "Error",
         message: "No se pudo actualizar el detalle del operador",
@@ -83,35 +93,28 @@ export function Info({ operator, details, id, accountId }: Props) {
             alt={operator?.name}
           />
           <button className={styles.heart__icon} onClick={handleHeartClick}>
-            <HeartIcon
-              width={60}
-              height={60}
-              isLike={
-                !!details?.find((detail) => detail.user_id === user?.user_id)
-                  ?.is_favorite
-              }
-            />
+            <HeartIcon width={30} height={30} isLike={isFavorite} />
           </button>
         </div>
       </div>
       <div className={styles.container__info__info}>
         <h2 className={styles.title}>{operator?.name_company}</h2>
         <div className={styles.phone}>
-          <UserIcon width={60} height={60} />
+          <UserIcon width={30} height={30} />
           <div>
             <p>Nombre del Contacto</p>
             <p>{operator?.name}</p>
           </div>
         </div>
         <div className={styles.phone}>
-          <PhoneIcon width={60} height={60} />
+          <PhoneIcon width={30} height={30} />
           <div>
             <p>Telefono</p>
             <a href={`tel:${operator?.phone}`}>{operator?.phone}</a>
           </div>
         </div>
         <div className={styles.phone}>
-          <WhatsApp width={60} height={60} />
+          <WhatsApp width={30} height={30} />
           <div>
             <p>Whatsapp</p>
             <a href={`https://wa.me/${operator?.phone}`}>{operator?.phone}</a>
