@@ -72,24 +72,24 @@ export function UiFormActivity({ zones }: Props) {
       setModalMessage(true);
       return false;
     }
-    if (image === undefined) {
-      setMessage({
-        title: "Error",
-        message: "Debe ingresar una imagen",
-        buttonText: "Entendido",
-      });
-      setModalMessage(true);
-      return false;
-    }
-    if (imagesList.length === 0) {
-      setMessage({
-        title: "Error",
-        message: "Debe ingresar al menos una foto",
-        buttonText: "Entendido",
-      });
-      setModalMessage(true);
-      return false;
-    }
+    // if (image === undefined) {
+    //   setMessage({
+    //     title: "Error",
+    //     message: "Debe ingresar una imagen",
+    //     buttonText: "Entendido",
+    //   });
+    //   setModalMessage(true);
+    //   return false;
+    // }
+    // if (imagesList.length === 0) {
+    //   setMessage({
+    //     title: "Error",
+    //     message: "Debe ingresar al menos una foto",
+    //     buttonText: "Entendido",
+    //   });
+    //   setModalMessage(true);
+    //   return false;
+    // }
     if (description === "") {
       setMessage({
         title: "Error",
