@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
       // Add other domains as needed
     ],
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
+  },
 };
 
 export default nextConfig;
