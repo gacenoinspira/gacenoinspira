@@ -6,6 +6,7 @@ import styles from "./ui-admin.module.css";
 import { UiFormBlog, UiFormOperator } from "./section";
 import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
 import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
+import { ListTable } from "./section/list-table/list-table";
 
 // Icons (you can replace these with your actual icon components)
 const DashboardIcon = () => (
@@ -112,7 +113,7 @@ interface Props {
 
 export const UiAdmin = ({ zones, categories, operators }: Props) => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("list");
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = () => {
@@ -148,6 +149,13 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
         <div className={styles.tabsContainer}>
           <div className={styles.tabsHeader}>
             <TabButton
+              active={activeTab === "list"}
+              onClick={() => setActiveTab("list")}
+              icon={DashboardIcon}
+            >
+              Listado
+            </TabButton>
+            <TabButton
               active={activeTab === "dashboard"}
               onClick={() => setActiveTab("dashboard")}
               icon={DashboardIcon}
@@ -174,6 +182,11 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
 
           <div className={styles.tabContent}>
             <div className={styles.contentWrapper}>
+              {activeTab === "list" && (
+                <div className={styles.tabPanel}>
+                  <ListTable operators={operators} />
+                </div>
+              )}
               {activeTab === "dashboard" && (
                 <div className={styles.tabPanel}>
                   <UiFormOperator
