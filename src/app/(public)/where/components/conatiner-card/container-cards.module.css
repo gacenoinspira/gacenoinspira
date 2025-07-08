@@ -45,7 +45,6 @@
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  max-height: 100vh;
   scrollbar-width: thin;
   scrollbar-color: #cbd5e0 #f7fafc;
 }
