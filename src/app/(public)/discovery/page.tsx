@@ -52,7 +52,7 @@ export default async function PageDiscovery() {
               <UiCard
                 key={operator.id}
                 id={operator.id}
-                img={operator.logo || ""}
+                img={operator.logo || "/img/san_luis.jpeg"}
                 title={operator.name || undefined}
               />
             ))}
