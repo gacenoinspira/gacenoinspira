@@ -8,6 +8,7 @@ import { UserStore } from "@/lib/store/user.store";
 import { logoutAction } from "@/lib/action";
 import { UserType } from "@/lib/type";
 import { useNavegationStore } from "@/lib/store/navegation";
+import Link from "next/link";
 
 interface HeaderProp {
   userDb: UserType | null;
@@ -48,7 +49,9 @@ export function UiHeader({ userDb }: HeaderProp) {
   return (
     <header className={`${styles.header}`}>
       <div>
-        <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
+        <Link href={"/"}>
+          <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
+        </Link>
       </div>
       <MenuBurger user={user} />
       <nav className={styles.nav}>

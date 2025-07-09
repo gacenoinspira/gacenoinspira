@@ -51,11 +51,11 @@ export function ListTable({ operators }: Props) {
 
   const handleEdit = (operator: OperatorTableRow) => {
     setEditingId(operator.id);
-    setEditData({ ...operator });
   };
 
   const logicMultipleImages = async (id: string) => {
-    if (editGallery.length > 0) {
+    console.log("editGallery", editGallery);
+    if (editGallery.length > 0 && editingId) {
       const photosUrls: string[] = [];
       for (const blob of editGallery) {
         const { webpBlob, fileName } = await convertToWebP(blob);
@@ -66,7 +66,7 @@ export function ListTable({ operators }: Props) {
         });
         photosUrls.push(uploadPhoto.publicUrl);
       }
-      if (photosUrls.length > 0) {
+      if (photosUrls.length > 0 && editingId) {
         const resp = await updateOperator({
           id,
           body: {
@@ -81,7 +81,7 @@ export function ListTable({ operators }: Props) {
 
   const handleSave = async (id: string) => {
     setLoading(true);
-    if (editLogo) {
+    if (editLogo && editingId) {
       const { webpBlob, fileName } = editLogo
         ? await convertToWebP(editLogo as File)
         : { webpBlob: null, fileName: "" };
@@ -94,7 +94,7 @@ export function ListTable({ operators }: Props) {
           })
         : { publicUrl: "" };
       if (uploadLogo.publicUrl) {
-        updateOperator({
+        await updateOperator({
           id,
           body: {
             logo: uploadLogo.publicUrl,
@@ -106,6 +106,9 @@ export function ListTable({ operators }: Props) {
     await logicMultipleImages(id);
     setEditingId(null);
     setLoading(false);
+    setEditData({});
+    setEditGallery([]);
+    setEditLogo(null);
   };
 
   const handleCancel = () => {

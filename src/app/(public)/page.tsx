@@ -5,6 +5,7 @@ import { AnimatedText } from "@/components/AnimatedText";
 import { getOperators } from "@/lib/action";
 import { BtnMap, CardZone } from "./components";
 import { Carrusel } from "@/lib/carrusel/carrusel";
+import Link from "next/link";
 
 export default async function Home() {
   const operators = await getOperators();
@@ -38,7 +39,9 @@ export default async function Home() {
           </p>
         </div>
         <div className={styles.gifs}>
-          <img src="/img/route.gif" alt="route" className={styles.route} />
+          <Link href={"/map"}>
+            <img src="/img/route.gif" alt="route" className={styles.route} />
+          </Link>
         </div>
       </section>
       <BtnMap />
