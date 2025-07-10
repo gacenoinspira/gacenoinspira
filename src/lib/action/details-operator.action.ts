@@ -70,6 +70,7 @@ export const updateDetails = async (
   }
   revalidatePath(`/operator/${accountId}`);
   revalidatePath(`/poblado/${accountId}`);
+  revalidatePath(`/perfil`);
   return {
     status: true,
     data: detailsOperator,
