@@ -31,7 +31,10 @@ export class ImagePageTable {
 
   static async getImagePageTable(): Promise<ResponseType<any>> {
     const supabase = await SupabaseServer();
-    const { data, error } = await supabase.from("img-page" as any).select().single();
+    const { data, error } = await supabase
+      .from("img-page" as any)
+      .select()
+      .single();
     if (error) {
       return {
         status: false,
@@ -54,7 +57,7 @@ export class ImagePageTable {
     const { data, error } = await supabase
       .from("img-page" as any)
       .update(imagePageTable as any)
-      .eq("id", 1)
+      .eq("id", 6)
       .select("*")
       .single();
     if (error) {

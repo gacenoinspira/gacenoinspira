@@ -51,6 +51,9 @@ export async function updateImagePageTable(body: {
   const { data, error, status } = await ImagePageTable.updateImagePageTable(
     body
   );
+  console.log("data", data);
+  console.log("error", error);
+  console.log("status", status);
   if (!status) {
     return {
       status: false,
