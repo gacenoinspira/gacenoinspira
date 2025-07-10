@@ -15,5 +15,8 @@ export interface DetailsOperatorTable extends DetailsOperatorTableBase {
   operator?: {
     name_company: string;
     logo: string;
+    type_activity: number;
+    id: string;
+    name: string;
   };
 }

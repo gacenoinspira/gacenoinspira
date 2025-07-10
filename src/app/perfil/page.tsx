@@ -22,12 +22,13 @@ export default async function Perfil() {
           detailsOperator.data
             ?.filter((item) => item.is_favorite)
             .map((item) => ({
-              id: item.id,
-              title: item.operator?.name_company || "",
+              id: item.operator?.id ?? "",
+              title: item.operator?.name_company || item.operator?.name || "",
               location: item.operator?.name_company || "",
               image: item.operator?.logo || "/img/san_luis.jpeg",
               isFavorite: item.is_favorite || false,
               accountId: item.id_operator,
+              type: item.operator?.type_activity || 0,
             })) || []
         }
       />

@@ -16,6 +16,7 @@ interface FavoriteItem {
   image: string;
   isFavorite: boolean;
   accountId: string;
+  type: number;
 }
 
 interface FavoriteSectionProps {
@@ -38,7 +39,6 @@ export function Favorite({
     buttonText: "",
   });
   const [isOpen, setIsOpen] = useState(false);
-
 
   const onToggleFavorite = async ({
     id,
@@ -123,7 +123,11 @@ export function Favorite({
               <button
                 className={styles.exploreButton}
                 onClick={() => {
-                  router.push(`/operator/${item.id}`);
+                  router.push(
+                    item.type === 4
+                      ? `/poblado/${item.id}`
+                      : `/operator/${item.id}`
+                  );
                 }}
               >
                 VER MAS ...

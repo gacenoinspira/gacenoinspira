@@ -42,6 +42,7 @@ export const addComment = async (
     };
   }
   revalidatePath(`/operator/${body.id_operator}`);
+  revalidatePath(`/poblado/${body.id_operator}`);
   return {
     status: true,
     data: detailsOperator,
@@ -68,7 +69,7 @@ export const updateDetails = async (
     };
   }
   revalidatePath(`/operator/${accountId}`);
-  revalidatePath(`/perfil`);
+  revalidatePath(`/poblado/${accountId}`);
   return {
     status: true,
     data: detailsOperator,
