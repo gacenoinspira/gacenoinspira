@@ -38,7 +38,7 @@ export function Commentarios({ comments }: CommentariosProps) {
     if (!data?.id) {
       setMessageModal({
         title: "Error",
-        message: "No se pudo actualizar el detalle del operador",
+        message: "No se pudo actualizar el comentario",
         buttonText: "Aceptar",
       });
       setIsOpen(true);
@@ -46,8 +46,8 @@ export function Commentarios({ comments }: CommentariosProps) {
     }
     setIsOpen(true);
     setMessageModal({
-      title: "Detalle actualizado",
-      message: "Detalle actualizado correctamente",
+      title: "Comentario actualizado",
+      message: "Comentario actualizado correctamente",
       buttonText: "Aceptar",
     });
     setCommentId("");
@@ -70,7 +70,7 @@ export function Commentarios({ comments }: CommentariosProps) {
     if (!data?.id) {
       setMessageModal({
         title: "Error",
-        message: "No se pudo actualizar el detalle del operador",
+        message: "No se pudo eliminar el comentario",
         buttonText: "Aceptar",
       });
       setIsOpen(true);
@@ -78,8 +78,8 @@ export function Commentarios({ comments }: CommentariosProps) {
     }
     setIsOpen(true);
     setMessageModal({
-      title: "Detalle eliminado",
-      message: "Detalle eliminado correctamente",
+      title: "Comentario eliminado",
+      message: "Comentario eliminado correctamente",
       buttonText: "Aceptar",
     });
     setCommentId("");
