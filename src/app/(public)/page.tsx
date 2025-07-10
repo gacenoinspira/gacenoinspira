@@ -6,12 +6,20 @@ import { getOperators } from "@/lib/action";
 import { BtnMap, CardZone } from "./components";
 import { Carrusel } from "@/lib/carrusel/carrusel";
 import Link from "next/link";
+import { getImagePageTable } from "@/lib/action/img-page.action";
 
 export default async function Home() {
   const operators = await getOperators();
+  const imgPage = await getImagePageTable();
+  console.log("imgPage", imgPage);
   return (
     <div>
-      <section className={styles.section_img}>
+      <section
+        className={styles.section_img}
+        style={{
+          backgroundImage: `url(${imgPage.data?.home || "/img/san_luis.jpeg"})`,
+        }}
+      >
         <div className={styles.container_info}>
           <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
             Donde la aventura,

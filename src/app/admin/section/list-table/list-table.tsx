@@ -54,7 +54,7 @@ export function ListTable({ operators }: Props) {
   };
 
   const logicMultipleImages = async (id: string) => {
-    console.log("editGallery", editGallery);
+    
     if (editGallery.length > 0 && editingId) {
       const photosUrls: string[] = [];
       for (const blob of editGallery) {

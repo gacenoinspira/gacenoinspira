@@ -2,7 +2,7 @@
   padding-top: 95px;
 }
 .section_img {
-  background-image: url("/img/san_luis.jpeg");
+  /* background-image: url("/img/san_luis.jpeg"); */
   background-size: cover;
   background-position: center;
   height: 900px;
