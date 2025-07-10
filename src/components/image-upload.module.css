@@ -31,11 +31,11 @@
 .uploadContent p {
   margin: 0;
   color: #333;
-  font-size: 14px;
+  font-size: clamp(14px, 2vw, 16px);
 }
 
 .uploadHint {
-  font-size: 12px;
+  font-size: clamp(12px, 2vw, 14px);
   color: #666;
 }
 
