@@ -89,6 +89,7 @@ export function Carrusel({ cards }: CarruselProps) {
                 alt={card.title}
                 className={styles.imageCard}
               />
+              <p className={styles.p}>{card.title}</p>
             </div>
           ))}
         </Slider>

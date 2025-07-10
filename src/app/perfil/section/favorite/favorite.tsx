@@ -29,7 +29,7 @@ interface FavoriteSectionProps {
 export function Favorite({
   title = "Mis Favoritos",
   subtitle = "Tus lugares y experiencias favoritas en San Luis de Gaceno",
-  description = "Aquí encontrarás todos los destinos, actividades y servicios que has guardado como favoritos. Puedes eliminarlos o añadirlos cuando quieras.",
+  description = "Aquí verás todo lo que marcaste con el corazón ❤️ mientras explorabas. Guías, alojamientos, actividades y rincones mágicos para que no pierdas nada que te haya inspirado.",
   favorites = [],
 }: FavoriteSectionProps) {
   const user = UserStore((item) => item.user);
