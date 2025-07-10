@@ -19,7 +19,9 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
   const [image, setImage] = useState<File | undefined>(undefined);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const fileInputRefsec = useRef<HTMLInputElement>(null);
+  const fileInputRefVideo = useRef<HTMLInputElement>(null);
   const [imageSec, setImageSec] = useState<File | undefined>(undefined);
+  const [video, setVideo] = useState<File | undefined>(undefined);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({
     title: "",
@@ -48,7 +50,7 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
 
       setMessage({
         title: !response.status ? "Error" : "Imagen actualizada",
-        message: response.status
+        message: !response.status
           ? "Error al actualizar la imagen"
           : "Imagen actualizada exitosamente",
         buttonText: "Entendido",
@@ -61,7 +63,7 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
       });
       setMessage({
         title: !response.status ? "Error" : "Imagen insertada",
-        message: response.status
+        message: !response.status
           ? "Error al insertar la imagen"
           : "Imagen insertada exitosamente",
         buttonText: "Entendido",
@@ -96,7 +98,7 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
       });
       setMessage({
         title: !response.status ? "Error" : "Imagen actualizada",
-        message: response.status
+        message: !response.status
           ? "Error al actualizar la imagen"
           : "Imagen actualizada exitosamente",
         buttonText: "Entendido",
@@ -109,7 +111,7 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
       });
       setMessage({
         title: !response.status ? "Error" : "Imagen insertada",
-        message: response.status
+        message: !response.status
           ? "Error al insertar la imagen"
           : "Imagen insertada exitosamente",
         buttonText: "Entendido",
@@ -125,6 +127,51 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
     if (fileInputRefsec?.current) {
       fileInputRefsec.current.value = "";
     }
+  };
+
+  const onVideo = async () => {
+    setLoading(true);
+    const uploadLogo = video
+      ? await uploadToSupabase({
+          webpBlob: video as Blob,
+          path: `logo/${new Date().getTime()}${video.name}`,
+          mimeType: "video/mp4",
+        })
+      : { publicUrl: "" };
+
+    if (imgInicio || imgDescubre) {
+      const response = await updateImagePageTable({
+        home: uploadLogo.publicUrl,
+      });
+
+      setMessage({
+        title: !response.status ? "Error" : "Video actualizado",
+        message: !response.status
+          ? "Error al actualizar el video"
+          : "Video actualizado exitosamente",
+        buttonText: "Entendido",
+      });
+      setModalMessage(true);
+    } else {
+      const response = await insertImagePageTable({
+        home: uploadLogo.publicUrl,
+        discovery: "",
+      });
+      setMessage({
+        title: !response.status ? "Error" : "Video insertado",
+        message: !response.status
+          ? "Error al insertar el video"
+          : "Video insertado exitosamente",
+        buttonText: "Entendido",
+      });
+      setModalMessage(true);
+    }
+    setLoading(false);
+    setVideo(undefined);
+    if (fileInputRefVideo?.current) {
+      fileInputRefVideo.current.value = "";
+    }
+    setLoading(false);
   };
   return (
     <div className={styles.activity}>
@@ -142,6 +189,22 @@ export function ImagePage({ imgInicio, imgDescubre }: Props) {
         />
         <button onClick={() => onSubmitInicio()} className={styles.btn_add}>
           {loading && image ? "Cargando..." : "Guardar foto inicio"}
+        </button>
+      </div>
+      <div className={styles.contentInput}>
+        <label htmlFor="title" className={styles.label}>
+          video pagina inicio
+        </label>
+        <input
+          ref={fileInputRefVideo}
+          type="file"
+          placeholder="Titulo"
+          className={styles.input}
+          accept="video/*"
+          onChange={(e) => setVideo(e.target.files?.[0])}
+        />
+        <button onClick={() => onVideo()} className={styles.btn_add}>
+          {loading && image ? "Cargando..." : "Guardar video inicio"}
         </button>
       </div>
       <div className={styles.contentInput}>
