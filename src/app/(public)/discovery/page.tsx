@@ -3,13 +3,15 @@ import styles from "./discvery.module.css";
 import Image from "next/image";
 import { UiCard } from "./components";
 import { getOperators } from "@/lib/action";
+import { getImagePageTable } from "@/lib/action/img-page.action";
 
 export default async function PageDiscovery() {
   const operators = await getOperators();
+  const imgPage = await getImagePageTable();
   return (
     <div className={styles.container}>
       <Image
-        src="/img/san_luis.jpeg"
+        src={imgPage.data?.discovery || "/img/san_luis.jpeg"}
         alt="Paisaje de San Luis de Gaceno"
         width={1200}
         height={400}

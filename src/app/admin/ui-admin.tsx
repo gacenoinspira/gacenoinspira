@@ -7,6 +7,7 @@ import { UiFormBlog, UiFormOperator } from "./section";
 import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
 import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
 import { ListTable } from "./section/list-table/list-table";
+import { ImagePage } from "./section/image-page/image-page";
 
 // Icons (you can replace these with your actual icon components)
 const DashboardIcon = () => (
@@ -109,9 +110,11 @@ interface Props {
   zones: ZoneTableRow[];
   categories: CategoryTableRow[];
   operators: OperatorTableRow[];
+  imgInicio: string | null;
+  imgDescubre: string | null;
 }
 
-export const UiAdmin = ({ zones, categories, operators }: Props) => {
+export const UiAdmin = ({ zones, categories, operators, imgInicio, imgDescubre }: Props) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("list");
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -184,6 +187,7 @@ export const UiAdmin = ({ zones, categories, operators }: Props) => {
             <div className={styles.contentWrapper}>
               {activeTab === "list" && (
                 <div className={styles.tabPanel}>
+                  <ImagePage imgInicio={imgInicio} imgDescubre={imgDescubre} />
                   <ListTable operators={operators} />
                 </div>
               )}
