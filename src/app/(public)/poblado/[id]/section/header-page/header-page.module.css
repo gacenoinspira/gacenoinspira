@@ -11,6 +11,22 @@
   color: white;
   text-align: center;
   overflow: hidden;
+
+  .btn__favorite {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 2;
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
 }
 
 .overlay {
@@ -19,7 +35,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   z-index: 1;
 }
 
@@ -56,15 +76,15 @@
   .header {
     height: 300px;
   }
-  
+
   .title {
     font-size: 2rem;
   }
-  
+
   .title span:first-child {
     font-size: 1.8rem;
   }
-  
+
   .title span:last-child {
     font-size: 2.5rem;
   }
@@ -74,15 +94,15 @@
   .header {
     height: 250px;
   }
-  
+
   .title {
     font-size: 1.8rem;
   }
-  
+
   .title span:first-child {
     font-size: 1.5rem;
   }
-  
+
   .title span:last-child {
     font-size: 2rem;
   }

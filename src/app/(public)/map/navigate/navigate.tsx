@@ -9,14 +9,15 @@ export function Navigate() {
   return (
     <div className={styles.container}>
       <div className={styles.container__title}>
-        <div>
+        {/* <div>
           <p className={styles.question}>¿Cómo llegar?</p>
           <p>Te ayudamos a llegar sin perderte</p>
-        </div>
+        </div> */}
         <div className={styles.info}>
           <p>
-            En el siguiente mapa podrás ver la ruta desde tu ubicación actual
-            hasta el lugar de San Luis de Gaceno.
+            <b>¿Quieres viajar a SAN LUIS DE GACENO?</b> Encuentra a cuántas
+            horas estás, desde cualquier parte de Colombia Te esperamos para que
+            descubras por qué San Luis de Gaceno inspira
           </p>
         </div>
       </div>
@@ -26,8 +27,8 @@ export function Navigate() {
         }&origin=${value.lat},${
           value.lng
         }&destination=${4.8202},${-73.1684}&avoid=tolls|highways`}
-        width="100%"
-        height="800"
+        width="95%"
+        height="600"
         style={{ border: "none" }}
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>

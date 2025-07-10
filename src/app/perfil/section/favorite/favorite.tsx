@@ -16,6 +16,7 @@ interface FavoriteItem {
   image: string;
   isFavorite: boolean;
   accountId: string;
+  type: number;
 }
 
 interface FavoriteSectionProps {
@@ -28,7 +29,7 @@ interface FavoriteSectionProps {
 export function Favorite({
   title = "Mis Favoritos",
   subtitle = "Tus lugares y experiencias favoritas en San Luis de Gaceno",
-  description = "Aquí encontrarás todos los destinos, actividades y servicios que has guardado como favoritos. Puedes eliminarlos o añadirlos cuando quieras.",
+  description = "Aquí verás todo lo que marcaste con el corazón ❤️ mientras explorabas. Guías, alojamientos, actividades y rincones mágicos para que no pierdas nada que te haya inspirado.",
   favorites = [],
 }: FavoriteSectionProps) {
   const user = UserStore((item) => item.user);
@@ -38,7 +39,6 @@ export function Favorite({
     buttonText: "",
   });
   const [isOpen, setIsOpen] = useState(false);
-
 
   const onToggleFavorite = async ({
     id,
@@ -123,7 +123,11 @@ export function Favorite({
               <button
                 className={styles.exploreButton}
                 onClick={() => {
-                  router.push(`/operator/${item.id}`);
+                  router.push(
+                    item.type === 4
+                      ? `/poblado/${item.id}`
+                      : `/operator/${item.id}`
+                  );
                 }}
               >
                 VER MAS ...

@@ -28,9 +28,10 @@ export class DetailsOperatorRepository {
     const { data, error } = await supabase
       .from("details_operator")
       .select(
-        "*,userInfo:user_id(name),operator:id_operator(name_company,logo)"
+        "*,userInfo:user_id(name),operator:id_operator(name_company,logo,type_activity,id,name)"
       )
-      .eq("user_id", id);
+      .eq("user_id", id)
+      .order("created_at", { ascending: false });
     console.log("data error perfil", error?.message);
     if (error) {
       return null;
