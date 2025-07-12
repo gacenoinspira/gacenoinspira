@@ -7,11 +7,12 @@ import { BtnMap, CardZone } from "./components";
 import { Carrusel } from "@/lib/carrusel/carrusel";
 import Link from "next/link";
 import { getImagePageTable } from "@/lib/action/img-page.action";
+import { getDictionary } from "@/lib/translate/translate";
 
 export default async function Home() {
   const operators = await getOperators();
   const imgPage = await getImagePageTable();
-  console.log("imgPage", imgPage);
+  const { dictionary } = await getDictionary();
   return (
     <div>
       {imgPage.data?.home.includes(".mp4") ? (
@@ -25,10 +26,10 @@ export default async function Home() {
           />
           <div className={styles.container_info}>
             <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
-              Donde la aventura,
+              {dictionary.title}
             </AnimatedText>
             <AnimatedText delay={0.5} className={styles.subtitle}>
-              la cultura y la naturaleza se encuentran.
+              {dictionary.subtitle}
             </AnimatedText>
             {/* <button className={styles.button}>Explorar Ahora</button> */}
           </div>
@@ -44,10 +45,10 @@ export default async function Home() {
         >
           <div className={styles.container_info}>
             <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
-              Donde la aventura,
+              {dictionary.title}
             </AnimatedText>
             <AnimatedText delay={0.5} className={styles.subtitle}>
-              la cultura y la naturaleza se encuentran.
+              {dictionary.subtitle}
             </AnimatedText>
             {/* <button className={styles.button}>Explorar Ahora</button> */}
           </div>

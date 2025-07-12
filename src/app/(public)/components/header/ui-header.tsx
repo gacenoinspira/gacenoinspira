@@ -9,12 +9,16 @@ import { logoutAction } from "@/lib/action";
 import { UserType } from "@/lib/type";
 import { useNavegationStore } from "@/lib/store/navegation";
 import Link from "next/link";
+import { BtnLanguage } from "@/lib/components/btn-language/btn-language";
+import { DictionaryType, langType } from "@/lib/translate/translate";
 
 interface HeaderProp {
   userDb: UserType | null;
+  lang: langType;
+  dictionary: DictionaryType;
 }
 
-export function UiHeader({ userDb }: HeaderProp) {
+export function UiHeader({ userDb, lang, dictionary }: HeaderProp) {
   const [showModal, setShowModal] = useState(false);
   const user = UserStore((set) => set.user);
   const setUser = UserStore((set) => set.setUser);
@@ -53,28 +57,28 @@ export function UiHeader({ userDb }: HeaderProp) {
           <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
         </Link>
       </div>
-      <MenuBurger user={user} />
+      <MenuBurger user={user} dictionary={dictionary} lang={lang}/>
       <nav className={styles.nav}>
         <UiLink
-          namePath="INICIO"
+          namePath={dictionary.headerInicio}
           href="/"
           className={`${styles.link_header}`}
           classActive={styles.active}
         />
         <UiLink
-          namePath="DESCUBRE"
+          namePath={dictionary.headerDescubre}
           href="/discovery"
           className={`${styles.link_header}`}
           classActive={styles.active}
         />
         <UiLink
-          namePath="PLANIFICA"
+          namePath={dictionary.headerPlanifica}
           href="/where"
           className={`${styles.link_header}`}
           classActive={styles.active}
         />
         <UiLink
-          namePath="BLOG"
+          namePath={dictionary.headerBlog}
           href="/blog"
           className={`${styles.link_header}`}
           classActive={styles.active}
@@ -92,13 +96,13 @@ export function UiHeader({ userDb }: HeaderProp) {
             {user?.user_id ? (
               <>
                 <UiLink
-                  namePath="Perfil"
+                  namePath={dictionary.headerProfile}
                   href="/perfil"
                   className={`${styles.link}`}
                 />
                 {user.rol === 1 && (
                   <UiLink
-                    namePath="Admin"
+                    namePath={dictionary.headerAdmin}
                     href="/admin"
                     className={`${styles.link}`}
                   />
@@ -110,23 +114,24 @@ export function UiHeader({ userDb }: HeaderProp) {
                   }}
                   className={`${styles.logOut}`}
                 >
-                  Cerrar Sesión
+                  {dictionary.headerLogout}
                 </button>
               </>
             ) : (
               <>
                 <UiLink
-                  namePath="Login"
+                  namePath={dictionary.headerLogin}
                   href="/login"
                   className={`${styles.link}`}
                 />
                 <UiLink
-                  namePath="Registrarse"
+                  namePath={dictionary.headerRegister}
                   href="/register"
                   className={`${styles.link}`}
                 />
               </>
             )}
+            <BtnLanguage lang={lang} dictionary={dictionary} />
           </div>
         </div>
         {/* <button className={`${styles.btn}`}>

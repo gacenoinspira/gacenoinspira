@@ -6,22 +6,26 @@ import { UiLink } from "../ui-link/ui-link";
 import { logoutAction } from "@/lib/action";
 import { UserType } from "@/lib/type";
 import { UserStore } from "@/lib/store/user.store";
+import { DictionaryType, langType } from "@/lib/translate/translate";
+import { BtnLanguage } from "../btn-language/btn-language";
 
 interface Props {
   user: UserType | null;
+  dictionary: DictionaryType;
+  lang: langType;
 }
 
-const menuItems = [
-  { name: "Inicio", href: "/" },
-  { name: "Descubre", href: "/discovery" },
-  { name: "Planifica", href: "/where" },
-  { name: "Blog", href: "/blog" },
-];
-
-export function MenuBurger({ user }: Props) {
+export function MenuBurger({ user, dictionary, lang }: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const setUser = UserStore((set) => set.setUser);
+
+  const menuItems = [
+    { name: dictionary.headerInicio, href: "/" },
+    { name: dictionary.headerDescubre, href: "/discovery" },
+    { name: dictionary.headerPlanifica, href: "/where" },
+    { name: dictionary.headerBlog, href: "/blog" },
+  ];
 
   // Cerrar menú al hacer clic fuera
   useEffect(() => {
@@ -91,17 +95,18 @@ export function MenuBurger({ user }: Props) {
             ) : (
               <>
                 <UiLink
-                  namePath="Login"
+                  namePath={dictionary.headerLogin}
                   href="/login"
                   className={`${styles.menuItem}`}
                 />
                 <UiLink
-                  namePath="Registrarse"
+                  namePath={dictionary.headerRegister}
                   href="/register"
                   className={`${styles.menuItem}`}
                 />
               </>
             )}
+            <BtnLanguage lang={lang} dictionary={dictionary} />
           </nav>
         </div>
       )}
