@@ -7,8 +7,13 @@ import { registerAction } from "../server/login.action";
 //import { useRouter } from "next/navigation";
 import { UserStore } from "@/lib/store/user.store";
 import { ModalMessage } from "@/lib/components/modal-message/modal-message";
+import { DictionaryType } from "@/lib/translate/translate";
 
-export function UiFormRegister() {
+interface Props {
+  dictionary: DictionaryType;
+}
+
+export function UiFormRegister({ dictionary }: Props) {
   const [formData, setFormData] = useState({
     firstName: "",
     email: "",
@@ -166,24 +171,22 @@ export function UiFormRegister() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.mainTitle}>NUEVO USUARIO</h1>
-        <p className={styles.subtitle}>
-          Descubre San Luis de Gaceno a tu ritmo...
-        </p>
+        <h1 className={styles.mainTitle}>{dictionary.register.title}</h1>
+        <p className={styles.subtitle}>{dictionary.register.subtitle}</p>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formGrid}>
           <div className={styles.formGroup}>
             <label htmlFor="firstName" className={styles.label}>
-              Nombre
+              {dictionary.register.name}
             </label>
             <input
               type="text"
               id="firstName"
               name="firstName"
               className={styles.input}
-              placeholder="Nombre"
+              placeholder={dictionary.register.name}
               value={formData.firstName}
               onChange={handleChange}
             />
@@ -191,7 +194,7 @@ export function UiFormRegister() {
 
           <div className={`${styles.formGroup} ${styles.fullWidth}`}>
             <label htmlFor="email" className={styles.label}>
-              Correo electrónico
+              {dictionary.register.email}
             </label>
             <input
               type="email"
@@ -202,14 +205,11 @@ export function UiFormRegister() {
               value={formData.email}
               onChange={handleChange}
             />
-            <p className={styles.helperText}>
-              Te enviaremos un correo de confirmación
-            </p>
           </div>
 
           <div className={`${styles.formGroup} ${styles.fullWidth}`}>
             <label htmlFor="password" className={styles.label}>
-              Contraseña
+              {dictionary.register.password}
             </label>
             <input
               type="password"
@@ -224,7 +224,7 @@ export function UiFormRegister() {
 
           <div className={`${styles.formGroup} ${styles.fullWidth}`}>
             <label htmlFor="confirmPassword" className={styles.label}>
-              Confirmar Contraseña
+              {dictionary.register.confirmPassword}
             </label>
             <input
               type="password"
@@ -273,9 +273,9 @@ export function UiFormRegister() {
               className={styles.checkbox}
             />
             <span>
-              He leído y acepto los{" "}
+              {dictionary.register.readTerms}{" "}
               <a href="/term-condition" className={styles.link} target="_blank">
-                Términos y condiciones de uso del portal
+                {dictionary.register.terms}
               </a>
             </span>
           </label>
@@ -288,23 +288,23 @@ export function UiFormRegister() {
               className={styles.checkbox}
             />
             <span>
-              He leído y acepto la{" "}
+              {dictionary.register.readTerms}{" "}
               <a href="/privacity" className={styles.link} target="_blank">
-                política de tratamiento de datos personales
+                {dictionary.register.privacy}
               </a>
             </span>
           </label>
         </div>
 
         <button type="submit" className={styles.submitButton}>
-          CREAR CUENTA
+          {dictionary.register.btnRegister}
         </button>
       </form>
 
       <div className={styles.loginLink}>
-        ¿Ya tienes una cuenta?{" "}
+        {dictionary.register.createAccount}{" "}
         <UiLink
-          namePath="Inicia Sesión"
+          namePath={dictionary.login.title}
           href="/login"
           className={styles.loginLinkText}
         />

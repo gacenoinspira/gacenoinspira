@@ -10,5 +10,113 @@
     "headerInicio": "Home",
     "headerDescubre": "Discover",
     "headerPlanifica": "Planify",
-    "headerBlog": "Blog"
+    "headerBlog": "Blog",
+    "home": {
+        "info": {
+            "title": "Get to know San Luis de Gaceno like a local.",
+            "title_2": "Discover the best of each of our towns:",
+            "title_3": "Guamal, Horizontes, San Carlos, La Mesa, and Santa Teresa. Click on the map and start your journey",
+            "btnInfo": "How close are you to San Luis de Gaceno?"
+        },
+        "map": {
+            "selectText": "Select Category"
+        },
+        "cultura": {
+            "title": "Explore every corner",
+            "info": "Five towns, five unique ways to experience the soul of Boyacá."
+        },
+        "carrusel": {
+            "title": "Immerse yourself in our culture",
+            "subtitle": "discover all the activities you can do"
+        }
+    },
+    "discovery":{
+        "title": "Discover San Luis de Gaceno",
+        "subtitle": "golden gateway to the Casanarean plains",
+        "paragraphUno": "San Luis de Gaceno is a municipality located in the southeastern part of Boyacá, in the Neira province. Known as ",
+        "paragraphDos": ", it features a blend of Llanero and Boyacense culture, earning the nickname “The land of pija-sumercé” from locals and visitors alike in honor of its cultural heritage. With a warm climate averaging 28°C and an elevation of approximately 400 meters above sea level, this town serves as a refuge for hundreds of species of birds, plants, amphibians, reptiles, and mammals that enrich the biodiversity of the eastern foothills.",
+        "comillas": "“The golden gateway to the Casanarean plains”",
+        "paragraphTres": "This municipality has a number of attractions that make it a perfect destination for nature and adventure tourism. Currently, many of its residents are working to reactivate the tourism sector and provide better service to visitors."
+    },
+    "where": {
+        "title": "Select",
+        "subtitle": "A town center and learn more about its tourism offerings",
+        "title_2": "5 town centers",
+        "subtitle_2": "Five unique ways to experience the soul of Boyacá",
+        "guamal": {
+            "title": "Guamal Town Center",
+            "description": "Unfiltered nature",
+            "info": "Surrounded by mountains and rural paths, Guamal is ideal for hiking lovers, birdwatchers, and water sports enthusiasts. Here, adventure tourism comes alive among pools, rivers, and hidden trails."
+        },
+        "teresa": {
+            "title": "Santa Teresa Town Center",
+            "description": "A meeting with inner peace.",
+            "info": "Santa Teresa is perfect for disconnecting and reconnecting. Its natural surroundings, warm people, and tranquility make it ideal for gentle walks, retreats, or cultural activities."
+        },
+        "Horizontes": {
+            "title": "Horizontes Town Center",
+            "description": "A window to Boyacá's vastness",
+            "info": "True to its name, Horizontes offers open landscapes and privileged views. It's the perfect place to relax, take panoramic photos, or start routes to other centers."
+        },
+        "LaMesa": {
+            "title": "La Mesa Town Center",
+            "description": "Coffee, countryside, and calm",
+            "info": "La Mesa offers authentic rural experiences, from coffee farm tours to local cooking workshops. Here, the land is felt and savored."
+        },
+        "SanCarlos": {
+            "title": "San Carlos del Guavio Town Center",
+            "description": "Cultural and festive heart of the municipality.",
+            "info": "As the administrative and social hub, this is where history, music, dance, and vibrant traditions come together. It’s the meeting point for major festivals and markets."
+        }
+    },
+    "blog": {
+        "title": "Our Blog",
+        "subtitle": "Discover the latest news, tips, and guides about tourism in San Luis de Gaceno and its surroundings."
+    },
+    "login": {
+        "title": "LOG IN",
+        "subtitle": "Welcome back to San Luis de Gaceno",
+        "email": "Email",
+        "password": "Password",
+        "btnLogin": "LOG IN",
+        "btnRegister": "Sign up",
+        "btnForgotPassword": "I forgot my password",
+        "textLoading": "Logging in...",
+        "btnEntendido": "Got it",
+        "createAccount":"Don't have an account?"
+    },
+    "register": {
+        "title": "NEW USER",
+        "subtitle": "Discover San Luis de Gaceno at your own pace...",
+        "email": "Email",
+        "name": "Name",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "btnRegister": "SIGN UP",
+        "btnLogin": "CREATE ACCOUNT",
+        "textLoading": "Registering...",
+        "btnEntendido": "Got it",
+        "createAccount": "Already have an account?",
+        "readTerms": " I have read and accept the ",
+        "terms": "Terms and conditions of use of the portal",
+        "privacy": "personal data processing policy"
+    },
+    "perfil": {
+        "welcome": "Welcome to your personal space",
+        "paragraph": "Here you'll find all the relevant information about your activity and travel preferences. Manage your bookings, check your history, and discover new experiences.",
+        "titleComments": "My Reviews",
+        "subtitleComments": "Have you already visited San Luis de Gaceno?",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "noComments": "No reviews",
+        "dividerCommentsFavorite": "These are the destinations, activities, and services you've selected for your trip. You can remove them or add more destinations and activities.",
+        "favorites": {
+            "title": "My Favorites",
+            "subtitle": "Your favorite places and experiences in San Luis de Gaceno",
+            "description": "Here you’ll see everything you marked with a heart ❤️ while exploring. Guides, accommodations, activities, and magical spots so you don’t miss anything that inspired you."
+        }
+    }
+
 }

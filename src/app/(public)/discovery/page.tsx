@@ -4,10 +4,12 @@ import Image from "next/image";
 import { UiCard } from "./components";
 import { getOperators } from "@/lib/action";
 import { getImagePageTable } from "@/lib/action/img-page.action";
+import { getDictionary } from "@/lib/translate/translate";
 
 export default async function PageDiscovery() {
   const operators = await getOperators();
   const imgPage = await getImagePageTable();
+  const { dictionary } = await getDictionary();
   return (
     <div className={styles.container}>
       <Image
@@ -20,31 +22,19 @@ export default async function PageDiscovery() {
       />
 
       <h1 className={styles.title}>
-        Conoce San Luis de Gaceno
+        {dictionary.discovery.title}
         <br />
-        puerta de oro del llano Casanareño
+        {dictionary.discovery.subtitle}
       </h1>
 
       <div className={styles.content}>
         <p className={styles.paragraph}>
-          San Luis de Gaceno es un municipio ubicado al suroriente de Boyacá, en
-          la provincia de Neira. Conocido como{" "}
-          <b> &ldquo;La puerta de oro del llano casanareño&rdquo;</b>, donde
-          existe una mezcla entre la cultura llanera y la boyacense,
-          denominándose por propios y visitantes como &ldquo;La tierra del
-          pija-sumercé&rdquo; en honor a las culturas presentes. Con un clima
-          cálido con promedio de 28°C y una altura sobre el nivel del mar de
-          aproximadamente 400 metros, esta localidad se convierte en el refugio
-          de cientos de especies de aves, plantas, anfibios, reptiles y
-          mamíferos que enriquecen la biodiversidad del piedemonte llanero.
+          {dictionary.discovery.paragraphUno}
+          <b> {dictionary.discovery.comillas}</b>
+          {dictionary.discovery.paragraphDos}
         </p>
 
-        <p className={styles.paragraph}>
-          Este municipio cuenta con una serie de atractivos que lo hacen un
-          destino perfecto para realizar actividades de turismo de naturaleza y
-          aventura. Actualmente muchos de sus habitantes trabajan por reactivar
-          el sector turismo y brindar una mejor atención a sus visitantes.
-        </p>
+        <p className={styles.paragraph}>{dictionary.discovery.paragraphTres}</p>
         <img src="/img/diamante.webp" alt="diamante" className={styles.image} />
 
         <div className={styles.container_card}>

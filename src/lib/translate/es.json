@@ -10,5 +10,113 @@
     "headerInicio": "Inicio",
     "headerDescubre": "Descubre",
     "headerPlanifica": "Planifica",
-    "headerBlog": "Blog"
+    "headerBlog": "Blog",
+    "home": {
+        "info": {
+            "title": "Conoce San Luis de Gaceno como un local.",
+            "title_2": "Descubre lo mejor de cada uno de nuestros centros poblados:",
+            "title_3": "Guamal, Horizontes, San Carlos, La Mesa y Santa Teresa. Haz clic en el mapa y empieza tu viaje",
+            "btnInfo": "¿Qué tan cerca estás de San Luis de Gaceno?"
+        },
+        "map": {
+            "selectText": "Seleccionar Categoria"
+        },
+        "cultura": {
+            "title": "Explora cada rincón",
+            "info": "Cinco centros poblados, cinco maneras únicas de vivir el alma de Boyacá."
+        },
+        "carrusel":{
+            "title": "Sumérgete en nuestra cultura",
+            "subtitle": "conoce todos los planes que puedes hacer"
+        }
+    },
+    "discovery":{
+        "title": "Conoce San Luis de Gaceno",
+        "subtitle": "puerta de oro del llano casanareño",
+        "paragraphUno": "San Luis de Gaceno es un municipio ubicado al suroriente de Boyacá, en la provincia de Neira. Conocido como",
+        "paragraphDos": ", donde existe una mezcla entre la cultura llanera y la boyacense, denominándose por propios y visitantes como “La tierra del pija-sumercé” en honor a las culturas presentes. Con un clima cálido con promedio de 28°C y una altura sobre el nivel del mar de aproximadamente 400 metros, esta localidad se convierte en el refugio de cientos de especies de aves, plantas, anfibios, reptiles y mamíferos que enriquecen la biodiversidad del piedemonte llanero.",
+        "comillas": "“La puerta de oro del llano casanareño”",
+        "paragraphTres": "Este municipio cuenta con una serie de atractivos que lo hacen un destino perfecto para realizar actividades de turismo de naturaleza y aventura. Actualmente muchos de sus habitantes trabajan por reactivar el sector turismo y brindar una mejor atención a sus visitantes."
+    },
+    "where":{
+        "title":"Selecciona",
+        "subtitle":"Un centro poblado y conoce más de su oferta turística",
+        "title_2":"5 centros poblados",
+        "subtitle_2":"Cinco maneras únicas de vivir el alma de Boyacá",
+        "guamal":{
+            "title":"Centro Poblado Guamal",
+            "description":"Naturaleza sin filtros",
+            "info":"Rodeado de montañas y caminos rurales, Guamal es ideal para los amantes del senderismo, el avistamiento de aves y los deportes de agua. Aquí el turismo de aventura cobra vida entre pozos, ríos y rutas escondidas"
+        },
+        "teresa": {
+            "title": "Centro Poblado Santa Teresa",
+            "description": "Encuentro con la paz interior.",
+            "info": "Santa Teresa es ideal para desconectar y reconectar. Su entorno natural, su gente cálida y su tranquilidad lo hacen perfecto para caminatas suaves, retiros o actividades culturales."
+        },
+        "Horizontes": {
+            "title": "Centro Poblado Horizontes",
+            "description": "Ventana a la inmensidad boyacense",
+            "info": "Horizontes hace honor a su nombre con paisajes abiertos y vistas privilegiadas. Es el lugar perfecto para descansar, tomar fotografías panorámicas o iniciar rutas hacia otros centros."
+        },
+        "LaMesa": {
+            "title": "Centro Poblado La Mesa",
+            "description": "Café, campo y calma",
+            "info": "La Mesa ofrece experiencias rurales auténticas, desde recorridos por cafetales hasta talleres de cocina local. Aquí la tierra se siente y se saborea."
+        },
+        "SanCarlos": {
+            "title": "Centro Poblado San Carlos del Guavio",
+            "description": "Corazón cultural y festivo del municipio.",
+            "info": "Centro administrativo y social, aquí confluyen la historia, la música, la danza y las tradiciones más vivas. Es el punto de encuentro para grandes festividades y mercados"
+        }
+    },
+    "blog":{
+        "title":"Nuestro Blog",
+        "subtitle":"Descubre las últimas noticias, consejos y guías sobre turismo en San Luis de Gaceno y sus alrededores."
+    },
+    "login":{
+        "title":"INICIAR SESIÓN",
+        "subtitle":"Bienvenido de nuevo a San Luis de Gaceno",
+        "email":"Correo electrónico",
+        "password":"Contraseña",
+        "btnLogin":"INICIAR SESIÓN",
+        "btnRegister":"Registrate",
+        "btnForgotPassword":"Olvidé mi contraseña",
+        "textLoading":"Iniciando sesión...",
+        "btnEntendido":"Entendido",
+        "createAccount":"¿No tienes una cuenta?"
+    },
+    "register":{
+        "title":"NUEVO USUARIO",
+        "subtitle":"Descubre San Luis de Gaceno a tu ritmo..",
+        "email":"Correo electrónico",
+        "name":"Nombre",
+        "password":"Contraseña",
+        "confirmPassword":"Confirmar Contraseña",
+        "btnRegister":"REGISTRATE",
+        "btnLogin":"CREAR CUENTA",
+        "textLoading":"Registrando...",
+        "btnEntendido":"Entendido",
+        "createAccount":"¿Ya tienes una cuenta?",
+        "readTerms":" He leído y acepto los ",
+        "terms":"Términos y condiciones de uso del portal",
+        "privacy":"política de tratamiento de datos personales"
+    },
+    "perfil":{
+        "welcome":"Bienvenido a tu rincón personal",
+        "paragraph":"Aquí encontrarás toda la información relevante sobre tu actividad y preferencias de viaje. Gestiona tus reservas, revisa tu historial y descubre nuevas experiencias.",
+        "titleComments":"Mis Reseñas",
+        "subtitleComments":"¿Ya visitaste San Luis de Gaceno?",
+        "save":"Guardar",
+        "cancel":"Cancelar",
+        "delete":"Eliminar",
+        "edit":"Editar",
+        "noComments":"No hay reseñas",
+        "dividerCommentsFavorite":"Estos son los destinos, actividades y servicios que has seleccionado para tu viaje. Puedes eliminarlos, o añadir más destinos y actividades",
+        "favorites":{
+            "title": "Mis Favoritos",
+            "subtitle" : "Tus lugares y experiencias favoritas en San Luis de Gaceno",
+            "description" : "Aquí verás todo lo que marcaste con el corazón ❤️ mientras explorabas. Guías, alojamientos, actividades y rincones mágicos para que no pierdas nada que te haya inspirado."
+        }
+    }
+   
 }

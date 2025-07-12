@@ -7,12 +7,14 @@ import { StarIcon } from "@/lib/icons/star-icon";
 import { ModalMessage } from "@/lib/components/index";
 import { updateDetails } from "@/lib/action";
 import { UserStore } from "@/lib/store/user.store";
+import { DictionaryType } from "@/lib/translate/translate";
 
 interface CommentariosProps {
   comments: DetailsOperatorTable[] | null;
+  dictionary?: DictionaryType;
 }
 
-export function Commentarios({ comments }: CommentariosProps) {
+export function Commentarios({ comments, dictionary }: CommentariosProps) {
   const user = UserStore((user) => user.user);
   const [messageModal, setMessageModal] = useState({
     title: "",
@@ -88,8 +90,8 @@ export function Commentarios({ comments }: CommentariosProps) {
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>Mis Reseñas</p>
-      <p className={styles.text}>¿Ya visitaste San Luis de Gaceno?</p>
+      <p className={styles.title}>{dictionary?.perfil.titleComments}</p>
+      <p className={styles.text}>{dictionary?.perfil.subtitleComments}</p>
       <div className={styles.conatinerComentarios}>
         {comments?.length ? (
           comments.map((item) => (
@@ -126,7 +128,9 @@ export function Commentarios({ comments }: CommentariosProps) {
                     }
                   }}
                 >
-                  {commentId === item.id ? "Guardar" : "Editar"}
+                  {commentId === item.id
+                    ? dictionary?.perfil.save
+                    : dictionary?.perfil.edit}
                 </button>
                 <button
                   className={styles.btn}
@@ -142,13 +146,15 @@ export function Commentarios({ comments }: CommentariosProps) {
                     }
                   }}
                 >
-                  {commentId === item.id ? "Cancelar" : "Eliminar"}
+                  {commentId === item.id
+                    ? dictionary?.perfil.cancel
+                    : dictionary?.perfil.delete}
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p>No hay reseñas</p>
+          <p>{dictionary?.perfil.noComments}</p>
         )}
       </div>
       <ModalMessage

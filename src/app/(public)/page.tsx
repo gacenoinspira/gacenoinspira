@@ -58,16 +58,9 @@ export default async function Home() {
         {/* <img src="/img/check.svg" alt="check" className={styles.check}/>
         <img src="/img/hash.svg" alt="hash" className={styles.hash} /> */}
         <div className={styles.container_info}>
-          <p className={styles.title}>
-            Conoce San Luis de Gaceno como un local.
-          </p>
-          <p className={styles.title_2}>
-            Descubre lo mejor de cada uno de nuestros centros poblados:
-          </p>
-          <p className={styles.title_3}>
-            Guamal, Horizontes, San Carlos, La Mesa y Santa Teresa. Haz clic en
-            el mapa y empieza tu viaje
-          </p>
+          <p className={styles.title}>{dictionary.home.info.title}</p>
+          <p className={styles.title_2}>{dictionary.home.info.title_2}</p>
+          <p className={styles.title_3}>{dictionary.home.info.title_3}</p>
         </div>
         <div className={styles.gifs}>
           <Link href={"/map"}>
@@ -75,7 +68,7 @@ export default async function Home() {
           </Link>
         </div>
       </section>
-      <BtnMap />
+      <BtnMap text={dictionary.home.info.btnInfo} />
       <section className={styles.section_map}>
         <UiMap
           operators={
@@ -83,6 +76,7 @@ export default async function Home() {
               (operator) => operator.type_activity === 1
             ) || []
           }
+          selectText={dictionary.home.map.selectText}
         />
       </section>
       <section className={styles.sectionImg}>
@@ -98,11 +92,8 @@ export default async function Home() {
         />
       </section>
       <section className={styles.section_cultura}>
-        <p className={styles.title}>Explora cada rincón</p>
-        <p className={styles.info}>
-          Cinco centros poblados, cinco maneras únicas de vivir el alma de
-          Boyacá.
-        </p>
+        <p className={styles.title}>{dictionary.home.cultura.title}</p>
+        <p className={styles.info}>{dictionary.home.cultura.info}</p>
         <div className={styles.container}>
           <div className={styles.zonaUno}>
             <CardZone zone="1" main />
@@ -134,9 +125,9 @@ export default async function Home() {
         />
       </section>
       <section className={styles.section_carrusel}>
-        <h2 className={styles.section_title}>Sumérgete en nuestra cultura</h2>
+        <h2 className={styles.section_title}>{dictionary.home.carrusel.title}</h2>
         <p className={styles.section_subtitle}>
-          conoce todos los planes que puedes hacer
+          {dictionary.home.carrusel.subtitle}
         </p>
         <div className={styles.carrusel_container}>
           <Carrusel
