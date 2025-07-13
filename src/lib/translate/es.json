@@ -257,6 +257,25 @@
             "paragraphs": "La presente Política rige desde su publicación. Los datos recolectados se conservarán durante el tiempo necesario para cumplir las finalidades mencionadas o por el tiempo requerido legalmente."
         }
                 
-    }
+    },
+    "footer": {
+        "columna_titulo_principal": {
+          "titulo": "SAN LUIS DE GACENO INSPIRA",
+          "eslogan": "Donde la aventura, la cultura y la naturaleza se encuentran."
+        },
+        "columna_contacto_alcaldia": {
+          "titulo": "Alcaldía Municipal de San Luis de Gaceno",
+          "direccion": "Dirección",
+          "correo": "Correo"
+        },
+        "columna_redes_sociales": {
+          "titulo": "Redes Sociales",
+          "facebook": "Facebook",
+          "instagram": "Instagram"
+        },
+        "seccion_derechos_autor": {
+          "texto": "© 2025 Alcaldía Municipal de San Luis de Gaceno. Todos los derechos reservados."
+        }
+      }
    
 }

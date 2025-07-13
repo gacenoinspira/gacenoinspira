@@ -17,7 +17,7 @@ export default async function Layout({
     <main className={styles.main}>
       <UiHeader userDb={user.data} lang={lang} dictionary={dictionary} />
       {children}
-      <Footer />
+      <Footer dictionary={dictionary} />
     </main>
   );
 }

@@ -256,7 +256,26 @@
           "title": "8. Validity",
           "paragraphs": "This Policy is effective from its publication. Collected data will be retained for the time necessary to fulfill the mentioned purposes or for the legally required period."
         }
-      }
+      },
+      "footer": {
+        "columna_titulo_principal": {
+        "titulo": "SAN LUIS DE GACENO INSPIRES",
+        "eslogan": "Where adventure, culture, and nature meet."
+        },
+        "columna_contacto_alcaldia": {
+        "titulo": "Municipality of San Luis de Gaceno",
+        "direccion": "Address",
+        "correo": "Email"
+        },
+        "columna_redes_sociales": {
+        "titulo": "Social Media",
+        "facebook": "Facebook",
+        "instagram": "Instagram"
+        },
+        "seccion_derechos_autor": {
+        "texto": "© 2025 Municipality of San Luis de Gaceno. All rights reserved."
+        }
+    }
 
 
 }
