@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
+import { DictionaryType } from "@/lib/translate/translate";
 
 const tabs = [
   { id: "5", label: "Centro Poblado San Carlos del Guavio" },
@@ -12,7 +13,11 @@ const tabs = [
   { id: "1", label: "Centro Poblado Guamal" },
 ];
 
-export function UiTabs() {
+interface UiTabsProps {
+  dictionary: DictionaryType;
+}
+
+export function UiTabs({ dictionary }: UiTabsProps) {
   const { tab: numberTab, setTab: updateTab } = useTabsStore((set) => set);
   const [activeTab, setActiveTab] = useState<string>(numberTab);
 
@@ -24,8 +29,8 @@ export function UiTabs() {
   return (
     <div className={styles.container}>
       <div className={styles.selectionText}>
-        <h3>Selecciona</h3>
-        <p>Un centro poblado y conoce más de su oferta turística</p>
+        <h3>{dictionary.where.title}</h3>
+        <p>{dictionary.where.subtitle}</p>
       </div>
 
       <div className={styles.tabsContainer}>
@@ -53,10 +58,8 @@ export function UiTabs() {
         </div>
         <div className={styles.header}>
           <div className={styles.headerContent}>
-            <h2 className={styles.title}>5 centros poblados</h2>
-            <p className={styles.subtitle}>
-              Cinco maneras únicas de vivir el alma de Boyacá
-            </p>
+            <h2 className={styles.title}>{dictionary.where.title_2}</h2>
+            <p className={styles.subtitle}>{dictionary.where.subtitle_2}</p>
           </div>
         </div>
       </div>

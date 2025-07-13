@@ -1,8 +1,12 @@
 "use client";
 import React from "react";
 import styles from "./footer.module.css";
+import { DictionaryType } from "@/lib/translate/translate";
 
-export const Footer = () => {
+interface FooterProps {
+  dictionary: DictionaryType;
+}
+export const Footer = ({ dictionary }: FooterProps) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -13,9 +17,11 @@ export const Footer = () => {
           {/* Newsletter Column */}
           <div className={styles.column}>
             <div className={styles.header}>
-              <h1 className={styles.title}>SAN LUIS DE GACENO INSPIRA</h1>
+              <h1 className={styles.title}>
+                {dictionary.footer.columna_titulo_principal.titulo}
+              </h1>
               <p className={styles.tagline}>
-                Donde la aventura, la cultura y la naturaleza se encuentran.
+                {dictionary.footer.columna_titulo_principal.eslogan}
               </p>
             </div>
             {/* <h2 className={styles.subtitle}>Contacto</h2>
@@ -32,15 +38,20 @@ export const Footer = () => {
           {/* Contact Info Column */}
           <div className={styles.column}>
             <h2 className={styles.subtitle}>
-              Alcaldía Municipal de San Luis de Gaceno
+              {dictionary.footer.columna_contacto_alcaldia.titulo}
             </h2>
             <address className={styles.address}>
               <p className={styles.infoItem}>
-                <span className={styles.label}>Dirección:</span>
-                Dirección: Carrera 4 N° 6-09
+                <span className={styles.label}>
+                  {dictionary.footer.columna_contacto_alcaldia.direccion}:
+                </span>
+                {dictionary.footer.columna_contacto_alcaldia.direccion}: Carrera
+                4 N° 6-09
               </p>
               <p className={styles.infoItem}>
-                <span className={styles.label}>Correo:</span>
+                <span className={styles.label}>
+                  {dictionary.footer.columna_contacto_alcaldia.correo}:
+                </span>
                 <a
                   href="mailto:gacenoinspira@gmail.com"
                   className={styles.link}
@@ -53,7 +64,9 @@ export const Footer = () => {
 
           {/* Social Links Column */}
           <div className={styles.column}>
-            <h2 className={styles.subtitle}>Redes Sociales</h2>
+            <h2 className={styles.subtitle}>
+              {dictionary.footer.columna_redes_sociales.titulo}
+            </h2>
             <ul className={styles.socialList}>
               <li className={styles.socialItem}>
                 <a
@@ -62,7 +75,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className={styles.socialLink}
                 >
-                  Facebook
+                  {dictionary.footer.columna_redes_sociales.facebook}
                 </a>
               </li>
               <li className={styles.socialItem}>
@@ -72,7 +85,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className={styles.socialLink}
                 >
-                  Instagram
+                  {dictionary.footer.columna_redes_sociales.instagram}
                 </a>
               </li>
             </ul>
@@ -82,8 +95,8 @@ export const Footer = () => {
         {/* Copyright Section */}
         <div className={styles.copyright}>
           <p>
-            © {new Date().getFullYear()} Alcaldía Municipal de San Luis de
-            Gaceno. Todos los derechos reservados.
+            © {new Date().getFullYear()}{" "}
+            {dictionary.footer.seccion_derechos_autor.texto}
           </p>
         </div>
       </div>

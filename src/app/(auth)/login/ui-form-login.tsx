@@ -7,8 +7,13 @@ import { useRouter } from "next/navigation";
 import { loginAction } from "../server/login.action";
 import { UserStore } from "@/lib/store/user.store";
 import { ModalMessage } from "@/lib/components/modal-message/modal-message";
+import { DictionaryType } from "@/lib/translate/translate";
 
-export function UiFormLogin() {
+interface Props {
+  dictionary: DictionaryType;
+}
+
+export function UiFormLogin({ dictionary }: Props) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
@@ -34,31 +39,30 @@ export function UiFormLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     try {
-      const response = await loginAction({ 
-        email: formData.email, 
-        password: formData.password 
+      const response = await loginAction({
+        email: formData.email,
+        password: formData.password,
       });
-      
+
       if (!response.status) {
         setMessage({
           title: "Error",
           message: response.error || "Error al iniciar sesión",
-          buttonText: "Entendido"
+          buttonText: "Entendido",
         });
         setIsOpen(true);
         return;
       }
-      
+
       setUser(response.data);
       router.push(response.data?.rol === 1 ? "/admin" : "/");
-      
     } catch {
       setMessage({
         title: "Error",
         message: "Ocurrió un error al intentar iniciar sesión",
-        buttonText: "Entendido"
+        buttonText: "Entendido",
       });
       setIsOpen(true);
     } finally {
@@ -69,14 +73,14 @@ export function UiFormLogin() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.mainTitle}>INICIAR SESIÓN</h1>
-        <p className={styles.subtitle}>Bienvenido de nuevo a San Luis de Gaceno</p>
+        <h1 className={styles.mainTitle}>{dictionary.login.title}</h1>
+        <p className={styles.subtitle}>{dictionary.login.subtitle}</p>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
           <label htmlFor="email" className={styles.label}>
-            Correo electrónico
+            {dictionary.login.email}
           </label>
           <input
             type="email"
@@ -92,7 +96,7 @@ export function UiFormLogin() {
 
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
           <label htmlFor="password" className={styles.label}>
-            Contraseña
+            {dictionary.login.password}
           </label>
           <input
             type="password"
@@ -106,21 +110,21 @@ export function UiFormLogin() {
           />
         </div>
 
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className={styles.submitButton}
           disabled={isLoading}
         >
-          {isLoading ? 'Iniciando sesión...' : 'INICIAR SESIÓN'}
+          {isLoading ? dictionary.login.textLoading : dictionary.login.btnLogin}
         </button>
       </form>
 
       <div className={styles.loginLink}>
-        ¿No tienes una cuenta?{' '}
-        <UiLink 
-          namePath="Regístrate" 
-          href="/register" 
-          className={styles.registerLink} 
+        {dictionary.login.createAccount}
+        <UiLink
+          namePath={dictionary.login.btnRegister}
+          href="/register"
+          className={styles.registerLink}
         />
       </div>
 

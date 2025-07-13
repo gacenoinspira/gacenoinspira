@@ -5,6 +5,7 @@ import { convertToWebP } from "@/lib/utils/ceonvertWebp";
 import { uploadToSupabase } from "@/lib/action/load-img";
 import { updateInfoUser } from "@/lib/action";
 import { ModalMessage, Spinner } from "@/lib/components/index";
+import { DictionaryType } from "@/lib/translate/translate";
 
 interface UserStats {
   label: string;
@@ -18,6 +19,7 @@ interface InfoUserProps {
   stats?: UserStats[];
   avatar?: string;
   id: string;
+  dictionary?: DictionaryType;
 }
 
 export function InfoUser({
@@ -26,6 +28,7 @@ export function InfoUser({
   initials = "NU",
   id,
   avatar,
+  dictionary,
 }: InfoUserProps) {
   const [openModal, setOpenModal] = React.useState(false);
   const [message, setMessage] = useState({
@@ -72,13 +75,9 @@ export function InfoUser({
     <div className={styles.profileContainer}>
       <div className={styles.profileHeader}>
         <div className={styles.profileInfo}>
-          <h1 className={styles.welcomeText}>
-            Bienvenido a tu rincón personal
-          </h1>
+          <h1 className={styles.welcomeText}>{dictionary?.perfil.welcome}</h1>
           <p className={styles.descriptionText}>
-            Aquí encontrarás toda la información relevante sobre tu actividad y
-            preferencias de viaje. Gestiona tus reservas, revisa tu historial y
-            descubre nuevas experiencias.
+            {dictionary?.perfil.paragraph}
           </p>
 
           <div className={styles.userInfo}>

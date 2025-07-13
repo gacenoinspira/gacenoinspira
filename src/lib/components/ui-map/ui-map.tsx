@@ -63,9 +63,10 @@ const mapStyles = {
 
 interface PropsMap {
   operators: OperatorTableRow[];
+  selectText: string;
 }
 
-export function UiMap({ operators }: PropsMap) {
+export function UiMap({ operators, selectText }: PropsMap) {
   const mapRef = useRef<MapRef>(null);
   const [popupInfo, setPopupInfo] = useState<Location | null>(null);
   const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
@@ -366,7 +367,7 @@ export function UiMap({ operators }: PropsMap) {
         className={`${styles.categoryButton} ${styles.active} ${styles.fixWidth}`}
         onClick={() => setShowCategories(!showCategories)}
       >
-        {nameCategory || "Seleccionar Categoria"}
+        {nameCategory || selectText}
         <OpenIcon open={showCategories} />
       </button>
       {showCategories && (

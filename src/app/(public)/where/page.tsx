@@ -3,13 +3,15 @@ import styles from "./where.module.css";
 import { UiTabs } from "./components";
 import { ContainerCards } from "./components/conatiner-card/container-cards";
 import { getOperators } from "@/lib/action";
+import { getDictionary } from "@/lib/translate/translate";
 
 export default async function Page() {
   const operators = await getOperators();
+  const { dictionary } = await getDictionary();
   return (
     <div className={styles.where}>
       <div className={styles.image}>
-        <UiTabs />
+        <UiTabs dictionary={dictionary} />
       </div>
       <div className={styles.card}>
         <ContainerCards
@@ -18,6 +20,7 @@ export default async function Page() {
               (operator) => operator.type_activity === 2
             ) || []
           }
+          dictionary={dictionary}
         />
       </div>
     </div>

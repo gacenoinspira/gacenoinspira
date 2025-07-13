@@ -1,0 +1,281 @@
+{
+    "title": "Donde la aventura,",
+    "subtitle": "la cultura y la naturaleza se encuentran.",
+    "btnLanguage": "Cambiar Idioma",
+    "headerLogin": "Ingresar",
+    "headerRegister": "Registrarse",
+    "headerLogout": "Cerrar Sesión",
+    "headerAdmin": "Administrador",
+    "headerProfile": "Perfil",
+    "headerInicio": "Inicio",
+    "headerDescubre": "Descubre",
+    "headerPlanifica": "Planifica",
+    "headerBlog": "Blog",
+    "home": {
+        "info": {
+            "title": "Conoce San Luis de Gaceno como un local.",
+            "title_2": "Descubre lo mejor de cada uno de nuestros centros poblados:",
+            "title_3": "Guamal, Horizontes, San Carlos, La Mesa y Santa Teresa. Haz clic en el mapa y empieza tu viaje",
+            "btnInfo": "¿Qué tan cerca estás de San Luis de Gaceno?"
+        },
+        "map": {
+            "selectText": "Seleccionar Categoria"
+        },
+        "cultura": {
+            "title": "Explora cada rincón",
+            "info": "Cinco centros poblados, cinco maneras únicas de vivir el alma de Boyacá."
+        },
+        "carrusel":{
+            "title": "Sumérgete en nuestra cultura",
+            "subtitle": "conoce todos los planes que puedes hacer"
+        }
+    },
+    "discovery":{
+        "title": "Conoce San Luis de Gaceno",
+        "subtitle": "puerta de oro del llano casanareño",
+        "paragraphUno": "San Luis de Gaceno es un municipio ubicado al suroriente de Boyacá, en la provincia de Neira. Conocido como",
+        "paragraphDos": ", donde existe una mezcla entre la cultura llanera y la boyacense, denominándose por propios y visitantes como “La tierra del pija-sumercé” en honor a las culturas presentes. Con un clima cálido con promedio de 28°C y una altura sobre el nivel del mar de aproximadamente 400 metros, esta localidad se convierte en el refugio de cientos de especies de aves, plantas, anfibios, reptiles y mamíferos que enriquecen la biodiversidad del piedemonte llanero.",
+        "comillas": "“La puerta de oro del llano casanareño”",
+        "paragraphTres": "Este municipio cuenta con una serie de atractivos que lo hacen un destino perfecto para realizar actividades de turismo de naturaleza y aventura. Actualmente muchos de sus habitantes trabajan por reactivar el sector turismo y brindar una mejor atención a sus visitantes."
+    },
+    "where":{
+        "title":"Selecciona",
+        "subtitle":"Un centro poblado y conoce más de su oferta turística",
+        "title_2":"5 centros poblados",
+        "subtitle_2":"Cinco maneras únicas de vivir el alma de Boyacá",
+        "guamal":{
+            "title":"Centro Poblado Guamal",
+            "description":"Naturaleza sin filtros",
+            "info":"Rodeado de montañas y caminos rurales, Guamal es ideal para los amantes del senderismo, el avistamiento de aves y los deportes de agua. Aquí el turismo de aventura cobra vida entre pozos, ríos y rutas escondidas"
+        },
+        "teresa": {
+            "title": "Centro Poblado Santa Teresa",
+            "description": "Encuentro con la paz interior.",
+            "info": "Santa Teresa es ideal para desconectar y reconectar. Su entorno natural, su gente cálida y su tranquilidad lo hacen perfecto para caminatas suaves, retiros o actividades culturales."
+        },
+        "Horizontes": {
+            "title": "Centro Poblado Horizontes",
+            "description": "Ventana a la inmensidad boyacense",
+            "info": "Horizontes hace honor a su nombre con paisajes abiertos y vistas privilegiadas. Es el lugar perfecto para descansar, tomar fotografías panorámicas o iniciar rutas hacia otros centros."
+        },
+        "LaMesa": {
+            "title": "Centro Poblado La Mesa",
+            "description": "Café, campo y calma",
+            "info": "La Mesa ofrece experiencias rurales auténticas, desde recorridos por cafetales hasta talleres de cocina local. Aquí la tierra se siente y se saborea."
+        },
+        "SanCarlos": {
+            "title": "Centro Poblado San Carlos del Guavio",
+            "description": "Corazón cultural y festivo del municipio.",
+            "info": "Centro administrativo y social, aquí confluyen la historia, la música, la danza y las tradiciones más vivas. Es el punto de encuentro para grandes festividades y mercados"
+        }
+    },
+    "blog":{
+        "title":"Nuestro Blog",
+        "subtitle":"Descubre las últimas noticias, consejos y guías sobre turismo en San Luis de Gaceno y sus alrededores."
+    },
+    "login":{
+        "title":"INICIAR SESIÓN",
+        "subtitle":"Bienvenido de nuevo a San Luis de Gaceno",
+        "email":"Correo electrónico",
+        "password":"Contraseña",
+        "btnLogin":"INICIAR SESIÓN",
+        "btnRegister":"Registrate",
+        "btnForgotPassword":"Olvidé mi contraseña",
+        "textLoading":"Iniciando sesión...",
+        "btnEntendido":"Entendido",
+        "createAccount":"¿No tienes una cuenta?"
+    },
+    "register":{
+        "title":"NUEVO USUARIO",
+        "subtitle":"Descubre San Luis de Gaceno a tu ritmo..",
+        "email":"Correo electrónico",
+        "name":"Nombre",
+        "password":"Contraseña",
+        "confirmPassword":"Confirmar Contraseña",
+        "btnRegister":"REGISTRATE",
+        "btnLogin":"CREAR CUENTA",
+        "textLoading":"Registrando...",
+        "btnEntendido":"Entendido",
+        "createAccount":"¿Ya tienes una cuenta?",
+        "readTerms":" He leído y acepto los ",
+        "terms":"Términos y condiciones de uso del portal",
+        "privacy":"política de tratamiento de datos personales"
+    },
+    "perfil":{
+        "welcome":"Bienvenido a tu rincón personal",
+        "paragraph":"Aquí encontrarás toda la información relevante sobre tu actividad y preferencias de viaje. Gestiona tus reservas, revisa tu historial y descubre nuevas experiencias.",
+        "titleComments":"Mis Reseñas",
+        "subtitleComments":"¿Ya visitaste San Luis de Gaceno?",
+        "save":"Guardar",
+        "cancel":"Cancelar",
+        "delete":"Eliminar",
+        "edit":"Editar",
+        "noComments":"No hay reseñas",
+        "dividerCommentsFavorite":"Estos son los destinos, actividades y servicios que has seleccionado para tu viaje. Puedes eliminarlos, o añadir más destinos y actividades",
+        "favorites":{
+            "title": "Mis Favoritos",
+            "subtitle" : "Tus lugares y experiencias favoritas en San Luis de Gaceno",
+            "description" : "Aquí verás todo lo que marcaste con el corazón ❤️ mientras explorabas. Guías, alojamientos, actividades y rincones mágicos para que no pierdas nada que te haya inspirado."
+        }
+    },
+    "terms":{
+        "titleMain":" Términos y Condiciones de Uso – “Plataforma Gaceno Inspira”",
+        "subtitleMain":"Plataforma “Gaceno Inspira”",
+        "date":"Fecha de entrada en vigencia: 24/06/2025",
+        "section_1":{
+            "title":"1. Aceptación de los Términos",
+            "paragraph":"Al acceder, navegar o registrarse en la plataforma turística Gaceno Inspira, el usuario acepta cumplir con estos Términos y Condiciones en su totalidad. Si no está de acuerdo con alguna parte de estos términos, deberá abstenerse de utilizar la plataforma."
+        },
+        "section_2":{
+            "title":"2. Objeto de la Plataforma",
+            "paragraph":"Gaceno Inspira es un portal digital de carácter informativo, promocional e interactivo, cuyo objetivo es facilitar el acceso a información turística sobre San Luis de Gaceno, incluyendo atractivos, actividades, comercios y eventos del municipio. La plataforma permite a los usuarios registrarse, crear cuentas, dejar reseñas, guardar favoritos y planificar visitas turísticas."
+        },
+        "section_3": {
+            "title": "3. Registro de Usuario",
+            "paragraphs": "Para acceder a ciertas funcionalidades (crear reseñas, favoritos, planificaciones), el usuario debe registrarse proporcionando información veraz y completa. El usuario se compromete a:",
+            "items": [
+            "Mantener la confidencialidad de su contraseña.",
+            "No suplantar a terceros.",
+            "No utilizar datos falsos o engañosos.",
+            "Ser responsable de toda actividad realizada desde su cuenta."
+            ],
+            "paragraphs_2": "La administración de la plataforma podrá suspender o cancelar cuentas que incumplan estos términos."
+        },
+        "section_4": {
+            "title": "4. Uso adecuado de la plataforma",
+            "paragraphs": "El usuario se compromete a utilizar la plataforma conforme a la ley, la moral, el orden público y los presentes términos, absteniéndose de:",
+            "items": [
+            "Publicar contenido ofensivo, falso, difamatorio o discriminatorio.",
+            "Utilizar la plataforma con fines ilícitos o fraudulentos.",
+            "Afectar la operatividad o seguridad del sitio mediante cualquier tipo de ataque informático.",
+            "Promover actividades o productos que no estén relacionados con el turismo de San Luis de Gaceno sin autorización expresa."
+            ]
+        },
+        "section_5": {
+            "title": "5. Contenido generado por los usuarios",
+            "paragraphs": "Los usuarios pueden crear contenido dentro de la plataforma (reseñas, comentarios, planes de viaje). Dicho contenido:",
+            "items": [
+            "Debe ser veraz, respetuoso y coherente con el propósito turístico de la plataforma.",
+            "Puede ser moderado, editado o eliminado por el administrador si incumple las normas.",
+            "No representa necesariamente la opinión de la Alcaldía de San Luis de Gaceno."
+            ]
+        },
+        "section_6": {
+            "title": "6. Propiedad Intelectual",
+            "paragraphs": [
+            "Todo el contenido institucional (textos, mapas, diseño gráfico, marca “Gaceno Inspira”, etc.) es propiedad de la Alcaldía de San Luis de Gaceno o cuenta con licencias para su uso. Queda prohibida la reproducción, distribución o modificación sin autorización previa y por escrito.",
+            "Los usuarios conservan la titularidad de sus propios comentarios o reseñas, pero al publicarlos otorgan a la plataforma una licencia no exclusiva, gratuita y transferible para su uso en fines de promoción turística."
+            ]
+        },
+        "section_7": {
+            "title": "7. Enlaces a terceros",
+            "paragraphs": "La plataforma puede contener enlaces a sitios o servicios ofrecidos por terceros (hospedajes, restaurantes, guías turísticos, etc.). Estos servicios no son operados ni controlados por la Alcaldía. Por tanto, no se asume responsabilidad por:",
+            "items": [
+            "Contenido, disponibilidad o veracidad de la información de dichos sitios.",
+            "Calidad de los productos o servicios ofrecidos por terceros."
+            ]
+        },
+        "section_8": {
+            "title": "8. Limitación de responsabilidad",
+            "paragraphs": [
+            "La plataforma Gaceno Inspira se ofrece “tal cual”. No se garantiza la ausencia de errores técnicos ni la disponibilidad continua del servicio.",
+            "La Alcaldía no será responsable por:"
+            ],
+            "items": [
+            "Pérdidas de información por fallos en el sistema.",
+            "Daños causados por el uso indebido de la plataforma.",
+            "Consecuencias derivadas de la interacción con terceros anunciados en el portal."
+            ]
+        },
+        "section_9": {
+            "title": "9. Modificaciones",
+            "paragraphs": "Estos Términos pueden ser modificados en cualquier momento. Se notificará a los usuarios registrados a través del correo electrónico y/o mediante aviso destacado en el sitio. El uso continuo de la plataforma tras la modificación implica la aceptación de los nuevos términos."
+        },
+        "section_10": {
+            "title": "10. Ley aplicable y jurisdicción",
+            "paragraphs": "Estos términos se rigen por las leyes de la República de Colombia. En caso de controversia, las partes se someten a los jueces competentes del municipio de San Luis de Gaceno, Boyacá."
+        }
+    },
+    "privacy":{
+        "titleMain":"Política de Privacidad – Plataforma Gaceno Inspira",
+        "date":"Fecha de entrada en vigencia: 24/06/2025",
+        "responsibility":"Responsable del tratamiento de datos personales",
+        "name":"Nombre",
+        "address":"Ubicación",
+        "email":"Correo electrónico",
+        "section_1": {
+            "title": "1. Objeto",
+            "paragraphs": "La presente Política de Privacidad tiene como propósito informar a los usuarios de la plataforma turística Gaceno Inspira sobre la recolección, tratamiento, almacenamiento y protección de sus datos personales, de conformidad con lo establecido en la Ley 1581 de 2012, el Decreto 1377 de 2013, y demás normas concordantes en Colombia."
+        },
+        "section_2": {
+            "title": "2. ¿Qué datos personales recolectamos?",
+            "paragraphs": "Al momento de interactuar con la plataforma, podemos recolectar los siguientes datos:",
+            "items": [
+            "Información de contacto: nombre completo, correo electrónico, número de teléfono (opcional)",
+            "Información de perfil: nombre de usuario, contraseña cifrada, intereses turísticos.",
+            "Información de navegación: ubicación aproximada (si es autorizada), IP, dispositivo de acceso.",
+            "Contenido generado por el usuario: reseñas, favoritos, planes turísticos creados dentro de la plataforma."
+            ]
+        },
+        "section_3": {
+            "title": "3. Finalidades del tratamiento",
+            "paragraphs": "Los datos serán utilizados para los siguientes propósitos:",
+            "items": [
+            "Permitir la creación y administración de cuentas personales.",
+            "Mostrar información personalizada sobre destinos, actividades o comercios según intereses.",
+            "Permitir la interacción con funcionalidades como guardar favoritos, dejar reseñas o planear visitas.",
+            "Mejorar la experiencia del usuario mediante análisis estadístico y funcional.",
+            "Enviar comunicaciones promocionales o informativas relacionadas con eventos y turismo local (previa autorización).",
+            "Cumplir con obligaciones legales y contractuales."
+            ]
+        },
+        "section_4": {
+            "title": "4. Derechos del titular de los datos",
+            "paragraphs": "De acuerdo con la legislación colombiana, los usuarios tienen derecho a:",
+            "items": [
+            "Conocer, actualizar, rectificar o suprimir sus datos personales.",
+            "Solicitar prueba de la autorización otorgada.",
+            "Ser informados sobre el uso dado a sus datos.",
+            "Revocar la autorización y/o solicitar la eliminación de sus datos cuando se infrinjan derechos constitucionales o legales.",
+            "Acceder gratuitamente a sus datos personales."
+            ]
+        },
+        "section_5": {
+            "title": "5. Medidas de seguridad",
+            "paragraphs": "Gaceno Inspira implementa protocolos y medidas de seguridad físicas, electrónicas y administrativas para proteger los datos personales de accesos no autorizados, pérdida, alteración o destrucción."
+        },
+        "section_6": {
+            "title": "6. Transferencia y transmisión de datos",
+            "paragraphs": "No compartimos ni comercializamos los datos personales con terceros. Solo se transferirán datos a entidades públicas o privadas en caso de obligación legal o mandato judicial."
+        },
+        "section_7": {
+            "title": "7. Autorización del tratamiento",
+            "paragraphs": "Al registrarse en la plataforma o continuar navegando, el usuario manifiesta conocer y aceptar esta política, y autoriza de manera libre, expresa e informada el tratamiento de sus datos personales según las finalidades aquí descritas."
+        },
+        "section_8": {
+            "title": "8. Vigencia",
+            "paragraphs": "La presente Política rige desde su publicación. Los datos recolectados se conservarán durante el tiempo necesario para cumplir las finalidades mencionadas o por el tiempo requerido legalmente."
+        }
+                
+    },
+    "footer": {
+        "columna_titulo_principal": {
+          "titulo": "SAN LUIS DE GACENO INSPIRA",
+          "eslogan": "Donde la aventura, la cultura y la naturaleza se encuentran."
+        },
+        "columna_contacto_alcaldia": {
+          "titulo": "Alcaldía Municipal de San Luis de Gaceno",
+          "direccion": "Dirección",
+          "correo": "Correo"
+        },
+        "columna_redes_sociales": {
+          "titulo": "Redes Sociales",
+          "facebook": "Facebook",
+          "instagram": "Instagram"
+        },
+        "seccion_derechos_autor": {
+          "texto": "© 2025 Alcaldía Municipal de San Luis de Gaceno. Todos los derechos reservados."
+        }
+      }
+   
+}

@@ -3,13 +3,15 @@ import { Favorite, InfoUser } from "./section";
 import { getDetailsOperatorByUser, getInfoUser } from "@/lib/action";
 import styles from "./page-perfil.module.css";
 import { Commentarios } from "./section/comentarios/commentarios";
+import { getDictionary } from "@/lib/translate/translate";
 
 export default async function Perfil() {
   const user = await getInfoUser();
+  const { dictionary } = await getDictionary();
   const detailsOperator = await getDetailsOperatorByUser(
     user.data?.user_id ?? ""
   );
-  console.log("detailsOperator", detailsOperator);
+  
   return (
     <div>
       <InfoUser
@@ -18,13 +20,14 @@ export default async function Perfil() {
         initials={user.data?.name?.[0] || ""}
         avatar={user.data?.avatar || ""}
         id={user.data?.user_id || ""}
+        dictionary={dictionary}
       />
       <Commentarios
         comments={detailsOperator.data?.filter((item) => item.notes) || []}
+        dictionary={dictionary}
       />
       <p className={styles.paragraph}>
-        Estos son los destinos, actividades y servicios que has seleccionado
-        para tu viaje. Puedes eliminarlos, o añadir más destinos y actividades
+        {dictionary.perfil.dividerCommentsFavorite}
       </p>
       <Favorite
         favorites={
@@ -40,6 +43,9 @@ export default async function Perfil() {
               type: item.operator?.type_activity || 0,
             })) || []
         }
+        description={dictionary.perfil.favorites.description}
+        title={dictionary.perfil.favorites.title}
+        subtitle={dictionary.perfil.favorites.subtitle}
       />
     </div>
   );

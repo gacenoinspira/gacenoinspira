@@ -2,18 +2,17 @@ import React from "react";
 import Link from "next/link";
 import styles from "./blog.module.css";
 import { getOperators } from "@/lib/action";
+import { getDictionary } from "@/lib/translate/translate";
 
 export default async function BlogPage() {
   const operators = await getOperators();
+  const { dictionary } = await getDictionary();
   return (
     <>
       <div className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.title}>Nuestro Blog</h1>
-          <p className={styles.subtitle}>
-            Descubre las últimas noticias, consejos y guías sobre turismo en San
-            Luis de Gaceno y sus alrededores.
-          </p>
+          <h1 className={styles.title}>{dictionary.blog.title}</h1>
+          <p className={styles.subtitle}>{dictionary.blog.subtitle}</p>
         </div>
       </div>
 
