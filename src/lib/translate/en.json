@@ -117,6 +117,146 @@
             "subtitle": "Your favorite places and experiences in San Luis de Gaceno",
             "description": "Here you’ll see everything you marked with a heart ❤️ while exploring. Guides, accommodations, activities, and magical spots so you don’t miss anything that inspired you."
         }
-    }
+    },
+    "terms": {
+        "titleMain": "Terms and Conditions of Use – “Gaceno Inspira Platform”",
+        "subtitleMain": "“Gaceno Inspira” Platform",
+        "date": "Effective Date: 06/24/2025",
+        "section_1": {
+            "title": "1. Acceptance of Terms",
+            "paragraph": "By accessing, browsing, or registering on the Gaceno Inspira tourism platform, the user agrees to fully comply with these Terms and Conditions. If you do not agree with any part of these terms, you must refrain from using the platform."
+        },
+        "section_2": {
+            "title": "2. Purpose of the Platform",
+            "paragraph": "Gaceno Inspira is a digital portal with an informative, promotional, and interactive nature, whose objective is to facilitate access to tourist information about San Luis de Gaceno, including attractions, activities, businesses, and events in the municipality. The platform allows users to register, create accounts, leave reviews, save favorites, and plan tourist visits."
+        },
+        "section_3": {
+            "title": "3. User Registration",
+            "paragraphs": "To access certain features (create reviews, favorites, plans), the user must register by providing truthful and complete information. The user agrees to:",
+            "items": [
+            "Keep their password confidential.",
+            "Not impersonate others.",
+            "Not use false or misleading data.",
+            "Be responsible for all activity performed from their account."
+            ],
+            "paragraphs_2": "The platform administration may suspend or cancel accounts that violate these terms."
+        },
+        "section_4": {
+            "title": "4. Proper Use of the Platform",
+            "paragraphs": "The user agrees to use the platform in accordance with the law, moral standards, public order, and these terms, refraining from:",
+            "items": [
+            "Publishing offensive, false, defamatory, or discriminatory content.",
+            "Using the platform for illegal or fraudulent purposes.",
+            "Affecting the site's operation or security through any type of cyber attack.",
+            "Promoting activities or products unrelated to tourism in San Luis de Gaceno without express authorization."
+            ]
+        },
+        "section_5": {
+            "title": "5. User-Generated Content",
+            "paragraphs": "Users can create content within the platform (reviews, comments, travel plans). Such content:",
+            "items": [
+            "Must be truthful, respectful, and aligned with the platform's tourism purpose.",
+            "May be moderated, edited, or removed by the administrator if it violates the rules.",
+            "Does not necessarily represent the opinion of the Mayor's Office of San Luis de Gaceno."
+            ]
+        },
+        "section_6": {
+            "title": "6. Intellectual Property",
+            "paragraphs": [
+            "All institutional content (texts, maps, graphic design, 'Gaceno Inspira' brand, etc.) is the property of the Mayor’s Office of San Luis de Gaceno or is licensed for use. Reproduction, distribution, or modification without prior written authorization is prohibited.",
+            "Users retain ownership of their own comments or reviews, but by publishing them, they grant the platform a non-exclusive, free, and transferable license for promotional tourism purposes."
+            ]
+        },
+        "section_7": {
+            "title": "7. Third-Party Links",
+            "paragraphs": "The platform may contain links to sites or services offered by third parties (accommodations, restaurants, tour guides, etc.). These services are not operated or controlled by the Mayor’s Office. Therefore, no responsibility is assumed for:",
+            "items": [
+            "Content, availability, or accuracy of the information on those sites.",
+            "Quality of the products or services offered by third parties."
+            ]
+        },
+        "section_8": {
+            "title": "8. Limitation of Liability",
+            "paragraphs": [
+            "The Gaceno Inspira platform is provided 'as is.' No guarantee is made regarding the absence of technical errors or continuous service availability.",
+            "The Mayor’s Office will not be responsible for:"
+            ],
+            "items": [
+            "Loss of information due to system failures.",
+            "Damages caused by misuse of the platform.",
+            "Consequences arising from interaction with third parties featured on the site."
+            ]
+        },
+        "section_9": {
+            "title": "9. Modifications",
+            "paragraphs": "These Terms may be modified at any time. Registered users will be notified via email and/or a prominent notice on the site. Continued use of the platform after the modification implies acceptance of the new terms."
+        },
+        "section_10": {
+            "title": "10. Applicable Law and Jurisdiction",
+            "paragraphs": "These terms are governed by the laws of the Republic of Colombia. In case of dispute, the parties submit to the competent judges of the municipality of San Luis de Gaceno, Boyacá."
+        }
+    },
+    "privacy": {
+        "titleMain": "Privacy Policy – Gaceno Inspira Platform",
+        "date": "Effective date: 06/24/2025",
+        "responsibility": "Data controller responsible for processing personal data",
+        "name":"Name",
+        "address":"Address",
+        "email":"Email",
+        "section_1": {
+          "title": "1. Purpose",
+          "paragraphs": "This Privacy Policy aims to inform users of the Gaceno Inspira tourism platform about the collection, processing, storage, and protection of their personal data, in accordance with Law 1581 of 2012, Decree 1377 of 2013, and other related regulations in Colombia."
+        },
+        "section_2": {
+          "title": "2. What personal data do we collect?",
+          "paragraphs": "When interacting with the platform, we may collect the following data:",
+          "items": [
+            "Contact information: full name, email address, phone number (optional)",
+            "Profile information: username, encrypted password, tourism interests.",
+            "Browsing information: approximate location (if authorized), IP, access device.",
+            "User-generated content: reviews, favorites, tourism plans created within the platform."
+          ]
+        },
+        "section_3": {
+          "title": "3. Purposes of data processing",
+          "paragraphs": "The data will be used for the following purposes:",
+          "items": [
+            "Enable the creation and management of personal accounts.",
+            "Display personalized information about destinations, activities, or businesses based on interests.",
+            "Enable interaction with features such as saving favorites, leaving reviews, or planning visits.",
+            "Improve user experience through statistical and functional analysis.",
+            "Send promotional or informational communications related to events and local tourism (with prior authorization).",
+            "Comply with legal and contractual obligations."
+          ]
+        },
+        "section_4": {
+          "title": "4. Rights of the data subject",
+          "paragraphs": "In accordance with Colombian legislation, users have the right to:",
+          "items": [
+            "Know, update, correct, or delete their personal data.",
+            "Request proof of the authorization granted.",
+            "Be informed about how their data is used.",
+            "Revoke authorization and/or request deletion of their data when constitutional or legal rights are violated.",
+            "Access their personal data free of charge."
+          ]
+        },
+        "section_5": {
+          "title": "5. Security measures",
+          "paragraphs": "Gaceno Inspira implements physical, electronic, and administrative security protocols and measures to protect personal data from unauthorized access, loss, alteration, or destruction."
+        },
+        "section_6": {
+          "title": "6. Data transfer and transmission",
+          "paragraphs": "We do not share or sell personal data to third parties. Data will only be transferred to public or private entities in case of legal obligation or court order."
+        },
+        "section_7": {
+          "title": "7. Authorization for processing",
+          "paragraphs": "By registering on the platform or continuing to browse, the user acknowledges and accepts this policy, and freely, expressly, and informedly authorizes the processing of their personal data according to the purposes described herein."
+        },
+        "section_8": {
+          "title": "8. Validity",
+          "paragraphs": "This Policy is effective from its publication. Collected data will be retained for the time necessary to fulfill the mentioned purposes or for the legally required period."
+        }
+      }
+
 
 }

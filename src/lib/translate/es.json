@@ -117,6 +117,146 @@
             "subtitle" : "Tus lugares y experiencias favoritas en San Luis de Gaceno",
             "description" : "Aquí verás todo lo que marcaste con el corazón ❤️ mientras explorabas. Guías, alojamientos, actividades y rincones mágicos para que no pierdas nada que te haya inspirado."
         }
+    },
+    "terms":{
+        "titleMain":" Términos y Condiciones de Uso – “Plataforma Gaceno Inspira”",
+        "subtitleMain":"Plataforma “Gaceno Inspira”",
+        "date":"Fecha de entrada en vigencia: 24/06/2025",
+        "section_1":{
+            "title":"1. Aceptación de los Términos",
+            "paragraph":"Al acceder, navegar o registrarse en la plataforma turística Gaceno Inspira, el usuario acepta cumplir con estos Términos y Condiciones en su totalidad. Si no está de acuerdo con alguna parte de estos términos, deberá abstenerse de utilizar la plataforma."
+        },
+        "section_2":{
+            "title":"2. Objeto de la Plataforma",
+            "paragraph":"Gaceno Inspira es un portal digital de carácter informativo, promocional e interactivo, cuyo objetivo es facilitar el acceso a información turística sobre San Luis de Gaceno, incluyendo atractivos, actividades, comercios y eventos del municipio. La plataforma permite a los usuarios registrarse, crear cuentas, dejar reseñas, guardar favoritos y planificar visitas turísticas."
+        },
+        "section_3": {
+            "title": "3. Registro de Usuario",
+            "paragraphs": "Para acceder a ciertas funcionalidades (crear reseñas, favoritos, planificaciones), el usuario debe registrarse proporcionando información veraz y completa. El usuario se compromete a:",
+            "items": [
+            "Mantener la confidencialidad de su contraseña.",
+            "No suplantar a terceros.",
+            "No utilizar datos falsos o engañosos.",
+            "Ser responsable de toda actividad realizada desde su cuenta."
+            ],
+            "paragraphs_2": "La administración de la plataforma podrá suspender o cancelar cuentas que incumplan estos términos."
+        },
+        "section_4": {
+            "title": "4. Uso adecuado de la plataforma",
+            "paragraphs": "El usuario se compromete a utilizar la plataforma conforme a la ley, la moral, el orden público y los presentes términos, absteniéndose de:",
+            "items": [
+            "Publicar contenido ofensivo, falso, difamatorio o discriminatorio.",
+            "Utilizar la plataforma con fines ilícitos o fraudulentos.",
+            "Afectar la operatividad o seguridad del sitio mediante cualquier tipo de ataque informático.",
+            "Promover actividades o productos que no estén relacionados con el turismo de San Luis de Gaceno sin autorización expresa."
+            ]
+        },
+        "section_5": {
+            "title": "5. Contenido generado por los usuarios",
+            "paragraphs": "Los usuarios pueden crear contenido dentro de la plataforma (reseñas, comentarios, planes de viaje). Dicho contenido:",
+            "items": [
+            "Debe ser veraz, respetuoso y coherente con el propósito turístico de la plataforma.",
+            "Puede ser moderado, editado o eliminado por el administrador si incumple las normas.",
+            "No representa necesariamente la opinión de la Alcaldía de San Luis de Gaceno."
+            ]
+        },
+        "section_6": {
+            "title": "6. Propiedad Intelectual",
+            "paragraphs": [
+            "Todo el contenido institucional (textos, mapas, diseño gráfico, marca “Gaceno Inspira”, etc.) es propiedad de la Alcaldía de San Luis de Gaceno o cuenta con licencias para su uso. Queda prohibida la reproducción, distribución o modificación sin autorización previa y por escrito.",
+            "Los usuarios conservan la titularidad de sus propios comentarios o reseñas, pero al publicarlos otorgan a la plataforma una licencia no exclusiva, gratuita y transferible para su uso en fines de promoción turística."
+            ]
+        },
+        "section_7": {
+            "title": "7. Enlaces a terceros",
+            "paragraphs": "La plataforma puede contener enlaces a sitios o servicios ofrecidos por terceros (hospedajes, restaurantes, guías turísticos, etc.). Estos servicios no son operados ni controlados por la Alcaldía. Por tanto, no se asume responsabilidad por:",
+            "items": [
+            "Contenido, disponibilidad o veracidad de la información de dichos sitios.",
+            "Calidad de los productos o servicios ofrecidos por terceros."
+            ]
+        },
+        "section_8": {
+            "title": "8. Limitación de responsabilidad",
+            "paragraphs": [
+            "La plataforma Gaceno Inspira se ofrece “tal cual”. No se garantiza la ausencia de errores técnicos ni la disponibilidad continua del servicio.",
+            "La Alcaldía no será responsable por:"
+            ],
+            "items": [
+            "Pérdidas de información por fallos en el sistema.",
+            "Daños causados por el uso indebido de la plataforma.",
+            "Consecuencias derivadas de la interacción con terceros anunciados en el portal."
+            ]
+        },
+        "section_9": {
+            "title": "9. Modificaciones",
+            "paragraphs": "Estos Términos pueden ser modificados en cualquier momento. Se notificará a los usuarios registrados a través del correo electrónico y/o mediante aviso destacado en el sitio. El uso continuo de la plataforma tras la modificación implica la aceptación de los nuevos términos."
+        },
+        "section_10": {
+            "title": "10. Ley aplicable y jurisdicción",
+            "paragraphs": "Estos términos se rigen por las leyes de la República de Colombia. En caso de controversia, las partes se someten a los jueces competentes del municipio de San Luis de Gaceno, Boyacá."
+        }
+    },
+    "privacy":{
+        "titleMain":"Política de Privacidad – Plataforma Gaceno Inspira",
+        "date":"Fecha de entrada en vigencia: 24/06/2025",
+        "responsibility":"Responsable del tratamiento de datos personales",
+        "name":"Nombre",
+        "address":"Ubicación",
+        "email":"Correo electrónico",
+        "section_1": {
+            "title": "1. Objeto",
+            "paragraphs": "La presente Política de Privacidad tiene como propósito informar a los usuarios de la plataforma turística Gaceno Inspira sobre la recolección, tratamiento, almacenamiento y protección de sus datos personales, de conformidad con lo establecido en la Ley 1581 de 2012, el Decreto 1377 de 2013, y demás normas concordantes en Colombia."
+        },
+        "section_2": {
+            "title": "2. ¿Qué datos personales recolectamos?",
+            "paragraphs": "Al momento de interactuar con la plataforma, podemos recolectar los siguientes datos:",
+            "items": [
+            "Información de contacto: nombre completo, correo electrónico, número de teléfono (opcional)",
+            "Información de perfil: nombre de usuario, contraseña cifrada, intereses turísticos.",
+            "Información de navegación: ubicación aproximada (si es autorizada), IP, dispositivo de acceso.",
+            "Contenido generado por el usuario: reseñas, favoritos, planes turísticos creados dentro de la plataforma."
+            ]
+        },
+        "section_3": {
+            "title": "3. Finalidades del tratamiento",
+            "paragraphs": "Los datos serán utilizados para los siguientes propósitos:",
+            "items": [
+            "Permitir la creación y administración de cuentas personales.",
+            "Mostrar información personalizada sobre destinos, actividades o comercios según intereses.",
+            "Permitir la interacción con funcionalidades como guardar favoritos, dejar reseñas o planear visitas.",
+            "Mejorar la experiencia del usuario mediante análisis estadístico y funcional.",
+            "Enviar comunicaciones promocionales o informativas relacionadas con eventos y turismo local (previa autorización).",
+            "Cumplir con obligaciones legales y contractuales."
+            ]
+        },
+        "section_4": {
+            "title": "4. Derechos del titular de los datos",
+            "paragraphs": "De acuerdo con la legislación colombiana, los usuarios tienen derecho a:",
+            "items": [
+            "Conocer, actualizar, rectificar o suprimir sus datos personales.",
+            "Solicitar prueba de la autorización otorgada.",
+            "Ser informados sobre el uso dado a sus datos.",
+            "Revocar la autorización y/o solicitar la eliminación de sus datos cuando se infrinjan derechos constitucionales o legales.",
+            "Acceder gratuitamente a sus datos personales."
+            ]
+        },
+        "section_5": {
+            "title": "5. Medidas de seguridad",
+            "paragraphs": "Gaceno Inspira implementa protocolos y medidas de seguridad físicas, electrónicas y administrativas para proteger los datos personales de accesos no autorizados, pérdida, alteración o destrucción."
+        },
+        "section_6": {
+            "title": "6. Transferencia y transmisión de datos",
+            "paragraphs": "No compartimos ni comercializamos los datos personales con terceros. Solo se transferirán datos a entidades públicas o privadas en caso de obligación legal o mandato judicial."
+        },
+        "section_7": {
+            "title": "7. Autorización del tratamiento",
+            "paragraphs": "Al registrarse en la plataforma o continuar navegando, el usuario manifiesta conocer y aceptar esta política, y autoriza de manera libre, expresa e informada el tratamiento de sus datos personales según las finalidades aquí descritas."
+        },
+        "section_8": {
+            "title": "8. Vigencia",
+            "paragraphs": "La presente Política rige desde su publicación. Los datos recolectados se conservarán durante el tiempo necesario para cumplir las finalidades mencionadas o por el tiempo requerido legalmente."
+        }
+                
     }
    
 }
