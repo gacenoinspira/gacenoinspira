@@ -125,7 +125,9 @@ export default async function Home() {
         />
       </section>
       <section className={styles.section_carrusel}>
-        <h2 className={styles.section_title}>{dictionary.home.carrusel.title}</h2>
+        <h2 className={styles.section_title}>
+          {dictionary.home.carrusel.title}
+        </h2>
         <p className={styles.section_subtitle}>
           {dictionary.home.carrusel.subtitle}
         </p>
@@ -144,29 +146,17 @@ export default async function Home() {
           />
         </div>
       </section>
-
-      {/* <section className={styles.section_join}>
-        <div className={styles.imageContainer}>
-          <Image
-            src="/img/san_luis.jpeg"
-            alt="San Luis de Gaceno"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-
-        <div className={styles.textContainer}>
-          <h2>
-            <span className={styles.highlight}>¿Eres guía</span>, artesano,
-            cocinero o anfitrión local?
-          </h2>
-          <p>
-            Forma parte de Gaceno Inspira y conecta con quienes buscan lo que tú
-            sabes ofrecer.
-          </p>
-          <button className={styles.ctaButton}>Únete aquí</button>
-        </div>
-      </section> */}
+      <section className={styles.section_contact}>
+        <h2 className={styles.title_contact}>
+          {dictionary.home.contact.title}
+        </h2>
+        <p className={styles.info_contact}>
+          {dictionary.home.contact.subtitle}
+        </p>
+        <a href="mailto:gacenoinspira@gmail.com" className={styles.btnContact}>
+          {dictionary.home.contact.text}
+        </a>
+      </section>
     </div>
   );
 }

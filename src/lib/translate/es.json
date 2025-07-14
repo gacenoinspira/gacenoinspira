@@ -28,6 +28,11 @@
         "carrusel":{
             "title": "Sumérgete en nuestra cultura",
             "subtitle": "conoce todos los planes que puedes hacer"
+        },
+        "contact":{
+            "title": "Contáctanos",
+            "subtitle": "Contáctanos para más información, sugerencias ",
+            "text":"Contáctanos"
         }
     },
     "discovery":{

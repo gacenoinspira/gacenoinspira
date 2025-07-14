@@ -615,3 +615,44 @@
     height: auto;
   }
 }
+
+.section_contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  width: 100%;
+  padding: 20px;
+
+  .title_contact {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 5rem);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .info_contact {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.7rem);
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+  }
+
+  .btnContact {
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.7rem);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
