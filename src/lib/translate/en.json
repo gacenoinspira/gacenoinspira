@@ -28,6 +28,11 @@
         "carrusel": {
             "title": "Immerse yourself in our culture",
             "subtitle": "discover all the activities you can do"
+        },
+        "contact":{
+            "title": "Contact us",
+            "subtitle": "Contact us for more information, suggestions ",
+            "text":"Contact us"
         }
     },
     "discovery":{
