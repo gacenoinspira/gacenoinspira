@@ -30,9 +30,9 @@
             "subtitle": "discover all the activities you can do"
         },
         "contact":{
-            "title": "Contact us",
-            "subtitle": "Contact us for more information, suggestions ",
-            "text":"Contact us"
+            "title": "Do you have questions about any place, activity, or service?",
+            "subtitle": "Whether you're planning a trip, need recommendations, or are just curious… feel free to ask us!",
+            "text": "👉 Click here and send us your question"
         }
     },
     "discovery":{
