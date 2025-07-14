@@ -635,7 +635,7 @@
 
   .info_contact {
     text-align: center;
-    font-size: clamp(1rem, 2vw, 1.7rem);
+    font-size: clamp(1rem, 2vw, 2.1rem);
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
   }
