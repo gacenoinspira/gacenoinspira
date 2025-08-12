@@ -8,52 +8,16 @@ import { Carrusel } from "@/lib/carrusel/carrusel";
 import Link from "next/link";
 import { getImagePageTable } from "@/lib/action/img-page.action";
 import { getDictionary } from "@/lib/translate/translate";
+import { BannerPrincipal } from "./components/banner-principal/BannerPrincipal";
 
 export default async function Home() {
   const operators = await getOperators();
   const imgPage = await getImagePageTable();
   const { dictionary } = await getDictionary();
+  console.log('Images:', imgPage);
   return (
     <div>
-      {imgPage.data?.home.includes(".mp4") ? (
-        <section className={styles.section_video}>
-          <video
-            src="https://jhgjlennmeuftwcsiacf.supabase.co/storage/v1/object/public/fotos/logo/Videoplataforma.mp4"
-            autoPlay
-            loop
-            muted
-            className={styles.video}
-          />
-          <div className={styles.container_info}>
-            <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
-              {dictionary.title}
-            </AnimatedText>
-            <AnimatedText delay={0.5} className={styles.subtitle}>
-              {dictionary.subtitle}
-            </AnimatedText>
-            {/* <button className={styles.button}>Explorar Ahora</button> */}
-          </div>
-        </section>
-      ) : (
-        <section
-          className={styles.section_img}
-          style={{
-            backgroundImage: `url(${
-              imgPage.data?.home || "/img/san_luis.jpeg"
-            })`,
-          }}
-        >
-          <div className={styles.container_info}>
-            <AnimatedText className={`${styles.title} ${styles.mainTitle}`}>
-              {dictionary.title}
-            </AnimatedText>
-            <AnimatedText delay={0.5} className={styles.subtitle}>
-              {dictionary.subtitle}
-            </AnimatedText>
-            {/* <button className={styles.button}>Explorar Ahora</button> */}
-          </div>
-        </section>
-      )}
+      <BannerPrincipal />
       <section className={styles.section_info}>
         {/* <img src="/img/check.svg" alt="check" className={styles.check}/>
         <img src="/img/hash.svg" alt="hash" className={styles.hash} /> */}

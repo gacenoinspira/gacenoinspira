@@ -7,6 +7,7 @@ import styles from "./container-cards.module.css";
 import { UiCard } from "../card/ui-card";
 import { OperatorTableRow } from "@/lib/type";
 import { DictionaryType } from "@/lib/translate/translate";
+import { useRouter } from "next/navigation"; // <-- CAMBIO CLAVE: Importa desde 'next/navigation'
 
 interface ContainerCardsProps {
   operators: OperatorTableRow[];
@@ -15,6 +16,7 @@ interface ContainerCardsProps {
 
 export function ContainerCards({ operators, dictionary }: ContainerCardsProps) {
   const tab = useTabsStore((state) => state.tab);
+  const router = useRouter();
 
   const zoneName: Record<
     string,
@@ -53,6 +55,15 @@ export function ContainerCards({ operators, dictionary }: ContainerCardsProps) {
         <p className={styles.titulo1}>{zoneName[tab].titulo}</p>
         <p className={styles.titulo2}>{zoneName[tab].descriptio}</p>
         <p className={styles.titulo3}>{zoneName[tab].info}</p>
+        <button
+          onClick={() => {
+            console.log("Como llegar clicked",)
+            const zoneNameLocation = zoneName[tab].titulo.toLowerCase().replace(/\s+/g, '-');
+            // La URL ahora redirige a /plans/[nombre-de-la-zona]
+            router.push(`/plans/${zoneNameLocation}`);
+          }}
+          className={styles['how-to-get-button']}
+        >Como llegar</button>
       </div>
       <div className={styles.card}>
         {operators

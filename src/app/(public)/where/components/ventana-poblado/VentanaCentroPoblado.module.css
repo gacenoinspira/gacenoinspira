@@ -1,0 +1,153 @@
+/* components/VentanaCentroPoblado.module.css */
+
+.ventanaPobladoSection {
+  background-color: #55c8c9;
+  padding: 40px 20px 80px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.underline {
+  width: 80px;
+  height: 3px;
+  background-color: #ffffff;
+  margin: 0 auto 40px auto;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.iconItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+
+.icon {
+  font-size: 4rem;
+  color: #fdd835;
+  margin-bottom: 15px;
+}
+
+.iconDescription {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+
+/* --- Nuevos Estilos para la info del clima --- */
+.weatherInfoSection {
+    margin-top: 50px;
+    background-color: #4da6a7; /* Un tono más oscuro del fondo */
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.weatherDetails {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.temperature {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.mainWeatherIconContainer {
+    margin-top: 10px;
+}
+
+.mainWeatherIcon {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.25));
+}
+
+.conditionText {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.extraWeatherInfo {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
+}
+
+.extraWeatherInfo p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.weatherError {
+    color: #ffcccc;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+  .iconsContainer {
+    gap: 20px;
+  }
+  .iconItem {
+    width: 120px;
+  }
+  .icon {
+    font-size: 3rem;
+  }
+  .iconDescription {
+    font-size: 0.9rem;
+  }
+  .temperature {
+    font-size: 2rem;
+  }
+  .extraWeatherInfo {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 1.8rem;
+  }
+  .iconsContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .iconItem {
+    width: 80%;
+  }
+  .temperature {
+    font-size: 1.8rem;
+  }
+}

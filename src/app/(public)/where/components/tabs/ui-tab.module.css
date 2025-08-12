@@ -88,10 +88,23 @@
 
 .imageContainer {
   width: 100%;
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 0 auto 1.5rem;
   border-radius: 4px;
-  overflow: hidden;
+  overflow-x: scroll;
+  display: flex;
+  /* &::-webkit-scrollbar {
+    display: none;
+  } */
+
+  /* Para Firefox */
+  /* scrollbar-width: none; */
+}
+
+@media screen and (min-width: 768px) {
+  .imageContainer {
+    overflow-x: hidden;
+  }
 }
 
 .image {

@@ -1,7 +1,7 @@
 .header {
   position: relative;
   width: 100%;
-  height: 400px; /* Adjust height as needed */
+  height: 800px;
   background-image: var(--backgroundImage);
   background-size: cover;
   background-position: center;

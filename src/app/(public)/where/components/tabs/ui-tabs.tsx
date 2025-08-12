@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 import { DictionaryType } from "@/lib/translate/translate";
+import Image from "next/image";
 
 const tabs = [
   { id: "5", label: "Centro Poblado San Carlos del Guavio" },
@@ -26,11 +27,14 @@ export function UiTabs({ dictionary }: UiTabsProps) {
     updateTab(tabId);
   };
 
+  console.log("Active Tab:", activeTab);
+
   return (
     <div className={styles.container}>
       <div className={styles.selectionText}>
         <h3>{dictionary.where.title}</h3>
         <p>{dictionary.where.subtitle}</p>
+        {/* <p>Hola</p> */}
       </div>
 
       <div className={styles.tabsContainer}>
@@ -49,11 +53,21 @@ export function UiTabs({ dictionary }: UiTabsProps) {
         </div>
         <div className={styles.tabContent}>
           <div className={styles.imageContainer}>
-            <img
-              src={`/tab/tab-map-${activeTab}.png`}
-              alt={`Tab ${activeTab} content`}
-              className={styles.image}
-            />
+            {
+              tabs.map((tab) => (
+                <>
+                  <Image
+                  width={140}
+                  height={190}
+                  key={Math.random()} // Using random key for demo purposes, ideally use a unique identifier
+                  // src="/tab/tab-map.png"
+                  src={ tab.id === activeTab ? `/tab/tab-map-${tab.id}.png` : "/tab/tab-map.png" }
+                  alt="Tab Map"
+                  className={styles.image}
+                  />
+                </>
+              ))
+            }
           </div>
         </div>
         <div className={styles.header}>

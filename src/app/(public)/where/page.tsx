@@ -4,6 +4,7 @@ import { UiTabs } from "./components";
 import { ContainerCards } from "./components/conatiner-card/container-cards";
 import { getOperators } from "@/lib/action";
 import { getDictionary } from "@/lib/translate/translate";
+import { VentanaCentroPoblado } from "./components/ventana-poblado/VentanaCentroPoblado";
 
 export default async function Page() {
   const operators = await getOperators();
@@ -23,6 +24,7 @@ export default async function Page() {
           dictionary={dictionary}
         />
       </div>
+      <VentanaCentroPoblado />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "./content.module.css";
+import Image from "next/image";
 
 interface UiContentProps {
   title: string;
@@ -31,14 +32,7 @@ export function UiContent({
   console.log(img);
   return (
     <div className={styles.container}>
-      <div className={styles.gallery}>
-        <div className={styles.mainImage}>
-          <div
-            style={{ backgroundImage: `url(${logo})` }}
-            className={styles.image}
-          />
-        </div>
-      </div>
+      
 
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
@@ -59,7 +53,17 @@ export function UiContent({
             </ul>
           </>
         )}
-
+        <div className={styles.imageContainer}>
+          <Image
+            src={images[0] || logo}
+            alt={title}
+            width={500}
+            height={300}
+            className={styles.ImagenMedium}
+          />
+        </div>
+      <div className={styles.gallery}>
+      </div>
         {indications && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>
@@ -80,19 +84,15 @@ export function UiContent({
             </ul>
           </>
         )}
-        {!!images.length && (
-          <div>
-            <h2 className={`${styles.title} ${styles.mt}`}>Galeria</h2>
-            <div className={styles.gallery}>
-              {images.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={title}
-                  className={styles.photo_Gallery}
-                />
-              ))}
-            </div>
+        {images.length && (
+          <div className={styles.imageContainer}>
+            <Image
+              src={images[1] || logo}
+              alt={title}
+              width={500}
+              height={300}
+              className={styles.ImagenMedium}
+            />
           </div>
         )}
       </div>

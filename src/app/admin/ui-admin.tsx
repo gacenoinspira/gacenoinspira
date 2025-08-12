@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -7,9 +7,9 @@ import { UiFormBlog, UiFormOperator } from "./section";
 import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
 import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
 import { ListTable } from "./section/list-table/list-table";
-import { ImagePage } from "./section/image-page/image-page";
+import { UiFormCarousel } from "./section/ui-form-carousel/ui-form-carousel"; // Importamos el nuevo componente para el carrusel
 
-// Icons (you can replace these with your actual icon components)
+// Icons (mantengo los íconos que definiste)
 const DashboardIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +80,14 @@ const LogoutIcon = () => (
     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
     <polyline points="16 17 21 12 16 7"></polyline>
     <line x1="21" y1="12" x2="9" y2="12"></line>
+  </svg>
+);
+
+const ImageIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-image">
+    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+    <circle cx="9" cy="9" r="2" />
+    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
   </svg>
 );
 
@@ -159,27 +167,32 @@ export const UiAdmin = ({ zones, categories, operators, imgInicio, imgDescubre }
               Listado
             </TabButton>
             <TabButton
-              active={activeTab === "dashboard"}
-              onClick={() => setActiveTab("dashboard")}
-              icon={DashboardIcon}
-            >
-              Comercios
-            </TabButton>
-
-            <TabButton
               active={activeTab === "comercios"}
               onClick={() => setActiveTab("comercios")}
               icon={StoreIcon}
             >
-              Actividades y Poblados
+              Comercios
             </TabButton>
-
             <TabButton
-              active={activeTab === "usuarios"}
-              onClick={() => setActiveTab("usuarios")}
+              active={activeTab === "actividades"}
+              onClick={() => setActiveTab("actividades")}
               icon={UsersIcon}
             >
+              Actividades y Poblados
+            </TabButton>
+            <TabButton
+              active={activeTab === "blogs"}
+              onClick={() => setActiveTab("blogs")}
+              icon={UsersIcon} // Reutilizando el icono, puedes cambiarlo si tienes uno mejor para blogs
+            >
               Blogs
+            </TabButton>
+            <TabButton
+              active={activeTab === "carousel"}
+              onClick={() => setActiveTab("carousel")}
+              icon={ImageIcon} // Nuevo icono para el carrusel
+            >
+              Imágenes del Carrusel
             </TabButton>
           </div>
 
@@ -187,11 +200,11 @@ export const UiAdmin = ({ zones, categories, operators, imgInicio, imgDescubre }
             <div className={styles.contentWrapper}>
               {activeTab === "list" && (
                 <div className={styles.tabPanel}>
-                  <ImagePage imgInicio={imgInicio} imgDescubre={imgDescubre} />
+                  {/* Se mantiene ListTable aquí */}
                   <ListTable operators={operators} />
                 </div>
               )}
-              {activeTab === "dashboard" && (
+              {activeTab === "comercios" && (
                 <div className={styles.tabPanel}>
                   <UiFormOperator
                     categories={categories}
@@ -201,15 +214,21 @@ export const UiAdmin = ({ zones, categories, operators, imgInicio, imgDescubre }
                   />
                 </div>
               )}
-
-              {activeTab === "comercios" && (
+              {activeTab === "actividades" && (
                 <div className={styles.tabPanel}>
                   <UiFormActivity zones={zones} />
                 </div>
               )}
-              {activeTab === "usuarios" && (
+              {activeTab === "blogs" && (
                 <div className={styles.tabPanel}>
+                  {/* Se mantiene el componente de blog sin modificar */}
                   <UiFormBlog />
+                </div>
+              )}
+              {activeTab === "carousel" && (
+                <div className={styles.tabPanel}>
+                  {/* Nuevo componente para gestionar el carrusel */}
+                  <UiFormCarousel imgInicio={imgInicio} imgDescubre={imgDescubre} />
                 </div>
               )}
             </div>
