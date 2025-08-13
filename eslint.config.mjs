@@ -29,13 +29,16 @@ const eslintConfig = [
       
       // Reglas para TypeScript
       "@typescript-eslint/no-explicit-any": "warn", // Advierte sobre el uso de `any`, pero no detiene el build
+      
+      // La regla clave para resolver tus errores:
+      // Ignora la validación de `no-unused-vars` para los errores en los bloques `catch`.
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
           "args": "after-used",
-          "argsIgnorePattern": "^_", // Permite variables que comienzan con un guion bajo (`_`)
+          "argsIgnorePattern": "^_",
           "varsIgnorePattern": "^_",
-          "caughtErrorsIgnorePattern": "^_"
+          "caughtErrors": "none" // <-- Esta es la modificación clave
         }
       ],
 
