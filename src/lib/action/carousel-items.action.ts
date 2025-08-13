@@ -2,22 +2,23 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from '@supabase/supabase-js';
+import { CarouselTableRow } from "../repository/carousel-items";
 
 // Define las variables de entorno para el cliente de Supabase
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-export interface CarouselTableRow {
-  id: number;
-  created_at: string;
-  src: string;
-  alt: string;
-  title: string | null;
-  subtitle: string | null;
-  buttonText: string | null;
-  link: string | null;
-}
+// export interface CarouselTableRow {
+//   id: number;
+//   created_at: string;
+//   src: string;
+//   alt: string;
+//   title: string | null;
+//   subtitle: string | null;
+//   buttonText: string | null;
+//   link: string | null;
+// }
 
 // Define el tipo de dato para las actualizaciones
 export interface CarouselTableUpdate {

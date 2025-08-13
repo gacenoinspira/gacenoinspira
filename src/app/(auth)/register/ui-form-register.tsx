@@ -22,7 +22,7 @@ export function UiFormRegister({ dictionary }: Props) {
   });
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const [passwordStrength, setPasswordStrength] = useState("");
+  const [ ,setPasswordStrength] = useState("");
   const [passwordSuggestions, setPasswordSuggestions] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState({

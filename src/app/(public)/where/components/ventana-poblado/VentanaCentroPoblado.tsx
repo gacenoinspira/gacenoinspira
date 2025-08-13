@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './VentanaCentroPoblado.module.css';
-import { FaSun, FaMapMarkerAlt, FaUsers, FaLandmark, FaHandshake } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaUsers, FaLandmark, FaHandshake } from 'react-icons/fa';
 
 interface WeatherData {
   main: {
@@ -69,7 +69,7 @@ const iconData: IconData[] = [
   },
 ];
 
-export function VentanaCentroPoblado(): JSX.Element {
+export function VentanaCentroPoblado() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loadingWeather, setLoadingWeather] = useState(true);
   const [weatherError, setWeatherError] = useState<string | null>(null);
