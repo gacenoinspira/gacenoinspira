@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
-import L from 'leaflet';
+import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './MapaDestino.module.css'; // Asegúrate de crear este archivo CSS
 import { FaWind, FaTint } from 'react-icons/fa';
@@ -32,7 +32,7 @@ interface WeatherData {
 }
 
 interface MapaDestinoProps {
-  origen: [number, number]; // [latitud, longitud] del usuario
+  origen: LatLngTuple; // [latitud, longitud] del usuario
   destino: {
     latitud: number;
     longitud: number;
