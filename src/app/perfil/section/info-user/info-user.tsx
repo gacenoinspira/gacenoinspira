@@ -111,7 +111,6 @@ export function InfoUser({
                 const file = e.target.files?.[0];
                 if (file) {
                   // Aquí puedes manejar la subida de la imagen
-                  console.log("Archivo seleccionado:", file);
                   uploadPhoto(file);
                 }
               }}

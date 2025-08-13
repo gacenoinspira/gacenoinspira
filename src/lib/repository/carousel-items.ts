@@ -65,11 +65,6 @@ export class CarouselTable {
     return data as unknown as CarouselTableRow[];
   };
 
-  /**
-   * Obtiene un ítem del carrusel por su ID.
-   * @param id El ID del ítem a buscar.
-   * @returns El ítem encontrado.
-   */
   static getCarouselItemById = async (id: string): Promise<CarouselTableRow> => {
     const supabase = await SupabaseServer();
     const { data, error } = await supabase

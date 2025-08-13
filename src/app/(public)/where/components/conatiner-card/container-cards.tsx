@@ -57,9 +57,7 @@ export function ContainerCards({ operators, dictionary }: ContainerCardsProps) {
         <p className={styles.titulo3}>{zoneName[tab].info}</p>
         <button
           onClick={() => {
-            console.log("Como llegar clicked",)
             const zoneNameLocation = zoneName[tab].titulo.toLowerCase().replace(/\s+/g, '-');
-            // La URL ahora redirige a /plans/[nombre-de-la-zona]
             router.push(`/plans/${zoneNameLocation}`);
           }}
           className={styles['how-to-get-button']}

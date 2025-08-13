@@ -58,7 +58,7 @@ export function Favorite({
       user?.user_id ?? ""
     );
     if (!resp.status) {
-      console.log("error 2", resp.error);
+
       setMessageModal({
         title: "Error",
         message: "No se pudo actualizar el detalle del operador",

@@ -55,7 +55,6 @@ export function HeaderPage({
         user_id: user?.user_id,
         id_operator: id!,
       });
-      console.log("error", respo.error);
       if (!respo.status) {
         setMessageModal({
           title: "Error",
@@ -82,7 +81,6 @@ export function HeaderPage({
       user?.user_id ?? ""
     );
     if (!resp.status) {
-      console.log("error 2", resp.error);
       setMessageModal({
         title: "Error",
         message: "No se pudo actualizar el detalle del operador",

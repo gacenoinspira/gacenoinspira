@@ -9,7 +9,6 @@ export default async function Page() {
   const categories = await getCategories();
   const operators = await getOperators();
   const imagePage = await getImagePageTable();
-  console.log(zones);
   return (
     <div>
       <UiAdmin

@@ -13,8 +13,6 @@ export class ImagePageTable {
       .insert(imagePageTable as any)
       .select("*")
       .single();
-    console.log("error", error);
-    console.log("data", data);
     if (error) {
       return {
         status: false,

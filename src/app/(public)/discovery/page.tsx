@@ -58,7 +58,6 @@ export default async function PageDiscovery() {
       </div>
 
       <div className={styles.carouselSection}>
-        {/* Aquí renderizamos el nuevo componente de carrusel */}
         <Carousel operators={operators.data || []} />
       </div>
 

@@ -27,7 +27,6 @@ export function UiTabs({ dictionary }: UiTabsProps) {
     updateTab(tabId);
   };
 
-  console.log("Active Tab:", activeTab);
 
   return (
     <div className={styles.container}>

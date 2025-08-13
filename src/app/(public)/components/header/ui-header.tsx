@@ -29,9 +29,9 @@ export function UiHeader({ userDb, lang, dictionary }: HeaderProp) {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const { latitude, longitude, accuracy } = position.coords;
+          const { latitude, longitude, } = position.coords;
           setNavegation({ lat: latitude, lng: longitude });
-          console.log(`Lat: ${latitude}, Lon: ${longitude} (±${accuracy} m)`);
+  
         },
         (error) => {
           console.error(

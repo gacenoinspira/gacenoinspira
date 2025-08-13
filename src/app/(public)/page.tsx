@@ -1,20 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import styles from "./page.module.css";
 import { UiMap } from "@/lib/components/ui-map/ui-map";
-import { AnimatedText } from "@/components/AnimatedText";
 import { getOperators } from "@/lib/action";
 import { BtnMap, CardZone } from "./components";
 import { Carrusel } from "@/lib/carrusel/carrusel";
 import Link from "next/link";
-import { getImagePageTable } from "@/lib/action/img-page.action";
 import { getDictionary } from "@/lib/translate/translate";
 import { BannerPrincipal } from "./components/banner-principal/BannerPrincipal";
 
 export default async function Home() {
   const operators = await getOperators();
-  const imgPage = await getImagePageTable();
   const { dictionary } = await getDictionary();
-  console.log('Images:', imgPage);
   return (
     <div>
       <BannerPrincipal />

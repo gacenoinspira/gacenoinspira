@@ -29,7 +29,6 @@ export function UiContent({
   indications = "",
   images = [],
 }: UiContentProps) {
-  console.log(img);
   return (
     <div className={styles.container}>
       

@@ -1,13 +1,5 @@
 import { SupabaseServer } from "../supabase/connection/supabase-server";
 
-// ======================================================================
-// IMPORTACIÓN DE TIPOS GENERADOS AUTOMÁTICAMENTE
-//
-// He agregado los tipos de esquema que me proporcionaste. Estos tipos
-// son ideales para asegurar que las interacciones con la base de datos
-// sean seguras y consistentes. Los tipos 'Tables', 'TablesInsert',
-// y 'TablesUpdate' se usan a continuación.
-// ======================================================================
 
 export type Json =
   | string

@@ -51,7 +51,6 @@ export function UiFormOperator({ categories, operators }: Props) {
   const handleMapClick = (e: MapMouseEvent) => {
     const { lng, lat } = e.lngLat;
     setLocation({ lat, lng });
-    console.log("Coordenadas:", { lat, lng });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -98,7 +97,6 @@ export function UiFormOperator({ categories, operators }: Props) {
         photosUrls.push(uploadPhoto.publicUrl);
       }
     } catch (error) {
-      console.log("Error al subir las fotos []", error);
       setMessage({
         title: "Error",
         message: "Error al subir las fotos",
@@ -124,7 +122,6 @@ export function UiFormOperator({ categories, operators }: Props) {
     };
     try {
       const resp = await createOperator(body);
-      console.log(resp);
       if (resp.status) {
         setCategory(0);
         setLocation(null);
@@ -150,7 +147,6 @@ export function UiFormOperator({ categories, operators }: Props) {
       });
       setModalMessage(true);
     } catch (error) {
-      console.log("Error al crear el operador", error);
       setMessage({
         title: "Error",
         message: "Error al crear el operador",
@@ -266,7 +262,6 @@ export function UiFormOperator({ categories, operators }: Props) {
                   const file = e.target.files?.[0];
                   if (file) {
                     setLogo(file);
-                    console.log("Archivo seleccionado:", file.name);
                     // Aquí puedes manejar la subida del archivo o guardar la referencia
                   }
                 }}
@@ -287,7 +282,6 @@ export function UiFormOperator({ categories, operators }: Props) {
                   const files = e.target.files;
                   setPhotos(files);
                   if (files && files.length > 0) {
-                    console.log(`${files.length} archivos seleccionados:`);
                     for (let i = 0; i < files.length; i++) {
                       console.log(
                         `- ${files[i].name} (${(files[i].size / 1024).toFixed(

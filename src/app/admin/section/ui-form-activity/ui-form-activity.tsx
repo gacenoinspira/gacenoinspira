@@ -139,7 +139,6 @@ export function UiFormActivity({ zones }: Props) {
         photosUrls.push(uploadPhoto.publicUrl);
       }
     } catch (error) {
-      console.log("Error al subir las fotos []", error);
       setMessage({
         title: "Error",
         message: "Error al subir las fotos",
@@ -165,7 +164,7 @@ export function UiFormActivity({ zones }: Props) {
       category_id: 5,
       zone_id: zone_id,
     };
-    console.log(JSON.stringify(Body).length / 1024, "KB");
+
 
     try {
       const resp = await createOperator(Body);
@@ -190,7 +189,6 @@ export function UiFormActivity({ zones }: Props) {
       });
       setModalMessage(true);
     } catch (error) {
-      console.log("Error al crear el operador", error);
       setMessage({
         title: "Error",
         message: "Error al crear el operador",

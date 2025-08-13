@@ -10,7 +10,6 @@ export default async function PobladoPage({ params }: Props) {
   const { id } = await params;
   const operator = await getOperatorById(id);
   const detailsOperator = await getDetailsOperator(id);
-  console.log(operator);
   return (
     <main className="min-h-screen bg-white">
       <HeaderPage

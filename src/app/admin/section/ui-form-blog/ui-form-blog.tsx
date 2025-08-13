@@ -32,7 +32,6 @@ export function UiFormBlog() {
       zone_id: 6,
       blog: listActivity,
     };
-    console.log(Body);
     const resp = await createOperator(Body);
     if (!resp.status) {
       setMessage({

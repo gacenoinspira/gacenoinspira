@@ -110,7 +110,6 @@ export function UiFormRegister({ dictionary }: Props) {
       setIsOpen(true);
       return;
     }
-    console.log(passwordStrength, passwordSuggestions);
     // passwordStrength !== "Fuerte" ||
     if (passwordSuggestions.length > 0) {
       setMessage({

@@ -14,7 +14,6 @@ export class DetailsOperatorRepository {
       .from("details_operator")
       .select("*,userInfo:user_id(name),operator:id_operator(name_company)")
       .eq("id_operator", id);
-    console.log("data error details", error?.message);
     if (error) {
       return null;
     }
@@ -32,7 +31,6 @@ export class DetailsOperatorRepository {
       )
       .eq("user_id", id)
       .order("created_at", { ascending: false });
-    console.log("data error perfil", error?.message);
     if (error) {
       return null;
     }
@@ -48,7 +46,6 @@ export class DetailsOperatorRepository {
       .insert(body)
       .select("*")
       .single();
-    console.log("data error", error?.message);
     if (error) {
       return null;
     }
@@ -60,9 +57,6 @@ export class DetailsOperatorRepository {
     id: string,
     user_id: string
   ): Promise<DetailsOperatorTable | null> {
-    console.log("body", body);
-    console.log("id", id);
-    console.log("user_id", user_id);
     const supabase = await SupabaseServer();
     const { data, error } = await supabase
       .from("details_operator")
@@ -71,7 +65,6 @@ export class DetailsOperatorRepository {
       .eq("user_id", user_id)
       .select("*")
       .single();
-    console.log("data error", error?.message);
     if (error) {
       return null;
     }

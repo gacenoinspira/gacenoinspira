@@ -7,7 +7,8 @@ import { UiFormBlog, UiFormOperator } from "./section";
 import { CategoryTableRow, OperatorTableRow, ZoneTableRow } from "@/lib/type";
 import { UiFormActivity } from "./section/ui-form-activity/ui-form-activity";
 import { ListTable } from "./section/list-table/list-table";
-import { UiFormCarousel } from "./section/ui-form-carousel/ui-form-carousel"; // Importamos el nuevo componente para el carrusel
+import CarouselManager from "./section/ui-form-carousel/ui-form-carousel";
+// import { UiFormCarousel } from "./section/ui-form-carousel/ui-form-carousel"; // Importamos el nuevo componente para el carrusel
 
 // Icons (mantengo los íconos que definiste)
 const DashboardIcon = () => (
@@ -122,7 +123,7 @@ interface Props {
   imgDescubre: string | null;
 }
 
-export const UiAdmin = ({ zones, categories, operators, imgInicio, imgDescubre }: Props) => {
+export const UiAdmin = ({ zones, categories, operators }: Props) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("list");
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -227,8 +228,7 @@ export const UiAdmin = ({ zones, categories, operators, imgInicio, imgDescubre }
               )}
               {activeTab === "carousel" && (
                 <div className={styles.tabPanel}>
-                  {/* Nuevo componente para gestionar el carrusel */}
-                  <UiFormCarousel imgInicio={imgInicio} imgDescubre={imgDescubre} />
+                  <CarouselManager/>
                 </div>
               )}
             </div>
