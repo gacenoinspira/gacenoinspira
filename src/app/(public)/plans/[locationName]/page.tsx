@@ -144,7 +144,7 @@ export default function DynamicPlanificaPage() {
         </div>
       )}
 
-      {userLocation && (
+      {userLocation  && (
         <MapaDestino
           origen={userLocation}
           destino={{
