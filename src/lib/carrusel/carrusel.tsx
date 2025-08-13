@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./carrusel.module.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface CardProps {
   id: string;
@@ -84,7 +85,9 @@ export function Carrusel({ cards }: CarruselProps) {
               className={styles.card}
               onClick={() => router.push(`/poblado/${card.id}`)}
             >
-              <img
+              <Image
+                width={300}
+                height={300}
                 src={card.image}
                 alt={card.title}
                 className={styles.imageCard}

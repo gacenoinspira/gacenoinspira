@@ -5,14 +5,6 @@ import { getOperators } from "@/lib/action";
 import { getImagePageTable } from "@/lib/action/img-page.action";
 import { getDictionary } from "@/lib/translate/translate";
 import { Carousel } from "./components/carousel/Carousel";
-interface OperatorsData {
-  data?: Array<{
-    id: number;
-    name?: string;
-    logo?: string;
-    type_activity: number;
-  }>;
-}
 
 interface ImagePageData {
   data?: {
@@ -58,7 +50,7 @@ export default async function PageDiscovery() {
       </div>
 
       <div className={styles.carouselSection}>
-        <Carousel operators={operators.data || []} />
+        <Carousel operators={ operators.data } />
       </div>
 
       <div className={styles.content}>

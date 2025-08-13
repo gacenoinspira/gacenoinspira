@@ -17,7 +17,7 @@ interface CarouselItem {
   link: string | null;
 }
 
-// Configura el cliente de Supabase usando variables de entorno
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
@@ -76,7 +76,7 @@ export default function CarouselManager() {
     setIsSubmitting(true);
     
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('carousel_items')
         .insert([ newItem ]);
 
@@ -106,7 +106,7 @@ export default function CarouselManager() {
     setIsSubmitting(true);
     
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('carousel_items')
         .update(item)
         .eq('id', item.id);

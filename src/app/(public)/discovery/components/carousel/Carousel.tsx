@@ -3,17 +3,13 @@
 import React, { useRef } from 'react';
 import styles from "../../discvery.module.css";
 import { UiCard } from "./../card/ui-card";
+import { OperatorTableRow } from '@/lib/type';
 
 // Tipos para las props del carrusel
-interface Operator {
-  id: string;
-  name?: string;
-  logo?: string;
-  type_activity: number;
-}
+
 
 interface CarouselProps {
-  operators: Operator[];
+  operators: OperatorTableRow[] | null;
 }
 
 export function Carousel({ operators }: CarouselProps) {

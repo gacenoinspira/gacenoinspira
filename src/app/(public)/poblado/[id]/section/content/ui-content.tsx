@@ -23,7 +23,6 @@ export function UiContent({
   title = "Iglesia Centro Poblado Guamal",
   description = "La iglesia de San Luis de Guamal es un ícono arquitectónico y religioso ubicado en el corazón del municipio. Construida en el siglo XVIII, esta joya colonial destaca por su imponente fachada blanca y su campanario que se alza sobre el paisaje urbano. El interior sorprende con sus techos altos, arcos de medio punto y un retablo mayor dorado que alberga la imagen del santo patrón. Los lugareños la consideran no solo un lugar de culto, sino un símbolo de identidad y tradición que ha sido testigo de generaciones de fieles y visitantes.",
   logo = "/img/san_luis.jpeg",
-  img = [],
   activity = [],
   rules = [],
   indications = "",

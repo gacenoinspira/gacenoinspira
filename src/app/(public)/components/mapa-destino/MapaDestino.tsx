@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './MapaDestino.module.css'; // Asegúrate de crear este archivo CSS
-import { FaMapMarkerAlt, FaSun, FaCloud, FaWind, FaTint } from 'react-icons/fa';
+import { FaWind, FaTint } from 'react-icons/fa';
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -92,7 +92,7 @@ export function MapaDestino({ origen, destino }: MapaDestinoProps) {
   // Calcula el centro y el zoom para que ambos marcadores sean visibles
   const bounds = L.latLngBounds([origen, [destino.latitud, destino.longitud]]);
   const center = bounds.getCenter();
-  const zoom = bounds.isValid() ? bounds.pad(0.5).zoom : 13;
+  // const zoom = bounds.isValid() ? bounds.pad(0.5).zoom : 13;
 
   return (
     <div className={styles.container}>
