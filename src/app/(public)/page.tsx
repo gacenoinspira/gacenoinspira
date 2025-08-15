@@ -17,18 +17,27 @@ export default async function Home() {
       <section className={styles.section_info}>
         {/* <img src="/img/check.svg" alt="check" className={styles.check}/>
         <img src="/img/hash.svg" alt="hash" className={styles.hash} /> */}
-        <div className={styles.container_info}>
-          <p className={styles.title}>{dictionary.home.info.title}</p>
-          <p className={styles.title_2}>{dictionary.home.info.title_2}</p>
-          <p className={styles.title_3}>{dictionary.home.info.title_3}</p>
+        <div className={ styles.container_map_btn }>
+          <div className={ styles.container_map_btn_info }>
+            <div className={styles.container_info}>
+            <p className={styles.title}>¿A cuántas horas estás de <strong> San Luis de Gaceno </strong>, el destino que <strong>inspira</strong> ?</p>
+          </div>
+          <div className={styles.gifs}>
+              <BtnMap text="DESCUBRELO AQUI" />
+          </div>
+          </div>
+          <div>
+            
+            <Link href={"/map"}>
+              <img src="/img/route.gif" alt="route" className={styles.route} />
+            </Link>
+          </div>
+
         </div>
-        <div className={styles.gifs}>
-          <Link href={"/map"}>
-            <img src="/img/route.gif" alt="route" className={styles.route} />
-          </Link>
-        </div>
+        
+        
       </section>
-      <BtnMap text={dictionary.home.info.btnInfo} />
+      
       <section className={styles.section_map}>
         <UiMap
           operators={

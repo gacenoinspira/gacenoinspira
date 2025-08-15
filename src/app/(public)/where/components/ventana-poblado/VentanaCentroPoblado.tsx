@@ -163,7 +163,7 @@ export function VentanaCentroPoblado({ centroPoblado, setTypePoblado }: Props) {
 const handleClickEvents = (id: string) => {
   switch(id){
     case 'ubicacion':
-      router.push(`/plans/${ centroPoblado }`);
+      router.push(`/plans/${ centroPoblado || 'parque-principal-san-luis-de-gaceno' }`);
       break;
     case 'actividades':
       //return ''

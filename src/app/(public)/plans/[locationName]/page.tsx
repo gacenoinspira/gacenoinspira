@@ -6,16 +6,17 @@ import { LatLngTuple } from 'leaflet';
 import { MapaDestino } from '../../components/mapa-destino/MapaDestino';
 import { dmsToDecimal } from '@/lib/utils/dmsDecimal';
 
-// Función auxiliar para convertir coordenadas DMS a decimales, como en el ejemplo anterior
+// Define the coordinates for "Parque Principal San Luis de Gaceno"
+const PARQUE_PRINCIPAL_COORD = {
+  latitud: dmsToDecimal('N4 49 14.6'),
+  longitud: dmsToDecimal('W73 10 04.5'),
+};
 
-
-// Lista de destinos disponibles. He normalizado los nombres para que sean
-// más fáciles de usar en una URL (por ejemplo, "parque-principal-san-luis-de-gaceno").
 const destinosDisponibles = [
   {
     path: 'parque-principal-san-luis-de-gaceno',
-    latitud: dmsToDecimal('N4 49 14.6'),
-    longitud: dmsToDecimal('W73 10 04.5'),
+    latitud: PARQUE_PRINCIPAL_COORD.latitud,
+    longitud: PARQUE_PRINCIPAL_COORD.longitud,
     nombre: 'Parque Principal San Luis de Gaceno',
     descripcion: 'Parque Principal San Luis de Gaceno',
   },
@@ -66,42 +67,43 @@ export default function DynamicPlanificaPage() {
   const [locationError, setLocationError] = useState<string | null>(null);
   const [destino, setDestino] = useState<any>(null);
 
-  // Efecto para buscar la ubicación y el destino en base a la URL
   useEffect(() => {
-    // 1. Obtener la ubicación del usuario
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setUserLocation([position.coords.latitude, position.coords.longitude]);
-          setIsLoading(false);
-        },
-        (error) => {
-          console.error("Error al obtener la ubicación:", error);
-          setLocationError("No se pudo obtener tu ubicación. Mostrando una ubicación por defecto (Bogotá).");
-          setUserLocation([4.7110, -74.0721]); // Ubicación por defecto
-          setIsLoading(false);
-        }
-      );
-    } else {
-      setLocationError("Tu navegador no soporta geolocalización. Mostrando una ubicación por defecto (Bogotá).");
-      setUserLocation([4.7110, -74.0721]); // Ubicación por defecto
+    const foundDestino = destinosDisponibles.find((d) => d.path === locationName);
+    if (!foundDestino) {
+      setDestino(null);
+      setLocationError(`Destino "${locationName}" no encontrado.`);
       setIsLoading(false);
+      return;
     }
 
-    // 2. Buscar el destino en base al parámetro de la URL
-    if (locationName) {
-      const foundDestino = destinosDisponibles.find(
-        (d) => d.path === locationName
-      );
-      if (foundDestino) {
-        setDestino(foundDestino);
+    setDestino(foundDestino);
+
+    // If the destination is "Parque Principal San Luis de Gaceno", get the user's current location.
+    if (locationName === 'parque-principal-san-luis-de-gaceno') {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setUserLocation([position.coords.latitude, position.coords.longitude]);
+            setIsLoading(false);
+          },
+          (error) => {
+            console.error("Error al obtener la ubicación:", error);
+            setLocationError("No se pudo obtener tu ubicación. Mostrando una ubicación por defecto (Bogotá).");
+            setUserLocation([4.7110, -74.0721]); // Bogotá
+            setIsLoading(false);
+          }
+        );
       } else {
-        // Manejar el caso de un destino no encontrado
-        setDestino(null);
-        setLocationError(`Destino "${locationName}" no encontrado.`);
+        setLocationError("Tu navegador no soporta geolocalización. Mostrando una ubicación por defecto (Bogotá).");
+        setUserLocation([4.7110, -74.0721]); // Bogotá
+        setIsLoading(false);
       }
+    } else {
+      // For all other destinations, set the origin to "Parque Principal San Luis de Gaceno"
+      setUserLocation([PARQUE_PRINCIPAL_COORD.latitud, PARQUE_PRINCIPAL_COORD.longitud]);
+      setIsLoading(false);
     }
-  }, [locationName]); // El efecto se ejecuta cuando cambia el locationName de la URL
+  }, [locationName]);
 
   if (isLoading) {
     return <div style={{ textAlign: 'center', padding: '50px' }}>Cargando mapa...</div>;
@@ -134,7 +136,7 @@ export default function DynamicPlanificaPage() {
         </div>
       )}
 
-      {userLocation  && (
+      {userLocation && (
         <MapaDestino
           origen={userLocation}
           destino={{

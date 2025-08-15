@@ -15,7 +15,6 @@ interface ImagePageData {
 export default async function PageDiscovery() {
   const operators = await getOperators();
   const imgPage: ImagePageData = await getImagePageTable();
-  // const { dictionary }: { dictionary: DictionaryData } = await getDictionary();
 
   return (
     <div className={styles.container}>

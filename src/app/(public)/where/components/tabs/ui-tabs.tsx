@@ -55,7 +55,7 @@ export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
               }`}
               onClick={() => {
                 handleTabClick(tab.id);
-                setCentroPoblado(tab.label); // Update the centroPoblado state
+                setCentroPoblado(tab.label);
               }}
             >
               {tab.label}
@@ -67,7 +67,14 @@ export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
             {
               tabs.map((tab) => (
                 <>
-                  <div className={ styles.imageWrapper } key={tab.id}>
+                  <div 
+                    className={ styles.imageWrapper } 
+                    key={tab.id}
+                    onClick={() => {
+                      handleTabClick(tab.id);
+                      setCentroPoblado(tab.label);
+                    }}
+                  >
                     <Image
                     width={140}
                     height={190}

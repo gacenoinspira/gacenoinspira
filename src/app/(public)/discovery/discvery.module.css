@@ -108,10 +108,15 @@
   transition: background-color 0.2s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
+  color: #333; /* Color del ícono/texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carouselButton:hover {
   background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1); /* Efecto de crecimiento al pasar el ratón */
 }
 
 /* Nuevos estilos para el carrusel de tarjetas */
