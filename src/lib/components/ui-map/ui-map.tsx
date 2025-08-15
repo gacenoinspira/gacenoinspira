@@ -292,6 +292,7 @@ export function UiMap({ operators, selectText }: PropsMap) {
     return (
       <div
         ref={markerRef}
+        id="section-map"
         onClick={handleClick}
         style={{
           position: "relative",

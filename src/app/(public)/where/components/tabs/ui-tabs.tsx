@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 import { DictionaryType } from "@/lib/translate/translate";
@@ -16,9 +16,10 @@ const tabs = [
 
 interface UiTabsProps {
   dictionary: DictionaryType;
+  setCentroPoblado : Dispatch<SetStateAction<string>>
 }
 
-export function UiTabs({ dictionary }: UiTabsProps) {
+export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
   const { tab: numberTab, setTab: updateTab } = useTabsStore((set) => set);
   const [activeTab, setActiveTab] = useState<string>(numberTab);
 
@@ -27,12 +28,20 @@ export function UiTabs({ dictionary }: UiTabsProps) {
     updateTab(tabId);
   };
 
+  useEffect(() => {
+    setActiveTab(numberTab);
+    // Update the centroPoblado state when the component mounts
+    const selectedTab = tabs.find((tab) => tab.id === numberTab);
+    if (selectedTab) {
+      setCentroPoblado(selectedTab.label);
+    }
+  },[])
 
   return (
     <div className={styles.container}>
       <div className={styles.selectionText}>
-        <h3>{dictionary.where.title}</h3>
-        <p>{dictionary.where.subtitle}</p>
+        <h3>{dictionary?.where.title}</h3>
+        <p>{dictionary?.where.subtitle}</p>
         {/* <p>Hola</p> */}
       </div>
 
@@ -44,7 +53,10 @@ export function UiTabs({ dictionary }: UiTabsProps) {
               className={`${styles.tab} ${
                 activeTab === tab.id ? styles.tabActive : ""
               }`}
-              onClick={() => handleTabClick(tab.id)}
+              onClick={() => {
+                handleTabClick(tab.id);
+                setCentroPoblado(tab.label); // Update the centroPoblado state
+              }}
             >
               {tab.label}
             </button>
@@ -55,15 +67,19 @@ export function UiTabs({ dictionary }: UiTabsProps) {
             {
               tabs.map((tab) => (
                 <>
-                  <Image
-                  width={140}
-                  height={190}
-                  key={Math.random()} // Using random key for demo purposes, ideally use a unique identifier
-                  // src="/tab/tab-map.png"
-                  src={ tab.id === activeTab ? `/tab/tab-map-${tab.id}.png` : "/tab/tab-map.png" }
-                  alt="Tab Map"
-                  className={styles.image}
-                  />
+                  <div className={ styles.imageWrapper } key={tab.id}>
+                    <Image
+                    width={140}
+                    height={190}
+                    key={Math.random()} // Using random key for demo purposes, ideally use a unique identifier
+                    // src="/tab/tab-map.png"
+                    src={ tab.id === activeTab ? `/tab/tab-map-${tab.id}.png` : "/tab/tab-map.png" }
+                    alt="Tab Map"
+                    className={styles.image}
+                    />
+                    <p> { tab.label } </p>
+                  </div>
+                  
                 </>
               ))
             }
@@ -71,8 +87,8 @@ export function UiTabs({ dictionary }: UiTabsProps) {
         </div>
         <div className={styles.header}>
           <div className={styles.headerContent}>
-            <h2 className={styles.title}>{dictionary.where.title_2}</h2>
-            <p className={styles.subtitle}>{dictionary.where.subtitle_2}</p>
+            <h2 className={styles.title}>{dictionary?.where.title_2}</h2>
+            <p className={styles.subtitle}>{dictionary?.where.subtitle_2}</p>
           </div>
         </div>
       </div>

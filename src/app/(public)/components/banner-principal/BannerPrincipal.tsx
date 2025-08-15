@@ -72,19 +72,32 @@ export function BannerPrincipal() {
     fetchItems();
   }, []);
 
-  // useEffect para el carrusel automático
+  // Nuevo useEffect para el carrusel automático
   useEffect(() => {
     if (items.length > 0) {
       const interval = setInterval(() => {
         setCurrentCarouselItemIndex((prevIndex) => (prevIndex + 1) % items.length);
       }, 5000);
+      
       return () => clearInterval(interval);
     }
   }, [items]);
 
   const handleExploreClick = (e: React.MouseEvent<HTMLButtonElement>, link: string | null) => {
+    e.preventDefault(); // Agregado para evitar el comportamiento predeterminado si es necesario
     if (link) {
-      router.push(link);
+      if (link.startsWith('#')) {
+        // Lógica para anclas (scrolling a una sección)
+        const targetElement = document.querySelector(link);
+        if (targetElement) {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        router.push(link);
+      }
     }
   };
 
@@ -102,25 +115,27 @@ export function BannerPrincipal() {
 
   return (
     <section className={styles.banner_section}>
-      {/* Condicional para renderizar video o imagen */}
-      {isVideo ? (
-        <video
-          key={currentItem.id}
-          className={styles.media_background}
-          src={currentItem.src}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-      ) : (
-        <img
-          key={currentItem.id}
-          className={styles.media_background}
-          src={currentItem.src}
-          alt={currentItem.alt}
-        />
-      )}
+      {/* Corrección: Se envuelve el renderizado condicional en un div
+        y la 'key' se asigna a este contenedor.
+      */}
+      <div key={currentItem.id}>
+        {isVideo ? (
+          <video
+            className={styles.media_background}
+            src={currentItem.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <img
+            className={styles.media_background}
+            src={currentItem.src}
+            alt={currentItem.alt}
+          />
+        )}
+      </div>
 
       <div className={styles.overlay}></div>
       <div className={styles.color_strip}></div> 
@@ -135,8 +150,8 @@ export function BannerPrincipal() {
           </AnimatedText>
           { currentItem.location &&
             <div className={styles.location_container}>
-            <p className={styles.location_text}>{currentItem.location}</p>
-          </div>
+              <p className={styles.location_text}>{currentItem.location}</p>
+            </div>
           }
           <button
             className={styles.exploreButton_text}

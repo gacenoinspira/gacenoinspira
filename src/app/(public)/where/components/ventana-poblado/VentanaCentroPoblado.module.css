@@ -77,6 +77,10 @@
     margin: 0;
 }
 
+.iconContainer{
+  color: white;
+}
+
 .mainWeatherIconContainer {
     margin-top: 10px;
 }

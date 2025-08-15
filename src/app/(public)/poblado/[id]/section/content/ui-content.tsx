@@ -33,7 +33,6 @@ export function UiContent({
       
 
       <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
         {description.split(".").map((item, index) => (
           <p key={index} className={styles.description}>
             {item}

@@ -92,13 +92,31 @@
   margin: 0 auto 1.5rem;
   border-radius: 4px;
   overflow-x: scroll;
+  overflow-y: hidden;
   display: flex;
+  justify-content: space-evenly;
   /* &::-webkit-scrollbar {
     display: none;
   } */
 
   /* Para Firefox */
   /* scrollbar-width: none; */
+}
+
+.imageWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.imageWrapper:hover {
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 768px) {
@@ -108,11 +126,11 @@
 }
 
 .image {
-  width: 100%;
-  height: auto;
+  width: 140px;
+  height: 190px;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border-radius: 4px;
   object-fit: cover;
 }

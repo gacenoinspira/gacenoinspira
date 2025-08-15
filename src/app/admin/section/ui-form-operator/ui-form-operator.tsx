@@ -283,11 +283,11 @@ export function UiFormOperator({ categories, operators }: Props) {
                   setPhotos(files);
                   if (files && files.length > 0) {
                     for (let i = 0; i < files.length; i++) {
-                      console.log(
-                        `- ${files[i].name} (${(files[i].size / 1024).toFixed(
-                          2
-                        )} KB)`
-                      );
+                      // console.log(
+                      //   `- ${files[i].name} (${(files[i].size / 1024).toFixed(
+                      //     2
+                      //   )} KB)`
+                      // );
                     }
                     // Aquí puedes manejar la subida de múltiples archivos
                     // Por ejemplo: Array.from(files).forEach(file => uploadFile(file));

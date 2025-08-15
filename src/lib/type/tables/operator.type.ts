@@ -13,6 +13,7 @@ export interface OperatorTableRow extends OperatorTable {
   category?: { name: string };
   zone?: { name: string };
   activity?: string[];
+  categoria: string;
   rules?: string[];
   indications?: string;
   blog?: string[];

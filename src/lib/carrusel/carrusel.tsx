@@ -32,7 +32,13 @@ export function Carrusel({ cards }: CarruselProps) {
     slidesToScroll: 1,
     swipeToSlide: true,
     arrows: false,
-    autoplay: false,
+    
+    // --- Configuración para el movimiento automático ---
+    autoplay: true, // Habilita la reproducción automática
+    autoplaySpeed: 3000, // Cada slide durará 3 segundos
+    pauseOnHover: true, // Pausa el autoplay al pasar el mouse por encima
+    // --- Fin de la configuración de movimiento automático ---
+
     centerMode: false,
     centerPadding: "0",
     cssEase: "cubic-bezier(0.645, 0.045, 0.355, 1)",

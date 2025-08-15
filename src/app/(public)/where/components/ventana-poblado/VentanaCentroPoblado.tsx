@@ -1,8 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import styles from './VentanaCentroPoblado.module.css';
 import { FaMapMarkerAlt, FaUsers, FaLandmark, FaHandshake } from 'react-icons/fa';
+import { destinosDisponibles } from '@/data/destinosDisponibles';
+import { useRouter } from 'next/navigation';
+import { ActivityCategory } from '../conatiner-card/container-cards';
 
 interface WeatherData {
   main: {
@@ -29,6 +32,11 @@ interface IconData {
   description: string;
   climateInfo: string;
   locationInfo: string;
+}
+
+export interface Props {
+  centroPoblado: string;
+  setTypePoblado: Dispatch<SetStateAction<ActivityCategory | undefined>>
 }
 
 const iconData: IconData[] = [
@@ -69,8 +77,10 @@ const iconData: IconData[] = [
   },
 ];
 
-export function VentanaCentroPoblado() {
+
+export function VentanaCentroPoblado({ centroPoblado, setTypePoblado }: Props) {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const router = useRouter()
   const [loadingWeather, setLoadingWeather] = useState(true);
   const [weatherError, setWeatherError] = useState<string | null>(null);
 
@@ -107,8 +117,7 @@ export function VentanaCentroPoblado() {
         if (!OPENWEATHER_API_KEY) {
           throw new Error("OpenWeatherMap API Key no está configurada.");
         }
-        const lat = 4.8203; // Latitud corregida de San Luis de Gaceno
-        const lon = -73.1683; // Longitud corregida de San Luis de Gaceno
+        const { lat, lon } = getLatitudeLongitude();
 
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=es`
@@ -126,16 +135,62 @@ export function VentanaCentroPoblado() {
       }
     };
     fetchWeatherData();
-  }, [OPENWEATHER_API_KEY]);
+  }, [OPENWEATHER_API_KEY, centroPoblado]);
+
+  const getLatitudeLongitude = () => {
+    const destino = destinosDisponibles.find((d) => d.path === centroPoblado);
+    if (destino) {
+      return { lat: destino.latitud, lon: destino.longitud };
+    } else {
+      console.error(`Destino "${centroPoblado}" no encontrado.`);
+      return { lat: 4.8203, lon: -73.1683 }; // Valores por defecto
+    }
+  }
+
+  function capitalizeSlug(slug: string): string {
+  const spacedString = slug.replace(/-/g, ' ');
+  const words = spacedString.split(' ');
+  const capitalizedWords = words.map((word: string) => {
+
+    if (!word) {
+      return '';
+    }
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+  return capitalizedWords.join(' ');
+}
+
+const handleClickEvents = (id: string) => {
+  switch(id){
+    case 'ubicacion':
+      router.push(`/plans/${ centroPoblado }`);
+      break;
+    case 'actividades':
+      //return ''
+      setTypePoblado('Actividades para todos los gustos');
+      router.push('#container-cards')
+      break
+    case 'cultura':
+      //return ''
+      setTypePoblado('Cultura viva entre montañas y sabanas');
+      router.push('#container-cards')
+      break;
+    case 'apoyoLocal':
+      router.push('/#section-map')
+      break;
+    default: 
+        break;
+  }
+}
 
   return (
     <section className={styles.ventanaPobladoSection}>
-      <h2 className={styles.mainTitle}>5 cosas que debes saber antes de viajar a San Luis de Gaceno</h2>
+      <h2 className={styles.mainTitle}>Cosas que debes saber antes de viajar a { capitalizeSlug( centroPoblado ) || 'San Luis De Gaceno' }</h2>
       <div className={styles.underline}></div>
 
       <div className={styles.iconsContainer}>
         {iconData.map((item) => (
-          <div key={item.id} className={styles.iconItem}>
+          <div key={item.id} className={styles.iconItem} onClick={ () => handleClickEvents(item.id) }>
             <item.icon className={styles.icon} />
             <p className={styles.iconDescription}>{item.description}</p>
           </div>

@@ -7,7 +7,7 @@ import en from "./en.json";
 export type langType = "es" | "en";
 export type DictionaryType = typeof es;
 
-interface PropsLang {
+export interface PropsLang {
   lang: langType;
   dictionary: DictionaryType;
 }

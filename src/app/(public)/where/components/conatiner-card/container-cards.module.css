@@ -1,21 +1,51 @@
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #f5f5f5;
   min-height: 100vh;
 }
 
-.zona {
-  grid-column: 1;
-  padding: 2rem;
+.leftColumn {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 2rem;
 }
+
+.zona {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: visible;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  height: auto;
+}
+
+/* --- Estilos generales (se aplican a todas las vistas) --- */
 
 .titulo1 {
   font-size: 2.5rem;
@@ -39,25 +69,6 @@
   margin-bottom: 2rem;
 }
 
-.card {
-  grid-column: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e0 #f7fafc;
-}
-
-.card::-webkit-scrollbar {
-  width: 6px;
-}
-
-.card::-webkit-scrollbar-track {
-  background: #f7fafc;
-  border-radius: 3px;
-}
-
 .how-to-get-button {
   padding: 0.75rem 1.5rem;
   background-color: var(--color-secundario);
@@ -68,25 +79,6 @@
   font-size: 1rem;
   transition: background-color 0.3s ease;
   width: fit-content;
-}
-
-.card::-webkit-scrollbar-thumb {
-  background-color: #cbd5e0;
-  border-radius: 3px;
-}
-
-.img {
-  grid-column: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
 }
 
 .img img {
@@ -101,64 +93,90 @@
   transform: scale(1.02);
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
+.tab {
+  background-color: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  background-color: #cbd5e0;
+  color: #2d3748;
+}
+
+.activeTab {
+  background-color: var(--color-secundario);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.activeTab:hover {
+  background-color: var(--color-secundario);
+  color: white;
+}
+
+/* --- Responsive Design (Pantallas grandes) --- */
+
+@media (min-width: 768px) {
   .container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 2rem;
+  }
+  
+  .leftColumn {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
   }
 
   .zona {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 2rem 1rem;
+    padding: 0; /* Sin padding adicional en desktop */
+  }
+
+  .tabsContainer {
+    flex-direction: row; /* Tabs horizontales en desktop */
+    justify-content: flex-start;
   }
 
   .card {
-    grid-column: 1;
     max-height: 600px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 #f7fafc;
+  }
+
+  .card::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .card::-webkit-scrollbar-track {
+    background: #f7fafc;
+    border-radius: 3px;
+  }
+
+  .card::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 3px;
   }
 
   .img {
     grid-column: 2;
-    grid-row: 2;
-    height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    padding: 1rem;
-  }
-
-  .zona,
-  .card,
-  .img {
-    grid-column: 1;
-    grid-row: auto;
-    max-height: none;
-    height: auto;
-  }
-
-  .titulo1 {
-    font-size: 2rem;
-  }
-
-  .titulo2 {
-    font-size: 1.3rem;
-  }
-
-  .card {
-    order: 2;
-    max-height: none;
-    overflow-y: visible;
-  }
-
-  .img {
-    order: 3;
-    height: 300px;
-    margin-bottom: 2rem;
+    grid-row: 1;
+    height: 100%;
+    max-height: 100%;
+    align-self: start;
+    position: sticky;
+    top: 2rem; /* Mantener la imagen visible mientras se desplaza la columna izquierda */
   }
 }

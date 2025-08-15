@@ -4,20 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { LatLngTuple } from 'leaflet';
 import { MapaDestino } from '../../components/mapa-destino/MapaDestino';
+import { dmsToDecimal } from '@/lib/utils/dmsDecimal';
 
 // Función auxiliar para convertir coordenadas DMS a decimales, como en el ejemplo anterior
-function dmsToDecimal(dms: string): number {
-  const parts = dms.match(/([NSWE])(\d+)\s(\d+)\s([\d.]+)/);
-  if (!parts) return NaN;
 
-  const [, cardinal, degrees, minutes, seconds] = parts;
-  let decimal = parseFloat(degrees) + (parseFloat(minutes) / 60) + (parseFloat(seconds) / 3600);
-
-  if (['S', 'W'].includes(cardinal)) {
-    decimal = -decimal;
-  }
-  return decimal;
-}
 
 // Lista de destinos disponibles. He normalizado los nombres para que sean
 // más fáciles de usar en una URL (por ejemplo, "parque-principal-san-luis-de-gaceno").
