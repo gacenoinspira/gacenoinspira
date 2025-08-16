@@ -80,7 +80,7 @@ export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
                     height={190}
                     key={Math.random()} // Using random key for demo purposes, ideally use a unique identifier
                     // src="/tab/tab-map.png"
-                    src={ tab.id === activeTab ? `/tab/tab-map-${tab.id}.png` : "/tab/tab-map.png" }
+                    src={  `/tab/tab-map-${tab.id}.png`  }
                     alt="Tab Map"
                     className={styles.image}
                     />

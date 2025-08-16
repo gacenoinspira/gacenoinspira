@@ -23,7 +23,7 @@ export default async function Home() {
             <p className={styles.title}>¿A cuántas horas estás de <strong> San Luis de Gaceno </strong>, el destino que <strong>inspira</strong> ?</p>
           </div>
           <div className={styles.gifs}>
-              <BtnMap text="DESCUBRELO AQUI" />
+              <BtnMap text="DESCÚBRELO AQUÍ" />
           </div>
           </div>
           <div>

@@ -4,9 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import styles from './MapaDestino.module.css'; // Asegúrate de crear este archivo CSS
+import styles from './MapaDestino.module.css';
 import { FaWind, FaTint } from 'react-icons/fa';
 
+// Fix for default marker icons in Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -32,13 +33,14 @@ interface WeatherData {
 }
 
 interface MapaDestinoProps {
-  origen: LatLngTuple; // [latitud, longitud] del usuario
+  origen: LatLngTuple;
   destino: {
     latitud: number;
     longitud: number;
     nombre: string;
     descripcion: string;
   };
+  routeCoordinates: LatLngTuple[] | null; // This is the prop that was missing
 }
 
 const getConditionalText = (weather: WeatherData): string => {
@@ -58,7 +60,7 @@ const getConditionalText = (weather: WeatherData): string => {
   return `Clima actual: ${weatherDescription}.`;
 };
 
-export function MapaDestino({ origen, destino }: MapaDestinoProps) {
+export function MapaDestino({ origen, destino, routeCoordinates }: MapaDestinoProps) {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loadingWeather, setLoadingWeather] = useState(true);
   const [weatherError, setWeatherError] = useState<string | null>(null);
@@ -89,10 +91,8 @@ export function MapaDestino({ origen, destino }: MapaDestinoProps) {
     fetchWeatherData();
   }, [destino.latitud, destino.longitud, OPENWEATHER_API_KEY]);
 
-  // Calcula el centro y el zoom para que ambos marcadores sean visibles
   const bounds = L.latLngBounds([origen, [destino.latitud, destino.longitud]]);
   const center = bounds.getCenter();
-  // const zoom = bounds.isValid() ? bounds.pad(0.5).zoom : 13;
 
   return (
     <div className={styles.container}>
@@ -140,7 +140,9 @@ export function MapaDestino({ origen, destino }: MapaDestinoProps) {
           <Marker position={[destino.latitud, destino.longitud]}>
             <Popup>{destino.nombre}</Popup>
           </Marker>
-          <Polyline pathOptions={{ color: '#003893' }} positions={[origen, [destino.latitud, destino.longitud]]} />
+          {routeCoordinates && (
+            <Polyline pathOptions={{ color: '#003893' }} positions={routeCoordinates} />
+          )}
         </MapContainer>
       </div>
     </div>

@@ -4,12 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { LatLngTuple } from 'leaflet';
 import { MapaDestino } from '../../components/mapa-destino/MapaDestino';
-import { dmsToDecimal } from '@/lib/utils/dmsDecimal';
 
 // Define the coordinates for "Parque Principal San Luis de Gaceno"
 const PARQUE_PRINCIPAL_COORD = {
-  latitud: dmsToDecimal('N4 49 14.6'),
-  longitud: dmsToDecimal('W73 10 04.5'),
+  latitud: 4.820722, // Aproximación decimal de N4 49 14.6
+  longitud: -73.167917, // Aproximación decimal de W73 10 04.5
 };
 
 const destinosDisponibles = [
@@ -57,15 +56,56 @@ const destinosDisponibles = [
   },
 ];
 
+const API_KEY = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || 'YOUR_MAPBOX_ACCESS_TOKEN'; // Reemplaza esto con tu clave de acceso de Mapbox real
+
 // El nombre de esta función debe coincidir con el nombre de tu archivo de página
 export default function DynamicPlanificaPage() {
   const params = useParams(); // Obtenemos los parámetros de la URL
   const locationName = params.locationName;
 
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
+  const [routeCoordinates, setRouteCoordinates] = useState<LatLngTuple[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [locationError, setLocationError] = useState<string | null>(null);
   const [destino, setDestino] = useState<any>(null);
+
+  /**
+   * Fetches the route coordinates from Mapbox Directions API.
+   * @param {LatLngTuple} start - The starting coordinates.
+   * @param {LatLngTuple} end - The ending coordinates.
+   * @returns {Promise<void>}
+   */
+  const getRoute = async (start: LatLngTuple, end: LatLngTuple) => {
+    try {
+      // Mapbox API expects coordinates as [longitude, latitude]
+      const startCoord = `${start[1]},${start[0]}`;
+      const endCoord = `${end[1]},${end[0]}`;
+      const profile = 'driving';
+
+      const response = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/${profile}/${startCoord};${endCoord}?geometries=geojson&access_token=${API_KEY}`
+      );
+
+      if (!response.ok) {
+        // Handle API errors specifically
+        const errorData = await response.json();
+        throw new Error(`Error en la API de Mapbox: ${errorData.message || response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.routes || data.routes.length === 0) {
+        throw new Error("La API no devolvió ninguna ruta.");
+      }
+      
+      const coordinates = data.routes[0].geometry.coordinates.map((coord: [number, number]) => [coord[1], coord[0]]);
+      setRouteCoordinates(coordinates);
+    } catch (error) {
+      console.error("Error fetching route:", error);
+      setLocationError("No se pudo calcular la ruta. Verifica tu clave de Mapbox y los permisos. Mostrando una línea recta.");
+      setRouteCoordinates([start, end]); // Fallback to a straight line
+    }
+  };
 
   useEffect(() => {
     const foundDestino = destinosDisponibles.find((d) => d.path === locationName);
@@ -78,41 +118,45 @@ export default function DynamicPlanificaPage() {
 
     setDestino(foundDestino);
 
-    // If the destination is "Parque Principal San Luis de Gaceno", get the user's current location.
+    // Get the origin coordinates based on the destination
+    const getOriginAndRoute = (originCoords: LatLngTuple) => {
+      setUserLocation(originCoords);
+      const destinationCoords: LatLngTuple = [foundDestino.latitud, foundDestino.longitud];
+      getRoute(originCoords, destinationCoords).finally(() => {
+        setIsLoading(false);
+      });
+    };
+
     if (locationName === 'parque-principal-san-luis-de-gaceno') {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            setUserLocation([position.coords.latitude, position.coords.longitude]);
-            setIsLoading(false);
+            getOriginAndRoute([position.coords.latitude, position.coords.longitude]);
           },
           (error) => {
             console.error("Error al obtener la ubicación:", error);
-            setLocationError("No se pudo obtener tu ubicación. Mostrando una ubicación por defecto (Bogotá).");
-            setUserLocation([4.7110, -74.0721]); // Bogotá
-            setIsLoading(false);
+            setLocationError("No se pudo obtener tu ubicación. Mostrando una ruta desde Bogotá.");
+            getOriginAndRoute([4.7110, -74.0721]); // Bogotá
           }
         );
       } else {
-        setLocationError("Tu navegador no soporta geolocalización. Mostrando una ubicación por defecto (Bogotá).");
-        setUserLocation([4.7110, -74.0721]); // Bogotá
-        setIsLoading(false);
+        setLocationError("Tu navegador no soporta geolocalización. Mostrando una ruta desde Bogotá.");
+        getOriginAndRoute([4.7110, -74.0721]); // Bogotá
       }
     } else {
       // For all other destinations, set the origin to "Parque Principal San Luis de Gaceno"
-      setUserLocation([PARQUE_PRINCIPAL_COORD.latitud, PARQUE_PRINCIPAL_COORD.longitud]);
-      setIsLoading(false);
+      getOriginAndRoute([PARQUE_PRINCIPAL_COORD.latitud, PARQUE_PRINCIPAL_COORD.longitud]);
     }
   }, [locationName]);
 
   if (isLoading) {
-    return <div style={{ textAlign: 'center', padding: '50px' }}>Cargando mapa...</div>;
+    return <div className="flex justify-center items-center h-screen bg-gray-100 text-gray-700">Cargando mapa y calculando ruta...</div>;
   }
 
   // Si no se encuentra un destino o hay un error, se muestra un mensaje
   if (!destino) {
     return (
-      <div style={{ textAlign: 'center', padding: '50px' }}>
+      <div className="flex flex-col justify-center items-center h-screen bg-red-100 text-red-700">
         <h1 className="text-3xl font-bold mb-4">Error</h1>
         <p>{locationError || "Ubicación no válida."}</p>
       </div>
@@ -122,31 +166,34 @@ export default function DynamicPlanificaPage() {
   // Si todo es correcto, se renderiza el mapa con la ubicación del usuario
   // y el destino encontrado.
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 className="text-3xl font-bold mb-4">
-        Ruta a {destino.nombre}
-      </h1>
-      <p className="mb-4">
-        Calculando la ruta desde tu ubicación actual hasta {destino.nombre}.
-      </p>
+    <div className="bg-gray-100 min-h-screen p-8">
+      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-6">
+        <h1 className="text-3xl font-bold mb-2 text-gray-800">
+          Ruta a {destino.nombre}
+        </h1>
+        <p className="mb-4 text-gray-600">
+          Calculando la ruta desde tu ubicación actual hasta {destino.nombre}.
+        </p>
 
-      {locationError && (
-        <div style={{ color: 'red', marginBottom: '20px' }}>
-          <p>{locationError}</p>
-        </div>
-      )}
+        {locationError && (
+          <div className="bg-red-50 border-l-4 border-red-400 text-red-700 p-4 mb-4" role="alert">
+            <p>{locationError}</p>
+          </div>
+        )}
 
-      {userLocation && (
-        <MapaDestino
-          origen={userLocation}
-          destino={{
-            latitud: destino.latitud,
-            longitud: destino.longitud,
-            nombre: destino.nombre,
-            descripcion: destino.descripcion
-          }}
-        />
-      )}
+        {userLocation && routeCoordinates && (
+          <MapaDestino
+            origen={userLocation}
+            destino={{
+              latitud: destino.latitud,
+              longitud: destino.longitud,
+              nombre: destino.nombre,
+              descripcion: destino.descripcion
+            }}
+            routeCoordinates={routeCoordinates}
+          />
+        )}
+      </div>
     </div>
   );
 }
