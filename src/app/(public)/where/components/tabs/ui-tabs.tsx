@@ -20,7 +20,7 @@ interface UiTabsProps {
 
 export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
   const { tab: numberTab, setTab: updateTab } = useTabsStore((set) => set);
-  const [activeTab, setActiveTab] = useState<string>(numberTab);
+  const [ , setActiveTab] = useState<string>(numberTab);
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
