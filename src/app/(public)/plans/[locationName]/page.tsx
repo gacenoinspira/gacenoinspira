@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { LatLngTuple } from 'leaflet';
 import { MapaDestino } from '../../components/mapa-destino/MapaDestino';
+import styles from './location.module.css';
 
 // Define the coordinates for "Parque Principal San Luis de Gaceno"
 const PARQUE_PRINCIPAL_COORD = {
@@ -150,14 +151,18 @@ export default function DynamicPlanificaPage() {
   }, [locationName]);
 
   if (isLoading) {
-    return <div className="flex justify-center items-center h-screen bg-gray-100 text-gray-700">Cargando mapa y calculando ruta...</div>;
+    return (
+      <div className={styles.loadingContainer}>
+        Cargando mapa y calculando ruta...
+      </div>
+    );
   }
 
   // Si no se encuentra un destino o hay un error, se muestra un mensaje
   if (!destino) {
     return (
-      <div className="flex flex-col justify-center items-center h-screen bg-red-100 text-red-700">
-        <h1 className="text-3xl font-bold mb-4">Error</h1>
+      <div className={styles.errorContainer}>
+        <h1 className={styles.errorTitle}>Error</h1>
         <p>{locationError || "Ubicación no válida."}</p>
       </div>
     );
@@ -166,17 +171,17 @@ export default function DynamicPlanificaPage() {
   // Si todo es correcto, se renderiza el mapa con la ubicación del usuario
   // y el destino encontrado.
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
-      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-6">
-        <h1 className="text-3xl font-bold mb-2 text-gray-800">
+    <div className={styles.mainContainer}>
+      <div className={styles.contentWrapper}>
+        <h1 className={styles.pageTitle}>
           Ruta a {destino.nombre}
         </h1>
-        <p className="mb-4 text-gray-600">
+        <p className={styles.pageDescription}>
           Calculando la ruta desde tu ubicación actual hasta {destino.nombre}.
         </p>
 
         {locationError && (
-          <div className="bg-red-50 border-l-4 border-red-400 text-red-700 p-4 mb-4" role="alert">
+          <div className={styles.alertBox} role="alert">
             <p>{locationError}</p>
           </div>
         )}

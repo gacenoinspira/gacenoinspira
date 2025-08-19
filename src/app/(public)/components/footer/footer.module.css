@@ -1,16 +1,11 @@
 /* Base Styles */
 .footer {
-  background-image: url("/img/footer.png");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 1rem 1rem;
-  font-family: "Arial", sans-serif;
-  min-height: 447px;
+  background-color: #003049; 
+  padding: 3rem 0 1.5rem 0;
 }
 
 .container {
-  margin-top: 180px;
+
 
   @media (width < 600px) {
     margin-top: 250px;

@@ -35,8 +35,8 @@ interface IconData {
 }
 
 export interface Props {
-  centroPoblado: string;
-  setTypePoblado: Dispatch<SetStateAction<ActivityCategory | undefined>>
+  centroPoblado?: string;
+  setTypePoblado?: Dispatch<SetStateAction<ActivityCategory | undefined>>
 }
 
 const iconData: IconData[] = [
@@ -167,11 +167,13 @@ const handleClickEvents = (id: string) => {
       break;
     case 'actividades':
       //return ''
+      if( !setTypePoblado ) break;
       setTypePoblado('Actividades para todos los gustos');
       router.push('#container-cards')
       break
     case 'cultura':
       //return ''
+      if( !setTypePoblado ) break;
       setTypePoblado('Cultura viva entre montañas y sabanas');
       router.push('#container-cards')
       break;
@@ -185,7 +187,7 @@ const handleClickEvents = (id: string) => {
 
   return (
     <section className={styles.ventanaPobladoSection}>
-      <h2 className={styles.mainTitle}>Cosas que debes saber antes de viajar a { capitalizeSlug( centroPoblado ) || 'San Luis De Gaceno' }</h2>
+      <h2 className={styles.mainTitle}>Cosas que debes saber antes de viajar a { capitalizeSlug( centroPoblado || '' ) || 'San Luis De Gaceno' }</h2>
       <div className={styles.underline}></div>
 
       <div className={styles.iconsContainer}>

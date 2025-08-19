@@ -73,7 +73,7 @@ export function ContainerCards({ operators, dictionary, typeCentroPoblado, setTy
   return (
     <div className={styles.container}>
       {/* Sección de texto y tabs (columna izquierda en pantallas grandes) */}
-      <div className={styles.leftColumn}>
+      <div id="container-cards" className={styles.leftColumn}>
         <div className={styles.zona}>
           <p className={styles.titulo1}>{zoneName[tab].titulo}</p>
           <p className={styles.titulo2}>{zoneName[tab].descriptio}</p>

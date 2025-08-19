@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import styles from "./page.module.css";
 import { UiMap } from "@/lib/components/ui-map/ui-map";
 import { getOperators } from "@/lib/action";
@@ -7,6 +6,7 @@ import { Carrusel } from "@/lib/carrusel/carrusel";
 import Link from "next/link";
 import { getDictionary } from "@/lib/translate/translate";
 import { BannerPrincipal } from "./components/banner-principal/BannerPrincipal";
+import { VentanaCentroPoblado } from "./where/components/ventana-poblado/VentanaCentroPoblado";
 
 export default async function Home() {
   const operators = await getOperators();
@@ -20,7 +20,7 @@ export default async function Home() {
         <div className={ styles.container_map_btn }>
           <div className={ styles.container_map_btn_info }>
             <div className={styles.container_info}>
-            <p className={styles.title}>¿A cuántas horas estás de <strong> San Luis de Gaceno </strong>, el destino que <strong>inspira</strong> ?</p>
+            <p className={styles.title}>¿A cuántas horas estás de <strong> San Luis de Gaceno </strong>, el destino que <strong>inspira</strong>?</p>
           </div>
           <div className={styles.gifs}>
               <BtnMap text="DESCÚBRELO AQUÍ" />
@@ -126,6 +126,7 @@ export default async function Home() {
           {dictionary.home.contact.text}
         </a>
       </section>
+      <VentanaCentroPoblado  />
     </div>
   );
 }

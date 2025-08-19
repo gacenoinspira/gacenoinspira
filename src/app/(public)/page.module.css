@@ -23,7 +23,6 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    margin-left: 20px;
     position: absolute;
     top: 50%;
     left: 32%;
@@ -175,7 +174,6 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    margin-left: 20px;
 
     .title {
       color: var(--text-white);
@@ -345,7 +343,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     padding: 20px;
 
     .title {
@@ -671,4 +669,12 @@
   .container_map_btn{
     display: flex;
     align-items: center;
+    flex-direction: column;
   }
+
+
+@media screen and (min-width: 768px) {
+  .container_map_btn{
+    flex-direction: row;
+  }
+}

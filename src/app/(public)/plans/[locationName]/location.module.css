@@ -1,0 +1,71 @@
+/* Estilos para el contenedor principal de la página */
+.mainContainer {
+  background-color: #f3f4f6; /* bg-gray-100 */
+  min-height: 100vh; /* min-h-screen */
+  padding: 2rem; /* p-8 */
+  font-family: sans-serif; /* Fallback font */
+}
+
+/* Estilos para el contenedor de contenido */
+.contentWrapper {
+  max-width: 64rem; /* max-w-4xl */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+  background-color: #ffffff; /* bg-white */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 1.5rem; /* p-6 */
+}
+
+/* Estilos para el título de la página */
+.pageTitle {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 0.5rem; /* mb-2 */
+  color: #1f2937; /* text-gray-800 */
+}
+
+/* Estilos para la descripción de la página */
+.pageDescription {
+  margin-bottom: 1rem; /* mb-4 */
+  color: #4b5563; /* text-gray-600 */
+}
+
+/* Estilos para la caja de alerta */
+.alertBox {
+  background-color: #fef2f2; /* bg-red-50 */
+  border-left-width: 4px; /* border-l-4 */
+  border-color: #f87171; /* border-red-400 */
+  color: #b91c1c; /* text-red-700 */
+  padding: 1rem; /* p-4 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+/* Estilos para el contenedor de carga */
+.loadingContainer {
+  display: flex; /* flex */
+  justify-content: center; /* justify-center */
+  align-items: center; /* items-center */
+  height: 100vh; /* h-screen */
+  background-color: #f3f4f6; /* bg-gray-100 */
+  color: #4b5563; /* text-gray-700 */
+}
+
+/* Estilos para el contenedor de error */
+.errorContainer {
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  justify-content: center; /* justify-center */
+  align-items: center; /* items-center */
+  height: 100vh; /* h-screen */
+  background-color: #fee2e2; /* bg-red-100 */
+  color: #b91c1c; /* text-red-700 */
+  text-align: center; /* center text */
+  padding: 1rem;
+}
+
+.errorTitle {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 1rem; /* mb-4 */
+}

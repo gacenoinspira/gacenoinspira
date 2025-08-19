@@ -5,7 +5,6 @@ import styles from "./ui-tab.module.css";
 import { useTabsStore } from "@/lib/store/tabs";
 import { DictionaryType } from "@/lib/translate/translate";
 import Image from "next/image";
-
 const tabs = [
   { id: "5", label: "Centro Poblado San Carlos del Guavio" },
   { id: "4", label: "Centro Poblado La Mesa" },
@@ -37,6 +36,19 @@ export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
     }
   },[])
 
+  const scrollToSection = (id: string) => {
+    // 1. Encontrar el elemento en el DOM por su ID.
+    const element = document.getElementById(id);
+    
+    // 2. Si el elemento existe, llama a scrollIntoView.
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth', // Hace que el desplazamiento sea suave y animado.
+        block: 'start',     // Alinea el elemento en la parte superior de la vista.
+      });
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.selectionText}>
@@ -56,6 +68,7 @@ export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
               onClick={() => {
                 handleTabClick(tab.id);
                 setCentroPoblado(tab.label);
+                scrollToSection('container-cards')
               }}
             >
               {tab.label}
@@ -73,6 +86,7 @@ export function UiTabs({ dictionary, setCentroPoblado }: UiTabsProps) {
                     onClick={() => {
                       handleTabClick(tab.id);
                       setCentroPoblado(tab.label);
+                      scrollToSection('container-cards')
                     }}
                   >
                     <Image
