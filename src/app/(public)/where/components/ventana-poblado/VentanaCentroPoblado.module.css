@@ -147,6 +147,7 @@
   .iconsContainer {
     flex-direction: column;
     gap: 15px;
+    align-items: center;
   }
   .iconItem {
     width: 80%;

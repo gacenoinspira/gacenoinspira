@@ -45,8 +45,8 @@ export const Footer = ({ dictionary }: FooterProps) => {
                 <span className={styles.label}>
                   {dictionary.footer.columna_contacto_alcaldia.direccion}:
                 </span>
-                {dictionary.footer.columna_contacto_alcaldia.direccion}: Carrera
-                4 N° 6-09
+                <p className={ styles.directionalcaldia }>Carrera
+                4 N° 6-09</p>
               </p>
               <p className={styles.infoItem}>
                 <span className={styles.label}>
