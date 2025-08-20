@@ -86,30 +86,6 @@ export function VentanaCentroPoblado({ centroPoblado, setTypePoblado }: Props) {
 
   const OPENWEATHER_API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
 
-  const getConditionalText = (weather: WeatherData): string => {
-    const temp = weather.main.temp;
-    const weatherMain = weather.weather[0]?.main;
-    const weatherDescription = weather.weather[0]?.description.toLowerCase();
-
-    if (weatherMain === 'Rain' || weatherDescription.includes('lluvia')) {
-      return `¡Está lloviendo! Un buen momento para disfrutar de un café caliente y la vista desde un lugar acogedor.`;
-    }
-    if (temp > 25 && weatherMain === 'Clear') {
-      return '¡Prepárate para un día de sol radiante y calor! Ideal para actividades al aire libre y disfrutar de la naturaleza.';
-    }
-    if (temp >= 15 && temp <= 25 && (weatherMain === 'Clear' || weatherMain === 'Clouds')) {
-      return 'Disfruta de un clima templado y agradable. Perfecto para pasear y explorar los alrededores.';
-    }
-    if (weatherMain === 'Clouds' || weatherDescription.includes('nublado')) {
-      return 'Un día mayormente nublado, ideal para caminatas tranquilas sin el sol intenso.';
-    }
-    if (temp < 15) {
-      return 'El clima es fresco. Prepárate para un clima fresco y lleva un abrigo.';
-    }
-
-    // Default message if no specific condition is met
-    return `El clima es ${weatherDescription}. La temperatura es de ${temp}°C.`;
-  };
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -215,9 +191,7 @@ const handleClickEvents = (id: string) => {
                         className={styles.mainWeatherIcon}
                     />
                 </div>
-                <p className={styles.conditionText}>
-                    {getConditionalText(weatherData)}
-                </p>
+  
             </div>
             <div className={styles.extraWeatherInfo}>
                 <p className={styles.humidity}>
