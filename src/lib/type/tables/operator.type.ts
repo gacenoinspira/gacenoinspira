@@ -18,6 +18,10 @@ export interface OperatorTableRow extends OperatorTable {
   indications?: string;
   blog?: string[];
   activityType?: { name: string };
+  latitudorigin: string | null;
+  longitudorigin: string | null;
+  latituddestino: string | null;
+  longituddestino: string | null;
 }
 
 export interface OperatorTableInsert extends OperatorTableInsertBase {
@@ -28,6 +32,10 @@ export interface OperatorTableInsert extends OperatorTableInsertBase {
   rules?: string[];
   indications?: string;
   blog?: string[];
+  latitudorigin?: string | null;
+  longitudorigin?: string | null;
+  latituddestino?: string | null;
+  longituddestino?: string | null;
 }
 
 export interface OperatorTableUpdate extends OperatorTableUpdateBase {
@@ -38,4 +46,11 @@ export interface OperatorTableUpdate extends OperatorTableUpdateBase {
   rules?: string[];
   indications?: string;
   blog?: string[];
+  activityType?: { name: string };
+  category?: { name: string; };
+  zone?: { name: string; };
+  latitudorigin: string | null;
+  longitudorigin: string | null;
+  latituddestino: string | null ;
+  longituddestino: string | null;
 }

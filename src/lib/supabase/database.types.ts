@@ -53,6 +53,10 @@ export type Database = {
           range_time_off: Json | null
           recomendation: string | null
           type_activity: string | null
+          latitudorigin: number | null
+          longitudorigin: number | null
+          latituddestino: number | null
+          longituddestino: number | null
         }
         Insert: {
           created_at?: string
@@ -69,6 +73,10 @@ export type Database = {
           range_time_off?: Json | null
           recomendation?: string | null
           type_activity?: string | null
+          latitudorigin: number | null
+          longitudorigin: number | null
+          latituddestino: number | null
+          longituddestino: number | null
         }
         Update: {
           created_at?: string
@@ -85,6 +93,10 @@ export type Database = {
           range_time_off?: Json | null
           recomendation?: string | null
           type_activity?: string | null
+          latitudorigin: number | null
+          longitudorigin: number | null
+          latituddestino: number | null
+          longituddestino: number | null
         }
         Relationships: [
           {
@@ -213,6 +225,10 @@ export type Database = {
           name_company: string | null
           phone: number
           zone_id: number
+          latitudorigin: string | null
+          longitudorigin: string | null
+          latituddestino: string | null
+          longituddestino: string | null
         }
         Insert: {
           category_id: number
@@ -228,6 +244,10 @@ export type Database = {
           name_company?: string | null
           phone: number
           zone_id: number
+          latitudorigin?: string | null
+          longitudorigin?: string | null
+          latituddestino?: string | null
+          longituddestino?: string | null
         }
         Update: {
           category_id?: number
@@ -243,6 +263,10 @@ export type Database = {
           name_company?: string | null
           phone?: number
           zone_id?: number
+          latitudorigin?: string | null | undefined
+          longitudorigin?: string | null | undefined
+          latituddestino?: string | null  | undefined
+          longituddestino?: string | null | undefined
         }
         Relationships: [
           {

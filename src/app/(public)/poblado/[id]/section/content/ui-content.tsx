@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./content.module.css";
 import Image from "next/image";
+import { MapaDestino } from "@/Public/components/mapa-destino/MapaDestino";
+import { LatLngTuple } from "leaflet";
 
 interface UiContentProps {
   title: string;
@@ -17,7 +19,26 @@ interface UiContentProps {
   rules?: string[];
   img?: string[];
   indications?: string;
+  latitudorigin: number | null;
+  longitudorigin: number | null;
+  latituddestino: number | null;
+  longituddestino: number | null;
 }
+
+const PARQUE_PRINCIPAL_COORD = {
+  latitud: 4.820722,
+  longitud: -73.167917,
+};
+
+const destino = {
+  path: 'centro-poblado-horizontes',
+  latitud: 4.724203,
+  longitud: -73.137818,
+  nombre: 'Centro Poblado Horizontes',
+  descripcion: 'Centro Poblado Horizontes',
+};
+
+const API_KEY = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || 'YOUR_MAPBOX_ACCESS_TOKEN';
 
 export function UiContent({
   title = "Iglesia Centro Poblado Guamal",
@@ -27,11 +48,53 @@ export function UiContent({
   rules = [],
   indications = "",
   images = [],
+  latitudorigin = PARQUE_PRINCIPAL_COORD.latitud,
+  longitudorigin = PARQUE_PRINCIPAL_COORD.longitud,
+  longituddestino = destino.longitud,
+  latituddestino = destino.latitud,
 }: UiContentProps) {
+  const [routeCoordinates, setRouteCoordinates] = useState<LatLngTuple[] | null>(null);
+  const [, setLocationError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const destinationCoords: LatLngTuple = [latituddestino || destino.latitud, longituddestino || destino.longitud];
+    const originCoords: LatLngTuple = [latitudorigin || PARQUE_PRINCIPAL_COORD.latitud, longitudorigin || PARQUE_PRINCIPAL_COORD.longitud];
+    
+    getRoute(originCoords, destinationCoords);
+  }, [latitudorigin, longitudorigin, latituddestino, longituddestino]);
+
+  const getRoute = async (start: LatLngTuple, end: LatLngTuple) => {
+    try {
+      const startCoord = `${start[1]},${start[0]}`;
+      const endCoord = `${end[1]},${end[0]}`;
+      const profile = 'driving';
+      const response = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/${profile}/${startCoord};${endCoord}?geometries=geojson&access_token=${API_KEY}`
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`Error en la API de Mapbox: ${errorData.message || response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.routes || data.routes.length === 0) {
+        throw new Error("La API no devolvió ninguna ruta.");
+      }
+
+      // La API devuelve [longitud, latitud]. El `map` los invierte a [latitud, longitud] para Leaflet.
+      const coordinates = data.routes[0].geometry.coordinates.map((coord: [number, number]) => [coord[1], coord[0]]);
+      setRouteCoordinates(coordinates);
+    } catch (error) {
+      console.error("Error fetching route:", error);
+      setLocationError("No se pudo calcular la ruta. Mostrando una línea recta.");
+      setRouteCoordinates([start, end]); // Fallback to a straight line
+    }
+  };
+
   return (
     <div className={styles.container}>
-      
-
       <div className={styles.content}>
         {description.split(".").map((item, index) => (
           <p key={index} className={styles.description}>
@@ -59,14 +122,24 @@ export function UiContent({
             className={styles.ImagenMedium}
           />
         </div>
-      <div className={styles.gallery}>
-      </div>
+        <div className={styles.gallery}>
+        </div>
         {indications && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>
               ¿Cómo puedo llegar?
             </h2>
             <p className={styles.paragraph}>{indications}</p>
+            <MapaDestino
+              origen={[latitudorigin || PARQUE_PRINCIPAL_COORD.latitud, longitudorigin || PARQUE_PRINCIPAL_COORD.longitud]}
+              destino={{
+                latitud: latituddestino || destino.latitud,
+                longitud: longituddestino || destino.longitud,
+                nombre: destino.nombre,
+                descripcion: destino.descripcion
+              }}
+              routeCoordinates={routeCoordinates}
+            />
           </>
         )}
         {!!rules.length && (
@@ -81,7 +154,7 @@ export function UiContent({
             </ul>
           </>
         )}
-        {images.length && (
+        {images.length > 1 && (
           <div className={styles.imageContainer}>
             <Image
               src={images[1] || logo}

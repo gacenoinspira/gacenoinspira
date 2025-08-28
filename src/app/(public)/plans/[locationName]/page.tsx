@@ -6,10 +6,9 @@ import { LatLngTuple } from 'leaflet';
 import { MapaDestino } from '../../components/mapa-destino/MapaDestino';
 import styles from './location.module.css';
 
-// Define the coordinates for "Parque Principal San Luis de Gaceno"
 const PARQUE_PRINCIPAL_COORD = {
-  latitud: 4.820722, // Aproximación decimal de N4 49 14.6
-  longitud: -73.167917, // Aproximación decimal de W73 10 04.5
+  latitud: 4.820722,
+  longitud: -73.167917,
 };
 
 const destinosDisponibles = [
@@ -57,11 +56,9 @@ const destinosDisponibles = [
   },
 ];
 
-const API_KEY = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || 'YOUR_MAPBOX_ACCESS_TOKEN'; // Reemplaza esto con tu clave de acceso de Mapbox real
-
-// El nombre de esta función debe coincidir con el nombre de tu archivo de página
+const API_KEY = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || 'YOUR_MAPBOX_ACCESS_TOKEN';
 export default function DynamicPlanificaPage() {
-  const params = useParams(); // Obtenemos los parámetros de la URL
+  const params = useParams();
   const locationName = params.locationName;
 
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
@@ -70,12 +67,7 @@ export default function DynamicPlanificaPage() {
   const [locationError, setLocationError] = useState<string | null>(null);
   const [destino, setDestino] = useState<any>(null);
 
-  /**
-   * Fetches the route coordinates from Mapbox Directions API.
-   * @param {LatLngTuple} start - The starting coordinates.
-   * @param {LatLngTuple} end - The ending coordinates.
-   * @returns {Promise<void>}
-   */
+
   const getRoute = async (start: LatLngTuple, end: LatLngTuple) => {
     try {
       // Mapbox API expects coordinates as [longitude, latitude]
@@ -119,7 +111,6 @@ export default function DynamicPlanificaPage() {
 
     setDestino(foundDestino);
 
-    // Get the origin coordinates based on the destination
     const getOriginAndRoute = (originCoords: LatLngTuple) => {
       setUserLocation(originCoords);
       const destinationCoords: LatLngTuple = [foundDestino.latitud, foundDestino.longitud];
@@ -158,7 +149,6 @@ export default function DynamicPlanificaPage() {
     );
   }
 
-  // Si no se encuentra un destino o hay un error, se muestra un mensaje
   if (!destino) {
     return (
       <div className={styles.errorContainer}>
@@ -168,8 +158,6 @@ export default function DynamicPlanificaPage() {
     );
   }
 
-  // Si todo es correcto, se renderiza el mapa con la ubicación del usuario
-  // y el destino encontrado.
   return (
     <div className={styles.mainContainer}>
       <div className={styles.contentWrapper}>

@@ -163,6 +163,7 @@ export function UiFormActivity({ zones }: Props) {
       img: photosUrls,
       category_id: 5,
       zone_id: zone_id,
+ 
     };
 
 

@@ -48,6 +48,10 @@ export const updateOperator = async ({
   id: string;
   body: OperatorTableUpdate;
 }): Promise<ResponseType<OperatorTableRow | null>> => {
+  console.log('Esto es en Action: Update: ', body);
+  delete body.activityType;
+  delete body.category;
+  delete body.zone;
   const operator = await OperatorTable.updateOperator(id, body);
   if (!operator.id) {
     return {

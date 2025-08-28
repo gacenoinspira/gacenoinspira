@@ -27,6 +27,10 @@ export default async function PobladoPage({ params }: Props) {
         rules={operator.data?.rules || []}
         images={operator.data?.img || []}
         indications={operator.data?.indications || ""}
+        latituddestino={ Number(operator.data?.latituddestino) ||  null }
+        longituddestino={ Number(operator.data?.longituddestino) || null }
+        latitudorigin={ Number(operator.data?.latitudorigin) || null }
+        longitudorigin={ Number(operator.data?.longitudorigin) || null }
       />
     </main>
   );
