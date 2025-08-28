@@ -135,8 +135,8 @@ export function UiContent({
               destino={{
                 latitud: latituddestino || destino.latitud,
                 longitud: longituddestino || destino.longitud,
-                nombre: destino.nombre,
-                descripcion: destino.descripcion
+                nombre: title,
+                descripcion: title
               }}
               routeCoordinates={routeCoordinates}
             />
