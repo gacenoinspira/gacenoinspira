@@ -159,6 +159,7 @@ export function UiContent({
           </>
         )}
         {images.length > 1 && (
+          
           <div className={styles.imageContainer}>
             <Image
               src={images[1] || logo}
