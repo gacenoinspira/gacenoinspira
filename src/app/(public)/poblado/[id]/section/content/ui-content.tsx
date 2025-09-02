@@ -96,23 +96,26 @@ export function UiContent({
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {description.split(".").map((item, index) => (
-          <p key={index} className={styles.description}>
-            {item}
-          </p>
-        ))}
-        {!!activity.length && (
-          <>
-            <h2 className={`${styles.title} ${styles.mt}`}>Actividades</h2>
-            <ul className={styles.ul}>
-              {activity.map((item, index) => (
-                <li key={index} className={styles.li}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+        <div className={ styles.contentText }>
+          {description.split(".").map((item, index) => (
+            <p key={index} className={styles.description}>
+              {item}
+            </p>
+          ))}
+          {!!activity.length && (
+            <>
+              <h2 className={`${styles.title} ${styles.mt}`}>Actividades</h2>
+              <ul className={styles.ul}>
+                {activity.map((item, index) => (
+                  <li key={index} className={styles.li}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+        
         <div className={styles.imageContainer}>
           <Image
             src={images[0] || logo}
@@ -124,7 +127,8 @@ export function UiContent({
         </div>
         <div className={styles.gallery}>
         </div>
-        {indications && (
+        <div className={styles.contentText}>
+          {indications && (
           <>
             <h2 className={`${styles.title} ${styles.mt}`}>
               ¿Cómo puedo llegar?
@@ -165,6 +169,8 @@ export function UiContent({
             />
           </div>
         )}
+        </div>
+        
       </div>
     </div>
   );
